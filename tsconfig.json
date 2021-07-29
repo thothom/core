@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"target": "es2017",
+		"module": "commonjs",
+		"outDir": "dist",
+		"rootDir": "src",
+		"lib": [
+			"ES2020",
+			"ES2020.String"
+		],
+		"strict": true,
+		"declaration": true,
+		"noUnusedLocals": true,
+		"removeComments": false,
+		"noUnusedParameters": true,
+		"strictPropertyInitialization": false,
+		"allowSyntheticDefaultImports": true,
+		"sourceMap": true,
+		"incremental": true,
+		"baseUrl": "src"
+	},
+	"include": [
+		"src/**/*.ts",
+		"jest.config.js"
+	]
+}

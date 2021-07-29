@@ -1,0 +1,26 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"project": "tsconfig.json",
+		"sourceType": "module"
+	},
+	"extends": [
+		"@techmmunity/eslint-config/common",
+		"@techmmunity/eslint-config/typescript",
+		"@techmmunity/eslint-config/jest"
+	],
+	"rules": {
+		"import-helpers/order-imports": [
+			"warn",
+			{
+				"newlinesBetween": "always",
+				"groups": ["module", ["parent", "sibling", "index"]],
+				"alphabetize": {
+					"order": "asc",
+					"ignoreCase": true
+				}
+			}
+		]
+	}
+}

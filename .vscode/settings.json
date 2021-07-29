@@ -1,0 +1,116 @@
+{
+	// Define Tab Size = 2 Spaces (Half of the Default Size)
+	"editor.tabSize": 2,
+
+	// Disable Tab To Space Conversion
+	"editor.insertSpaces": false,
+
+	// Config Default End Of Line Formatting
+	"files.eol": "\n",
+
+	// Enable Format On Save
+	"editor.formatOnSave": true,
+
+	// Make ESLint fix all the things that he can on save (like prettier formating)
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+
+	// Color of Comments
+	"editor.tokenColorCustomizations": {
+		"comments": "#00a0eb"
+	},
+
+	// Make VSCode understand this files as files of this languages
+	"files.associations": {
+		".prettierignore": "ignore",
+		".lintstagedrc": "json",
+		".env.*": "env"
+	},
+	"material-icon-theme.languages.associations": {
+		"env": "tune"
+	},
+
+	// ================ Languages General Config ====================
+
+	// TypeScript
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"typescript.tsserver.log": "verbose",
+	"typescript.suggest.autoImports": true,
+	// JavaScript
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"javascript.suggest.autoImports": true,
+
+	// =========== Plugins & Extensions General Config ===============
+
+	// GitLens
+	"gitlens.codeLens.recentChange.enabled": false,
+	"gitlens.codeLens.authors.enabled": true,
+	"gitlens.codeLens.enabled": false,
+
+	// Eslint
+	"eslint.packageManager": "yarn",
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact"
+	],
+
+	// Material Icon Theme
+	"material-icon-theme.folders.associations": {
+		"types": "typescript",
+		"interfaces": "typescript",
+		"redux": "redux-actions",
+		"modules": "generator",
+		"entities": "class",
+		"entity": "class",
+		"migrations": "database"
+	},
+	"material-icon-theme.files.associations": {
+		"*.controller.ts": "nest-controller",
+		"*.module.ts": "nest-module",
+		"*.service.ts": "nest-service",
+		"*.middleware.ts": "nest-middleware",
+		"*.filter.ts": "nest-filter",
+		"*.pipe.ts": "nest-pipe",
+		"*.gateway.ts": "nest-gateway",
+		"*.decorator.ts": "nest-decorator",
+		"*.guard.ts": "nest-guard",
+		"*.interceptor.ts": "nest-guard",
+		"*.resolver.ts": "nest-controller",
+		"*.input.ts": "graphql",
+		"*.return.ts": "graphql",
+		"docker-compose.hmg.yml": "docker",
+		".env.hmg": "tune",
+		".env.docker": "tune"
+	},
+
+	// TODO Tree
+	"todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+	"todo-tree.general.tags": [
+		"BUG",
+		"HACK",
+		"FIXME",
+		"TODO",
+		"[ ]"
+	],
+	"todo-tree.tree.showScanModeButton": false,
+
+	// Spell Checker
+	"cSpell.words": [
+		"techmmunity",
+		"nestjs",
+		"vercel",
+		"sonarjs",
+		"tsbuildinfo",
+		"prebuild",
+		"nodemodules",
+		"dotenv",
+		"conta",
+		"fastify",
+		"injectables",
+		"jwks",
+		"webfactory"
+	]
+}
