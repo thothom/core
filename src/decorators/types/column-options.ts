@@ -9,11 +9,3 @@ export type PrimaryColumnOptions = BaseColumnOptions;
 export interface BaseColumnOptions {
 	name?: string;
 }
-
-export interface PrimaryGeneratedColumnOptions extends BaseColumnOptions {
-	type?: "uuid";
-}
-
-export type CreateDateColumnOptions = BaseColumnOptions;
-
-export type UpdateDateColumnOptions = BaseColumnOptions;

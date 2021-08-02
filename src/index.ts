@@ -8,18 +8,9 @@ import "reflect-metadata";
  * ---------------------------------------------------------------------------
  */
 
-/**
- * Columns Decorators
- */
-
-export * from "./decorators/column/column";
-export * from "./decorators/column/primary-column";
-
-/**
- * Entity Decorators
- */
-
+export * from "./decorators/column";
 export * from "./decorators/entity/entity";
+export * from "./decorators/primary-column";
 
 /**
  * ---------------------------------------------------------------------------

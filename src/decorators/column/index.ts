@@ -1,7 +1,7 @@
-import { ColumnMetadataEnum } from "../../../enums/columns-metadata";
-import { BaseClass } from "../../../types/class";
-import { ColumnOptions } from "../../../types/options/column-options";
-import { MetadataType } from "../../../utils/metadata/is-metadata-type";
+import { ColumnMetadataEnum } from "../../enums/columns-metadata";
+import { BaseClass } from "../../types/class";
+import { ColumnOptions } from "../types/column-options";
+import { MetadataType } from "../../utils/metadata/is-metadata-type";
 import { getName } from "./helpers/get-name";
 import { getType } from "./helpers/get-type";
 

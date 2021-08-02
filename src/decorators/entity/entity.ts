@@ -1,7 +1,7 @@
 import { metadataManager } from "../../metadata-manager";
 import { EntityMetadataEnum } from "../../enums/entity-metadata";
 import { BaseClass } from "../../types/class";
-import { EntityOptions } from "../../types/options/entity-options";
+import { EntityOptions } from "../types/entity-options";
 import { getName } from "./helpers/get-name";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
