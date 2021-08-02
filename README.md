@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="https://github.com/techmmunity/compass/raw/master/resources/ORM.gif" width="300" height="300">
+	<img src="https://github.com/techmmunity/compass/raw/master/resources/logo.gif" width="300" height="300">
   <br>
   <br>
 	<a href="https://www.codefactor.io/repository/github/techmmunity/compass">
