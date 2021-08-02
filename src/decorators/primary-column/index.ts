@@ -1,6 +1,6 @@
-import { metadataManager } from "../../../metadata-manager";
-import { ColumnMetadataEnum } from "../../../enums/columns-metadata";
-import { PrimaryColumnOptions } from "../../../types/options/column-options";
+import { metadataManager } from "../../metadata-manager";
+import { ColumnMetadataEnum } from "../../enums/columns-metadata";
+import { PrimaryColumnOptions } from "../types/column-options";
 import { getName } from "./helpers/get-name";
 import { getType } from "./helpers/get-type";
 

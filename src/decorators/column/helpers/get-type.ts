@@ -1,9 +1,9 @@
-import { BaseClass } from "../../../../types/class";
-import { ColumnOptions } from "../../../../types/options/column-options";
+import { BaseClass } from "../../../types/class";
+import { ColumnOptions } from "../../types/column-options";
 import {
 	isMetadataType,
 	MetadataType,
-} from "../../../../utils/metadata/is-metadata-type";
+} from "../../../utils/metadata/is-metadata-type";
 
 interface GetTypeParams {
 	target: BaseClass;

@@ -1,4 +1,4 @@
-import { PrimaryColumnOptions } from "../../../../types/options/column-options";
+import { PrimaryColumnOptions } from "../../types/column-options";
 
 interface GetNameParams {
 	propertyName: string;

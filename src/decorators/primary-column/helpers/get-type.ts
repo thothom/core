@@ -1,4 +1,4 @@
-import { isDefaultMetadataType } from "../../../../utils/metadata/is-metadata-type";
+import { isDefaultMetadataType } from "../../../utils/metadata/is-metadata-type";
 
 interface GetTypeParams {
 	target: any;

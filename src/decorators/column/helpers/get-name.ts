@@ -1,5 +1,5 @@
-import { ColumnOptions } from "../../../../types/options/column-options";
-import { MetadataType } from "../../../../utils/metadata/is-metadata-type";
+import { ColumnOptions } from "../../types/column-options";
+import { MetadataType } from "../../../utils/metadata/is-metadata-type";
 
 interface GetNameParams {
 	propertyName: string;
