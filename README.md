@@ -5,8 +5,8 @@
 	<a href="https://www.codefactor.io/repository/github/techmmunity/compass">
 		<img src="https://www.codefactor.io/repository/github/techmmunity/compass/badge" alt="CodeFactor">
 	</a>
-	<a href="https://deepscan.io/dashboard#view=project&tid=13883&pid=17164&bid=385798">
-		<img src="https://deepscan.io/api/teams/13883/projects/17164/branches/385798/badge/grade.svg" alt="DeepScan">
+	<a href="https://deepscan.io/dashboard#view=project&tid=13883&pid=18101&bid=434906">
+		<img src="https://deepscan.io/api/teams/13883/projects/18101/branches/434906/badge/grade.svg" alt="DeepScan">
 	</a>
 	<a href="https://coveralls.io/github/Techmmunity/compass?branch=master">
 		<img src="https://coveralls.io/repos/github/Techmmunity/compass/badge.svg?branch=master" alt="Coveralls">
