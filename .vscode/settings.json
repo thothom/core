@@ -88,13 +88,7 @@
 
 	// TODO Tree
 	"todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
-	"todo-tree.general.tags": [
-		"BUG",
-		"HACK",
-		"FIXME",
-		"TODO",
-		"[ ]"
-	],
+	"todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "[ ]"],
 	"todo-tree.tree.showScanModeButton": false,
 
 	// Spell Checker
@@ -111,6 +105,10 @@
 		"fastify",
 		"injectables",
 		"jwks",
-		"webfactory"
+		"webfactory",
+		"plugable",
+		"transpiled",
+		"Diozin",
+		"Zaetic"
 	]
 }

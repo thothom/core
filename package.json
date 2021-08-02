@@ -1,23 +1,33 @@
 {
-	"name": "@techmmunity/base-project-packages",
+	"name": "@techmmunity/compass",
 	"version": "0.0.1",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
 	"author": "Techmmunity",
-	"description": "Description",
-	"homepage": "https://github.com/techmmunity/base-project-packages#readme",
+	"description": "Compass - The ORM For All Databases",
+	"homepage": "https://github.com/techmmunity/compass#readme",
 	"bugs": {
-		"url": "https://github.com/techmmunity/base-project-packages/issues"
+		"url": "https://github.com/techmmunity/compass/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/techmmunity/base-project-packages.git"
+		"url": "git+https://github.com/techmmunity/compass.git"
 	},
 	"keywords": [
-		"package",
-		"keywords"
+		"orm",
+		"nosql",
+		"dynamo",
+		"dynamodb",
+		"typeorm",
+		"typescript",
+		"database",
+		"data-mapper"
 	],
+	"dependencies": {
+		"change-case": "^4.1.2",
+		"reflect-metadata": "^0.1.13"
+	},
 	"devDependencies": {
 		"@techmmunity/eslint-config": "^2.0.0",
 		"@types/jest": "^26.0.24",
@@ -45,8 +55,9 @@
 		"test": "jest",
 		"test:cov": "jest --coverage",
 		"clean": "rm -rf lib && rm -rf dist && rm -rf coverage",
-		"build": "ncc build src/index.ts -o dist -m",
+		"build": "ncc build src/index.ts -o dist -m -e reflect-metadata",
 		"update-dependencies": "yarn upgrade-interactive --latest",
-		"husky:pre-commit": "tsc"
+		"husky:pre-commit": "tsc",
+		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd .."
 	}
 }
