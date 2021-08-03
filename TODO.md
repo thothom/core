@@ -4,6 +4,7 @@
   - Will be passed **without**
 - [x] Add Suffix
 - [x] Add Prefix
+- [ ] Uncomment tests validation at `.github/workflows/publish.yml` and `jest.config.js`
 - [ ] Add Error Thrower
   - [ ] Return errors at `src/decorators/column/helpers/get-type.ts`
   - [ ] Export error thrower at `src/index.ts`
