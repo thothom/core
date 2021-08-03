@@ -5,7 +5,7 @@ import {
 	camelCase,
 	paramCase,
 } from "change-case";
-import { NamingPatterns } from "../../types/naming-pattern";
+import { NamingPatterns } from "../../types/naming-patterns";
 
 interface FormatNamingPatternParams {
 	value: string;

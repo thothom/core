@@ -1,7 +1,7 @@
-import { BaseClass } from "../../types/class";
+class CustomClass {}
 
 export type MetadataType =
-	| BaseClass
+	| CustomClass
 	| DateConstructor
 	| NumberConstructor
 	| StringConstructor;

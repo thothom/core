@@ -1,4 +1,3 @@
-import { BaseClass } from "../../../types/class";
 import { ColumnOptions } from "../../types/column-options";
 import {
 	isMetadataType,
@@ -6,7 +5,7 @@ import {
 } from "../../../utils/metadata/is-metadata-type";
 
 interface GetTypeParams {
-	target: BaseClass;
+	target: any;
 	propertyName: string;
 	typeOrOptions?: ColumnOptions | MetadataType;
 }

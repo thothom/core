@@ -1,8 +1,7 @@
-import { BaseClass } from "../../../types/class";
 import { EntityOptions } from "../../types/entity-options";
 
 interface GetNameParams {
-	target: BaseClass;
+	target: any;
 	nameOrOptions?: EntityOptions | string;
 }
 
