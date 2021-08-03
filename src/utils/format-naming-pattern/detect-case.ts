@@ -1,4 +1,4 @@
-import { NamingPatterns } from "../../types/naming-pattern";
+import { NamingPatterns } from "../../types/naming-patterns";
 
 /**
  * This function isn't 100% precise. If the value is only ONE word,

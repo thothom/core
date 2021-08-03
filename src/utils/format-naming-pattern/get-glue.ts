@@ -1,4 +1,4 @@
-import { NamingPatterns } from "../../types/naming-pattern";
+import { NamingPatterns } from "../../types/naming-patterns";
 
 export const getGlue = (namingPattern: NamingPatterns) => {
 	switch (namingPattern) {

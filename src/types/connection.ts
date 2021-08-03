@@ -1,5 +1,4 @@
-import { BaseClass } from "./class";
-import { NamingPatterns } from "./naming-pattern";
+import { NamingPatterns } from "./naming-patterns";
 import { Repository } from "./repository";
 
 export interface BaseConnectionOptions {
@@ -139,8 +138,8 @@ export interface BaseConnectionOptions {
 }
 
 export interface Connection {
-	constructor: (options: BaseConnectionOptions) => void;
+	options: BaseConnectionOptions;
 	getRepository: <Entity = any>(
-		entity: BaseClass,
+		entity: Entity,
 	) => Promise<Repository<Entity>> | Repository<Entity>;
 }
