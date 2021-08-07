@@ -1,11 +1,14 @@
 import { EntityOptions } from "../../types/entity-options";
 
 interface GetNameParams {
-	target: any;
+	entityConstructor: any;
 	nameOrOptions?: EntityOptions | string;
 }
 
-export const getName = ({ target, nameOrOptions }: GetNameParams) => {
+export const getSemiFormattedName = ({
+	entityConstructor,
+	nameOrOptions,
+}: GetNameParams) => {
 	if (typeof nameOrOptions === "string") {
 		return nameOrOptions;
 	}
@@ -14,5 +17,5 @@ export const getName = ({ target, nameOrOptions }: GetNameParams) => {
 		return nameOrOptions?.name;
 	}
 
-	return target.constructor.name;
+	return entityConstructor.constructor.name;
 };

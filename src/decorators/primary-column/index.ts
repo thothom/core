@@ -1,33 +1,31 @@
-import { metadataManager } from "../../metadata-manager";
-import { ColumnMetadataEnum } from "../../enums/columns-metadata";
 import { PrimaryColumnOptions } from "../types/column-options";
-import { getName } from "./helpers/get-name";
+import { addColumnMetadata } from "../column/helpers/add-column-metadata";
+import { getSemiFormattedName } from "./helpers/get-name";
 import { getType } from "./helpers/get-type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const PrimaryColumn = (
 	nameOrOptions?: PrimaryColumnOptions | string,
 ) => {
-	return (classPrototype: any, propertyName: string) => {
-		const name = getName({
+	return (entityPrototype: any, propertyName: string) => {
+		const formattedName = getSemiFormattedName({
 			propertyName,
 			nameOrOptions,
 		});
 		const type = getType({
-			target: classPrototype,
+			entityPrototype,
 			propertyName,
 		});
 
-		const defineMetadata = (metadataName: string, value: any) =>
-			Reflect.defineMetadata(metadataName, value, classPrototype, propertyName);
-
-		defineMetadata(ColumnMetadataEnum.NAME, name);
-		defineMetadata(ColumnMetadataEnum.TYPE, type);
-		defineMetadata(ColumnMetadataEnum.PRIMARY, true);
-
-		metadataManager.addEntityPrimaryKey(
-			classPrototype.constructor,
-			propertyName,
-		);
+		addColumnMetadata({
+			entity: entityPrototype,
+			metadata: {
+				name: propertyName,
+				formattedName,
+				type,
+				primary: true,
+				extras: (nameOrOptions as PrimaryColumnOptions).extras,
+			},
+		});
 	};
 };

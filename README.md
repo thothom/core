@@ -48,17 +48,14 @@ Currently it only works with TypeScript (and transpiled JavaScript), and we plan
 With Yarn:
 
 ```sh
-yarn add @techmmunity/compass
-
-yarn add -D @types/node
+yarn add @techmmunity/compass \
+	reflect-metadata
 ```
 
 With NPM:
 
 ```sh
-npm i @techmmunity/compass --save
-
-npm i @types/node --save-dev
+npm i @techmmunity/compass reflect-metadata --save
 ```
 
 Configure `tsconfig.json`:
@@ -74,9 +71,13 @@ Configure `tsconfig.json`:
 
 ## Available Plugins
 
+### [Plugins List](https://www.npmjs.com/search?q=keywords:techmmunity-compass)
+
+All the Compass Plugins have the `techmmunity-compass` tag, so you can easily found all the plugins in [this link](https://www.npmjs.com/search?q=keywords:techmmunity-compass).
+
 ### DynamoDB
 
-- [@techmmunity/compass-dynamo]()
+- [@techmmunity/compass-dynamo](https://github.com/techmmunity/compass-dynamo)
 
 ## Usage
 

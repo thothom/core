@@ -5,7 +5,10 @@ interface GetNameParams {
 	nameOrOptions?: PrimaryColumnOptions | string;
 }
 
-export const getName = ({ propertyName, nameOrOptions }: GetNameParams) => {
+export const getSemiFormattedName = ({
+	propertyName,
+	nameOrOptions,
+}: GetNameParams) => {
 	if (typeof nameOrOptions === "string") {
 		return nameOrOptions;
 	}

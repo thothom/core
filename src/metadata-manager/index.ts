@@ -1,109 +1,75 @@
-interface EntityData {
-	/**
-	 * Plural, because composite primary keys exist
-	 */
-	primaryKeys: Array<string>;
-	/**
-	 * Plural, because composite secondary keys exist (maybe?)
-	 */
-	secondaryKeys: Array<string>;
-}
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-class MetadataManager {
-	/**
-	 * Saves the data of an entity
-	 */
-	private readonly entities: Record<string, EntityData> = {};
+import { ConnectionMembers } from "../connection/types/connection-members";
+import { getEntitiesMetadata } from "./helpers/get-entities-metadata";
+import { MetadataManagerEntities } from "./types/manager-metadata";
 
+export class MetadataManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	/**
-	 * -----------------------------------------------------
+	 * Saves the metadata of all the entities, columns, etc
 	 *
-	 * Setters
-	 *
-	 * -----------------------------------------------------
+	 * Format:
+	 * ```
+	 * 	{
+	 * 		[Entity Class Name]: {
+	 * 			...[Entity Metadata Here]
+	 * 			column: [
+	 * 				...[Array Of Columns Metadata]
+	 * 			]
+	 * 		}
+	 * 	}
+	 * ```
 	 */
+	private readonly entities: MetadataManagerEntities<
+		EntityExtraMetadata,
+		ColumnExtraMetadata
+	>;
 
 	/**
+	 * ---------------------------------------------------
 	 *
-	 * Entities
+	 * Constructor
 	 *
+	 * ---------------------------------------------------
 	 */
 
-	public addEntity(entity: any, baseValues: Partial<EntityData> = {}) {
-		if (this.entities[entity.name]) {
-			return;
-		}
-
-		this.entities[entity.name] = {
-			primaryKeys: [],
-			secondaryKeys: [],
-			...baseValues,
-		};
-	}
-
-	public addEntityPrimaryKey(entity: any, key: string) {
-		if (this.entities[entity.name]) {
-			// If the column is being registered for the second time
-			if (this.entities[entity.name].primaryKeys.includes(key)) {
-				return;
-			}
-
-			this.entities[entity.name].primaryKeys.push(key);
-
-			return;
-		}
-
-		this.addEntity(entity, {
-			primaryKeys: [key],
-		});
-	}
-
-	public addEntitySecondaryKey(entity: any, key: string) {
-		if (this.entities[entity.name]) {
-			// If the column is being registered for the second time
-			if (this.entities[entity.name].secondaryKeys.includes(key)) {
-				return;
-			}
-
-			this.entities[entity.name].secondaryKeys.push(key);
-
-			return;
-		}
-
-		this.addEntity(entity, {
-			secondaryKeys: [key],
+	public constructor(
+		connection: ConnectionMembers<EntityExtraMetadata, ColumnExtraMetadata>,
+	) {
+		this.entities = getEntitiesMetadata<
+			EntityExtraMetadata,
+			ColumnExtraMetadata
+		>({
+			entities: connection.options.entities,
+			namingPattern: connection.options.namingPattern,
 		});
 	}
 
 	/**
-	 * -----------------------------------------------------
+	 * ---------------------------------------------------
 	 *
 	 * Getters
 	 *
-	 * -----------------------------------------------------
+	 * ---------------------------------------------------
 	 */
 
-	/**
-	 *
-	 * Entities
-	 *
-	 */
-
-	public getEntityData(entity: any) {
-		return this.entities[entity.name];
-	}
-
-	public getAllEntitiesData() {
+	public getAllEntitiesMetadata() {
 		return this.entities;
 	}
 
-	public getEntityPrimaryKeys(entity: any) {
-		return this.entities[entity.name]?.primaryKeys || [];
+	public getEntityMetadata(entity: any) {
+		return this.entities[entity.name];
 	}
 
-	public getEntitySecondaryKeys(entity: any) {
-		return this.entities[entity.name]?.secondaryKeys || [];
+	public getColumnMetadata(entity: any, columnName: string) {
+		return this.entities[entity.name]?.columns.find(
+			columnMetadata => columnMetadata.name === columnName,
+		);
+	}
+
+	public getEntityPrimaryColumns(entity: any) {
+		return this.entities[entity.name]?.columns.filter(
+			columnMetadata => columnMetadata.primary,
+		);
 	}
 }
-
-export const metadataManager = new MetadataManager();

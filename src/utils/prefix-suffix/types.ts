@@ -1,4 +1,4 @@
-import { NamingPatterns } from "../../types/naming-patterns";
+import { NamingPatterns } from "../format-naming-pattern/types/naming-patterns";
 
 export interface HandlePrefixSuffixParams {
 	value: string;

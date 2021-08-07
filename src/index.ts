@@ -15,21 +15,6 @@ export * from "./decorators/primary-column";
 /**
  * ---------------------------------------------------------------------------
  *
- * Enums
- *
- * ---------------------------------------------------------------------------
- */
-
-/**
- * Metadata Enums
- */
-
-export * from "./enums/columns-metadata";
-export * from "./enums/entity-metadata";
-
-/**
- * ---------------------------------------------------------------------------
- *
  * Metadata Manager
  *
  * ---------------------------------------------------------------------------
@@ -40,13 +25,34 @@ export * from "./metadata-manager";
 /**
  * ---------------------------------------------------------------------------
  *
- * Types
+ * Connection
  *
  * ---------------------------------------------------------------------------
  */
 
-export * from "./types/connection";
-export * from "./types/repository";
+export * from "./connection";
+export * from "./connection/types/repository";
+
+/**
+ * ---------------------------------------------------------------------------
+ *
+ * Error
+ *
+ * ---------------------------------------------------------------------------
+ */
+
+export * from "./error";
+
+/**
+ * ---------------------------------------------------------------------------
+ *
+ * Logger
+ *
+ * ---------------------------------------------------------------------------
+ */
+
+export * from "./logger";
+export * from "./logger/types/log-level";
 
 /**
  * ---------------------------------------------------------------------------
@@ -65,16 +71,7 @@ export * from "./utils/format-naming-pattern/get-glue";
 export * from "./utils/format-naming-pattern/detect-case";
 
 /**
- * Get Name
- */
-
-export * from "./utils/get-name/get-column-name";
-export * from "./utils/get-name/get-entity-name";
-
-/**
  * Metadata
  */
 
-export * from "./utils/metadata/get-column-metadata";
-export * from "./utils/metadata/get-entity-metadata";
-export * from "./utils/metadata/is-metadata-type";
+export * from "./utils/metadata-util";
