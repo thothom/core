@@ -8,24 +8,9 @@ import "reflect-metadata";
  * ---------------------------------------------------------------------------
  */
 
-export * from "./decorators/column";
-export * from "./decorators/entity/entity";
-export * from "./decorators/primary-column";
-
-/**
- * ---------------------------------------------------------------------------
- *
- * Enums
- *
- * ---------------------------------------------------------------------------
- */
-
-/**
- * Metadata Enums
- */
-
-export * from "./enums/columns-metadata";
-export * from "./enums/entity-metadata";
+export * from "./lib/decorators/column";
+export * from "./lib/decorators/entity/entity";
+export * from "./lib/decorators/primary-column";
 
 /**
  * ---------------------------------------------------------------------------
@@ -35,18 +20,39 @@ export * from "./enums/entity-metadata";
  * ---------------------------------------------------------------------------
  */
 
-export * from "./metadata-manager";
+export * from "./lib/metadata-manager";
 
 /**
  * ---------------------------------------------------------------------------
  *
- * Types
+ * Connection
  *
  * ---------------------------------------------------------------------------
  */
 
-export * from "./types/connection";
-export * from "./types/repository";
+export * from "./lib/connection";
+export * from "./lib/connection/types/repository";
+
+/**
+ * ---------------------------------------------------------------------------
+ *
+ * Error
+ *
+ * ---------------------------------------------------------------------------
+ */
+
+export * from "./lib/error";
+
+/**
+ * ---------------------------------------------------------------------------
+ *
+ * Logger
+ *
+ * ---------------------------------------------------------------------------
+ */
+
+export * from "./lib/logger";
+export * from "./lib/logger/types/log-level";
 
 /**
  * ---------------------------------------------------------------------------
@@ -60,21 +66,12 @@ export * from "./types/repository";
  * Format Naming Pattern
  */
 
-export * from "./utils/format-naming-pattern";
-export * from "./utils/format-naming-pattern/get-glue";
-export * from "./utils/format-naming-pattern/detect-case";
-
-/**
- * Get Name
- */
-
-export * from "./utils/get-name/get-column-name";
-export * from "./utils/get-name/get-entity-name";
+export * from "./lib/utils/format-naming-pattern";
+export * from "./lib/utils/format-naming-pattern/get-glue";
+export * from "./lib/utils/format-naming-pattern/detect-case";
 
 /**
  * Metadata
  */
 
-export * from "./utils/metadata/get-column-metadata";
-export * from "./utils/metadata/get-entity-metadata";
-export * from "./utils/metadata/is-metadata-type";
+export * from "./lib/utils/metadata-util";

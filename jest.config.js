@@ -8,7 +8,7 @@ module.exports = {
 		"^.+\\.(t|j)s$": "ts-jest",
 	},
 	collectCoverageFrom: ["**/*.ts"],
-	// setupFiles: ["./v1/tests/setup.ts"],
+	setupFiles: ["./tests/setup.ts"],
 	coverageDirectory: "../coverage",
 	testEnvironment: "node",
 	moduleDirectories: ["node_modules", "src"],
