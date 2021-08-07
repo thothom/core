@@ -17,5 +17,5 @@ export const getSemiFormattedName = ({
 		return nameOrOptions?.name;
 	}
 
-	return entityConstructor.constructor.name;
+	return entityConstructor.name;
 };
