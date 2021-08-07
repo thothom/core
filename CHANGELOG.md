@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom error thrower (`CompassError`)
 - Multiple connections
 - `lint-staged`
+- SubEntities
+- Prefix and Suffix aren't applied to sub-entities anymore
 
 ### Changed
 

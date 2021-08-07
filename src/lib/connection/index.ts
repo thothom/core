@@ -2,7 +2,6 @@ import { Logger } from "../logger";
 import { MetadataManager } from "../metadata-manager";
 import { Repository } from "./types/repository";
 import { BaseConnectionOptions } from "./types/connection-options";
-import { ConnectionMembers } from "./types/connection-members";
 
 type DefaultExtraMetadata = Record<string, any>;
 
@@ -10,25 +9,16 @@ export abstract class Connection<
 	EntityExtraData = DefaultExtraMetadata,
 	ColumnExtraData = DefaultExtraMetadata,
 > {
-	public readonly name: ConnectionMembers<
-		EntityExtraData,
-		ColumnExtraData
-	>["name"];
+	public readonly name: string;
 
-	public readonly options: ConnectionMembers<
-		EntityExtraData,
-		ColumnExtraData
-	>["options"];
+	public readonly options: BaseConnectionOptions;
 
-	public readonly metadataManager: ConnectionMembers<
+	public readonly metadataManager: MetadataManager<
 		EntityExtraData,
 		ColumnExtraData
-	>["metadataManager"];
+	>;
 
-	public readonly logger: ConnectionMembers<
-		EntityExtraData,
-		ColumnExtraData
-	>["logger"];
+	public readonly logger: Logger;
 
 	public constructor(options: BaseConnectionOptions) {
 		this.name = options.name || "Default";

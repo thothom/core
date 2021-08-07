@@ -1,8 +1,7 @@
-import { Connection } from "../lib/connection";
-import { Repository } from "../lib/connection/types/repository";
 import { Column } from "../lib/decorators/column";
 import { Entity } from "../lib/decorators/entity/entity";
 import { PrimaryColumn } from "../lib/decorators/primary-column";
+import { LocalConnection } from "./constants/test-connection";
 
 @Entity()
 class Test {
@@ -13,16 +12,11 @@ class Test {
 	public test: string;
 }
 
-class LocalConnection extends Connection<any, any> {
-	public getRepository<Entity>(_entity: Entity) {
-		return {} as Repository<Entity>;
-	}
-}
-
 describe("Generic", () => {
-	it("should define metadata correctly", () => {
-		// eslint-disable-next-line no-new
-		const connection = new LocalConnection({
+	let connection: LocalConnection;
+
+	beforeAll(() => {
+		connection = new LocalConnection({
 			entities: [Test],
 			prefix: {
 				entity: {
@@ -30,8 +24,12 @@ describe("Generic", () => {
 				},
 			},
 		});
+	});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+	it("should define metadata correctly", () => {
+		const result = connection.metadataManager.getAllEntitiesMetadata();
+
+		expect(result).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			Test: {
 				name: "Test",
