@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { ConnectionMembers } from "../connection/types/connection-members";
+import { CompassError } from "../error";
+import { CompassErrorCodeEnum } from "../error/types/error-code.enum";
 import { getEntitiesMetadata } from "./helpers/get-entities-metadata";
 import { MetadataManagerEntities } from "./types/manager-metadata";
 
@@ -40,8 +42,9 @@ export class MetadataManager<EntityExtraMetadata, ColumnExtraMetadata> {
 			EntityExtraMetadata,
 			ColumnExtraMetadata
 		>({
+			logger: connection.logger,
 			entities: connection.options.entities,
-			namingPattern: connection.options.namingPattern,
+			connectionOptions: connection.options,
 		});
 	}
 
@@ -57,14 +60,40 @@ export class MetadataManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		return this.entities;
 	}
 
+	public getAllEntitiesDatabaseNames() {
+		return Object.values(this.entities).map(entity => entity.databaseName);
+	}
+
 	public getEntityMetadata(entity: any) {
-		return this.entities[entity.name];
+		const entityMetadata = this.entities[entity.name];
+
+		if (!entityMetadata) {
+			throw new CompassError({
+				message: "Entity not Registered!",
+				code: CompassErrorCodeEnum.ENTITY_ERROR,
+				origin: "COMPASS",
+				details: ["Entity: ", entity],
+			});
+		}
+
+		return entityMetadata;
 	}
 
 	public getColumnMetadata(entity: any, columnName: string) {
-		return this.entities[entity.name]?.columns.find(
-			columnMetadata => columnMetadata.name === columnName,
+		const columnMetadata = this.entities[entity.name]?.columns.find(
+			metadata => metadata.name === columnName,
 		);
+
+		if (!columnMetadata) {
+			throw new CompassError({
+				message: "Entity not Registered!",
+				code: CompassErrorCodeEnum.COLUMN_ERROR,
+				origin: "COMPASS",
+				details: ["Entity: ", entity, "Column: ", columnName],
+			});
+		}
+
+		return columnMetadata;
 	}
 
 	public getEntityPrimaryColumns(entity: any) {

@@ -5,16 +5,16 @@ import { getSemiFormattedName } from "./helpers/get-name";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const Entity = (nameOrOptions?: EntityOptions | string) => {
 	return (entityConstructor: any) => {
-		const formattedName = getSemiFormattedName({
+		const databaseName = getSemiFormattedName({
 			entityConstructor,
 			nameOrOptions,
 		});
 
 		addEntityMetadata({
-			entity: entityConstructor,
+			entityConstructor,
 			metadata: {
 				name: entityConstructor.name,
-				formattedName,
+				databaseName,
 				extras: (nameOrOptions as EntityOptions)?.extras,
 			},
 		});

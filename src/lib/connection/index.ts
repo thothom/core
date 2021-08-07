@@ -10,22 +10,22 @@ export abstract class Connection<
 	EntityExtraData = DefaultExtraMetadata,
 	ColumnExtraData = DefaultExtraMetadata,
 > {
-	protected readonly name: ConnectionMembers<
+	public readonly name: ConnectionMembers<
 		EntityExtraData,
 		ColumnExtraData
 	>["name"];
 
-	protected readonly options: ConnectionMembers<
+	public readonly options: ConnectionMembers<
 		EntityExtraData,
 		ColumnExtraData
 	>["options"];
 
-	protected readonly metadataManager: ConnectionMembers<
+	public readonly metadataManager: ConnectionMembers<
 		EntityExtraData,
 		ColumnExtraData
 	>["metadataManager"];
 
-	protected readonly logger: ConnectionMembers<
+	public readonly logger: ConnectionMembers<
 		EntityExtraData,
 		ColumnExtraData
 	>["logger"];

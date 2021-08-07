@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Logger } from "../../logger";
 import {
 	EntityMetadata,
 	ENTITY_METADATA_KEYS,
@@ -11,11 +10,6 @@ import {
 	GetAllEntityMetadataParams,
 	GetEntityMetadataParams,
 } from "./types/method-params";
-
-const logger = new Logger(
-	"NONE",
-	process.env.COMPASS_DEBUG ? "ALL_INTERNAL" : "NONE",
-);
 
 const formatMetadataKey = (metadataKey: string) =>
 	`compass:entity:${metadataKey.toLowerCase()}`;
@@ -51,15 +45,7 @@ export class MetadataUtil {
 	}: GetEntityMetadataParams) {
 		const formattedMetadataKey = formatMetadataKey(metadataKey);
 
-		const metadata = Reflect.getMetadata(formattedMetadataKey, entity);
-
-		logger.debug(
-			`Get Entity (${
-				entity.constructor.name
-			}) Metadata: [${formattedMetadataKey}] ${JSON.stringify(metadata)}`,
-		);
-
-		return metadata;
+		return Reflect.getMetadata(formattedMetadataKey, entity);
 	}
 
 	public static defineEntityMetadata({
@@ -70,12 +56,6 @@ export class MetadataUtil {
 		const formattedMetadataKey = formatMetadataKey(metadataKey);
 
 		Reflect.defineMetadata(formattedMetadataKey, metadataValue, entity);
-
-		logger.debug(
-			`Define Entity (${
-				entity.constructor.name
-			}) Metadata: [${formattedMetadataKey}]: ${JSON.stringify(metadataValue)}`,
-		);
 	}
 
 	public static defineAllEntityMetadata({

@@ -1,4 +1,5 @@
-import { MetadataManager, Logger } from "../..";
+import { Logger } from "../../logger";
+import { MetadataManager } from "../../metadata-manager";
 import { BaseConnectionOptions } from "./connection-options";
 
 export interface ConnectionMembers<EntityExtraData, ColumnExtraData> {

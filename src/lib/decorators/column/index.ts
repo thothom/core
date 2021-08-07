@@ -7,7 +7,7 @@ import { addColumnMetadata } from "./helpers/add-column-metadata";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const Column = (typeOrOptions?: ColumnOptions | MetadataType) => {
 	return (entityPrototype: any, propertyName: string) => {
-		const formattedName = getSemiFormattedName({
+		const databaseName = getSemiFormattedName({
 			propertyName,
 			typeOrOptions,
 		});
@@ -18,10 +18,10 @@ export const Column = (typeOrOptions?: ColumnOptions | MetadataType) => {
 		});
 
 		addColumnMetadata({
-			entity: entityPrototype,
+			entityPrototype,
 			metadata: {
 				name: propertyName,
-				formattedName,
+				databaseName,
 				type,
 				isArray,
 				extras: (typeOrOptions as ColumnOptions)?.extras,
