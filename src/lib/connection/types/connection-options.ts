@@ -58,26 +58,8 @@ export interface BaseConnectionOptions {
 	 * Naming pattern to be used to name ENTITIES, COLUMNS, etc
 	 */
 	namingPattern?: {
-		entity?: {
-			/**
-			 * Pattern to convert from CODE to DATABASE
-			 */
-			database: NamingPatterns;
-			/**
-			 * Pattern to convert from DATABASE to CODE
-			 */
-			code: NamingPatterns;
-		};
-		column?: {
-			/**
-			 * Pattern to convert from CODE to DATABASE
-			 */
-			database: NamingPatterns;
-			/**
-			 * Pattern to convert from DATABASE to CODE
-			 */
-			code: NamingPatterns;
-		};
+		entity?: NamingPatterns;
+		column?: NamingPatterns;
 	};
 
 	/**

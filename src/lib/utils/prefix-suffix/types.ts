@@ -1,6 +1,6 @@
 import { NamingPatterns } from "../format-naming-pattern/types/naming-patterns";
 
-export interface HandlePrefixSuffixParams {
+export interface FormatPrefixSuffixParams {
 	value: string;
 	defaultCase?: NamingPatterns;
 	options?: {

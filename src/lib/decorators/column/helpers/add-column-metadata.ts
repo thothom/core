@@ -2,14 +2,16 @@ import { ColumnMetadata } from "../../../metadata-manager/types/metadata";
 import { MetadataUtil } from "../../../utils/metadata-util";
 
 interface AddColumnMetadataParams {
-	entity: any;
+	entityPrototype: any;
 	metadata: ColumnMetadata<any>;
 }
 
 export const addColumnMetadata = ({
-	entity,
+	entityPrototype,
 	metadata,
 }: AddColumnMetadataParams) => {
+	const entity = entityPrototype.constructor;
+
 	const columns = (MetadataUtil.getEntityMetadata({
 		metadataKey: "columns",
 		entity,
@@ -18,11 +20,6 @@ export const addColumnMetadata = ({
 	MetadataUtil.defineEntityMetadata({
 		entity,
 		metadataKey: "columns",
-		/**
-		 * Puts the column metadata at the beginning,
-		 * because decorators are executed in order
-		 * LAST -> FIRST
-		 */
-		metadataValue: [metadata, ...columns],
+		metadataValue: [...columns, metadata],
 	});
 };

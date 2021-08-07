@@ -49,6 +49,7 @@
 		"eslint-plugin-standard": "^5.0.0",
 		"husky": "^7.0.1",
 		"jest": "^27.0.6",
+		"lint-staged": "^11.1.2",
 		"prettier": "^2.3.2",
 		"reflect-metadata": "^0.1.13",
 		"ts-jest": "^27.0.4",
@@ -60,8 +61,10 @@
 		"test:cov": "jest --coverage",
 		"clean": "rm -rf lib && rm -rf dist && rm -rf coverage",
 		"build": "ncc build src/index.ts -o dist -m -e reflect-metadata",
+		"format": "eslint . --fix --quiet",
+		"lint": "eslint . --quiet",
 		"update-dependencies": "yarn upgrade-interactive --latest",
-		"husky:pre-commit": "tsc",
+		"husky:pre-commit": "tsc && lint-staged",
 		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd ..",
 		"t": "ts-node"
 	}

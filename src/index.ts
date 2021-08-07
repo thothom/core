@@ -42,6 +42,7 @@ export * from "./lib/connection/types/repository";
  */
 
 export * from "./lib/error";
+export * from "./lib/error/types/error-code.enum";
 
 /**
  * ---------------------------------------------------------------------------
@@ -61,14 +62,6 @@ export * from "./lib/logger/types/log-level";
  *
  * ---------------------------------------------------------------------------
  */
-
-/**
- * Format Naming Pattern
- */
-
-export * from "./lib/utils/format-naming-pattern";
-export * from "./lib/utils/format-naming-pattern/get-glue";
-export * from "./lib/utils/format-naming-pattern/detect-case";
 
 /**
  * Metadata

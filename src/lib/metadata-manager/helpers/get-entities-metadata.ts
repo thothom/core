@@ -1,18 +1,21 @@
 import { BaseConnectionOptions } from "../../connection/types/connection-options";
-import { formatNamingPattern } from "../../utils/format-naming-pattern";
+import { Logger } from "../../logger";
 import { MetadataUtil } from "../../utils/metadata-util";
 import { MetadataManagerEntities } from "../types/manager-metadata";
 import { CustomClass } from "../types/metadata-type";
 import { formatColumns } from "./format-columns";
+import { getDatabaseName } from "./get-database-name";
 
 interface GetEntitiesMetadataParams {
+	logger: Logger;
 	entities: Array<CustomClass>;
-	namingPattern: BaseConnectionOptions["namingPattern"];
+	connectionOptions: BaseConnectionOptions;
 }
 
 export const getEntitiesMetadata = <EntityExtraMetadata, ColumnExtraMetadata>({
+	logger,
 	entities,
-	namingPattern,
+	connectionOptions,
 }: GetEntitiesMetadataParams) =>
 	entities.reduce<
 		MetadataManagerEntities<EntityExtraMetadata, ColumnExtraMetadata>
@@ -24,21 +27,25 @@ export const getEntitiesMetadata = <EntityExtraMetadata, ColumnExtraMetadata>({
 			entity,
 		});
 
-		const formattedName = formatNamingPattern({
-			value: metadata.formattedName,
-			namingPattern: namingPattern?.entity?.database,
+		const databaseName = getDatabaseName({
+			value: metadata.databaseName,
+			namingPattern: connectionOptions.namingPattern?.entity,
+			optionsPrefix: connectionOptions.prefix?.entity,
+			optionsSuffix: connectionOptions.suffix?.entity,
 		});
 
 		const formattedColumns = formatColumns<ColumnExtraMetadata>({
 			columns: metadata.columns,
-			namingPattern,
+			connectionOptions,
 		});
 
 		acc[metadata.name] = {
 			...metadata,
-			formattedName,
+			databaseName,
 			columns: formattedColumns,
 		};
+
+		logger.debug(`Add Entity: ${JSON.stringify(acc[metadata.name])}`);
 
 		return acc;
 	}, {});

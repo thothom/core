@@ -1,25 +1,36 @@
+import { CompassError } from "../../../error";
+import { CompassErrorCodeEnum } from "../../../error/types/error-code.enum";
 import { EntityMetadata } from "../../../metadata-manager/types/metadata";
 import { MetadataUtil } from "../../../utils/metadata-util";
 
 interface AddEntityMetadataParams {
-	entity: any;
+	entityConstructor: any;
 	metadata: Omit<EntityMetadata, "columns">;
 }
 
 export const addEntityMetadata = ({
-	entity,
+	entityConstructor,
 	metadata,
 }: AddEntityMetadataParams) => {
 	const columns = MetadataUtil.getEntityMetadata({
 		metadataKey: "columns",
-		entity,
+		entity: entityConstructor,
 	});
 
+	if (!columns) {
+		throw new CompassError({
+			code: CompassErrorCodeEnum.MISSING_DECORATOR,
+			message: "Entity must have at least one column",
+			origin: "COMPASS",
+			details: ["Entity: ", entityConstructor],
+		});
+	}
+
 	MetadataUtil.defineAllEntityMetadata({
-		entity,
+		entity: entityConstructor,
 		metadata: {
 			...metadata,
-			columns: columns || [],
+			columns,
 		},
 	});
 };

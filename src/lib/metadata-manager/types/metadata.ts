@@ -5,7 +5,7 @@ export interface EntityMetadata<
 	ColumnExtraMetadata = Record<string, any>,
 > {
 	name: string;
-	formattedName: string;
+	databaseName: string;
 	columns: Array<ColumnMetadata<ColumnExtraMetadata>>;
 	extras?: EntityExtraMetadata;
 	/**
@@ -16,14 +16,14 @@ export interface EntityMetadata<
 
 export const ENTITY_METADATA_KEYS = [
 	"name",
-	"formattedName",
+	"databaseName",
 	"columns",
 	"extras",
 ] as Array<keyof EntityMetadata>;
 
 export interface ColumnMetadata<ExtraData = Record<string, any>> {
 	name: string;
-	formattedName: string;
+	databaseName: string;
 	type: MetadataType;
 	isArray?: boolean;
 	primary?: true;
@@ -36,7 +36,7 @@ export interface ColumnMetadata<ExtraData = Record<string, any>> {
 
 export const COLUMN_METADATA_KEYS = [
 	"name",
-	"formattedName",
+	"databaseName",
 	"type",
 	"isArray",
 	"primary",

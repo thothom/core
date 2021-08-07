@@ -1,24 +1,26 @@
 import { BaseConnectionOptions } from "../../connection/types/connection-options";
-import { formatNamingPattern } from "../../utils/format-naming-pattern";
 import { ColumnMetadata } from "../types/metadata";
+import { getDatabaseName } from "./get-database-name";
 
 interface FormatColumnsParams<ColumnExtraMetadata> {
 	columns: Array<ColumnMetadata<ColumnExtraMetadata>>;
-	namingPattern: BaseConnectionOptions["namingPattern"];
+	connectionOptions: BaseConnectionOptions;
 }
 
 export const formatColumns = <ColumnExtraMetadata>({
 	columns,
-	namingPattern,
+	connectionOptions,
 }: FormatColumnsParams<ColumnExtraMetadata>) =>
 	columns.map(metadata => {
-		const formattedName = formatNamingPattern({
-			value: metadata.formattedName,
-			namingPattern: namingPattern?.column?.database,
+		const databaseName = getDatabaseName({
+			value: metadata.databaseName,
+			namingPattern: connectionOptions.namingPattern?.column,
+			optionsPrefix: connectionOptions.prefix?.column,
+			optionsSuffix: connectionOptions.suffix?.column,
 		});
 
 		return {
 			...metadata,
-			formattedName,
+			databaseName,
 		};
 	});

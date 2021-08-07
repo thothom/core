@@ -10,12 +10,11 @@
   - [x] Return errors at `src/decorators/column/helpers/get-type.ts`
 - [x] Create a Logger
 - [x] Join metadata manager to connection, so users can use multiple connections
-
-  - Decorators stop using metadata manager and start using metadata again
+  - [x] Decorators stop using metadata manager and start using metadata again
   - [x] Review all of the files, to look how the things are being done and what have to be changed
-  - The metadata manager is created by the connection
+  - [x] The metadata manager is created by the connection
   - [ ] Update documentation
-
+- [x] Prefix and Suffix must be passed THE EXACT WAY that they are specified in the connection options, they MUST NOT be formatted
 - [ ] Uncomment tests validation at `.github/workflows/publish.yml` and `jest.config.js`
 - [ ] Add Tests
 - [ ] Add pipeline step to check if mandatory files has changes

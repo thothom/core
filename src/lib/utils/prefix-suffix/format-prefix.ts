@@ -1,9 +1,9 @@
-import { HandlePrefixSuffixParams } from "./types";
+import { FormatPrefixSuffixParams } from "./types";
 
-export const handlePrefixFromCodeToDatabase = ({
+export const formatPrefix = ({
 	value,
 	options,
-}: Omit<HandlePrefixSuffixParams, "defaultCase">) => {
+}: Omit<FormatPrefixSuffixParams, "defaultCase">) => {
 	if (!options) return value;
 	if (!options.remove && !options.add) return value;
 
