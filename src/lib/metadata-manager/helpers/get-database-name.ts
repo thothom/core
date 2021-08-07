@@ -1,4 +1,4 @@
-import { formatNamingPattern } from "../../..";
+import { formatNamingPattern } from "../../utils/format-naming-pattern";
 import { NamingPatterns } from "../../utils/format-naming-pattern/types/naming-patterns";
 import { formatPrefix } from "../../utils/prefix-suffix/format-prefix";
 import { formatSuffix } from "../../utils/prefix-suffix/format-suffix";
