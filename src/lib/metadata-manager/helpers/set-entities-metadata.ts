@@ -1,4 +1,6 @@
 import { BaseConnectionOptions } from "../../connection/types/connection-options";
+import { CompassError } from "../../error";
+import { CompassErrorCodeEnum } from "../../error/types/error-code.enum";
 import { Logger } from "../../logger";
 import { MetadataUtil } from "../../utils/metadata-util";
 import { MetadataManagerEntities } from "../types/manager-metadata";
@@ -6,26 +8,35 @@ import { CustomClass } from "../types/metadata-type";
 import { formatColumns } from "./format-columns";
 import { getDatabaseName } from "./get-database-name";
 
-interface GetEntitiesMetadataParams {
+interface SetEntitiesMetadataParams<EntityExtraMetadata, ColumnExtraMetadata> {
 	logger: Logger;
-	entities: Array<CustomClass>;
+	rawEntities: Array<CustomClass>;
+	entities: MetadataManagerEntities<EntityExtraMetadata, ColumnExtraMetadata>;
 	connectionOptions: BaseConnectionOptions;
 }
 
-export const getEntitiesMetadata = <EntityExtraMetadata, ColumnExtraMetadata>({
+export const setEntitiesMetadata = <EntityExtraMetadata, ColumnExtraMetadata>({
 	logger,
+	rawEntities,
 	entities,
 	connectionOptions,
-}: GetEntitiesMetadataParams) =>
-	entities.reduce<
-		MetadataManagerEntities<EntityExtraMetadata, ColumnExtraMetadata>
-	>((acc, entity) => {
+}: SetEntitiesMetadataParams<EntityExtraMetadata, ColumnExtraMetadata>) =>
+	rawEntities.forEach(rawEntity => {
 		const metadata = MetadataUtil.getAllEntityMetadata<
 			EntityExtraMetadata,
 			ColumnExtraMetadata
 		>({
-			entity,
+			entity: rawEntity,
 		});
+
+		if (entities[metadata.name]) {
+			throw new CompassError({
+				message: "Duplicated Entity",
+				code: CompassErrorCodeEnum.DUPLICATED_ENTITY,
+				origin: "COMPASS",
+				details: [`Entity: ${metadata.name}`],
+			});
+		}
 
 		const databaseName = getDatabaseName({
 			value: metadata.databaseName,
@@ -39,13 +50,11 @@ export const getEntitiesMetadata = <EntityExtraMetadata, ColumnExtraMetadata>({
 			connectionOptions,
 		});
 
-		acc[metadata.name] = {
+		entities[metadata.name] = {
 			...metadata,
 			databaseName,
 			columns: formattedColumns,
 		};
 
-		logger.debug(`Add Entity: ${JSON.stringify(acc[metadata.name])}`);
-
-		return acc;
+		logger.debug(`Add Entity: ${JSON.stringify(entities[metadata.name])}`);
 	}, {});

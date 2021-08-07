@@ -5,18 +5,24 @@ import { getDatabaseName } from "./get-database-name";
 interface FormatColumnsParams<ColumnExtraMetadata> {
 	columns: Array<ColumnMetadata<ColumnExtraMetadata>>;
 	connectionOptions: BaseConnectionOptions;
+	applyPrefixSuffix?: boolean;
 }
 
 export const formatColumns = <ColumnExtraMetadata>({
 	columns,
 	connectionOptions,
+	applyPrefixSuffix = true,
 }: FormatColumnsParams<ColumnExtraMetadata>) =>
 	columns.map(metadata => {
 		const databaseName = getDatabaseName({
 			value: metadata.databaseName,
 			namingPattern: connectionOptions.namingPattern?.column,
-			optionsPrefix: connectionOptions.prefix?.column,
-			optionsSuffix: connectionOptions.suffix?.column,
+			optionsPrefix: applyPrefixSuffix
+				? connectionOptions.prefix?.column
+				: undefined,
+			optionsSuffix: applyPrefixSuffix
+				? connectionOptions.suffix?.column
+				: undefined,
 		});
 
 		return {

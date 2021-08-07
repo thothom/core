@@ -31,6 +31,7 @@ export * from "./lib/metadata-manager";
  */
 
 export * from "./lib/connection";
+export * from "./lib/connection/types/connection-options";
 export * from "./lib/connection/types/repository";
 
 /**
