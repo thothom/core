@@ -4,6 +4,11 @@ import { NamingPatterns } from "../../utils/format-naming-pattern/types/naming-p
 
 export interface BaseConnectionOptions {
 	/**
+	 * Connection name, to use in case of multiple connections
+	 */
+	name?: string;
+
+	/**
 	 * Array of entities of this connection
 	 */
 	entities: Array<CustomClass>;
@@ -35,7 +40,7 @@ export interface BaseConnectionOptions {
 	 *
 	 * **INFO:** Compass, connection, and general things status. Rarely used.
 	 */
-	logging: LogLevel;
+	logging?: LogLevel;
 
 	/**
 	 * Maximum number of milliseconds query should be executed before be canceled.

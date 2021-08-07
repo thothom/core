@@ -1,9 +1,9 @@
-import { MetadataManager, CompassError, Logger } from "../..";
+import { MetadataManager, Logger } from "../..";
 import { BaseConnectionOptions } from "./connection-options";
 
 export interface ConnectionMembers<EntityExtraData, ColumnExtraData> {
+	name: string;
 	options: BaseConnectionOptions;
 	metadataManager: MetadataManager<EntityExtraData, ColumnExtraData>;
-	errorThrower: CompassError;
 	logger: Logger;
 }

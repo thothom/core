@@ -3,7 +3,7 @@ import { MetadataUtil } from "../../../utils/metadata-util";
 
 interface AddEntityMetadataParams {
 	entity: any;
-	metadata: EntityMetadata<any>;
+	metadata: Omit<EntityMetadata, "columns">;
 }
 
 export const addEntityMetadata = ({

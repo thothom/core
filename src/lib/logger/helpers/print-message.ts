@@ -6,6 +6,7 @@ interface PrintMessageParams {
 	writeStreamType?: "stderr" | "stdout";
 	message: any;
 	logLevel: DetailedLogOptions;
+	connectionName: string;
 }
 
 const getOutput = (message: any) => {
@@ -20,6 +21,7 @@ export const printMessage = ({
 	writeStreamType,
 	message,
 	logLevel,
+	connectionName,
 }: PrintMessageParams) => {
 	const pidMessage = addColor({
 		logLevel,
@@ -33,6 +35,6 @@ export const printMessage = ({
 	const output = getOutput(message);
 
 	process[writeStreamType ?? "stdout"].write(
-		`${pidMessage}${timestamp} ${formattedLogLevel} ${output}\n`,
+		`${pidMessage}${timestamp} ${formattedLogLevel} [${connectionName}] ${output}\n`,
 	);
 };

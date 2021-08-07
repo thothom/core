@@ -24,7 +24,7 @@ export const PrimaryColumn = (
 				formattedName,
 				type,
 				primary: true,
-				extras: (nameOrOptions as PrimaryColumnOptions).extras,
+				extras: (nameOrOptions as PrimaryColumnOptions)?.extras,
 			},
 		});
 	};

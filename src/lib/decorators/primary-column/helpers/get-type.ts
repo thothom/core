@@ -25,7 +25,7 @@ export const getType = ({ entityPrototype, propertyName }: GetTypeParams) => {
 	 * PrimaryColumns only can have simple types, types like
 	 * Objects, Array or Classes AREN'T supported
 	 */
-	return CompassError.throw({
+	throw new CompassError({
 		code: CompassErrorCodeEnum.INVALID_PARAM_TYPE,
 		origin: "COMPASS",
 		message:

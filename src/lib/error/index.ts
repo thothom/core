@@ -7,7 +7,7 @@ interface CustomErrorParams {
 	details: Array<any>;
 }
 
-class CustomError extends Error {
+export class CompassError extends Error {
 	public code: CustomErrorParams["code"];
 
 	public origin: CustomErrorParams["origin"];
@@ -21,11 +21,5 @@ class CustomError extends Error {
 		this.code = code;
 		this.origin = origin;
 		this.details = details;
-	}
-}
-
-export class CompassError {
-	public static throw(params: CustomErrorParams) {
-		throw new CustomError(params);
 	}
 }

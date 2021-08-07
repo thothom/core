@@ -1,11 +1,20 @@
-import { CompassError } from "../error";
 import { Logger } from "../logger";
 import { MetadataManager } from "../metadata-manager";
 import { Repository } from "./types/repository";
 import { BaseConnectionOptions } from "./types/connection-options";
 import { ConnectionMembers } from "./types/connection-members";
 
-export abstract class Connection<EntityExtraData, ColumnExtraData> {
+type DefaultExtraMetadata = Record<string, any>;
+
+export abstract class Connection<
+	EntityExtraData = DefaultExtraMetadata,
+	ColumnExtraData = DefaultExtraMetadata,
+> {
+	protected readonly name: ConnectionMembers<
+		EntityExtraData,
+		ColumnExtraData
+	>["name"];
+
 	protected readonly options: ConnectionMembers<
 		EntityExtraData,
 		ColumnExtraData
@@ -16,22 +25,17 @@ export abstract class Connection<EntityExtraData, ColumnExtraData> {
 		ColumnExtraData
 	>["metadataManager"];
 
-	protected readonly errorThrower: ConnectionMembers<
-		EntityExtraData,
-		ColumnExtraData
-	>["errorThrower"];
-
 	protected readonly logger: ConnectionMembers<
 		EntityExtraData,
 		ColumnExtraData
 	>["logger"];
 
 	public constructor(options: BaseConnectionOptions) {
+		this.name = options.name || "Default";
+
 		this.options = options;
 
-		this.errorThrower = new CompassError();
-
-		this.logger = new Logger(options.logging);
+		this.logger = new Logger(this.name, options.logging);
 
 		/**
 		 * The MetadataManager [[ !!! MUST BE !!! ]] the last one to be defined

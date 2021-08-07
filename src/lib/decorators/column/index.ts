@@ -24,7 +24,7 @@ export const Column = (typeOrOptions?: ColumnOptions | MetadataType) => {
 				formattedName,
 				type,
 				isArray,
-				extras: (typeOrOptions as ColumnOptions).extras,
+				extras: (typeOrOptions as ColumnOptions)?.extras,
 			},
 		});
 	};

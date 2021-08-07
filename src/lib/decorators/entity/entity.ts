@@ -15,7 +15,7 @@ export const Entity = (nameOrOptions?: EntityOptions | string) => {
 			metadata: {
 				name: entityConstructor.name,
 				formattedName,
-				extras: (nameOrOptions as EntityOptions).extras,
+				extras: (nameOrOptions as EntityOptions)?.extras,
 			},
 		});
 	};

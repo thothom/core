@@ -1,5 +1,5 @@
-import { formatNamingPattern } from "../..";
 import { BaseConnectionOptions } from "../../connection/types/connection-options";
+import { formatNamingPattern } from "../../utils/format-naming-pattern";
 import { ColumnMetadata } from "../types/metadata";
 
 interface FormatColumnsParams<ColumnExtraMetadata> {

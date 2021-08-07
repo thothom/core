@@ -3,9 +3,12 @@ import { printMessage } from "./helpers/print-message";
 import { DetailedLogOptions, LogLevel } from "./types/log-level";
 
 export class Logger {
+	private readonly connectionName: string;
+
 	private readonly logLevels: LogLevel;
 
-	public constructor(bruteLogLevel?: LogLevel) {
+	public constructor(connectionName: string, bruteLogLevel?: LogLevel) {
+		this.connectionName = connectionName;
 		this.logLevels = getLogLevels(bruteLogLevel);
 	}
 
@@ -18,6 +21,7 @@ export class Logger {
 			message,
 			logLevel: "ERROR",
 			writeStreamType: "stderr",
+			connectionName: this.connectionName,
 		});
 	}
 
@@ -29,6 +33,7 @@ export class Logger {
 		printMessage({
 			message,
 			logLevel: "LOG",
+			connectionName: this.connectionName,
 		});
 	}
 
@@ -40,6 +45,7 @@ export class Logger {
 		printMessage({
 			message,
 			logLevel: "DEBUG",
+			connectionName: this.connectionName,
 		});
 	}
 
@@ -51,6 +57,7 @@ export class Logger {
 		printMessage({
 			message,
 			logLevel: "INFO",
+			connectionName: this.connectionName,
 		});
 	}
 

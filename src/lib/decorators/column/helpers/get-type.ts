@@ -10,11 +10,16 @@ interface GetTypeParams {
 	typeOrOptions?: ColumnOptions | MetadataType;
 }
 
+interface GetTypeResult {
+	type: MetadataType;
+	isArray?: true;
+}
+
 export const getType = ({
 	entityPrototype,
 	propertyName,
 	typeOrOptions,
-}: GetTypeParams) => {
+}: GetTypeParams): GetTypeResult => {
 	const reflectType = Reflect.getMetadata(
 		"design:type",
 		entityPrototype,
@@ -32,7 +37,7 @@ export const getType = ({
 		 */
 		if (MetadataUtil.isMetadataType(typeOrOptions)) {
 			return {
-				type: typeOrOptions,
+				type: typeOrOptions as MetadataType,
 				isArray: true,
 			};
 		}
@@ -43,7 +48,7 @@ export const getType = ({
 		 */
 		if (MetadataUtil.isMetadataType((typeOrOptions as ColumnOptions).type)) {
 			return {
-				type: (typeOrOptions as ColumnOptions).type,
+				type: (typeOrOptions as ColumnOptions).type as MetadataType,
 				isArray: true,
 			};
 		}
@@ -51,7 +56,7 @@ export const getType = ({
 		/**
 		 * When array, the type must be explicitly declared
 		 */
-		return CompassError.throw({
+		throw new CompassError({
 			code: CompassErrorCodeEnum.INVALID_PARAM_TYPE,
 			origin: "COMPASS",
 			message: "You must explicitly declare array types",
@@ -78,14 +83,14 @@ export const getType = ({
 	 */
 	if (MetadataUtil.isMetadataType(typeOrOptions)) {
 		return {
-			type: typeOrOptions,
+			type: typeOrOptions as MetadataType,
 		};
 	}
 
 	/**
 	 * If the type cannot be guessed or isn't supported
 	 */
-	return CompassError.throw({
+	throw new CompassError({
 		code: CompassErrorCodeEnum.INVALID_PARAM_TYPE,
 		origin: "COMPASS",
 		message: "Column type isn't supported.",

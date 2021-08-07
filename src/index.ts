@@ -8,9 +8,9 @@ import "reflect-metadata";
  * ---------------------------------------------------------------------------
  */
 
-export * from "./decorators/column";
-export * from "./decorators/entity/entity";
-export * from "./decorators/primary-column";
+export * from "./lib/decorators/column";
+export * from "./lib/decorators/entity/entity";
+export * from "./lib/decorators/primary-column";
 
 /**
  * ---------------------------------------------------------------------------
@@ -20,7 +20,7 @@ export * from "./decorators/primary-column";
  * ---------------------------------------------------------------------------
  */
 
-export * from "./metadata-manager";
+export * from "./lib/metadata-manager";
 
 /**
  * ---------------------------------------------------------------------------
@@ -30,8 +30,8 @@ export * from "./metadata-manager";
  * ---------------------------------------------------------------------------
  */
 
-export * from "./connection";
-export * from "./connection/types/repository";
+export * from "./lib/connection";
+export * from "./lib/connection/types/repository";
 
 /**
  * ---------------------------------------------------------------------------
@@ -41,7 +41,7 @@ export * from "./connection/types/repository";
  * ---------------------------------------------------------------------------
  */
 
-export * from "./error";
+export * from "./lib/error";
 
 /**
  * ---------------------------------------------------------------------------
@@ -51,8 +51,8 @@ export * from "./error";
  * ---------------------------------------------------------------------------
  */
 
-export * from "./logger";
-export * from "./logger/types/log-level";
+export * from "./lib/logger";
+export * from "./lib/logger/types/log-level";
 
 /**
  * ---------------------------------------------------------------------------
@@ -66,12 +66,12 @@ export * from "./logger/types/log-level";
  * Format Naming Pattern
  */
 
-export * from "./utils/format-naming-pattern";
-export * from "./utils/format-naming-pattern/get-glue";
-export * from "./utils/format-naming-pattern/detect-case";
+export * from "./lib/utils/format-naming-pattern";
+export * from "./lib/utils/format-naming-pattern/get-glue";
+export * from "./lib/utils/format-naming-pattern/detect-case";
 
 /**
  * Metadata
  */
 
-export * from "./utils/metadata-util";
+export * from "./lib/utils/metadata-util";
