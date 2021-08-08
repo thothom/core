@@ -1,4 +1,5 @@
-name: Collect Coverage
+# Must be this name, to make a pretty badge
+name: tests
 
 on:
   push:
