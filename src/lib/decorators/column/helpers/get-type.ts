@@ -46,7 +46,7 @@ export const getType = ({
 		 * If the type is passed in the options
 		 * Ex: @Column({ type: Type })
 		 */
-		if (MetadataUtil.isMetadataType((typeOrOptions as ColumnOptions).type)) {
+		if (MetadataUtil.isMetadataType((typeOrOptions as ColumnOptions)?.type)) {
 			return {
 				type: (typeOrOptions as ColumnOptions).type as MetadataType,
 				isArray: true,
@@ -93,7 +93,7 @@ export const getType = ({
 	throw new CompassError({
 		code: CompassErrorCodeEnum.INVALID_PARAM_TYPE,
 		origin: "COMPASS",
-		message: "Column type isn't supported.",
+		message: "Column type isn't supported",
 		details: [
 			`Entity: ${entityPrototype.constructor.name}`,
 			`Column: ${propertyName}`,
