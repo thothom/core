@@ -124,6 +124,8 @@
 		"plugable",
 		"transpiled",
 		"Diozin",
-		"Zaetic"
+		"Zaetic",
+		"nosql",
+		"typeorm"
 	]
 }
