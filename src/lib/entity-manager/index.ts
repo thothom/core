@@ -9,9 +9,13 @@ import {
 	convertEntityToDatabase,
 	ConvertEntityToDatabaseParams,
 } from "./methods/convert-entity-to-database";
-import { MetadataManagerEntities } from "./types/manager-metadata";
+import { EntityManagerEntities } from "./types/manager-metadata";
 
-export class MetadataManager<EntityExtraMetadata, ColumnExtraMetadata> {
+/**
+ * Responsible of store and manage all entities metadata
+ * for a specific connection.
+ */
+export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	/**
 	 * Saves the metadata of all the entities, columns, etc
 	 *
@@ -27,17 +31,7 @@ export class MetadataManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	 * 	}
 	 * ```
 	 */
-	private readonly entities: MetadataManagerEntities<
-		EntityExtraMetadata,
-		ColumnExtraMetadata
-	> = {};
-
-	/**
-	 * Saves the metadata of all sub-entities
-	 *
-	 * Follows the same format that the entities property
-	 */
-	private readonly subEntities: MetadataManagerEntities<
+	private readonly entities: EntityManagerEntities<
 		EntityExtraMetadata,
 		ColumnExtraMetadata
 	> = {};
@@ -66,7 +60,7 @@ export class MetadataManager<EntityExtraMetadata, ColumnExtraMetadata> {
 
 		setSubEntitiesMetadata<EntityExtraMetadata, ColumnExtraMetadata>({
 			allEntitiesColumns,
-			subEntities: this.subEntities,
+			entities: this.entities,
 			logger: connection.logger,
 			connectionOptions: connection.options,
 		});
@@ -84,8 +78,13 @@ export class MetadataManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		return this.entities;
 	}
 
-	public getAllSubEntitiesMetadata() {
-		return this.subEntities;
+	/**
+	 * Returns ONLY the entities that AREN'T SubEntities
+	 */
+	public getAllTablesMetadata() {
+		return Object.values(this.entities).filter(
+			entityMetadata => !entityMetadata.isSubEntity,
+		);
 	}
 
 	public getAllEntitiesDatabaseNames() {
@@ -105,21 +104,6 @@ export class MetadataManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		}
 
 		return entityMetadata;
-	}
-
-	public getSubEntityMetadata(subEntity: any) {
-		const subEntityMetadata = this.subEntities[subEntity.name];
-
-		if (!subEntityMetadata) {
-			throw new CompassError({
-				message: "SubEntity not Registered!",
-				code: CompassErrorCodeEnum.ENTITY_ERROR,
-				origin: "COMPASS",
-				details: ["SubEntity: ", subEntity],
-			});
-		}
-
-		return subEntityMetadata;
 	}
 
 	public getColumnMetadata(entity: any, columnName: string) {
@@ -145,6 +129,11 @@ export class MetadataManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		);
 	}
 
+	/**
+	 * **[INTERNAL USE]**
+	 *
+	 * Converts an entity data to database data
+	 */
 	public convertEntityToDatabase(
 		params: ConvertEntityToDatabaseParams,
 	): Record<string, any> {

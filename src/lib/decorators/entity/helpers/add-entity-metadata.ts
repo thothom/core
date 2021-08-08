@@ -1,6 +1,6 @@
 import { CompassError } from "../../../error";
 import { CompassErrorCodeEnum } from "../../../error/types/error-code.enum";
-import { EntityMetadata } from "../../../metadata-manager/types/metadata";
+import { EntityMetadata } from "../../../entity-manager/types/metadata";
 import { MetadataUtil } from "../../../utils/metadata-util";
 
 interface AddEntityMetadataParams {

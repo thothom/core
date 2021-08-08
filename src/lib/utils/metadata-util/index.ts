@@ -3,7 +3,7 @@
 import {
 	EntityMetadata,
 	ENTITY_METADATA_KEYS,
-} from "../../metadata-manager/types/metadata";
+} from "../../entity-manager/types/metadata";
 import {
 	DefineAllEntityMetadataParams,
 	DefineEntityMetadataParams,
@@ -82,7 +82,13 @@ export class MetadataUtil {
 		entity,
 	}: GetAllEntityMetadataParams) {
 		return ENTITY_METADATA_KEYS.reduce((acc, metadataKey) => {
-			acc[metadataKey as keyof typeof acc] = MetadataUtil.getEntityMetadata({
+			/**
+			 * TypeScript doesn't accepts this, but it's right,
+			 * so it's necessary to use ts-ignore
+			 */
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			//@ts-ignore
+			acc[metadataKey] = MetadataUtil.getEntityMetadata({
 				metadataKey,
 				entity,
 			});

@@ -26,4 +26,8 @@ export enum CompassErrorCodeEnum {
 	 * Column
 	 */
 	COLUMN_ERROR = "COLUMN_ERROR",
+	/**
+	 * Automation
+	 */
+	AUTOMATION_FAILED = "AUTOMATION_FAILED",
 }

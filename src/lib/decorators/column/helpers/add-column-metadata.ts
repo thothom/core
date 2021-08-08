@@ -1,4 +1,4 @@
-import { ColumnMetadata } from "../../../metadata-manager/types/metadata";
+import { ColumnMetadata } from "../../../entity-manager/types/metadata";
 import { MetadataUtil } from "../../../utils/metadata-util";
 
 interface AddColumnMetadataParams {

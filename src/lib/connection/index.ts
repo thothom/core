@@ -1,6 +1,6 @@
 import { Logger } from "../logger";
-import { MetadataManager } from "../metadata-manager";
-import { Repository } from "./types/repository";
+import { EntityManager } from "../entity-manager";
+import { Repository } from "../repository";
 import { BaseConnectionOptions } from "./types/connection-options";
 
 type DefaultExtraMetadata = Record<string, any>;
@@ -13,7 +13,7 @@ export abstract class Connection<
 
 	public readonly options: BaseConnectionOptions;
 
-	public readonly metadataManager: MetadataManager<
+	public readonly metadataManager: EntityManager<
 		EntityExtraData,
 		ColumnExtraData
 	>;
@@ -28,9 +28,9 @@ export abstract class Connection<
 		this.logger = new Logger(this.name, options.logging);
 
 		/**
-		 * The MetadataManager [[ !!! MUST BE !!! ]] the last one to be defined
+		 * The EntityManager [[ !!! MUST BE !!! ]] the last one to be defined
 		 */
-		this.metadataManager = new MetadataManager<
+		this.metadataManager = new EntityManager<
 			EntityExtraData,
 			ColumnExtraData
 			/**

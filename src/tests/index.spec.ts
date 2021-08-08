@@ -34,6 +34,7 @@ describe("Generic", () => {
 			Test: {
 				name: "Test",
 				databaseName: "test_Test",
+				isSubEntity: undefined,
 				extras: undefined,
 				columns: [
 					{

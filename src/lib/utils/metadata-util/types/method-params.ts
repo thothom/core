@@ -1,4 +1,4 @@
-import { EntityMetadata } from "../../../metadata-manager/types/metadata";
+import { EntityMetadata } from "../../../entity-manager/types/metadata";
 
 export interface DefineAllEntityMetadataParams {
 	entity: any;

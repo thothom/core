@@ -1,6 +1,6 @@
 import { CompassError } from "../../../error";
 import { CompassErrorCodeEnum } from "../../../error/types/error-code.enum";
-import { MetadataType } from "../../../metadata-manager/types/metadata-type";
+import { MetadataType } from "../../../entity-manager/types/metadata-type";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { ColumnOptions } from "../../types/column-options";
 

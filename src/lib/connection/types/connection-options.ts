@@ -1,5 +1,5 @@
 import { LogLevel } from "../../logger/types/log-level";
-import { CustomClass } from "../../metadata-manager/types/metadata-type";
+import { CustomClass } from "../../entity-manager/types/metadata-type";
 import { NamingPatterns } from "../../utils/format-naming-pattern/types/naming-patterns";
 
 export interface BaseConnectionOptions {
@@ -22,7 +22,7 @@ export interface BaseConnectionOptions {
 	 *
 	 * **MINIMUM:** [DEFAULT] Only errors
 	 *
-	 * **ALL:** Error and logs
+	 * **ALL:** Error, warns and logs
 	 *
 	 * **ALL_INTERNAL:** **ALL of all**, for internal use and debugging
 	 *
@@ -39,6 +39,9 @@ export interface BaseConnectionOptions {
 	 * **DEBUG:** Logs EVERYTHING done by the lib
 	 *
 	 * **INFO:** Compass, connection, and general things status. Rarely used.
+	 *
+	 * **WARN:** Alerts that the system cannot determine if it's wrong use of
+	 * the lib or just the expected functioning.
 	 */
 	logging?: LogLevel;
 
@@ -48,14 +51,30 @@ export interface BaseConnectionOptions {
 	timeout?: number;
 
 	/**
-	 * Nro of retries
+	 * Global qtd of retries for each query that failed
 	 *
-	 * // TODO Add Detailed Retry Policy
+	 * **ALERT:** APPLIED TO ALL QUERIES (SAVE, DELETE, FIND, ...)!!!
+	 * If you want to define a retry policy for a specific query, you can
+	 * do it using the query options (See more details at the query method).
 	 */
 	retries?: number;
 
 	/**
 	 * Naming pattern to be used to name ENTITIES, COLUMNS, etc
+	 *
+	 * It convert the CLASS or PROPERTY name to the case specified
+	 *
+	 * Ex:
+	 * ```ts
+	 * // If you have the class:
+	 * class ExampleEntity {}
+	 *
+	 * // And the config are:
+	 * namingPattern: "snake_case"
+	 *
+	 * // In the database will be:
+	 * "example_entity"
+	 * ```
 	 */
 	namingPattern?: {
 		entity?: NamingPatterns;
@@ -70,25 +89,9 @@ export interface BaseConnectionOptions {
 	 *
 	 * **Execution order:** Remove -> Add
 	 *
-	 * This prefix must follow the same naming pattern that you are
-	 * using to name your classes. The conversion to the namingPattern
-	 * specified at this connection config will be execute **AFTER** the
-	 * prefix addition / remotion
-	 *
-	 * Ex:
-	 * ```ts
-	 * class EntityPascalCase {
-	 *   ...
-	 * }
-	 *
-	 * const connectionOptions = {
-	 *   prefix: {
-	 *     entity: {
-	 *       add: "PrefixFollowPascalCasePattern"
-	 *     }
-	 *   }
-	 * }
-	 * ```
+	 * **ATTENTION:** The prefixes aren't affected by the namingPattern config!
+	 * They are applied AFTER the namingPattern formatting, so be careful with
+	 * which naming pattern you use in this config.
 	 */
 	prefix?: {
 		entity?: {
@@ -121,25 +124,9 @@ export interface BaseConnectionOptions {
 	 *
 	 * **Execution order:** Remove -> Add
 	 *
-	 * This suffix must follow the same naming pattern that you are
-	 * using to name your classes. The conversion to the namingPattern
-	 * specified at this connection config will be execute **AFTER** the
-	 * suffix addition / remotion
-	 *
-	 * Ex:
-	 * ```ts
-	 * class EntityPascalCase {
-	 *   ...
-	 * }
-	 *
-	 * const connectionOptions = {
-	 *   suffix: {
-	 *     entity: {
-	 *       add: "SuffixFollowPascalCasePattern"
-	 *     }
-	 *   }
-	 * }
-	 * ```
+	 * **ATTENTION:** The suffixes aren't affected by the namingPattern config!
+	 * They are applied AFTER the namingPattern formatting, so be careful with
+	 * which naming pattern you use in this config.
 	 */
 	suffix?: {
 		entity?: {

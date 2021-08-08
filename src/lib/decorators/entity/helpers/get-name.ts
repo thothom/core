@@ -5,7 +5,7 @@ interface GetNameParams {
 	nameOrOptions?: EntityOptions | string;
 }
 
-export const getSemiFormattedName = ({
+export const getDatabaseName = ({
 	entityConstructor,
 	nameOrOptions,
 }: GetNameParams) => {

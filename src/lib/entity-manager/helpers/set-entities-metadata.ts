@@ -3,7 +3,7 @@ import { CompassError } from "../../error";
 import { CompassErrorCodeEnum } from "../../error/types/error-code.enum";
 import { Logger } from "../../logger";
 import { MetadataUtil } from "../../utils/metadata-util";
-import { MetadataManagerEntities } from "../types/manager-metadata";
+import { EntityManagerEntities } from "../types/manager-metadata";
 import { CustomClass } from "../types/metadata-type";
 import { formatColumns } from "./format-columns";
 import { getDatabaseName } from "./get-database-name";
@@ -11,7 +11,7 @@ import { getDatabaseName } from "./get-database-name";
 interface SetEntitiesMetadataParams<EntityExtraMetadata, ColumnExtraMetadata> {
 	logger: Logger;
 	rawEntities: Array<CustomClass>;
-	entities: MetadataManagerEntities<EntityExtraMetadata, ColumnExtraMetadata>;
+	entities: EntityManagerEntities<EntityExtraMetadata, ColumnExtraMetadata>;
 	connectionOptions: BaseConnectionOptions;
 }
 

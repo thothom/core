@@ -1,7 +1,7 @@
 import { BaseConnectionOptions } from "../../connection/types/connection-options";
 import { Logger } from "../../logger";
 import { MetadataUtil } from "../../utils/metadata-util";
-import { MetadataManagerEntities } from "../types/manager-metadata";
+import { EntityManagerEntities } from "../types/manager-metadata";
 import { ColumnMetadata } from "../types/metadata";
 import { formatColumns } from "./format-columns";
 import { getDatabaseName } from "./get-database-name";
@@ -12,10 +12,7 @@ interface SetSubEntitiesMetadataParams<
 > {
 	logger: Logger;
 	allEntitiesColumns: Array<ColumnMetadata<ColumnExtraMetadata>>;
-	subEntities: MetadataManagerEntities<
-		EntityExtraMetadata,
-		ColumnExtraMetadata
-	>;
+	entities: EntityManagerEntities<EntityExtraMetadata, ColumnExtraMetadata>;
 	connectionOptions: BaseConnectionOptions;
 }
 
@@ -25,7 +22,7 @@ export const setSubEntitiesMetadata = <
 >({
 	logger,
 	allEntitiesColumns,
-	subEntities,
+	entities,
 	connectionOptions,
 }: SetSubEntitiesMetadataParams<EntityExtraMetadata, ColumnExtraMetadata>) => {
 	const rawSubEntities = allEntitiesColumns
@@ -42,8 +39,10 @@ export const setSubEntitiesMetadata = <
 			entity: rawSubEntity,
 		});
 
-		if (subEntities[metadata.name]) {
-			logger.info(`Duplicated SubEntity: ${metadata.name}`);
+		if (entities[metadata.name]) {
+			logger.warn(
+				`Duplicated SubEntity skipped, may be an error: ${metadata.name}`,
+			);
 
 			return;
 		}
@@ -57,24 +56,22 @@ export const setSubEntitiesMetadata = <
 
 		const formattedColumns = formatColumns<ColumnExtraMetadata>({
 			columns: metadata.columns,
-			applyPrefixSuffix: false,
+			applyPrefixSuffix: !metadata.isSubEntity,
 			connectionOptions,
 		});
 
-		subEntities[metadata.name] = {
+		entities[metadata.name] = {
 			...metadata,
 			databaseName,
 			columns: formattedColumns,
 		};
 
-		logger.debug(
-			`Add SubEntity: ${JSON.stringify(subEntities[metadata.name])}`,
-		);
+		logger.debug(`Add SubEntity: ${JSON.stringify(entities[metadata.name])}`);
 
 		setSubEntitiesMetadata({
 			allEntitiesColumns: formattedColumns,
 			logger,
-			subEntities,
+			entities,
 			connectionOptions,
 		});
 	}, {});

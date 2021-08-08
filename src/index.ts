@@ -20,7 +20,7 @@ export * from "./lib/decorators/primary-column";
  * ---------------------------------------------------------------------------
  */
 
-export * from "./lib/metadata-manager";
+export * from "./lib/entity-manager";
 
 /**
  * ---------------------------------------------------------------------------
@@ -32,7 +32,16 @@ export * from "./lib/metadata-manager";
 
 export * from "./lib/connection";
 export * from "./lib/connection/types/connection-options";
-export * from "./lib/connection/types/repository";
+
+/**
+ * ---------------------------------------------------------------------------
+ *
+ * Repository
+ *
+ * ---------------------------------------------------------------------------
+ */
+
+export * from "./lib/repository";
 
 /**
  * ---------------------------------------------------------------------------

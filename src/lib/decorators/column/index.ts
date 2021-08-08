@@ -1,7 +1,7 @@
 import { ColumnOptions } from "../types/column-options";
 import { getSemiFormattedName } from "./helpers/get-semi-formatted-name";
 import { getType } from "./helpers/get-type";
-import { MetadataType } from "../../metadata-manager/types/metadata-type";
+import { MetadataType } from "../../entity-manager/types/metadata-type";
 import { addColumnMetadata } from "./helpers/add-column-metadata";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
