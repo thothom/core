@@ -22,7 +22,7 @@ export const addEntityMetadata = ({
 			code: CompassErrorCodeEnum.MISSING_DECORATOR,
 			message: "Entity must have at least one column",
 			origin: "COMPASS",
-			details: ["Entity: ", entityConstructor],
+			details: [`Entity: ${entityConstructor.name}`],
 		});
 	}
 
