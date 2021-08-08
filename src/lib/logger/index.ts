@@ -3,9 +3,9 @@ import { printMessage } from "./helpers/print-message";
 import { DetailedLogOptions, LogLevel } from "./types/log-level";
 
 export class Logger {
-	private readonly connectionName: string;
+	public readonly connectionName: string;
 
-	private readonly logLevels: LogLevel;
+	public readonly logLevels: LogLevel;
 
 	public constructor(connectionName: string, bruteLogLevel?: LogLevel) {
 		this.connectionName = connectionName;

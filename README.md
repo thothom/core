@@ -120,8 +120,6 @@ FooRepository.save({
 }).then(...);
 ```
 
-**ALERT:** If you use an naming pattern `kebab` or `snake` to your _entities_, _columns_, _etc_ names, you **must** specify it on the connection config (at `connectionOptions.namingPattern.[entity, column, etc].code`), or it will be converted to `camel` by default.
-
 ## Documentation
 
 This is an documentation for the final user, if you want to know how to make a plugin or how to contribute to this project, give a look at [this doc](https://github.com/techmmunity/compass/blob/master/CONTRIBUTING.md).

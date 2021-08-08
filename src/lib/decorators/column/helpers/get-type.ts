@@ -69,21 +69,10 @@ export const getType = ({
 
 	/**
 	 * If the type is get automatically
-	 * Ex: @Column(Type)
 	 */
 	if (MetadataUtil.isMetadataType(reflectType)) {
 		return {
 			type: reflectType,
-		};
-	}
-
-	/**
-	 * If the type is passed directly
-	 * Ex: @Column(Type)
-	 */
-	if (MetadataUtil.isMetadataType(typeOrOptions)) {
-		return {
-			type: typeOrOptions as MetadataType,
 		};
 	}
 
