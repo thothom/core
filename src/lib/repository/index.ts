@@ -1,8 +1,8 @@
 import {
 	FindManyByPrimaryKey,
 	FindOneByPrimaryKey,
-} from "./types/methods/find-by-primary-key";
-import { Save } from "./types/methods/save";
+} from "./queries/find/find-by-primary-key";
+import { Save } from "./queries/save/save";
 
 export interface Repository<Entity> {
 	save: Save<Entity>;

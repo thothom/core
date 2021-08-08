@@ -628,10 +628,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@techmmunity/eslint-config@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@techmmunity/eslint-config/-/eslint-config-3.2.0.tgz#2bf1c2099c9f2afe550a94e8684c81d5ab9e4d7d"
-  integrity sha512-cMlCiABA9IANhk9a86JJlRK3L2UuQwKJCKWWBg72Mk0D927FxQe8usYXrrjUbJPmoSFUoeJ4LclO4ew9yOOVDA==
+"@techmmunity/eslint-config@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@techmmunity/eslint-config/-/eslint-config-3.3.0.tgz#9b58d064bae4217fbe834d2fb8580381dd6e8f3f"
+  integrity sha512-ybH1TL592fCNvw66yiaOCJ/+uFWDqagmhi9RiTvOuxREvt94/5W+fUt86w+0DEjmDRyYq1Eiphx/sGh69l399g==
   dependencies:
     "@typescript-eslint/parser" "^4.25.0"
     eslint-config-prettier "^8.3.0"

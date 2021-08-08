@@ -1,3 +1,9 @@
+import { FindOperator } from "../operators/base";
+
+type FindConditions<T> = {
+	[P in keyof T]?: FindConditions<T[P]> | FindOperator<FindConditions<T[P]>>;
+};
+
 export interface FindOneOptions<Entity> {
 	/**
 	 * Specifies what columns should be retrieved.
@@ -7,13 +13,7 @@ export interface FindOneOptions<Entity> {
 	/**
 	 * Simple condition that should be applied to match entities.
 	 */
-	where?: Entity;
-	/*
-	 * // TODO Add complex queries
-	 * | Array<FindConditions<Entity>>
-	 * | FindConditions<Entity>
-	 * | ObjectLiteral;
-	 */
+	where?: Array<FindConditions<Entity>> | FindConditions<Entity>;
 
 	/**
 	 * Order, in which entities should be ordered.
