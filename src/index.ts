@@ -44,6 +44,27 @@ export * from "./lib/connection/types/connection-options";
 export * from "./lib/repository";
 
 /**
+ * FindOptions
+ */
+
+export * from "./lib/repository/queries/find/types/options";
+
+/**
+ * FindOperators
+ */
+
+export * from "./lib/repository/queries/find/operators/base";
+export * from "./lib/repository/queries/find/operators/between";
+export * from "./lib/repository/queries/find/operators/in";
+export * from "./lib/repository/queries/find/operators/is-null";
+export * from "./lib/repository/queries/find/operators/less-than";
+export * from "./lib/repository/queries/find/operators/less-than-or-equal";
+export * from "./lib/repository/queries/find/operators/like";
+export * from "./lib/repository/queries/find/operators/more-than";
+export * from "./lib/repository/queries/find/operators/more-than-or-equal";
+export * from "./lib/repository/queries/find/operators/not";
+
+/**
  * ---------------------------------------------------------------------------
  *
  * Error

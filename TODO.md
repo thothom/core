@@ -20,6 +20,16 @@
   - The sub-entities must be stored WITH THE ENTITIES, and not separately
   - To check if an entity has a table in the database, the metadata `isSubEntity` is used. If is a sub-entity, it DOESN'T has a table in the database
   - Update `EntityManager.convertEntityToDatabase`: If has the metadata `isSubEntity`, so the fields MUST NOT be affected by prefix or suffix
+- [x] Add complex queries
+  - [x] Not
+  - [x] LessThan
+  - [x] LessThanOrEqual
+  - [x] MoreThan
+  - [x] MoreThanOrEqual
+  - [x] Like
+  - [x] Between
+  - [x] In
+  - [x] IsNull
 - [ ] Add Tests
   - [x] Decorators
   - [ ] EntityManager
@@ -27,8 +37,6 @@
   - [x] Logger
   - [ ] Utils
 - [ ] Create method `EntityManager.convertDatabaseToEntity`
-- [ ] Add complex queries
-  - Ex: Date Between X and Y, Greater than, Less than, query with multiple params (Ex: if a field is a string, accept an array of strings)
 - [ ] Uncomment tests validation at `jest.config.js`
 - [ ] Improve Documentation
   - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
