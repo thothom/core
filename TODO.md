@@ -9,13 +9,21 @@
   - [x] Export error thrower at `src/index.ts`
   - [x] Return errors at `src/decorators/column/helpers/get-type.ts`
 - [x] Create a Logger
+- [x] Uncomment tests validation at `.github/workflows/publish.yml`
 - [x] Join metadata manager to connection, so users can use multiple connections
   - [x] Decorators stop using metadata manager and start using metadata again
   - [x] Review all of the files, to look how the things are being done and what have to be changed
   - [x] The metadata manager is created by the connection
   - [ ] Update documentation
 - [x] Prefix and Suffix must be passed THE EXACT WAY that they are specified in the connection options, they MUST NOT be formatted
-- [ ] Uncomment tests validation at `.github/workflows/publish.yml` and `jest.config.js`
+- [x] Change SubEntities
+  - The sub-entities must be stored WITH THE ENTITIES, and not separately
+  - To check if an entity has a table in the database, the metadata `isSubEntity` is used. If is a sub-entity, it DOESN'T has a table in the database
+  - Update `EntityManager.convertEntityToDatabase`: If has the metadata `isSubEntity`, so the fields MUST NOT be affected by prefix or suffix
+- [ ] Create method `EntityManager.convertDatabaseToEntity`
+- [ ] Add complex queries
+  - Ex: Date Between X and Y, Greater than, Less than, query with multiple params (Ex: if a field is a string, accept an array of strings)
+- [ ] Uncomment tests validation at `jest.config.js`
 - [ ] Add Tests
 - [ ] Add pipeline step to check if mandatory files has changes
   - Maybe this action can be used: https://github.com/marketplace/actions/get-all-changed-files
@@ -26,9 +34,16 @@
 - [ ] Add `@Index` decorator
 - [ ] Add "migrations"
   - Add a way to generate "tables"
-- Add entities auto-import from string path, like TypeORM
+- [ ] Add `@VirtualField` decorator
+  - Will be applied to a class method, and will be generated after a query from database
+  - Remember to check: If the `select` be passed, so verify if the virual field in the array
+- [ ] Add entities auto-import from string path, like TypeORM
   - Use `process.cwd()` to get the root dir of the project
-- Add auto-generated primary columns
+- [ ] Add auto-generated primary columns
+- [ ] Add COMPLETE documentation about HOW to create a plugin
+  - Include EVERY validation that need to be done
+  - Include EVERY step IN ORDER that need to be made
+- [ ] Create a table with ALL the features of the ORM, so the plugins can specify EVERY feature that they have implemented
 
 ## Discarded Ideas
 

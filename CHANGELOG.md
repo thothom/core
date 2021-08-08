@@ -9,19 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `Connection` abstract class
+- Convert `Connection` from type to abstract class
 - `Logger`
+- `lint-staged`
 - Custom error thrower (`CompassError`)
 - Multiple connections
-- `lint-staged`
 - SubEntities
 - Prefix and Suffix aren't applied to sub-entities anymore
+- `EntityManager.convertEntityToDatabase`: Method that converts an entity data to database data
 
 ### Changed
 
-- `MetadataManager` now handles metadata from a different perspective
-- `Connection` type -> `Connection` abstract class
-- Metadata now is saved at the entities
+- Name of `MetadataManager` to `EntityManager`
+- `EntityManager` now handles metadata from a different perspective
+- `Connection` **type**, is now `Connection` **abstract class**
+- Metadata now is saved at the entities, so it can be reused by multiple connections
 
 ### Fixed
 

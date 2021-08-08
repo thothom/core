@@ -90,7 +90,7 @@ import {
 	PrimaryGeneratedColumn,
 	Repository,
 } from "@techmmunity/compass";
-// All the plugins follow this naming pattern
+// All connections from the plugins follow this naming pattern
 import { ExampleConnection } from "example-compass-plugin";
 
 const Connection = new ExampleConnection({
@@ -144,6 +144,13 @@ The maximum time to execute a "query", like a "timeout". Accepts a number.
 ### Repository
 
 > TODO
+
+## Limitations and warnings
+
+- It's **NOT** our focus to ensure that this is a lightweight lib, so if it's necessary, we will add more things that increase the package size, **BUT** we will try our best to keep the size smallest as possible
+- You cannot have two class entities with the same name, or it will cause malfunctioning
+- Prefix and Suffix aren't applied to SubEntities fields
+- The data used to identify the entities are **stored in memory**, so be careful to not have a memory overload (More entities = More memory required), but relax, it's not that much, you can safely have dozens of entities with no significantly memory usage increase. This package is designed to work with micro-services and serverless applications, so you will only have trouble if you use it in a monolithic application.
 
 ## How to contribute?
 

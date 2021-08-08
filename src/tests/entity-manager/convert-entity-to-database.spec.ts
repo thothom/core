@@ -5,7 +5,9 @@ import { Entity } from "../../lib/decorators/entity/entity";
 import { PrimaryColumn } from "../../lib/decorators/primary-column";
 import { LocalConnection } from "../constants/test-connection";
 
-@Entity()
+@Entity({
+	isSubEntity: true,
+})
 class SubSubTestEntity {
 	@Column()
 	public subField: string;
@@ -32,7 +34,7 @@ class TestEntity {
 	public subEntity: SubTestEntity;
 }
 
-describe("MetadataManager > convertEntityToDatabase", () => {
+describe("EntityManager > convertEntityToDatabase", () => {
 	let connection: LocalConnection;
 
 	beforeAll(() => {
@@ -67,7 +69,7 @@ describe("MetadataManager > convertEntityToDatabase", () => {
 			test_id: "Test",
 			test_test: "SuperTest",
 			test_subEntity: {
-				field: "field",
+				test_field: "field",
 			},
 		});
 	});
@@ -91,8 +93,8 @@ describe("MetadataManager > convertEntityToDatabase", () => {
 			test_id: "Test",
 			test_test: "SuperTest",
 			test_subEntity: {
-				field: "field",
-				subTest: {
+				test_field: "field",
+				test_subTest: {
 					subField: "subField",
 				},
 			},

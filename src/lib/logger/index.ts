@@ -12,6 +12,18 @@ export class Logger {
 		this.logLevels = getLogLevels(bruteLogLevel);
 	}
 
+	public warn(message: any) {
+		if (!this.isLevelEnabled("WARN")) {
+			return;
+		}
+
+		printMessage({
+			message,
+			logLevel: "WARN",
+			connectionName: this.connectionName,
+		});
+	}
+
 	public error(message: any) {
 		if (!this.isLevelEnabled("ERROR")) {
 			return;

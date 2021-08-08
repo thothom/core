@@ -7,7 +7,7 @@ export interface IncrementedEntitiesMetadata<
 	columns: Array<ColumnMetadata<ColumnExtraMetadata>>;
 }
 
-export type MetadataManagerEntities<EntityExtraMetadata, ColumnExtraMetadata> =
+export type EntityManagerEntities<EntityExtraMetadata, ColumnExtraMetadata> =
 	Record<
 		string, // Entity Class Name
 		IncrementedEntitiesMetadata<EntityExtraMetadata, ColumnExtraMetadata>

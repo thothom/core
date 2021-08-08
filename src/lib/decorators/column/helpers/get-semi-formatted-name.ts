@@ -1,4 +1,4 @@
-import { MetadataType } from "../../../metadata-manager/types/metadata-type";
+import { MetadataType } from "../../../entity-manager/types/metadata-type";
 import { ColumnOptions } from "../../types/column-options";
 
 interface GetNameParams {

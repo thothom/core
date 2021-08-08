@@ -1,24 +1,21 @@
-import { MetadataManager } from "../..";
+import { EntityManager } from "../..";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
 
 interface Injectables {
-	metadataManager: MetadataManager<any, any>;
+	metadataManager: EntityManager<any, any>;
 }
 
 export interface ConvertEntityToDatabaseParams {
 	entity: any;
-	isSubEntity?: boolean;
 	data: Record<string, any>;
 }
 
 export const convertEntityToDatabase = (
 	{ metadataManager }: Injectables,
-	{ entity, isSubEntity, data }: ConvertEntityToDatabaseParams,
+	{ entity, data }: ConvertEntityToDatabaseParams,
 ) => {
-	const entityMetadata = isSubEntity
-		? metadataManager.getSubEntityMetadata(entity)
-		: metadataManager.getEntityMetadata(entity);
+	const entityMetadata = metadataManager.getEntityMetadata(entity);
 
 	const acc = {} as Record<string, any>;
 
@@ -30,7 +27,7 @@ export const convertEntityToDatabase = (
 		if (!value) return;
 
 		if (MetadataUtil.isCustomMetadataType(columnMetadata.type)) {
-			const subEntityMetadata = metadataManager.getSubEntityMetadata(
+			const subEntityMetadata = metadataManager.getEntityMetadata(
 				columnMetadata.type,
 			);
 
@@ -43,7 +40,6 @@ export const convertEntityToDatabase = (
 						{
 							entity: subEntityMetadata,
 							data: val,
-							isSubEntity: true,
 						},
 					),
 				);
@@ -55,7 +51,6 @@ export const convertEntityToDatabase = (
 					{
 						entity: subEntityMetadata,
 						data: value,
-						isSubEntity: true,
 					},
 				);
 			}
