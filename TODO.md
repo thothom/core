@@ -21,6 +21,11 @@
   - To check if an entity has a table in the database, the metadata `isSubEntity` is used. If is a sub-entity, it DOESN'T has a table in the database
   - Update `EntityManager.convertEntityToDatabase`: If has the metadata `isSubEntity`, so the fields MUST NOT be affected by prefix or suffix
 - [ ] Add Tests
+  - [x] Decorators
+  - [ ] EntityManager
+  - [x] Error
+  - [x] Logger
+  - [ ] Utils
 - [ ] Create method `EntityManager.convertDatabaseToEntity`
 - [ ] Add complex queries
   - Ex: Date Between X and Y, Greater than, Less than, query with multiple params (Ex: if a field is a string, accept an array of strings)
