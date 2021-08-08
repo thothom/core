@@ -6,6 +6,7 @@ export enum CompassErrorCodeEnum {
 	/**
 	 * Params
 	 */
+	INVALID_PARAM = "INVALID_PARAM",
 	INVALID_PARAM_TYPE = "INVALID_PARAM_TYPE",
 	MISSING_PARAM = "MISSING_PARAM",
 	/**
