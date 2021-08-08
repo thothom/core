@@ -20,14 +20,11 @@
   - The sub-entities must be stored WITH THE ENTITIES, and not separately
   - To check if an entity has a table in the database, the metadata `isSubEntity` is used. If is a sub-entity, it DOESN'T has a table in the database
   - Update `EntityManager.convertEntityToDatabase`: If has the metadata `isSubEntity`, so the fields MUST NOT be affected by prefix or suffix
+- [ ] Add Tests
 - [ ] Create method `EntityManager.convertDatabaseToEntity`
 - [ ] Add complex queries
   - Ex: Date Between X and Y, Greater than, Less than, query with multiple params (Ex: if a field is a string, accept an array of strings)
 - [ ] Uncomment tests validation at `jest.config.js`
-- [ ] Add Tests
-- [ ] Add pipeline step to check if mandatory files has changes
-  - Maybe this action can be used: https://github.com/marketplace/actions/get-all-changed-files
-  - Mandatory files: CHANGELOG.md, package.json
 - [ ] Improve Documentation
   - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
 - [ ] Give a bit of love to `CONTRIBUTING.md`
@@ -43,7 +40,10 @@
 - [ ] Add COMPLETE documentation about HOW to create a plugin
   - Include EVERY validation that need to be done
   - Include EVERY step IN ORDER that need to be made
-- [ ] Create a table with ALL the features of the ORM, so the plugins can specify EVERY feature that they have implemented
+- [ ] Create a markdown table with ALL the features of the ORM, so the plugins can specify EVERY feature that they have implemented
+- [ ] Add pipeline step to check if mandatory files has changes
+  - Maybe this action can be used: https://github.com/marketplace/actions/get-all-changed-files
+  - Mandatory files: CHANGELOG.md, package.json
 
 ## Discarded Ideas
 

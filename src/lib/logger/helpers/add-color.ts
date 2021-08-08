@@ -10,9 +10,6 @@ export const addColor = ({ message, logLevel }: AddColorParams) => {
 		case "DEBUG":
 			// Magenta
 			return `\x1B[95m${message}\x1B[39m;`;
-		case "LOG":
-			// Green
-			return `\x1B[32m${message}\x1B[39m`;
 		case "ERROR":
 			// Red
 			return `\x1B[31m${message}\x1B[39m`;
@@ -22,7 +19,9 @@ export const addColor = ({ message, logLevel }: AddColorParams) => {
 		case "INFO":
 			// Cyan
 			return `\x1B[96m${message}\x1B[39m`;
+		case "LOG":
 		default:
-			return message;
+			// Green
+			return `\x1B[32m${message}\x1B[39m`;
 	}
 };

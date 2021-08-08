@@ -13,8 +13,8 @@ export const getDatabaseName = ({
 		return nameOrOptions;
 	}
 
-	if (typeof nameOrOptions?.name === "string") {
-		return nameOrOptions?.name;
+	if (nameOrOptions?.name) {
+		return nameOrOptions.name;
 	}
 
 	return entityConstructor.name;

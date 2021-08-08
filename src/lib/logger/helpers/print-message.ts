@@ -34,7 +34,7 @@ export const printMessage = ({
 	});
 	const output = getOutput(message);
 
-	process[writeStreamType ?? "stdout"].write(
+	process[writeStreamType || "stdout"].write(
 		`${pidMessage}${timestamp} ${formattedLogLevel} [${connectionName}] ${output}\n`,
 	);
 };
