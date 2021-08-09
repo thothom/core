@@ -47,12 +47,21 @@
   - [ ] Utils
     - [x] formatNamingPattern
     - [ ] MetadataUtil
+      - [x] isDefaultMetadataType
+      - [x] isCustomMetadataType
+      - [x] isMetadataType
+      - [x] hasEntityMetadata
+      - [x] getEntityMetadata
+      - [ ] defineEntityMetadata
+      - [ ] defineAllEntityMetadata
+      - [ ] getAllEntityMetadata
     - [x] formatPrefix
     - [x] formatSuffix
 - [ ] Create method `EntityManager.convertDatabaseToEntity`
 - [ ] Uncomment tests validation at `jest.config.js`
 - [ ] Improve Documentation
   - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
+  - [ ] Use [Docusaurus](https://docusaurus.io/docs)
   - [ ] Give a bit of love to `CONTRIBUTING.md`
   - [ ] Add COMPLETE documentation about HOW to create a plugin
     - Include EVERY validation that need to be done
