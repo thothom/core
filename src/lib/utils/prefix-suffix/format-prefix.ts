@@ -10,10 +10,13 @@ export const formatPrefix = ({
 	let formattedName = value;
 
 	if (options.remove) {
-		formattedName = formattedName.slice(
-			options.remove.length,
-			formattedName.length,
-		);
+		const prefixLength = options.remove.length;
+
+		const initialLetters = formattedName.substr(0, prefixLength);
+
+		if (initialLetters === options.remove) {
+			formattedName = formattedName.substr(prefixLength);
+		}
 	}
 
 	if (options.add) {

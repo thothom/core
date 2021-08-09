@@ -12,8 +12,11 @@ export const formatSuffix = ({
 	if (options.remove) {
 		const columnLengthWithoutSuffix =
 			formattedName.length - options.remove.length;
+		const finalLetters = formattedName.substr(columnLengthWithoutSuffix);
 
-		formattedName = formattedName.slice(0, columnLengthWithoutSuffix);
+		if (finalLetters === options.remove) {
+			formattedName = formattedName.substr(0, columnLengthWithoutSuffix);
+		}
 	}
 
 	if (options.add) {

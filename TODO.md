@@ -32,6 +32,9 @@
 - [ ] Add Tests
   - [x] Decorators
   - [ ] EntityManager
+  - [x] Error
+  - [x] Logger
+  - [ ] Repository
     - [ ] Find Operators
       - [ ] LessThan
       - [ ] LessThanOrEqual
@@ -41,13 +44,11 @@
       - [ ] Between
       - [ ] In
       - [ ] Not
-  - [ ] Error
-  - [ ] Logger
   - [ ] Utils
     - [x] formatNamingPattern
     - [ ] MetadataUtil
-    - [ ] formatPrefix
-    - [ ] formatSuffix
+    - [x] formatPrefix
+    - [x] formatSuffix
 - [ ] Create method `EntityManager.convertDatabaseToEntity`
 - [ ] Uncomment tests validation at `jest.config.js`
 - [ ] Improve Documentation
