@@ -34,16 +34,17 @@
   - [ ] EntityManager
   - [x] Error
   - [x] Logger
-  - [ ] Repository
-    - [ ] Find Operators
-      - [ ] LessThan
-      - [ ] LessThanOrEqual
-      - [ ] MoreThan
-      - [ ] MoreThanOrEqual
-      - [ ] Like
-      - [ ] Between
-      - [ ] In
-      - [ ] Not
+  - [x] Repository
+    - [x] Find Operators
+      - [x] LessThan
+      - [x] LessThanOrEqual
+      - [x] MoreThan
+      - [x] MoreThanOrEqual
+      - [x] Like
+      - [x] Between
+      - [x] In
+      - [x] IsNull
+      - [x] Not
   - [ ] Utils
     - [x] formatNamingPattern
     - [ ] MetadataUtil

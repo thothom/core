@@ -3,6 +3,8 @@ import { CompassErrorCodeEnum } from "../../../../error/types/error-code.enum";
 import { FindOperator } from "./base";
 import { FindOperatorType } from "./base/find-operators-type";
 
+type AcceptedTypes = Date | number | string;
+
 const handleTypeError = (type: FindOperatorType) => {
 	const ERROR_MESSAGE = "Incorrect use of NOT operator";
 
@@ -56,7 +58,7 @@ const handleTypeError = (type: FindOperatorType) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const Not = <T>(value: FindOperator<T> | T) => {
+export const Not = <T>(value: AcceptedTypes | FindOperator<T>) => {
 	/**
 	 * The `Not` operator accepts another FindOperator as param,
 	 * so it can reverse the query, like this:
@@ -77,6 +79,6 @@ export const Not = <T>(value: FindOperator<T> | T) => {
 
 	return new FindOperator<T>({
 		type: "not",
-		values: [value],
+		values: [value as any],
 	});
 };
