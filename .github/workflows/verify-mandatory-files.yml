@@ -15,10 +15,19 @@ jobs:
         id: files
         uses: jitterbit/get-changed-files@v1
 
+      - name: Get branch name
+        id: branch_name
+        run: echo ::set-output name=name::${GITHUB_REF#refs/*/}
+
       - name: Verify Files Changed
         run: |
+          if case ${{ steps.vars.outputs.short_ref }} in chore/*) true;; *) false;; esac; then
+            MANDATORY_FILES="CHANGELOG.md"
+          else
+            MANDATORY_FILES="CHANGELOG.md package.json"
+          fi
+
           MODIFIED_FILES=${{ steps.files.outputs.all }}
-          MANDATORY_FILES="CHANGELOG.md package.json"
 
           for mandatory_file in $MANDATORY_FILES; do
             if echo $MODIFIED_FILES | grep -w $mandatory_file > /dev/null; then
