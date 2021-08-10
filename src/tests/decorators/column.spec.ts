@@ -19,8 +19,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
-					isArray: undefined,
 					name: "foo",
 					type: String,
 				},
@@ -41,8 +39,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
-					isArray: undefined,
 					name: "foo",
 					type: Number,
 				},
@@ -63,8 +59,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
-					isArray: undefined,
 					name: "foo",
 					type: Date,
 				},
@@ -87,8 +81,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
-					isArray: undefined,
 					name: "foo",
 					type: CustomClass,
 				},
@@ -111,7 +103,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
 					isArray: true,
 					name: "foo",
 					type: String,
@@ -133,7 +124,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
 					isArray: true,
 					name: "foo",
 					type: Number,
@@ -155,7 +145,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
 					isArray: true,
 					name: "foo",
 					type: Date,
@@ -179,7 +168,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
 					isArray: true,
 					name: "foo",
 					type: CustomClass,
@@ -205,7 +193,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
 					isArray: true,
 					name: "foo",
 					type: String,
@@ -229,7 +216,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
 					isArray: true,
 					name: "foo",
 					type: Number,
@@ -253,7 +239,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
 					isArray: true,
 					name: "foo",
 					type: Date,
@@ -277,8 +262,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
-					isArray: undefined,
 					name: "foo",
 					type: String,
 				},
@@ -303,8 +286,6 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "bar",
-					extras: undefined,
-					isArray: undefined,
 					name: "foo",
 					type: String,
 				},
@@ -334,7 +315,6 @@ describe("Decorators > Column", () => {
 					extras: {
 						foo: "bar",
 					},
-					isArray: undefined,
 					name: "foo",
 					type: String,
 				},

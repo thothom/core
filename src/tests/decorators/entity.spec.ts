@@ -23,8 +23,6 @@ describe("Decorators > Entity", () => {
 				columns: [
 					{
 						databaseName: "foo",
-						extras: undefined,
-						isArray: undefined,
 						name: "foo",
 						type: String,
 					},
@@ -51,8 +49,6 @@ describe("Decorators > Entity", () => {
 				columns: [
 					{
 						databaseName: "foo",
-						extras: undefined,
-						isArray: undefined,
 						name: "foo",
 						type: String,
 					},
@@ -81,8 +77,6 @@ describe("Decorators > Entity", () => {
 				columns: [
 					{
 						databaseName: "foo",
-						extras: undefined,
-						isArray: undefined,
 						name: "foo",
 						type: String,
 					},
@@ -110,8 +104,6 @@ describe("Decorators > Entity", () => {
 				columns: [
 					{
 						databaseName: "foo",
-						extras: undefined,
-						isArray: undefined,
 						name: "foo",
 						type: String,
 					},
@@ -143,8 +135,6 @@ describe("Decorators > Entity", () => {
 				columns: [
 					{
 						databaseName: "foo",
-						extras: undefined,
-						isArray: undefined,
 						name: "foo",
 						type: String,
 					},

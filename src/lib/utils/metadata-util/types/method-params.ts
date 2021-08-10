@@ -1,4 +1,7 @@
-import { EntityMetadata } from "../../../entity-manager/types/metadata";
+import {
+	ColumnMetadata,
+	EntityMetadata,
+} from "../../../entity-manager/types/metadata";
 
 export interface DefineAllEntityMetadataParams {
 	entity: any;
@@ -17,5 +20,10 @@ export interface GetAllEntityMetadataParams {
 
 export interface GetEntityMetadataParams {
 	metadataKey: string;
+	entity: any;
+}
+
+export interface AddColumnMetadataToEntityParams {
+	metadata: ColumnMetadata;
 	entity: any;
 }
