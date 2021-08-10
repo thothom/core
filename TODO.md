@@ -79,12 +79,12 @@
   - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - [ ] Add auto-generated primary columns
 - [ ] Uncomment tests validation at `jest.config.js`
-- [ ] Add pipeline step to check if mandatory files has changes
-  - Maybe this action can be used: https://github.com/marketplace/actions/get-all-changed-files
+- [x] Add pipeline step to check if mandatory files has changes
   - Mandatory files:
     - CHANGELOG.md
     - package.json
 - [ ] Add pipeline step to check and **FAIL** if some files are changed
+  - Maybe this action can be used: https://github.com/marketplace/actions/get-all-changed-files
   - Can't modify:
     - .eslintrc.json
     - .eslintignore

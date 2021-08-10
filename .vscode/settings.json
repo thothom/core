@@ -126,6 +126,7 @@
 		"Diozin",
 		"Zaetic",
 		"nosql",
-		"typeorm"
+		"typeorm",
+		"jitterbit"
 	]
 }
