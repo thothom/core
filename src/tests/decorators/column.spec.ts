@@ -86,6 +86,26 @@ describe("Decorators > Column", () => {
 				},
 			]);
 		});
+
+		it("should add column metadata correctly (optional field)", () => {
+			class Test {
+				@Column()
+				public foo?: string;
+			}
+
+			const metadata = MetadataUtil.getEntityMetadata({
+				metadataKey: "columns",
+				entity: Test,
+			});
+
+			expect(metadata).toStrictEqual([
+				{
+					databaseName: "foo",
+					name: "foo",
+					type: String,
+				},
+			]);
+		});
 	});
 
 	describe("Specified Type Unique Decorator Param", () => {
@@ -323,6 +343,8 @@ describe("Decorators > Column", () => {
 	});
 
 	describe("General Errors", () => {
+		const DEFAULT_DETAILS = ["Entity: Test", "Column: foo"];
+
 		it("should throw an error if is array and type isn't specified", () => {
 			let result;
 
@@ -344,7 +366,7 @@ describe("Decorators > Column", () => {
 			expect(result.message).toBe("You must explicitly declare array types");
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("COMPASS");
-			expect(result.details).toStrictEqual(["Entity: Test", "Column: foo"]);
+			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 
 		it("should throw an error if invalid type specified", () => {
@@ -368,7 +390,29 @@ describe("Decorators > Column", () => {
 			expect(result.message).toBe("Column type isn't supported");
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("COMPASS");
-			expect(result.details).toStrictEqual(["Entity: Test", "Column: foo"]);
+			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
+		});
+
+		it("should throw error if field has multiple types", () => {
+			let result;
+
+			try {
+				class Test {
+					@Column()
+					public foo: number | string;
+				}
+
+				// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+				Test;
+			} catch (err) {
+				result = err;
+			}
+
+			expect(result instanceof CompassError).toBe(true);
+			expect(result.message).toBe("Column type isn't supported");
+			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("COMPASS");
+			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 	});
 });
