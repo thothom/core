@@ -21,7 +21,7 @@ describe("Utils > MetadataUtil > hasEntityMetadata", () => {
 				metadataKey: "name",
 			});
 
-			expect(result).toBeTruthy();
+			expect(result).toBe(true);
 		});
 
 		it("should return true with 'databaseName' metadata", () => {
@@ -30,7 +30,7 @@ describe("Utils > MetadataUtil > hasEntityMetadata", () => {
 				metadataKey: "databaseName",
 			});
 
-			expect(result).toBeTruthy();
+			expect(result).toBe(true);
 		});
 
 		it("should return true with 'columns' metadata", () => {
@@ -39,7 +39,7 @@ describe("Utils > MetadataUtil > hasEntityMetadata", () => {
 				metadataKey: "columns",
 			});
 
-			expect(result).toBeTruthy();
+			expect(result).toBe(true);
 		});
 	});
 
@@ -50,7 +50,7 @@ describe("Utils > MetadataUtil > hasEntityMetadata", () => {
 				metadataKey: "isSubEntity",
 			});
 
-			expect(result).toBeFalsy();
+			expect(result).toBe(false);
 		});
 
 		it("should return true with 'random' metadata", () => {
@@ -59,7 +59,7 @@ describe("Utils > MetadataUtil > hasEntityMetadata", () => {
 				metadataKey: "random",
 			});
 
-			expect(result).toBeFalsy();
+			expect(result).toBe(false);
 		});
 
 		it("should return true with 'xyz' metadata", () => {
@@ -68,7 +68,7 @@ describe("Utils > MetadataUtil > hasEntityMetadata", () => {
 				metadataKey: "xyz",
 			});
 
-			expect(result).toBeFalsy();
+			expect(result).toBe(false);
 		});
 	});
 });
