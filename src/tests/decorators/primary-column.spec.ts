@@ -19,7 +19,6 @@ describe("Decorators > PrimaryColumn", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
 					primary: true,
 					name: "foo",
 					type: String,
@@ -41,7 +40,6 @@ describe("Decorators > PrimaryColumn", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
 					primary: true,
 					name: "foo",
 					type: Number,
@@ -63,7 +61,6 @@ describe("Decorators > PrimaryColumn", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					extras: undefined,
 					primary: true,
 					name: "foo",
 					type: Date,
@@ -87,7 +84,6 @@ describe("Decorators > PrimaryColumn", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "superTest",
-					extras: undefined,
 					primary: true,
 					name: "foo",
 					type: String,
@@ -113,7 +109,6 @@ describe("Decorators > PrimaryColumn", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "bar",
-					extras: undefined,
 					primary: true,
 					name: "foo",
 					type: String,

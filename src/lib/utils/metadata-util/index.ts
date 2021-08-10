@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import {
+	ColumnMetadata,
+	COLUMN_METADATA_KEYS,
 	EntityMetadata,
 	ENTITY_METADATA_KEYS,
 } from "../../entity-manager/types/metadata";
 import {
+	AddColumnMetadataToEntityParams,
 	DefineAllEntityMetadataParams,
 	DefineEntityMetadataParams,
 	GetAllEntityMetadataParams,
@@ -56,6 +59,32 @@ export class MetadataUtil {
 		const formattedMetadataKey = formatMetadataKey(metadataKey);
 
 		Reflect.defineMetadata(formattedMetadataKey, metadataValue, entity);
+	}
+
+	public static addColumnMetadataToEntity({
+		metadata,
+		entity,
+	}: AddColumnMetadataToEntityParams) {
+		const columnMetadata = COLUMN_METADATA_KEYS.reduce((acc, metadataKey) => {
+			const value = metadata[metadataKey];
+
+			if (typeof value !== "undefined") {
+				acc[metadataKey] = value;
+			}
+
+			return acc;
+		}, {} as ColumnMetadata<any>);
+
+		const entityColumns = (MetadataUtil.getEntityMetadata({
+			metadataKey: "columns",
+			entity,
+		}) || []) as Array<ColumnMetadata>;
+
+		MetadataUtil.defineEntityMetadata({
+			entity,
+			metadataKey: "columns",
+			metadataValue: [...entityColumns, columnMetadata],
+		});
 	}
 
 	public static defineAllEntityMetadata({

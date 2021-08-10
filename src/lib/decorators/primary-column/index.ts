@@ -1,7 +1,7 @@
 import { PrimaryColumnOptions } from "../types/column-options";
-import { addColumnMetadata } from "../column/helpers/add-column-metadata";
 import { getDatabaseName } from "./helpers/get-name";
 import { getType } from "./helpers/get-type";
+import { MetadataUtil } from "../../utils/metadata-util";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const PrimaryColumn = (
@@ -17,8 +17,8 @@ export const PrimaryColumn = (
 			propertyName,
 		});
 
-		addColumnMetadata({
-			entityPrototype,
+		MetadataUtil.addColumnMetadataToEntity({
+			entity: entityPrototype.constructor,
 			metadata: {
 				name: propertyName,
 				databaseName,
