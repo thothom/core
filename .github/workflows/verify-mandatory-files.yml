@@ -1,0 +1,30 @@
+name: Verify Mandatory Files On PR
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get Changed Files
+        id: files
+        uses: jitterbit/get-changed-files@v1
+
+      - name: Verify Files Changed
+        run: |
+          MODIFIED_FILES=${{ steps.files.outputs.all }}
+          MANDATORY_FILES="CHANGELOG.md package.json"
+
+          for mandatory_file in $MANDATORY_FILES; do
+            if echo $MODIFIED_FILES | grep -w $mandatory_file > /dev/null; then
+		          echo "$mandatory_file is in the modified files"
+            else
+              echo "These files MUST be changed on each PR -> $MANDATORY_FILES"
+              exit 1
+            fi
+          done
