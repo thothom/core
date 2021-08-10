@@ -174,7 +174,7 @@ describe("Decorators > PrimaryColumn", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("COMPASS");
@@ -198,7 +198,7 @@ describe("Decorators > PrimaryColumn", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("COMPASS");
@@ -224,7 +224,7 @@ describe("Decorators > PrimaryColumn", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("COMPASS");

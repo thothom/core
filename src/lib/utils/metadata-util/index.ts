@@ -68,7 +68,7 @@ export class MetadataUtil {
 			/**
 			 * Does this validation because some fields are optional
 			 */
-			if (metadataValue) {
+			if (typeof metadataValue !== "undefined") {
 				MetadataUtil.defineEntityMetadata({
 					metadataKey,
 					metadataValue,
@@ -82,19 +82,22 @@ export class MetadataUtil {
 		entity,
 	}: GetAllEntityMetadataParams) {
 		return ENTITY_METADATA_KEYS.reduce((acc, metadataKey) => {
-			/**
-			 * TypeScript doesn't accepts this, but it's right,
-			 * so it's necessary to use ts-ignore
-			 */
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			//@ts-ignore
-			acc[metadataKey] = MetadataUtil.getEntityMetadata({
+			const value = MetadataUtil.getEntityMetadata({
 				metadataKey,
 				entity,
 			});
 
+			if (typeof value !== "undefined") {
+				/**
+				 * TypeScript doesn't accepts this, but it's right,
+				 * so it's necessary to use ts-ignore
+				 */
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				//@ts-ignore
+				acc[metadataKey] = value;
+			}
+
 			return acc;
-			// eslint-disable-next-line @typescript-eslint/prefer-reduce-type-parameter
 		}, {} as EntityMetadata<EntityExtraMetadata, ColumnExtraMetadata>);
 	}
 }

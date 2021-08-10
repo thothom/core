@@ -16,8 +16,8 @@ describe("CompassError", () => {
 			result = err;
 		}
 
-		expect(result instanceof Error).toBeTruthy();
-		expect(result instanceof CompassError).toBeTruthy();
+		expect(result instanceof Error).toBe(true);
+		expect(result instanceof CompassError).toBe(true);
 		expect(result).toHaveProperty("stack");
 		expect(result.code).toBe(CompassErrorCodeEnum.UNKNOWN);
 		expect(result.message).toBe("Message");
@@ -43,8 +43,8 @@ describe("CompassError", () => {
 			result = err;
 		}
 
-		expect(result instanceof Error).toBeTruthy();
-		expect(result instanceof CompassError).toBeTruthy();
+		expect(result instanceof Error).toBe(true);
+		expect(result instanceof CompassError).toBe(true);
 		expect(result).toHaveProperty("stack");
 		expect(result.code).toBe(CompassErrorCodeEnum.UNKNOWN);
 		expect(result.message).toBe("Message");
