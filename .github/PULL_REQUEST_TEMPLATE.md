@@ -1,6 +1,7 @@
 ## What this PR introduces?
 
 Issue Number: N/A
+PR Of Documentation Update: N/A
 
 <!-- Please, includes description of this pull request -->
 
@@ -11,7 +12,7 @@ Please check if your PR fulfills the following requirements:
 - [ ] My contribution follows [the guidelines](https://github.com/techmmunity/easy-check/blob/master/CONTRIBUTING.md)
 - [ ] I followed GitFlow pattern to create the branch
 - [ ] Tests for the changes have been added
-- [ ] Docs have been added / updated (or aren't necessary)
+- [ ] I created a PR to add / update the documentation (or aren't necessary)
 - [ ] The `package.json` version has been upgraded
 - [ ] The changes has been added to `CHANGELOG.md`
 - [ ] My code produces no warnings or errors
