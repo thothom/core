@@ -20,8 +20,6 @@ describe("Decorators > Entity", () => {
 			expect(metadata).toStrictEqual({
 				name: "Test",
 				databaseName: "Test",
-				isSubEntity: undefined,
-				extras: undefined,
 				columns: [
 					{
 						databaseName: "foo",
@@ -50,8 +48,6 @@ describe("Decorators > Entity", () => {
 			expect(metadata).toStrictEqual({
 				name: "Test",
 				databaseName: "SuperTest",
-				isSubEntity: undefined,
-				extras: undefined,
 				columns: [
 					{
 						databaseName: "foo",
@@ -82,8 +78,6 @@ describe("Decorators > Entity", () => {
 			expect(metadata).toStrictEqual({
 				name: "Test",
 				databaseName: "SuperTest",
-				isSubEntity: undefined,
-				extras: undefined,
 				columns: [
 					{
 						databaseName: "foo",
@@ -113,7 +107,6 @@ describe("Decorators > Entity", () => {
 				name: "Test",
 				databaseName: "Test",
 				isSubEntity: true,
-				extras: undefined,
 				columns: [
 					{
 						databaseName: "foo",
@@ -144,7 +137,6 @@ describe("Decorators > Entity", () => {
 			expect(metadata).toStrictEqual({
 				name: "Test",
 				databaseName: "Test",
-				isSubEntity: undefined,
 				extras: {
 					foo: "bar",
 				},
@@ -177,7 +169,7 @@ describe("Decorators > Entity", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe("Entity must have at least one column");
 			expect(result.code).toBe(CompassErrorCodeEnum.MISSING_DECORATOR);
 			expect(result.origin).toBe("COMPASS");

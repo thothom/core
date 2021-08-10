@@ -61,7 +61,7 @@ describe("Logger", () => {
 
 			expect(stderrSpy).toBeCalledTimes(0);
 			expect(stdoutSpy).toBeCalledTimes(1);
-			expect(checkCallParam(stdoutSpy, "DEBUG")).toBeTruthy();
+			expect(checkCallParam(stdoutSpy, "DEBUG")).toBe(true);
 		});
 
 		it("only allow ERROR", () => {
@@ -75,7 +75,7 @@ describe("Logger", () => {
 
 			expect(stderrSpy).toBeCalledTimes(1);
 			expect(stdoutSpy).toBeCalledTimes(0);
-			expect(checkCallParam(stderrSpy, "ERROR")).toBeTruthy();
+			expect(checkCallParam(stderrSpy, "ERROR")).toBe(true);
 		});
 
 		it("only allow INFO", () => {
@@ -89,7 +89,7 @@ describe("Logger", () => {
 
 			expect(stderrSpy).toBeCalledTimes(0);
 			expect(stdoutSpy).toBeCalledTimes(1);
-			expect(checkCallParam(stdoutSpy, "INFO")).toBeTruthy();
+			expect(checkCallParam(stdoutSpy, "INFO")).toBe(true);
 		});
 
 		it("only allow LOG", () => {
@@ -103,7 +103,7 @@ describe("Logger", () => {
 
 			expect(stderrSpy).toBeCalledTimes(0);
 			expect(stdoutSpy).toBeCalledTimes(1);
-			expect(checkCallParam(stdoutSpy, "LOG")).toBeTruthy();
+			expect(checkCallParam(stdoutSpy, "LOG")).toBe(true);
 		});
 
 		it("only allow WARN", () => {
@@ -117,7 +117,7 @@ describe("Logger", () => {
 
 			expect(stderrSpy).toBeCalledTimes(0);
 			expect(stdoutSpy).toBeCalledTimes(1);
-			expect(checkCallParam(stdoutSpy, "WARN")).toBeTruthy();
+			expect(checkCallParam(stdoutSpy, "WARN")).toBe(true);
 		});
 	});
 

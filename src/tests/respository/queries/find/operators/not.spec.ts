@@ -45,7 +45,7 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 
 			expect(operator.type).toBe("between");
 			expect(operator.values).toStrictEqual([1, 10]);
-			expect(operator.not).toBeTruthy();
+			expect(operator.not).toBe(true);
 		});
 
 		it("should create a In operator", () => {
@@ -53,7 +53,7 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 
 			expect(operator.type).toBe("in");
 			expect(operator.values).toStrictEqual([1, 10]);
-			expect(operator.not).toBeTruthy();
+			expect(operator.not).toBe(true);
 		});
 
 		it("should create a IsNull operator", () => {
@@ -61,7 +61,7 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 
 			expect(operator.type).toBe("isNull");
 			expect(operator.values).toStrictEqual([]);
-			expect(operator.not).toBeTruthy();
+			expect(operator.not).toBe(true);
 		});
 
 		it("should create a Like operator", () => {
@@ -69,7 +69,7 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 
 			expect(operator.type).toBe("like");
 			expect(operator.values).toStrictEqual(["foo"]);
-			expect(operator.not).toBeTruthy();
+			expect(operator.not).toBe(true);
 		});
 	});
 
@@ -85,7 +85,7 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
 			expect(result.origin).toBe("COMPASS");
@@ -103,7 +103,7 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
 			expect(result.origin).toBe("COMPASS");
@@ -121,7 +121,7 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
 			expect(result.origin).toBe("COMPASS");
@@ -139,7 +139,7 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
 			expect(result.origin).toBe("COMPASS");
@@ -157,7 +157,7 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
 			expect(result.origin).toBe("COMPASS");

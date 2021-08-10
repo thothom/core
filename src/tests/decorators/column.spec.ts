@@ -360,7 +360,7 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe("You must explicitly declare array types");
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("COMPASS");
@@ -384,7 +384,7 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBeTruthy();
+			expect(result instanceof CompassError).toBe(true);
 			expect(result.message).toBe("Column type isn't supported");
 			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("COMPASS");
