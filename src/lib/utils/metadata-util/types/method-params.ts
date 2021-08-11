@@ -1,7 +1,5 @@
-import {
-	ColumnMetadata,
-	EntityMetadata,
-} from "../../../entity-manager/types/metadata";
+import { ColumnMetadata } from "../../../entity-manager/types/column-metadata";
+import { EntityMetadata } from "../../../entity-manager/types/entity-metadata";
 
 export interface DefineAllEntityMetadataParams {
 	entity: any;

@@ -3,9 +3,11 @@
 import {
 	ColumnMetadata,
 	COLUMN_METADATA_KEYS,
+} from "../../entity-manager/types/column-metadata";
+import {
 	EntityMetadata,
 	ENTITY_METADATA_KEYS,
-} from "../../entity-manager/types/metadata";
+} from "../../entity-manager/types/entity-metadata";
 import { isUndefined } from "../is-undefined";
 import {
 	AddColumnMetadataToEntityParams,

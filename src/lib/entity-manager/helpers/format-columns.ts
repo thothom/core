@@ -1,5 +1,5 @@
 import { BaseConnectionOptions } from "../../connection/types/connection-options";
-import { ColumnMetadata } from "../types/metadata";
+import { ColumnMetadata } from "../types/column-metadata";
 import { getDatabaseName } from "./get-database-name";
 
 interface FormatColumnsParams<ColumnExtraMetadata> {

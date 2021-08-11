@@ -1,4 +1,5 @@
-import { EntityMetadata, ColumnMetadata } from "./metadata";
+import { ColumnMetadata } from "./column-metadata";
+import { EntityMetadata } from "./entity-metadata";
 
 export interface IncrementedEntitiesMetadata<
 	EntityExtraMetadata,

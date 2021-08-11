@@ -1,4 +1,5 @@
 import { MetadataType } from "../../entity-manager/types/metadata-type";
+import { PrimaryGeneratedColumnStrategy } from "../primary-generated-column";
 
 export interface BaseColumnOptions {
 	name?: string;
@@ -10,3 +11,7 @@ export interface ColumnOptions extends BaseColumnOptions {
 }
 
 export type PrimaryColumnOptions = BaseColumnOptions;
+
+export interface PrimaryGeneratedColumnOptions extends BaseColumnOptions {
+	strategy?: PrimaryGeneratedColumnStrategy;
+}

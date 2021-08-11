@@ -26,7 +26,13 @@
 		"techmmunity-compass"
 	],
 	"peerDependencies": {
-		"reflect-metadata": "^0.1.13"
+		"reflect-metadata": "^0.1.13",
+		"uuid": "^8.3.2"
+	},
+	"peerDependenciesMeta": {
+		"uuid": {
+			"optional": true
+		}
 	},
 	"dependencies": {
 		"change-case": "^4.1.2"
@@ -34,6 +40,7 @@
 	"devDependencies": {
 		"@techmmunity/eslint-config": "^4.0.0",
 		"@types/jest": "^27.0.0",
+		"@types/uuid": "^8.3.1",
 		"@typescript-eslint/eslint-plugin": "^4.29.1",
 		"@typescript-eslint/parser": "^4.29.1",
 		"@vercel/ncc": "^0.29.0",
@@ -54,12 +61,13 @@
 		"prettier": "^2.3.2",
 		"reflect-metadata": "^0.1.13",
 		"ts-jest": "^27.0.4",
-		"typescript": "^4.3.5"
+		"typescript": "^4.3.5",
+		"uuid": "^8.3.2"
 	},
 	"scripts": {
 		"test": "jest",
 		"test:cov": "jest --coverage",
-		"build": "ncc build src/index.ts -o dist -m -e reflect-metadata",
+		"build": "ncc build src/index.ts -o dist -m -e reflect-metadata -e uuid",
 		"format": "eslint . --fix --quiet",
 		"lint": "eslint . --quiet",
 		"update-dependencies": "yarn upgrade-interactive --latest",
