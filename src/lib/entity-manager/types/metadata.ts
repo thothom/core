@@ -36,7 +36,7 @@ export interface ColumnMetadata<ExtraData = Record<string, any>> {
 	databaseName: string;
 	type: MetadataType;
 	isArray?: boolean;
-	primary?: true;
+	primary?: boolean;
 	extras?: ExtraData;
 	/**
 	 * When a new metadata is added, remember to also

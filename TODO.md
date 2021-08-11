@@ -64,7 +64,7 @@
       - [x] defineEntityMetadata
       - [x] defineAllEntityMetadata
       - [x] getAllEntityMetadata
-      - [ ] addColumnMetadataToEntity
+      - [x] addColumnMetadataToEntity
     - [x] formatPrefix
     - [x] formatSuffix
   - [x] Validate if optional columns (ex: `column?: string`) get the correct tipping
