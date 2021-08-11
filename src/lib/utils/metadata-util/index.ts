@@ -6,6 +6,7 @@ import {
 	EntityMetadata,
 	ENTITY_METADATA_KEYS,
 } from "../../entity-manager/types/metadata";
+import { isUndefined } from "../is-undefined";
 import {
 	AddColumnMetadataToEntityParams,
 	DefineAllEntityMetadataParams,
@@ -68,9 +69,11 @@ export class MetadataUtil {
 		const columnMetadata = COLUMN_METADATA_KEYS.reduce((acc, metadataKey) => {
 			const value = metadata[metadataKey];
 
-			if (typeof value !== "undefined") {
-				acc[metadataKey] = value;
+			if (isUndefined(value)) {
+				return acc;
 			}
+
+			acc[metadataKey] = value;
 
 			return acc;
 		}, {} as ColumnMetadata<any>);
@@ -97,13 +100,13 @@ export class MetadataUtil {
 			/**
 			 * Does this validation because some fields are optional
 			 */
-			if (typeof metadataValue !== "undefined") {
-				MetadataUtil.defineEntityMetadata({
-					metadataKey,
-					metadataValue,
-					entity,
-				});
-			}
+			if (isUndefined(metadataValue)) return;
+
+			MetadataUtil.defineEntityMetadata({
+				metadataKey,
+				metadataValue,
+				entity,
+			});
 		});
 	}
 
@@ -116,15 +119,17 @@ export class MetadataUtil {
 				entity,
 			});
 
-			if (typeof value !== "undefined") {
-				/**
-				 * TypeScript doesn't accepts this, but it's right,
-				 * so it's necessary to use ts-ignore
-				 */
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				//@ts-ignore
-				acc[metadataKey] = value;
+			if (isUndefined(value)) {
+				return acc;
 			}
+
+			/**
+			 * TypeScript doesn't accepts this, but it's right,
+			 * so it's necessary to use ts-ignore
+			 */
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			//@ts-ignore
+			acc[metadataKey] = value;
 
 			return acc;
 		}, {} as EntityMetadata<EntityExtraMetadata, ColumnExtraMetadata>);

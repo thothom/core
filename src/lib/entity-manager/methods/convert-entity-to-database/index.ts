@@ -1,4 +1,5 @@
 import { EntityManager } from "../..";
+import { isUndefined } from "../../../utils/is-undefined";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
 
@@ -18,11 +19,11 @@ export const convertEntityToDatabase = (
 	const entityMetadata = metadataManager.getEntityMetadata(entity);
 
 	return entityMetadata.columns.reduce((acc, columnMetadata) => {
-		if (!data) return acc;
+		if (isUndefined(data)) return acc;
 
-		let value = data[columnMetadata.name];
+		const value = data[columnMetadata.name];
 
-		if (!value) return acc;
+		if (isUndefined(value)) return acc;
 
 		if (MetadataUtil.isCustomMetadataType(columnMetadata.type)) {
 			const subEntityMetadata = metadataManager.getEntityMetadata(
@@ -30,7 +31,7 @@ export const convertEntityToDatabase = (
 			);
 
 			if (columnMetadata.isArray) {
-				value = value.map((val: CustomClass) =>
+				acc[columnMetadata.databaseName] = value.map((val: CustomClass) =>
 					convertEntityToDatabase(
 						{
 							metadataManager,
@@ -41,17 +42,21 @@ export const convertEntityToDatabase = (
 						},
 					),
 				);
-			} else {
-				value = convertEntityToDatabase(
-					{
-						metadataManager,
-					},
-					{
-						entity: subEntityMetadata,
-						data: value,
-					},
-				);
+
+				return acc;
 			}
+
+			acc[columnMetadata.databaseName] = convertEntityToDatabase(
+				{
+					metadataManager,
+				},
+				{
+					entity: subEntityMetadata,
+					data: value,
+				},
+			);
+
+			return acc;
 		}
 
 		acc[columnMetadata.databaseName] = value;

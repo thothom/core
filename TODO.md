@@ -29,16 +29,16 @@
   - [x] Between
   - [x] In
   - [x] IsNull
-- [ ] Add Tests
+- [x] Add Tests
   - [x] Decorators
-  - [ ] EntityManager
+  - [x] EntityManager
     - [x] Initialization (verify if it is setting ENTITIES and SUB-ENTITIES correctly)
     - [x] getAllEntitiesMetadata
     - [x] getAllTablesMetadata
     - [x] getEntityMetadata
     - [x] getColumnMetadata
     - [x] getEntityPrimaryColumns
-    - [ ] convertEntityToDatabase
+    - [x] convertEntityToDatabase
   - [x] Error
   - [x] Logger
   - [x] Repository
