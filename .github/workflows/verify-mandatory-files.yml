@@ -23,6 +23,8 @@ jobs:
         run: |
           if case ${{ steps.vars.outputs.short_ref }} in chore/*) true;; *) false;; esac; then
             MANDATORY_FILES="CHANGELOG.md"
+          elif case ${{ steps.vars.outputs.short_ref }} in dependabot/*) true;; *) false;; esac; then
+            MANDATORY_FILES=""
           else
             MANDATORY_FILES="CHANGELOG.md package.json"
           fi
