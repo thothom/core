@@ -87,10 +87,6 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		);
 	}
 
-	public getAllEntitiesDatabaseNames() {
-		return Object.values(this.entities).map(entity => entity.databaseName);
-	}
-
 	public getEntityMetadata(entity: any) {
 		const entityMetadata = this.entities[entity.name];
 

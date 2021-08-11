@@ -32,10 +32,9 @@
 - [ ] Add Tests
   - [x] Decorators
   - [ ] EntityManager
-    - [ ] Initialization (verify if it is setting ENTITIES and SUB-ENTITIES correctly)
-    - [ ] getAllEntitiesMetadata
-    - [ ] getAllTablesMetadata
-    - [ ] getAllEntitiesDatabaseNames
+    - [x] Initialization (verify if it is setting ENTITIES and SUB-ENTITIES correctly)
+    - [x] getAllEntitiesMetadata
+    - [x] getAllTablesMetadata
     - [ ] getEntityMetadata
     - [ ] getColumnMetadata
     - [ ] getEntityPrimaryColumns
