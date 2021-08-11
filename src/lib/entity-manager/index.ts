@@ -6,6 +6,10 @@ import { CompassErrorCodeEnum } from "../error/types/error-code.enum";
 import { setEntitiesMetadata } from "./helpers/set-entities-metadata";
 import { setSubEntitiesMetadata } from "./helpers/set-sub-entities-metadata";
 import {
+	convertDatabaseToEntity,
+	ConvertDatabaseToEntityParams,
+} from "./methods/convert-database-to-entity";
+import {
 	convertEntityToDatabase,
 	ConvertEntityToDatabaseParams,
 } from "./methods/convert-entity-to-database";
@@ -136,5 +140,14 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		params: ConvertEntityToDatabaseParams,
 	): Record<string, any> {
 		return convertEntityToDatabase({ metadataManager: this }, params);
+	}
+
+	/**
+	 * Converts database data to an entity data
+	 */
+	public convertDatabaseToEntity(
+		params: ConvertDatabaseToEntityParams,
+	): Record<string, any> {
+		return convertDatabaseToEntity({ metadataManager: this }, params);
 	}
 }
