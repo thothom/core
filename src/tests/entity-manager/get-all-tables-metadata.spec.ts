@@ -1,17 +1,9 @@
-import { Connection } from "../../lib/connection";
 import { Column } from "../../lib/decorators/column";
 import { Entity } from "../../lib/decorators/entity/entity";
 import { PrimaryColumn } from "../../lib/decorators/primary-column";
-import { Repository } from "../../lib/repository";
+import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getAllTablesMetadata", () => {
-	class TestConnection extends Connection {
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		public getRepository<Entity>(_entity: Entity): Repository<Entity> {
-			throw new Error("Method not implemented.");
-		}
-	}
-
 	it("should get basic entity metadata", () => {
 		@Entity()
 		class TestEntity {

@@ -1,19 +1,11 @@
-import { Connection } from "../../lib/connection";
 import { Column } from "../../lib/decorators/column";
 import { Entity } from "../../lib/decorators/entity/entity";
 import { PrimaryColumn } from "../../lib/decorators/primary-column";
 import { CompassError } from "../../lib/error";
 import { CompassErrorCodeEnum } from "../../lib/error/types/error-code.enum";
-import { Repository } from "../../lib/repository";
+import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getEntityPrimaryColumns", () => {
-	class TestConnection extends Connection {
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		public getRepository<Entity>(_entity: Entity): Repository<Entity> {
-			throw new Error("Method not implemented.");
-		}
-	}
-
 	it("should get unique primary-column metadata", () => {
 		@Entity()
 		class TestEntity {
