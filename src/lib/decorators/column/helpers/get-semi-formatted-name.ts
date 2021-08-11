@@ -11,8 +11,21 @@ export const getSemiFormattedName = ({
 	typeOrOptions,
 }: GetNameParams) => {
 	if (typeof typeOrOptions === "function") {
-		return propertyName;
+		return {
+			databaseName: propertyName,
+		};
 	}
 
-	return (typeOrOptions as ColumnOptions)?.name || propertyName;
+	const customName = (typeOrOptions as ColumnOptions)?.name;
+
+	if (customName) {
+		return {
+			databaseName: customName,
+			isNameAlreadyFormatted: true,
+		};
+	}
+
+	return {
+		databaseName: propertyName,
+	};
 };

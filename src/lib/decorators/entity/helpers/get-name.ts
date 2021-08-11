@@ -10,12 +10,20 @@ export const getDatabaseName = ({
 	nameOrOptions,
 }: GetNameParams) => {
 	if (typeof nameOrOptions === "string") {
-		return nameOrOptions;
+		return {
+			databaseName: nameOrOptions,
+			isNameAlreadyFormatted: true,
+		};
 	}
 
 	if (nameOrOptions?.name) {
-		return nameOrOptions.name;
+		return {
+			databaseName: nameOrOptions.name,
+			isNameAlreadyFormatted: true,
+		};
 	}
 
-	return entityConstructor.name;
+	return {
+		databaseName: entityConstructor.name,
+	};
 };

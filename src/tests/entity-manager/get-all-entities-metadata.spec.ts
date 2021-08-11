@@ -33,6 +33,42 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
+	it("should not format entity name if it is passed as param", () => {
+		@Entity("CUSTOM_ENTITY_NAME")
+		class TestEntity {
+			@PrimaryColumn()
+			public id: string;
+
+			@Column()
+			public foo: number;
+		}
+
+		const connection = new TestConnection({
+			entities: [TestEntity],
+			namingPattern: {
+				entity: "snake_case",
+			},
+			suffix: {
+				entity: {
+					remove: "Entity",
+				},
+			},
+		});
+
+		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			TestEntity: {
+				columns: [
+					{ databaseName: "id", name: "id", primary: true, type: String },
+					{ databaseName: "foo", name: "foo", type: Number },
+				],
+				isNameAlreadyFormatted: true,
+				databaseName: "CUSTOM_ENTITY_NAME",
+				name: "TestEntity",
+			},
+		});
+	});
+
 	it("should get entity + sub-entity metadata (without specify sub-entity at connection options)", () => {
 		@Entity({
 			isSubEntity: true,

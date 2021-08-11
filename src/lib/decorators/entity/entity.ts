@@ -5,7 +5,7 @@ import { getDatabaseName } from "./helpers/get-name";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const Entity = (nameOrOptions?: EntityOptions | string) => {
 	return (entityConstructor: any) => {
-		const databaseName = getDatabaseName({
+		const { databaseName, isNameAlreadyFormatted } = getDatabaseName({
 			entityConstructor,
 			nameOrOptions,
 		});
@@ -23,6 +23,7 @@ export const Entity = (nameOrOptions?: EntityOptions | string) => {
 			entityConstructor,
 			metadata: {
 				databaseName,
+				isNameAlreadyFormatted,
 				name: entityConstructor.name,
 				isSubEntity: options?.isSubEntity,
 				extras: options?.extras,

@@ -105,6 +105,90 @@ describe("EntityManager > convertEntityToDatabase", () => {
 		});
 	});
 
+	describe("Simple Entity With Custom Column Names", () => {
+		it("should not format name if it is passed on primary-column param", () => {
+			@Entity()
+			class TestEntity {
+				@PrimaryColumn("CUSTOM_FIELD_NAME")
+				public id: string;
+
+				@Column()
+				public test: string;
+			}
+
+			const connection = createConnection([TestEntity]);
+
+			const result = connection.metadataManager.convertEntityToDatabase({
+				entity: TestEntity,
+				data: {
+					id: "Test",
+					test: "foo",
+				},
+			});
+
+			expect(result).toStrictEqual({
+				CUSTOM_FIELD_NAME: "Test",
+				test_test: "foo",
+			});
+		});
+
+		it("should not format name if it is passed on primary-column options", () => {
+			@Entity()
+			class TestEntity {
+				@PrimaryColumn({
+					name: "CUSTOM_FIELD_NAME",
+				})
+				public id: string;
+
+				@Column()
+				public test: string;
+			}
+
+			const connection = createConnection([TestEntity]);
+
+			const result = connection.metadataManager.convertEntityToDatabase({
+				entity: TestEntity,
+				data: {
+					id: "Test",
+					test: "foo",
+				},
+			});
+
+			expect(result).toStrictEqual({
+				CUSTOM_FIELD_NAME: "Test",
+				test_test: "foo",
+			});
+		});
+
+		it("should not format the name if it is passed on column options", () => {
+			@Entity()
+			class TestEntity {
+				@PrimaryColumn()
+				public id: string;
+
+				@Column({
+					name: "CUSTOM_FIELD_NAME",
+				})
+				public test: string;
+			}
+
+			const connection = createConnection([TestEntity]);
+
+			const result = connection.metadataManager.convertEntityToDatabase({
+				entity: TestEntity,
+				data: {
+					id: "Test",
+					test: "foo",
+				},
+			});
+
+			expect(result).toStrictEqual({
+				test_id: "Test",
+				CUSTOM_FIELD_NAME: "foo",
+			});
+		});
+	});
+
 	describe("Entity With Array", () => {
 		let connection: TestConnection;
 

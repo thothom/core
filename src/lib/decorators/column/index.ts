@@ -7,7 +7,7 @@ import { MetadataUtil } from "../../utils/metadata-util";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const Column = (typeOrOptions?: ColumnOptions | MetadataType) => {
 	return (entityPrototype: any, propertyName: string) => {
-		const databaseName = getSemiFormattedName({
+		const { databaseName, isNameAlreadyFormatted } = getSemiFormattedName({
 			propertyName,
 			typeOrOptions,
 		});
@@ -22,6 +22,7 @@ export const Column = (typeOrOptions?: ColumnOptions | MetadataType) => {
 			metadata: {
 				name: propertyName,
 				databaseName,
+				isNameAlreadyFormatted,
 				type,
 				isArray,
 				extras: (typeOrOptions as ColumnOptions)?.extras,

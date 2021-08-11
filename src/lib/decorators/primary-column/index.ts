@@ -8,7 +8,7 @@ export const PrimaryColumn = (
 	nameOrOptions?: PrimaryColumnOptions | string,
 ) => {
 	return (entityPrototype: any, propertyName: string) => {
-		const databaseName = getDatabaseName({
+		const { databaseName, isNameAlreadyFormatted } = getDatabaseName({
 			propertyName,
 			nameOrOptions,
 		});
@@ -22,6 +22,7 @@ export const PrimaryColumn = (
 			metadata: {
 				name: propertyName,
 				databaseName,
+				isNameAlreadyFormatted,
 				type,
 				primary: true,
 				extras: (nameOrOptions as PrimaryColumnOptions)?.extras,

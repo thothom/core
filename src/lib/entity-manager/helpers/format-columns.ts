@@ -16,6 +16,7 @@ export const formatColumns = <ColumnExtraMetadata>({
 	columns.map(metadata => {
 		const databaseName = getDatabaseName({
 			value: metadata.databaseName,
+			isNameAlreadyFormatted: metadata.isNameAlreadyFormatted,
 			namingPattern: connectionOptions.namingPattern?.column,
 			optionsPrefix: applyPrefixSuffix
 				? connectionOptions.prefix?.column

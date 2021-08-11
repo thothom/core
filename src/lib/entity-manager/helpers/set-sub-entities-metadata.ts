@@ -49,6 +49,7 @@ export const setSubEntitiesMetadata = <
 
 		const databaseName = getDatabaseName({
 			value: metadata.databaseName,
+			isNameAlreadyFormatted: metadata.isNameAlreadyFormatted,
 			namingPattern: connectionOptions.namingPattern?.entity,
 			optionsPrefix: connectionOptions.prefix?.entity,
 			optionsSuffix: connectionOptions.suffix?.entity,
