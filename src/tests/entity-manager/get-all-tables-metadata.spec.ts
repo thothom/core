@@ -4,7 +4,7 @@ import { Entity } from "../../lib/decorators/entity/entity";
 import { PrimaryColumn } from "../../lib/decorators/primary-column";
 import { Repository } from "../../lib/repository";
 
-describe("EntityManager > constructor + getAllTablesMetadata", () => {
+describe("EntityManager > getAllTablesMetadata", () => {
 	class TestConnection extends Connection {
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		public getRepository<Entity>(_entity: Entity): Repository<Entity> {

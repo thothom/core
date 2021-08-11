@@ -1,7 +1,7 @@
 import { FindOperator } from "../operators/base";
 
 type FindConditions<T> = {
-	[P in keyof T]?: FindConditions<T[P]> | FindOperator<FindConditions<T[P]>>;
+	[P in keyof T]?: FindOperator<FindConditions<T[P]>> | T[P];
 };
 
 export interface FindOneOptions<Entity> {

@@ -17,14 +17,12 @@ export const convertEntityToDatabase = (
 ) => {
 	const entityMetadata = metadataManager.getEntityMetadata(entity);
 
-	const acc = {} as Record<string, any>;
-
-	entityMetadata.columns.forEach(columnMetadata => {
-		if (!data) return;
+	return entityMetadata.columns.reduce((acc, columnMetadata) => {
+		if (!data) return acc;
 
 		let value = data[columnMetadata.name];
 
-		if (!value) return;
+		if (!value) return acc;
 
 		if (MetadataUtil.isCustomMetadataType(columnMetadata.type)) {
 			const subEntityMetadata = metadataManager.getEntityMetadata(
@@ -57,7 +55,7 @@ export const convertEntityToDatabase = (
 		}
 
 		acc[columnMetadata.databaseName] = value;
-	});
 
-	return acc;
+		return acc;
+	}, {} as Record<string, any>);
 };
