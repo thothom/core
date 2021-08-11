@@ -35,9 +35,9 @@
     - [x] Initialization (verify if it is setting ENTITIES and SUB-ENTITIES correctly)
     - [x] getAllEntitiesMetadata
     - [x] getAllTablesMetadata
-    - [ ] getEntityMetadata
-    - [ ] getColumnMetadata
-    - [ ] getEntityPrimaryColumns
+    - [x] getEntityMetadata
+    - [x] getColumnMetadata
+    - [x] getEntityPrimaryColumns
     - [ ] convertEntityToDatabase
   - [x] Error
   - [x] Logger
@@ -77,6 +77,7 @@
   - [ ] Add `@DeleteDateColumn` decorator
   - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - [ ] Add auto-generated primary columns
+- [ ] Review code to check if is possible to split params in injectables and not injectables
 - [ ] Uncomment tests validation at `jest.config.js`
 - [x] Add pipeline step to check if mandatory files has changes
   - Mandatory files:
@@ -114,7 +115,7 @@
 
 - [ ] Add `@Index` decorator
 - [ ] Add entities auto-import from string path, like TypeORM
-  - Use `process.cwd()` to get the root dir of the project
+  - https://preview.npmjs.com/package/glob
 - [ ] Add the concept of "auto-generated" (Database -> Code) columns
   - [ ] Add `@VirtualColumn` decorator
     - Will be applied to a class method, and will be generated after a query from database

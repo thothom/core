@@ -92,7 +92,7 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 
 		if (!entityMetadata) {
 			throw new CompassError({
-				message: "Entity not Registered!",
+				message: "Entity not Registered",
 				code: CompassErrorCodeEnum.ENTITY_ERROR,
 				origin: "COMPASS",
 				details: ["Entity: ", entity],
@@ -103,13 +103,15 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	}
 
 	public getColumnMetadata(entity: any, columnName: string) {
-		const columnMetadata = this.entities[entity.name]?.columns.find(
+		const entityMetadata = this.getEntityMetadata(entity);
+
+		const columnMetadata = entityMetadata.columns.find(
 			metadata => metadata.name === columnName,
 		);
 
 		if (!columnMetadata) {
 			throw new CompassError({
-				message: "Entity not Registered!",
+				message: "Column not found",
 				code: CompassErrorCodeEnum.COLUMN_ERROR,
 				origin: "COMPASS",
 				details: ["Entity: ", entity, "Column: ", columnName],
@@ -120,14 +122,14 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	}
 
 	public getEntityPrimaryColumns(entity: any) {
-		return this.entities[entity.name]?.columns.filter(
+		const entityMetadata = this.getEntityMetadata(entity);
+
+		return entityMetadata.columns.filter(
 			columnMetadata => columnMetadata.primary,
 		);
 	}
 
 	/**
-	 * **[INTERNAL USE]**
-	 *
 	 * Converts an entity data to database data
 	 */
 	public convertEntityToDatabase(

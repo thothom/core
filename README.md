@@ -167,11 +167,8 @@ See [here](https://github.com/techmmunity/compass/blob/master/TODO.md) our to-do
 
 This project exists thanks to all the people who contribute:
 
-<a href="https://github.com/techmmunity/compass/graphs/contributors">
-	<img src="https://opencollective.com/@techmmunity/compass/contributors.svg?width=890&showBtn=false" />
-</a>
-
 ### "Cool Kids" who helped with the initial idea
 
 - [Diozin](https://www.linkedin.com/in/diozhn/), who suggested the name "Compass"
 - [Zaetic](https://www.linkedin.com/in/joaoggs/), who make our _gorgeous_ logo
+- A very special thanks to [Umed Khudoiberdiev](https://github.com/pleerock) and [Attila Oláh](https://github.com/NoNameProvided), how created TypeORM. Without their code, this package would never exists.
