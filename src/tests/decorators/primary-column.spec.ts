@@ -84,6 +84,7 @@ describe("Decorators > PrimaryColumn", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "superTest",
+					isNameAlreadyFormatted: true,
 					primary: true,
 					name: "foo",
 					type: String,
@@ -109,6 +110,7 @@ describe("Decorators > PrimaryColumn", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "bar",
+					isNameAlreadyFormatted: true,
 					primary: true,
 					name: "foo",
 					type: String,

@@ -10,8 +10,22 @@ export const getDatabaseName = ({
 	nameOrOptions,
 }: GetNameParams) => {
 	if (typeof nameOrOptions === "string") {
-		return nameOrOptions;
+		return {
+			databaseName: nameOrOptions,
+			isNameAlreadyFormatted: true,
+		};
 	}
 
-	return (nameOrOptions as PrimaryColumnOptions)?.name || propertyName;
+	const customName = (nameOrOptions as PrimaryColumnOptions)?.name;
+
+	if (customName) {
+		return {
+			databaseName: customName,
+			isNameAlreadyFormatted: true,
+		};
+	}
+
+	return {
+		databaseName: propertyName,
+	};
 };

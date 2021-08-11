@@ -5,6 +5,7 @@ import { formatSuffix } from "../../utils/prefix-suffix/format-suffix";
 
 interface GetDatabaseNameParams {
 	value: string;
+	isNameAlreadyFormatted?: boolean;
 	namingPattern?: NamingPatterns;
 	optionsPrefix?: {
 		add?: string;
@@ -18,10 +19,15 @@ interface GetDatabaseNameParams {
 
 export const getDatabaseName = ({
 	value,
+	isNameAlreadyFormatted,
 	namingPattern,
 	optionsPrefix,
 	optionsSuffix,
 }: GetDatabaseNameParams) => {
+	if (isNameAlreadyFormatted) {
+		return value;
+	}
+
 	const databaseName = formatNamingPattern({
 		value,
 		namingPattern,

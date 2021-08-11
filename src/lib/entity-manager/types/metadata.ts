@@ -11,6 +11,7 @@ export interface EntityMetadata<
 	name: string;
 	databaseName: string;
 	isSubEntity?: boolean;
+	isNameAlreadyFormatted?: boolean;
 	columns: Array<ColumnMetadata<ColumnExtraMetadata>>;
 	extras?: EntityExtraMetadata;
 	/**
@@ -23,6 +24,7 @@ export const ENTITY_METADATA_KEYS: Array<keyof EntityMetadata> = [
 	"name",
 	"databaseName",
 	"isSubEntity",
+	"isNameAlreadyFormatted",
 	"columns",
 	"extras",
 ];
@@ -35,6 +37,7 @@ export interface ColumnMetadata<ExtraData = Record<string, any>> {
 	name: string;
 	databaseName: string;
 	type: MetadataType;
+	isNameAlreadyFormatted?: boolean;
 	isArray?: boolean;
 	primary?: boolean;
 	extras?: ExtraData;
@@ -48,6 +51,7 @@ export const COLUMN_METADATA_KEYS: Array<keyof ColumnMetadata> = [
 	"name",
 	"databaseName",
 	"type",
+	"isNameAlreadyFormatted",
 	"isArray",
 	"primary",
 	"extras",

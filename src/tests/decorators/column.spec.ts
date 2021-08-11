@@ -306,6 +306,7 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "bar",
+					isNameAlreadyFormatted: true,
 					name: "foo",
 					type: String,
 				},

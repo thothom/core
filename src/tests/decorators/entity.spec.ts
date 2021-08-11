@@ -46,6 +46,7 @@ describe("Decorators > Entity", () => {
 			expect(metadata).toStrictEqual({
 				name: "Test",
 				databaseName: "SuperTest",
+				isNameAlreadyFormatted: true,
 				columns: [
 					{
 						databaseName: "foo",
@@ -74,6 +75,7 @@ describe("Decorators > Entity", () => {
 			expect(metadata).toStrictEqual({
 				name: "Test",
 				databaseName: "SuperTest",
+				isNameAlreadyFormatted: true,
 				columns: [
 					{
 						databaseName: "foo",
