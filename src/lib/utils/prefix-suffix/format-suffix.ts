@@ -15,6 +15,7 @@ export const formatSuffix = ({
 		const finalLetters = formattedName.substr(columnLengthWithoutSuffix);
 
 		if (finalLetters === options.remove) {
+			// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 			formattedName = formattedName.substr(0, columnLengthWithoutSuffix);
 		}
 	}
