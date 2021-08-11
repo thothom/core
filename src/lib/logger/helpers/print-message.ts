@@ -23,6 +23,8 @@ export const printMessage = ({
 	logLevel,
 	connectionName,
 }: PrintMessageParams) => {
+	const LOG_LEVEL_SPACE = 7;
+
 	const pidMessage = addColor({
 		logLevel,
 		message: `[Compass] ${process.pid}  - `,
@@ -30,7 +32,7 @@ export const printMessage = ({
 	const timestamp = getTimestamp();
 	const formattedLogLevel = addColor({
 		logLevel,
-		message: logLevel.toUpperCase().padStart(7, " "),
+		message: logLevel.toUpperCase().padStart(LOG_LEVEL_SPACE, " "),
 	});
 	const output = getOutput(message);
 

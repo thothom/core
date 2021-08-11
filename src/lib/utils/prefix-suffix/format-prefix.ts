@@ -12,6 +12,7 @@ export const formatPrefix = ({
 	if (options.remove) {
 		const prefixLength = options.remove.length;
 
+		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 		const initialLetters = formattedName.substr(0, prefixLength);
 
 		if (initialLetters === options.remove) {
