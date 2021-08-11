@@ -75,6 +75,37 @@ export interface BaseConnectionOptions {
 	 * // In the database will be:
 	 * "example_entity"
 	 * ```
+	 *
+	 * ---
+	 *
+	 * ## ALERT: The naming pattern are applied **BEFORE** the prefix and suffix
+	 *
+	 * So, in some cases, your column names maybe don't follow it,
+	 * like in this example:
+	 *
+	 * ```ts
+	 * // If you have the entity:
+	 * Entity()
+	 * class ExampleEntity {
+	 *    Column()
+	 *    fooBar: string;
+	 * }
+	 *
+	 * // And your connection options are like this:
+	 * {
+	 *   namingPattern: {
+	 *     column: "camelCase",
+	 *   },
+	 *   prefix: {
+	 *     column: {
+	 *       remove: "foo",
+	 *     },
+	 *   },
+	 * }
+	 *
+	 * // The name of the column `fooBar` in the database will be:
+	 * Bar
+	 * ```
 	 */
 	namingPattern?: {
 		entity?: NamingPatterns;
