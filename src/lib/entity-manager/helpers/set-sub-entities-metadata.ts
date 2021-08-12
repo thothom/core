@@ -2,7 +2,7 @@ import { BaseConnectionOptions } from "../../connection/types/connection-options
 import { Logger } from "../../logger";
 import { MetadataUtil } from "../../utils/metadata-util";
 import { EntityManagerEntities } from "../types/manager-metadata";
-import { ColumnMetadata } from "../types/metadata";
+import { ColumnMetadata } from "../types/column-metadata";
 import { formatColumns } from "./format-columns";
 import { getDatabaseName } from "./get-database-name";
 

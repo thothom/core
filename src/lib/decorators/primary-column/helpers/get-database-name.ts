@@ -1,6 +1,6 @@
 import { PrimaryColumnOptions } from "../../types/column-options";
 
-interface GetNameParams {
+interface GetDatabaseNameParams {
 	propertyName: string;
 	nameOrOptions?: PrimaryColumnOptions | string;
 }
@@ -8,7 +8,7 @@ interface GetNameParams {
 export const getDatabaseName = ({
 	propertyName,
 	nameOrOptions,
-}: GetNameParams) => {
+}: GetDatabaseNameParams) => {
 	if (typeof nameOrOptions === "string") {
 		return {
 			databaseName: nameOrOptions,
