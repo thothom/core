@@ -1,5 +1,5 @@
 import { EntityManager } from "../..";
-import { isUndefined } from "../../../utils/is-undefined";
+import { isUndefined } from "../../../utils/validations/is-undefined";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
 

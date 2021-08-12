@@ -8,7 +8,7 @@ import {
 	EntityMetadata,
 	ENTITY_METADATA_KEYS,
 } from "../../entity-manager/types/entity-metadata";
-import { isUndefined } from "../is-undefined";
+import { isUndefined } from "../validations/is-undefined";
 import {
 	AddColumnMetadataToEntityParams,
 	DefineAllEntityMetadataParams,
