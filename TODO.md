@@ -84,7 +84,7 @@
   - [x] Add `@DeleteDateColumn` decorator
   - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - [ ] Add validation at `autoGenerateEntityToDatabase` to validate if the column should be auto-generated based on event
-- [ ] Add `NotExist` operator, to verify if a field doesn't exists
+- [x] Add `Exist` operator, to verify if a field doesn't exists
 - [ ] Add pipeline step to check and **FAIL** if some files are changed
   - Maybe this action can be used: https://github.com/marketplace/actions/get-all-changed-files
   - Can't modify:
