@@ -16,4 +16,4 @@ export interface PrimaryGeneratedColumnOptions extends BaseColumnOptions {
 	strategy?: PrimaryGeneratedColumnStrategy;
 }
 
-export type SaveDateColumnOptions = BaseColumnOptions;
+export type DateColumnOptions = BaseColumnOptions;
