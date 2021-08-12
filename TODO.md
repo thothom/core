@@ -81,7 +81,7 @@
     - [x] Make `autoGenerateEntityToDatabase` method generate values based on the column metadata
   - [x] Add `@SaveDateColumn` decorator
   - [x] Add `@UpdateDateColumn` decorator
-  - [ ] Add `@DeleteDateColumn` decorator
+  - [x] Add `@DeleteDateColumn` decorator
   - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - [ ] Add validation at `autoGenerateEntityToDatabase` to validate if the column should be auto-generated based on event
 - [ ] Add `NotExist` operator, to verify if a field doesn't exists
