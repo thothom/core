@@ -1,5 +1,5 @@
 import { EntityManager } from "../..";
-import { isUndefined } from "../../../utils/is-undefined";
+import { isUndefined } from "../../../utils/validations/is-undefined";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
 
@@ -16,11 +16,11 @@ export const convertEntityToDatabase = (
 	{ metadataManager }: Injectables,
 	{ entity, data }: ConvertEntityToDatabaseParams,
 ) => {
+	if (isUndefined(data)) return {};
+
 	const entityMetadata = metadataManager.getEntityMetadata(entity);
 
 	return entityMetadata.columns.reduce((acc, columnMetadata) => {
-		if (isUndefined(data)) return acc;
-
 		const value = data[columnMetadata.name];
 
 		if (isUndefined(value)) return acc;

@@ -6,6 +6,10 @@ import { CompassErrorCodeEnum } from "../error/types/error-code.enum";
 import { setEntitiesMetadata } from "./helpers/set-entities-metadata";
 import { setSubEntitiesMetadata } from "./helpers/set-sub-entities-metadata";
 import {
+	autoGenerateEntityToDatabase,
+	AutoGenerateEntityToDatabaseParams,
+} from "./methods/auto-generate-entity-to-database";
+import {
 	convertDatabaseToEntity,
 	ConvertDatabaseToEntityParams,
 } from "./methods/convert-database-to-entity";
@@ -131,6 +135,15 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		return entityMetadata.columns.filter(
 			columnMetadata => columnMetadata.primary,
 		);
+	}
+
+	/**
+	 * Auto Generate Fields (Entity -> Database)
+	 */
+	public autoGenerateEntityToDatabase(
+		params: AutoGenerateEntityToDatabaseParams,
+	): Record<string, any> {
+		return autoGenerateEntityToDatabase({ metadataManager: this }, params);
 	}
 
 	/**
