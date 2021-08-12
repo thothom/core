@@ -1,6 +1,7 @@
 import { CompassError } from "../../../../../lib/error";
 import { CompassErrorCodeEnum } from "../../../../../lib/error/types/error-code.enum";
 import { Between } from "../../../../../lib/repository/queries/find/operators/between";
+import { Exist } from "../../../../../lib/repository/queries/find/operators/exist";
 import { In } from "../../../../../lib/repository/queries/find/operators/in";
 import { IsNull } from "../../../../../lib/repository/queries/find/operators/is-null";
 import { LessThan } from "../../../../../lib/repository/queries/find/operators/less-than";
@@ -45,6 +46,14 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 
 			expect(operator.type).toBe("between");
 			expect(operator.values).toStrictEqual([1, 10]);
+			expect(operator.not).toBe(true);
+		});
+
+		it("should create a Exist operator", () => {
+			const operator = Not(Exist());
+
+			expect(operator.type).toBe("exist");
+			expect(operator.values).toStrictEqual([]);
 			expect(operator.not).toBe(true);
 		});
 

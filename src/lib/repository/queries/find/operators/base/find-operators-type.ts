@@ -3,6 +3,7 @@
  */
 export type FindOperatorType =
 	| "between"
+	| "exist"
 	| "in"
 	| "isNull"
 	| "lessThan"

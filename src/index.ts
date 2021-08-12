@@ -59,6 +59,7 @@ export * from "./lib/repository/queries/find/types/options";
 
 export * from "./lib/repository/queries/find/operators/base";
 export * from "./lib/repository/queries/find/operators/between";
+export * from "./lib/repository/queries/find/operators/exist";
 export * from "./lib/repository/queries/find/operators/in";
 export * from "./lib/repository/queries/find/operators/is-null";
 export * from "./lib/repository/queries/find/operators/less-than";
