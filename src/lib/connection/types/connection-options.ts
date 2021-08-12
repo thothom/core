@@ -181,4 +181,14 @@ export interface BaseConnectionOptions {
 			remove?: string;
 		};
 	};
+
+	/**
+	 * Time Zone used to Auto Generated Dates
+	 *
+	 * List with all time zones available:
+	 * https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+	 *
+	 * **DEFAULT:** UTC
+	 */
+	timeZone?: string;
 }

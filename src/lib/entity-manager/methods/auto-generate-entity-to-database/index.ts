@@ -3,6 +3,7 @@ import { isUndefined } from "../../../utils/validations/is-undefined";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { shouldAutoGenerate } from "./helpers/should-auto-generate";
 import { isEmptyObject } from "../../../utils/validations/is-empty-object";
+import { DatabaseEvents } from "../../types/database-events";
 
 interface Injectables {
 	metadataManager: EntityManager<any, any>;
@@ -11,6 +12,7 @@ interface Injectables {
 export interface AutoGenerateEntityToDatabaseParams {
 	entity: any;
 	data: Record<string, any>;
+	events?: Array<DatabaseEvents>;
 }
 
 /**
@@ -19,7 +21,7 @@ export interface AutoGenerateEntityToDatabaseParams {
  */
 export const autoGenerateEntityToDatabase = (
 	{ metadataManager }: Injectables,
-	{ entity, data }: AutoGenerateEntityToDatabaseParams,
+	{ entity, data, events = [] }: AutoGenerateEntityToDatabaseParams,
 ) => {
 	if (isUndefined(data)) return {} as Record<string, any>;
 
@@ -39,6 +41,7 @@ export const autoGenerateEntityToDatabase = (
 				},
 				{
 					entity: subEntityMetadata,
+					events,
 					data: value || {},
 				},
 			);
