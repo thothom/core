@@ -1,5 +1,10 @@
+/* eslint-disable sonarjs/no-duplicate-string */
+
 import { validate } from "uuid";
 import { Column } from "../../../lib/decorators/column";
+import { DeleteDateColumn } from "../../../lib/decorators/date-columns/delete-date-column";
+import { SaveDateColumn } from "../../../lib/decorators/date-columns/save-date-column";
+import { UpdateDateColumn } from "../../../lib/decorators/date-columns/update-date-column";
 import { Entity } from "../../../lib/decorators/entity/entity";
 import { PrimaryColumn } from "../../../lib/decorators/primary-column";
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/primary-generated-column";
@@ -353,6 +358,141 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 						id: result.testSub.subSubEntity.id,
 					},
 				},
+			});
+		});
+	});
+
+	describe("Only Generate Fields If Events Match (save)", () => {
+		@Entity()
+		class TestEntity {
+			@Column()
+			public id: string;
+
+			@SaveDateColumn()
+			public test: string;
+		}
+
+		const connection = createConnection([TestEntity]);
+
+		it("should generate field", () => {
+			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+				entity: TestEntity,
+				events: ["save"],
+				data: {
+					id: "foo",
+				},
+			});
+
+			expect(result).toHaveProperty("id");
+			expect(result).toHaveProperty("test");
+			expect(typeof result.test === "string").toBeTruthy();
+			expect(result).toStrictEqual({
+				id: "foo",
+				test: result.test,
+			});
+		});
+
+		it("should NOT generate field", () => {
+			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+				entity: TestEntity,
+				events: ["update"],
+				data: {
+					id: "foo",
+				},
+			});
+
+			expect(result).toStrictEqual({
+				id: "foo",
+			});
+		});
+	});
+
+	describe("Only Generate Fields If Events Match (update)", () => {
+		@Entity()
+		class TestEntity {
+			@Column()
+			public id: string;
+
+			@UpdateDateColumn()
+			public test: string;
+		}
+
+		const connection = createConnection([TestEntity]);
+
+		it("should generate field", () => {
+			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+				entity: TestEntity,
+				events: ["update"],
+				data: {
+					id: "foo",
+				},
+			});
+
+			expect(result).toHaveProperty("id");
+			expect(result).toHaveProperty("test");
+			expect(typeof result.test === "string").toBeTruthy();
+			expect(result).toStrictEqual({
+				id: "foo",
+				test: result.test,
+			});
+		});
+
+		it("should NOT generate field", () => {
+			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+				entity: TestEntity,
+				events: ["delete"],
+				data: {
+					id: "foo",
+				},
+			});
+
+			expect(result).toStrictEqual({
+				id: "foo",
+			});
+		});
+	});
+
+	describe("Only Generate Fields If Events Match (delete)", () => {
+		@Entity()
+		class TestEntity {
+			@Column()
+			public id: string;
+
+			@DeleteDateColumn()
+			public test: string;
+		}
+
+		const connection = createConnection([TestEntity]);
+
+		it("should generate field", () => {
+			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+				entity: TestEntity,
+				events: ["delete"],
+				data: {
+					id: "foo",
+				},
+			});
+
+			expect(result).toHaveProperty("id");
+			expect(result).toHaveProperty("test");
+			expect(typeof result.test === "string").toBeTruthy();
+			expect(result).toStrictEqual({
+				id: "foo",
+				test: result.test,
+			});
+		});
+
+		it("should NOT generate field", () => {
+			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+				entity: TestEntity,
+				events: ["save"],
+				data: {
+					id: "foo",
+				},
+			});
+
+			expect(result).toStrictEqual({
+				id: "foo",
 			});
 		});
 	});

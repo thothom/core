@@ -1,7 +1,7 @@
 # To Do
 
 - [x] Decide if the types of the arrays must be passed with or without []
-  - Will be passed **without**
+  - As they are the only type who need to be passed, will be passed **without**
 - [x] Add Suffix
 - [x] Add Prefix
 - [x] Add `extras` field to `@Entity` and all `@Column*` decorators
@@ -83,8 +83,9 @@
   - [x] Add `@UpdateDateColumn` decorator
   - [x] Add `@DeleteDateColumn` decorator
   - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
-  - [ ] Add validation at `autoGenerateEntityToDatabase` to validate if the column should be auto-generated based on event
+  - [x] Add validation at `autoGenerateEntityToDatabase` to validate if the column should be auto-generated based on event
 - [x] Add `Exist` operator, to verify if a field doesn't exists
+- [ ] Add tests to `src/utils/validations`
 - [ ] Add pipeline step to check and **FAIL** if some files are changed
   - Maybe this action can be used: https://github.com/marketplace/actions/get-all-changed-files
   - Can't modify:
@@ -125,6 +126,15 @@
     - Will be applied to a class method, and will be generated after a query from database
     - Remember to check: If the `select` be passed, so verify if the virtual field in the array
   - [ ] Edit the auto-generation method of primary columns
+- [ ] Maybe in the future accept more column type and handle the correspondent function automatically? Types like accept "bigint" as param for @Column, convert this automatically to Number, and store the "bigint" at the "extras" field, so relational databases can take more advantage of this package
+
+### SQL
+
+- [ ] Add `@JoinColumn` decorator
+- [ ] Add `@JoinTable` decorator
+- [ ] Add `@OneToOne` decorator
+- [ ] Add `@OneToMany` decorator
+- [ ] Add `@ManyToMany` decorator
 
 ### CLI
 

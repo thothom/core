@@ -53,7 +53,10 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	 */
 
 	public constructor(
-		connection: Connection<EntityExtraMetadata, ColumnExtraMetadata>,
+		private readonly connection: Connection<
+			EntityExtraMetadata,
+			ColumnExtraMetadata
+		>,
 	) {
 		setEntitiesMetadata<EntityExtraMetadata, ColumnExtraMetadata>({
 			entities: this.entities,
@@ -143,7 +146,13 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	public autoGenerateEntityToDatabase(
 		params: AutoGenerateEntityToDatabaseParams,
 	): Record<string, any> {
-		return autoGenerateEntityToDatabase({ metadataManager: this }, params);
+		return autoGenerateEntityToDatabase(
+			{
+				metadataManager: this,
+				connectionOptions: this.connection.options,
+			},
+			params,
+		);
 	}
 
 	/**
