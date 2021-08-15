@@ -51,25 +51,26 @@ export * from "./lib/repository";
  * FindOptions
  */
 
-export * from "./lib/repository/queries/find/types/options";
+export * from "./lib/repository/queries/types/find-conditions";
+export * from "./lib/repository/queries/types/find-options";
 
 /**
  * FindOperators
  */
 
-export * from "./lib/repository/queries/find/operators/base";
-export * from "./lib/repository/queries/find/operators/between";
-export * from "./lib/repository/queries/find/operators/ends-with";
-export * from "./lib/repository/queries/find/operators/exist";
-export * from "./lib/repository/queries/find/operators/in";
-export * from "./lib/repository/queries/find/operators/is-null";
-export * from "./lib/repository/queries/find/operators/less-than";
-export * from "./lib/repository/queries/find/operators/less-than-or-equal";
-export * from "./lib/repository/queries/find/operators/like";
-export * from "./lib/repository/queries/find/operators/more-than";
-export * from "./lib/repository/queries/find/operators/more-than-or-equal";
-export * from "./lib/repository/queries/find/operators/not";
-export * from "./lib/repository/queries/find/operators/starts-with";
+export * from "./lib/repository/queries/find-operators/base";
+export * from "./lib/repository/queries/find-operators/between";
+export * from "./lib/repository/queries/find-operators/ends-with";
+export * from "./lib/repository/queries/find-operators/exist";
+export * from "./lib/repository/queries/find-operators/in";
+export * from "./lib/repository/queries/find-operators/is-null";
+export * from "./lib/repository/queries/find-operators/less-than";
+export * from "./lib/repository/queries/find-operators/less-than-or-equal";
+export * from "./lib/repository/queries/find-operators/like";
+export * from "./lib/repository/queries/find-operators/more-than";
+export * from "./lib/repository/queries/find-operators/more-than-or-equal";
+export * from "./lib/repository/queries/find-operators/not";
+export * from "./lib/repository/queries/find-operators/starts-with";
 
 /**
  * ---------------------------------------------------------------------------

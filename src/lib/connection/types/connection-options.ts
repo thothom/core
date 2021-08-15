@@ -51,15 +51,6 @@ export interface BaseConnectionOptions {
 	timeout?: number;
 
 	/**
-	 * Global qtd of retries for each query that failed
-	 *
-	 * **ALERT:** APPLIED TO ALL QUERIES (SAVE, DELETE, FIND, ...)!!!
-	 * If you want to define a retry policy for a specific query, you can
-	 * do it using the query options (See more details at the query method).
-	 */
-	retries?: number;
-
-	/**
 	 * Naming pattern to be used to name ENTITIES, COLUMNS, etc
 	 *
 	 * It convert the CLASS or PROPERTY name to the case specified
