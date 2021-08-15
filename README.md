@@ -119,31 +119,8 @@ FooRepository.save({
 
 ## Documentation
 
-This is an documentation for the final user, if you want to know how to make a plugin or how to contribute to this project, give a look at [this doc](https://github.com/techmmunity/compass/blob/master/CONTRIBUTING.md).
-
-### Connection
-
-Each plugin has his own connection options, but we recommend to follow at least this base:
-
-#### tableNamingPattern
-
-The naming pattern for the tables. Accept the values: `snake_case`, `PascalCase`, `CamelCase`, `kebab-case`, `UPPER_CASE` and a custom function that receives a string and must return also a string.
-
-#### columnNamingPattern
-
-The naming pattern for the tables. Accept the values: `snake_case`, `PascalCase`, `CamelCase`, `kebab-case`, `UPPER_CASE` and a custom function that receives a string and must return also a string.
-
-#### maxQueryExecutionTime
-
-The maximum time to execute a "query", like a "timeout". Accepts a number.
-
-### Decorators
-
-> TODO
-
-### Repository
-
-> TODO
+- [For the users](https://compass.techmmunity.com.br)
+- [For the plugin creators](https://compass.techmmunity.com.br/docs/create-plugin/first-steps)
 
 ## Limitations and warnings
 
@@ -154,7 +131,7 @@ The maximum time to execute a "query", like a "timeout". Accepts a number.
 
 ## How to contribute?
 
-All the details about contributing to the project are [described here](https://github.com/techmmunity/compass/blob/master/CONTRIBUTING.md).
+All the details about contributing are in [our website](https://compass.techmmunity.com.br).
 
 See [here](https://github.com/techmmunity/compass/blob/master/TODO.md) our to-dos.
 
@@ -163,6 +140,8 @@ See [here](https://github.com/techmmunity/compass/blob/master/TODO.md) our to-do
 ### Contributors
 
 This project exists thanks to all the people who contribute:
+
+> TODO
 
 ### "Cool Kids" who helped with the initial idea
 
