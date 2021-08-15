@@ -1,11 +1,12 @@
+import { METADATA_PREFIX } from "../../../config";
 import { MetadataUtil } from "../../../lib/utils/metadata-util";
 
 describe("Utils > MetadataUtil > defineAllEntityMetadata", () => {
-	const METADATA_NAME_KEY = "compass:entity:name";
-	const METADATA_DATABASE_NAME_KEY = "compass:entity:databasename";
-	const METADATA_COLUMNS_KEY = "compass:entity:columns";
-	const METADATA_IS_SUB_ENTITY_KEY = "compass:entity:issubentity";
-	const METADATA_EXTRAS_KEY = "compass:entity:extras";
+	const METADATA_NAME_KEY = `${METADATA_PREFIX}name`;
+	const METADATA_DATABASE_NAME_KEY = `${METADATA_PREFIX}databasename`;
+	const METADATA_COLUMNS_KEY = `${METADATA_PREFIX}columns`;
+	const METADATA_IS_SUB_ENTITY_KEY = `${METADATA_PREFIX}issubentity`;
+	const METADATA_EXTRAS_KEY = `${METADATA_PREFIX}extras`;
 
 	describe("Valid metadata", () => {
 		it("should define mandatory metadata", () => {

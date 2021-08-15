@@ -20,9 +20,9 @@ export interface BaseConnectionOptions {
 	 *
 	 * You can use pre-defined categories to specify the logging level
 	 *
-	 * **MINIMUM:** [DEFAULT] Only errors
+	 * **MINIMUM:** Only errors
 	 *
-	 * **ALL:** Error, warns and logs
+	 * **ALL:** [DEFAULT] Error, warns and logs
 	 *
 	 * **ALL_INTERNAL:** **ALL of all**, for internal use and debugging
 	 *

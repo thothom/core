@@ -29,7 +29,7 @@ jobs:
             MANDATORY_FILES="CHANGELOG.md package.json"
           fi
 
-          MODIFIED_FILES=${{ steps.files.outputs.all }}
+          MODIFIED_FILES="${{ steps.files.outputs.all }}"
 
           for mandatory_file in $MANDATORY_FILES; do
             if echo $MODIFIED_FILES | grep -w $mandatory_file > /dev/null; then

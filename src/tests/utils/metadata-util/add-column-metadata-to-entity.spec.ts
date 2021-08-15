@@ -1,7 +1,8 @@
+import { METADATA_PREFIX } from "../../../config";
 import { MetadataUtil } from "../../../lib/utils/metadata-util";
 
 describe("Utils > MetadataUtil > addColumnMetadataToEntity", () => {
-	const COLUMNS_METADATA_KEY = "compass:entity:columns";
+	const COLUMNS_METADATA_KEY = `${METADATA_PREFIX}columns`;
 
 	describe("Valid metadata", () => {
 		it("should define mandatory metadata", () => {

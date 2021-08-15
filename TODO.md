@@ -82,7 +82,6 @@
   - [x] Add `@SaveDateColumn` decorator
   - [x] Add `@UpdateDateColumn` decorator
   - [x] Add `@DeleteDateColumn` decorator
-  - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - [x] Add validation at `autoGenerateEntityToDatabase` to validate if the column should be auto-generated based on event
 - [x] Add `Exist` operator, to verify if a field doesn't exists
 - [ ] Add tests to `src/utils/validations`
@@ -119,6 +118,7 @@
 ### General
 
 - [ ] Add `@Index` decorator
+- [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
 - [ ] Add entities auto-import from string path, like TypeORM
   - https://preview.npmjs.com/package/glob
 - [ ] Add the concept of "auto-generated" (Database -> Code) columns
