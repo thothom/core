@@ -3,6 +3,7 @@
  */
 export type FindOperatorType =
 	| "between"
+	| "endsWith"
 	| "exist"
 	| "in"
 	| "isNull"
@@ -11,4 +12,5 @@ export type FindOperatorType =
 	| "like"
 	| "moreThan"
 	| "moreThanOrEqual"
-	| "not";
+	| "not"
+	| "startsWith";

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { METADATA_PREFIX } from "../../../config";
 import {
 	ColumnMetadata,
 	COLUMN_METADATA_KEYS,
@@ -18,7 +19,7 @@ import {
 } from "./types/method-params";
 
 const formatMetadataKey = (metadataKey: string) =>
-	`compass:entity:${metadataKey.toLowerCase()}`;
+	`${METADATA_PREFIX}${metadataKey.toLowerCase()}`;
 
 export class MetadataUtil {
 	public static isDefaultMetadataType(type: any) {

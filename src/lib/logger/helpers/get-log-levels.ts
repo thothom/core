@@ -9,9 +9,9 @@ export const getLogLevels = (
 		case "NONE":
 			return [];
 		case "ALL":
+		case undefined:
 			return ["ERROR", "WARN", "LOG"];
 		case "MINIMUM":
-		case undefined:
 			return ["ERROR"];
 		default:
 			return bruteLogLevel;

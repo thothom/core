@@ -1,3 +1,4 @@
+import { METADATA_PREFIX } from "../../../config";
 import { MetadataUtil } from "../../../lib/utils/metadata-util";
 
 describe("Utils > MetadataUtil > defineEntityMetadata", () => {
@@ -11,7 +12,7 @@ describe("Utils > MetadataUtil > defineEntityMetadata", () => {
 				metadataValue: "foo",
 			});
 
-			const result = Reflect.getMetadata("compass:entity:name", entity);
+			const result = Reflect.getMetadata(`${METADATA_PREFIX}name`, entity);
 
 			expect(result).toBe("foo");
 		});
@@ -25,7 +26,7 @@ describe("Utils > MetadataUtil > defineEntityMetadata", () => {
 				metadataValue: "bar",
 			});
 
-			const result = Reflect.getMetadata("compass:entity:random", entity);
+			const result = Reflect.getMetadata(`${METADATA_PREFIX}random`, entity);
 
 			expect(result).toBe("bar");
 		});
@@ -39,7 +40,7 @@ describe("Utils > MetadataUtil > defineEntityMetadata", () => {
 				metadataValue: "foobar",
 			});
 
-			const result = Reflect.getMetadata("compass:entity:uppercase", entity);
+			const result = Reflect.getMetadata(`${METADATA_PREFIX}uppercase`, entity);
 
 			expect(result).toBe("foobar");
 		});

@@ -28,15 +28,8 @@
 	<img src="https://img.shields.io/npm/dw/@techmmunity/compass.svg" alt="Downloads">
 </a>
 
-## ALERT: THIS IS UNDER DEVELOPMENT AND TESTING. WE DO NOT RECOMMEND USE THIS IN PRODUCTION YET!!!
-
-<!--
-Once that the message of development and testing be removed,
-uncomment this
-
 <br>
 <br>
--->
 
 </div>
 
@@ -44,7 +37,8 @@ Compass is an [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping) bas
 
 Currently it only works with TypeScript (and transpiled JavaScript), and we plan to keep this way.
 
-[![Discord Badge](https://img.shields.io/badge/join%20our%20community-7289DA?style=for-the-badge&labelColor=7289DA&logo=discord&logoColor=white)](https://discord.gg/qCJXz6P4qw)
+[![Discord Badge](https://img.shields.io/badge/discord-7289DA?style=for-the-badge&labelColor=7289DA&logo=discord&logoColor=white)](https://discord.gg/5hPnJzzAe2)
+[![Docs Badge](https://img.shields.io/badge/documentation-01d2ce?style=for-the-badge&labelColor=01d2ce)](https://compass.techmmunity.com.br)
 
 ## Why use Techmmunity Compass?
 
