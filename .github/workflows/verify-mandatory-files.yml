@@ -21,12 +21,10 @@ jobs:
 
       - name: Verify Files Changed
         run: |
-          if case ${{ steps.branch_name.outputs.name }} in chore/*) true;; *) false;; esac; then
-            MANDATORY_FILES="CHANGELOG.md"
-          elif case ${{ steps.branch_name.outputs.name }} in dependabot/*) true;; *) false;; esac; then
-            MANDATORY_FILES=""
-          else
+          if case ${{ steps.branch_name.outputs.name }} in feature/*) true;; *) false;; esac; then
             MANDATORY_FILES="CHANGELOG.md package.json"
+          else
+            MANDATORY_FILES=""
           fi
 
           MODIFIED_FILES="${{ steps.files.outputs.all }}"

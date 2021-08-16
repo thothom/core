@@ -85,25 +85,18 @@
   - [x] Add validation at `autoGenerateEntityToDatabase` to validate if the column should be auto-generated based on event
 - [x] Add `Exist` operator, to verify if a field doesn't exists
 - [ ] Add tests to `src/utils/validations`
-- [ ] Add pipeline step to check and **FAIL** if some files are changed
-  - Maybe this action can be used: https://github.com/marketplace/actions/get-all-changed-files
-  - Can't modify:
-    - .eslintrc.json
-    - .eslintignore
-    - .lintstagedrc
-    - .nvmrc
-    - jest.config.js
-    - .editorconfig
-    - CONTRIBUTING.md
-    - Any file inside .husky folder
-    - Any file inside .github folder
-    - Any file inside .vscode folder
 - [ ] Review code to check if is possible to split params in injectables and not injectables
 - [ ] Unbind methods that receive `this`, change to receive the functions of the class instead, and make the methods PRIVATE
-- [ ] Improve Documentation
+- [ ] Add a way to:
+  - [ ] Determine if a entity has an "deletedAt" column (Probably do it at the constructor of the metadata manager, in the loop, because it can't be done at the DeleteDateColumn, because in some cases, it will be defined in the sub-entity, not in the entity.)
+  - [ ] Get the path to the special deletedAt column
+- [ ] Add columns validation:
+  - [ ] If a column with the same name exists, throw an error
+- [ ] Create a template repository "compass-plugin"
+- [x] Improve Documentation
   - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
-  - [ ] Use [Docusaurus](https://docusaurus.io/docs)
-  - [ ] Give a bit of love to `CONTRIBUTING.md`
+  - [x] Use [Docusaurus](https://docusaurus.io/docs)
+  - [x] Give a bit of love to `CONTRIBUTING.md`
   - [ ] Add COMPLETE documentation about HOW to create a plugin
     - Include EVERY validation that need to be done
     - Include EVERY step IN ORDER that need to be made
@@ -119,6 +112,7 @@
 
 - [ ] Add `@Index` decorator
 - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
+  - This column will be auto-generated **on save**
 - [ ] Add entities auto-import from string path, like TypeORM
   - https://preview.npmjs.com/package/glob
 - [ ] Add the concept of "auto-generated" (Database -> Code) columns
