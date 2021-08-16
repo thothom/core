@@ -1,11 +1,6 @@
 import { Count } from "./queries/methods/count";
 import { Delete } from "./queries/methods/delete";
-import {
-	Find,
-	FindManyByPrimaryKey,
-	FindOne,
-	FindOneByPrimaryKey,
-} from "./queries/methods/find";
+import { Find, FindOne } from "./queries/methods/find";
 import { Save, Upsert } from "./queries/methods/save";
 
 export interface Repository<Entity> {
@@ -53,14 +48,6 @@ export interface Repository<Entity> {
 	 * Find one record based on a query.
 	 */
 	findOne: FindOne<Entity>;
-	/**
-	 * Find one record based on the primary key.
-	 */
-	findOneByPrimaryKey: FindOneByPrimaryKey<Entity>;
-	/**
-	 * Find many records based on the primary keys.
-	 */
-	findManyByPrimaryKey: FindManyByPrimaryKey<Entity>;
 
 	/**
 	 * --------------------------------------------------

@@ -105,6 +105,8 @@
     - [ ] "how to work with multiple value types for the same field"
     - [ ] "how to work with the same table for multiple entities" / "how to work with a table that have multiple entities schemas"
     - [ ] "how to work with array columns that can have multiple types" (Ex: `column: Array<Entity1 | Entity2>`)
+- [ ] Add "Save Operators"
+  - [ ] `Remove` -> deletes a field
 
 ## To Do Future
 

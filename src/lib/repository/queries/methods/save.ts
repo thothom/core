@@ -1,4 +1,4 @@
-import { FindOneOptions } from "../types/find-options";
+import { FindOptions } from "../types/find-options";
 import { BaseQueryOptions } from "../types/query-options";
 
 export type Save<Entity> = (
@@ -7,7 +7,7 @@ export type Save<Entity> = (
 ) => Promise<Array<Entity> | Entity>;
 
 export type Upsert<Entity> = (
-	conditions: FindOneOptions<Entity>,
+	conditions: FindOptions<Entity>,
 	data: Partial<Entity>,
 	options?: BaseQueryOptions,
 ) => Promise<Array<Entity> | Entity>;
