@@ -1,30 +1,24 @@
-import { BaseConnectionOptions } from "../../connection/types/connection-options";
-import { Logger } from "../../logger";
-import { MetadataUtil } from "../../utils/metadata-util";
-import { EntityManagerEntities } from "../types/manager-metadata";
-import { ColumnMetadata } from "../types/column-metadata";
+import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
+import { Logger } from "../../../../logger";
+import { MetadataUtil } from "../../../../utils/metadata-util";
+import { EntityManagerEntities } from "../../../types/manager-metadata";
+import { ColumnMetadata } from "../../../types/column-metadata";
 import { formatColumns } from "./format-columns";
 import { getDatabaseName } from "./get-database-name";
 
-interface SetSubEntitiesMetadataParams<
-	EntityExtraMetadata,
-	ColumnExtraMetadata,
-> {
+interface GetSubEntitiesMetadataParams {
 	logger: Logger;
-	allEntitiesColumns: Array<ColumnMetadata<ColumnExtraMetadata>>;
-	entities: EntityManagerEntities<EntityExtraMetadata, ColumnExtraMetadata>;
+	allEntitiesColumns: Array<ColumnMetadata>;
+	entities: EntityManagerEntities<any, any>;
 	connectionOptions: BaseConnectionOptions;
 }
 
-export const setSubEntitiesMetadata = <
-	EntityExtraMetadata,
-	ColumnExtraMetadata,
->({
+export const getSubEntitiesMetadata = ({
 	logger,
 	allEntitiesColumns,
 	entities,
 	connectionOptions,
-}: SetSubEntitiesMetadataParams<EntityExtraMetadata, ColumnExtraMetadata>) => {
+}: GetSubEntitiesMetadataParams) => {
 	const rawSubEntities = allEntitiesColumns
 		.filter(columnMetadata =>
 			MetadataUtil.isCustomMetadataType(columnMetadata.type),
@@ -32,13 +26,17 @@ export const setSubEntitiesMetadata = <
 		.map(columnMetadata => columnMetadata.type);
 
 	rawSubEntities.forEach(rawSubEntity => {
-		const metadata = MetadataUtil.getAllEntityMetadata<
-			EntityExtraMetadata,
-			ColumnExtraMetadata
-		>({
+		const metadata = MetadataUtil.getAllEntityMetadata<any, any>({
 			entity: rawSubEntity,
 		});
 
+		/**
+		 * If the entity already exists, logs a warn,
+		 * because one entity can both be an entity and a sub-entity.
+		 *
+		 * We can't tell if it's an error (2 different entities with
+		 * the same name) or not, so we just warn instead throw an error.
+		 */
 		if (entities[metadata.name]) {
 			logger.warn(
 				`Duplicated SubEntity skipped, may be an error: ${metadata.name}`,
@@ -50,12 +48,12 @@ export const setSubEntitiesMetadata = <
 		const databaseName = getDatabaseName({
 			value: metadata.databaseName,
 			isNameAlreadyFormatted: metadata.isNameAlreadyFormatted,
-			namingPattern: connectionOptions.namingPattern?.entity,
+			namingStrategy: connectionOptions.namingStrategy?.entity,
 			optionsPrefix: connectionOptions.prefix?.entity,
 			optionsSuffix: connectionOptions.suffix?.entity,
 		});
 
-		const formattedColumns = formatColumns<ColumnExtraMetadata>({
+		const formattedColumns = formatColumns({
 			columns: metadata.columns,
 			applyPrefixSuffix: !metadata.isSubEntity,
 			connectionOptions,
@@ -69,11 +67,16 @@ export const setSubEntitiesMetadata = <
 
 		logger.debug(`Add SubEntity: ${JSON.stringify(entities[metadata.name])}`);
 
-		setSubEntitiesMetadata({
-			allEntitiesColumns: formattedColumns,
+		/**
+		 * Recursive call
+		 *
+		 * Does it because sub-entities also can have sub-entities
+		 */
+		getSubEntitiesMetadata({
+			allEntitiesColumns: formattedColumns as any,
 			logger,
 			entities,
 			connectionOptions,
 		});
-	}, {});
+	});
 };

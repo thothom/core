@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Connection } from "../connection";
+import { BaseConnectionOptions } from "../connection/types/connection-options";
 import { CompassError } from "../error";
 import { CompassErrorCodeEnum } from "../error/types/error-code.enum";
-import { setEntitiesMetadata } from "./helpers/set-entities-metadata";
-import { setSubEntitiesMetadata } from "./helpers/set-sub-entities-metadata";
+import { Logger } from "../logger";
 import {
 	autoGenerateEntityToDatabase,
 	AutoGenerateEntityToDatabaseParams,
@@ -17,13 +16,29 @@ import {
 	convertEntityToDatabase,
 	ConvertEntityToDatabaseParams,
 } from "./methods/convert-entity-to-database";
+import { loadEntities } from "./methods/load-entities";
 import { EntityManagerEntities } from "./types/manager-metadata";
+
+interface EntityManagerConstructorParams {
+	connectionOptions: BaseConnectionOptions;
+	logger: Logger;
+}
 
 /**
  * Responsible of store and manage all entities metadata
  * for a specific connection.
  */
 export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
+	/**
+	 * Logger
+	 */
+	private readonly logger: Logger;
+
+	/**
+	 * Connection Options
+	 */
+	private readonly connectionOptions: BaseConnectionOptions;
+
 	/**
 	 * Saves the metadata of all the entities, columns, etc
 	 *
@@ -52,29 +67,20 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	 * ---------------------------------------------------
 	 */
 
-	public constructor(
-		private readonly connection: Connection<
-			EntityExtraMetadata,
-			ColumnExtraMetadata
-		>,
-	) {
-		setEntitiesMetadata<EntityExtraMetadata, ColumnExtraMetadata>({
-			entities: this.entities,
-			logger: connection.logger,
-			rawEntities: connection.options.entities,
-			connectionOptions: connection.options,
+	public constructor({
+		connectionOptions,
+		logger,
+	}: EntityManagerConstructorParams) {
+		this.logger = logger;
+		this.connectionOptions = connectionOptions;
+
+		const entities = loadEntities<EntityExtraMetadata, ColumnExtraMetadata>({
+			connectionOptions: this.connectionOptions,
+			logger: this.logger,
+			entities: this.connectionOptions.entities,
 		});
 
-		const allEntitiesColumns = Object.values(this.entities)
-			.map(entity => entity.columns)
-			.flat();
-
-		setSubEntitiesMetadata<EntityExtraMetadata, ColumnExtraMetadata>({
-			allEntitiesColumns,
-			entities: this.entities,
-			logger: connection.logger,
-			connectionOptions: connection.options,
-		});
+		this.entities = entities;
 	}
 
 	/**
@@ -149,7 +155,7 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		return autoGenerateEntityToDatabase(
 			{
 				metadataManager: this,
-				connectionOptions: this.connection.options,
+				connectionOptions: this.connectionOptions,
 			},
 			params,
 		);

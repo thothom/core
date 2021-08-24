@@ -1,6 +1,6 @@
 import { LogLevel } from "../../logger/types/log-level";
 import { CustomClass } from "../../entity-manager/types/metadata-type";
-import { NamingPatterns } from "../../utils/format-naming-pattern/types/naming-patterns";
+import { NamingStrategy } from "../../utils/format-naming-strategy/types/naming-strategy";
 
 export interface BaseConnectionOptions {
 	/**
@@ -51,7 +51,7 @@ export interface BaseConnectionOptions {
 	timeout?: number;
 
 	/**
-	 * Naming pattern to be used to name ENTITIES, COLUMNS, etc
+	 * Naming strategy to be used to name ENTITIES, COLUMNS, etc
 	 *
 	 * It convert the CLASS or PROPERTY name to the case specified
 	 *
@@ -61,7 +61,7 @@ export interface BaseConnectionOptions {
 	 * class ExampleEntity {}
 	 *
 	 * // And the config are:
-	 * namingPattern: "snake_case"
+	 * namingStrategy: "snake_case"
 	 *
 	 * // In the database will be:
 	 * "example_entity"
@@ -69,7 +69,7 @@ export interface BaseConnectionOptions {
 	 *
 	 * ---
 	 *
-	 * ## ALERT: The naming pattern are applied **BEFORE** the prefix and suffix
+	 * ## ALERT: The naming strategy are applied **BEFORE** the prefix and suffix
 	 *
 	 * So, in some cases, your column names maybe don't follow it,
 	 * like in this example:
@@ -84,7 +84,7 @@ export interface BaseConnectionOptions {
 	 *
 	 * // And your connection options are like this:
 	 * {
-	 *   namingPattern: {
+	 *   namingStrategy: {
 	 *     column: "camelCase",
 	 *   },
 	 *   prefix: {
@@ -98,9 +98,9 @@ export interface BaseConnectionOptions {
 	 * Bar
 	 * ```
 	 */
-	namingPattern?: {
-		entity?: NamingPatterns;
-		column?: NamingPatterns;
+	namingStrategy?: {
+		entity?: NamingStrategy;
+		column?: NamingStrategy;
 	};
 
 	/**
@@ -111,9 +111,9 @@ export interface BaseConnectionOptions {
 	 *
 	 * **Execution order:** Remove -> Add
 	 *
-	 * **ATTENTION:** The prefixes aren't affected by the namingPattern config!
-	 * They are applied AFTER the namingPattern formatting, so be careful with
-	 * which naming pattern you use in this config.
+	 * **ATTENTION:** The prefixes aren't affected by the namingStrategy config!
+	 * They are applied AFTER the namingStrategy formatting, so be careful with
+	 * which naming strategy you use in this config.
 	 */
 	prefix?: {
 		entity?: {
@@ -146,9 +146,9 @@ export interface BaseConnectionOptions {
 	 *
 	 * **Execution order:** Remove -> Add
 	 *
-	 * **ATTENTION:** The suffixes aren't affected by the namingPattern config!
-	 * They are applied AFTER the namingPattern formatting, so be careful with
-	 * which naming pattern you use in this config.
+	 * **ATTENTION:** The suffixes aren't affected by the namingStrategy config!
+	 * They are applied AFTER the namingStrategy formatting, so be careful with
+	 * which naming strategy you use in this config.
 	 */
 	suffix?: {
 		entity?: {

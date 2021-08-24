@@ -1,12 +1,12 @@
-import { formatNamingPattern } from "../../utils/format-naming-pattern";
-import { NamingPatterns } from "../../utils/format-naming-pattern/types/naming-patterns";
-import { formatPrefix } from "../../utils/prefix-suffix/format-prefix";
-import { formatSuffix } from "../../utils/prefix-suffix/format-suffix";
+import { formatNamingStrategy } from "../../../../utils/format-naming-strategy";
+import { NamingStrategy } from "../../../../utils/format-naming-strategy/types/naming-strategy";
+import { formatPrefix } from "../../../../utils/prefix-suffix/format-prefix";
+import { formatSuffix } from "../../../../utils/prefix-suffix/format-suffix";
 
 interface GetDatabaseNameParams {
 	value: string;
 	isNameAlreadyFormatted?: boolean;
-	namingPattern?: NamingPatterns;
+	namingStrategy?: NamingStrategy;
 	optionsPrefix?: {
 		add?: string;
 		remove?: string;
@@ -20,7 +20,7 @@ interface GetDatabaseNameParams {
 export const getDatabaseName = ({
 	value,
 	isNameAlreadyFormatted,
-	namingPattern,
+	namingStrategy,
 	optionsPrefix,
 	optionsSuffix,
 }: GetDatabaseNameParams) => {
@@ -28,9 +28,9 @@ export const getDatabaseName = ({
 		return value;
 	}
 
-	const databaseName = formatNamingPattern({
+	const databaseName = formatNamingStrategy({
 		value,
-		namingPattern,
+		namingStrategy,
 	});
 
 	const databaseNameWithPrefix = formatPrefix({

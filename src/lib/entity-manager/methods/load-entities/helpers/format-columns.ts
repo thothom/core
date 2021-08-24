@@ -1,23 +1,23 @@
-import { BaseConnectionOptions } from "../../connection/types/connection-options";
-import { ColumnMetadata } from "../types/column-metadata";
+import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
+import { ColumnMetadata } from "../../../types/column-metadata";
 import { getDatabaseName } from "./get-database-name";
 
-interface FormatColumnsParams<ColumnExtraMetadata> {
-	columns: Array<ColumnMetadata<ColumnExtraMetadata>>;
+interface FormatColumnsParams {
+	columns: Array<ColumnMetadata>;
 	connectionOptions: BaseConnectionOptions;
 	applyPrefixSuffix?: boolean;
 }
 
-export const formatColumns = <ColumnExtraMetadata>({
+export const formatColumns = ({
 	columns,
 	connectionOptions,
 	applyPrefixSuffix = true,
-}: FormatColumnsParams<ColumnExtraMetadata>) =>
+}: FormatColumnsParams): Array<ColumnMetadata> =>
 	columns.map(metadata => {
 		const databaseName = getDatabaseName({
 			value: metadata.databaseName,
 			isNameAlreadyFormatted: metadata.isNameAlreadyFormatted,
-			namingPattern: connectionOptions.namingPattern?.column,
+			namingStrategy: connectionOptions.namingStrategy?.column,
 			optionsPrefix: applyPrefixSuffix
 				? connectionOptions.prefix?.column
 				: undefined,

@@ -5,15 +5,15 @@ import {
 	camelCase,
 	paramCase,
 } from "change-case";
-import { NamingPatterns } from "./types/naming-patterns";
+import { NamingStrategy } from "./types/naming-strategy";
 
-interface FormatNamingPatternParams {
+interface FormatNamingStrategyParams {
 	value: string;
-	namingPattern?: NamingPatterns;
+	namingStrategy?: NamingStrategy;
 }
 
-const getFunction = (namingPattern?: NamingPatterns) => {
-	switch (namingPattern) {
+const getFunction = (namingStrategy?: NamingStrategy) => {
+	switch (namingStrategy) {
 		case "PascalCase":
 			return pascalCase;
 		case "UPPER_CASE":
@@ -29,11 +29,11 @@ const getFunction = (namingPattern?: NamingPatterns) => {
 	}
 };
 
-export const formatNamingPattern = ({
+export const formatNamingStrategy = ({
 	value,
-	namingPattern,
-}: FormatNamingPatternParams) => {
-	const func = getFunction(namingPattern);
+	namingStrategy,
+}: FormatNamingStrategyParams) => {
+	const func = getFunction(namingStrategy);
 
 	return func(value);
 };

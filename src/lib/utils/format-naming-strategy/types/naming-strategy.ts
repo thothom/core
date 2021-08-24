@@ -1,4 +1,4 @@
-export type NamingPatterns =
+export type NamingStrategy =
 	| "camelCase"
 	| "kebab-case"
 	| "PascalCase"

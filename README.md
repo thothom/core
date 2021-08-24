@@ -7,7 +7,7 @@
 # Techmmunity - Compass
 
 <a href="https://github.com/techmmunity/eslint-config">
-	<img src="https://img.shields.io/badge/style%20guide-Techmmunity-01d2ce?style=flat" alt="Style Guide">
+	<img src="https://img.shields.io/badge/style%20guide-Techmmunity-01d2ce?style=flat" alt="Style Guide: Techmmunity">
 </a>
 <a href="https://www.codefactor.io/repository/github/techmmunity/compass">
 	<img src="https://www.codefactor.io/repository/github/techmmunity/compass/badge" alt="CodeFactor">
