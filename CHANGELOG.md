@@ -40,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ColumnMetadataEnum` enum
 - `Connection` type
 - `Repository` type
-- `formatNamingPattern` function. It formats strings based on a target case (Ex: camel -> Pascal)
+- `formatNamingStrategy` function. It formats strings based on a target case (Ex: camel -> Pascal)
 - `getColumnName` function. It gets and format a column name (add suffix, change case, etc)
 - `getEntityName` function. It gets and format an entity name (add suffix, change case, etc
 - `getColumnMetadata` function. It gets all the column's metadata

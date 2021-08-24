@@ -53,7 +53,7 @@
       - [x] IsNull
       - [x] Not
   - [x] Utils
-    - [x] formatNamingPattern
+    - [x] formatNamingStrategy
     - [x] MetadataUtil
       - [x] isDefaultMetadataType
       - [x] isCustomMetadataType
@@ -85,13 +85,8 @@
   - [x] Add validation at `autoGenerateEntityToDatabase` to validate if the column should be auto-generated based on event
 - [x] Add `Exist` operator, to verify if a field doesn't exists
 - [ ] Add tests to `src/utils/validations`
-- [ ] Review code to check if is possible to split params in injectables and not injectables
-- [ ] Unbind methods that receive `this`, change to receive the functions of the class instead, and make the methods PRIVATE
-- [ ] Add a way to:
-  - [ ] Determine if a entity has an "deletedAt" column (Probably do it at the constructor of the metadata manager, in the loop, because it can't be done at the DeleteDateColumn, because in some cases, it will be defined in the sub-entity, not in the entity.)
-  - [ ] Get the path to the special deletedAt column
-- [ ] Add columns validation:
-  - [ ] If a column with the same name exists, throw an error
+- [x] Review code to check if is possible to split params in injectables and not injectables
+- [x] Unbind methods that receive `this`, change to receive the functions of the class instead, and make the methods PRIVATE
 - [ ] Create a template repository "compass-plugin"
 - [x] Improve Documentation
   - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
@@ -131,6 +126,7 @@
 - [ ] Add `@OneToOne` decorator
 - [ ] Add `@OneToMany` decorator
 - [ ] Add `@ManyToMany` decorator
+- [ ] Add support to Enums (currently, it already works with enums, but it doesn't saves the enums values. The `Column` decorator need to be modified to accept an enum too, and use `Object.values` to get the **VALUES** of the array)
 
 ### CLI
 

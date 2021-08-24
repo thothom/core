@@ -9,36 +9,63 @@ export abstract class Connection<
 	EntityExtraData = DefaultExtraMetadata,
 	ColumnExtraData = DefaultExtraMetadata,
 > {
-	public readonly name: string;
+	/**
+	 * Properties
+	 */
 
-	public readonly options: BaseConnectionOptions;
+	private readonly _name: string;
 
-	public readonly metadataManager: EntityManager<
+	private readonly _options: BaseConnectionOptions;
+
+	private readonly _metadataManager: EntityManager<
 		EntityExtraData,
 		ColumnExtraData
 	>;
 
-	public readonly logger: Logger;
+	private readonly _logger: Logger;
+
+	/**
+	 * Getters
+	 */
+
+	protected get name() {
+		return this._name;
+	}
+
+	protected get options() {
+		return this._options;
+	}
+
+	protected get metadataManager() {
+		return this._metadataManager;
+	}
+
+	protected get logger() {
+		return this._logger;
+	}
+
+	/**
+	 * Constructor
+	 */
 
 	public constructor(options: BaseConnectionOptions) {
-		this.name = options.name || "Default";
+		this._name = options.name || "Default";
 
-		this.options = options;
+		this._options = options;
 
-		this.logger = new Logger(this.name, options.logging);
+		this._logger = new Logger(this._name, options.logging);
 
-		/**
-		 * The EntityManager [[ !!! MUST BE !!! ]] the last one to be defined
-		 */
-		this.metadataManager = new EntityManager<
-			EntityExtraData,
-			ColumnExtraData
-			/**
-			 * It's necessary to use `as any`, because TypeScript doesn't understand
-			 * that the methods are accessible, besides they are protected
-			 */
-		>(this as any);
+		this._metadataManager = new EntityManager<EntityExtraData, ColumnExtraData>(
+			{
+				logger: this._logger,
+				connectionOptions: this._options,
+			},
+		);
 	}
+
+	/**
+	 * Methods
+	 */
 
 	public abstract getRepository<Entity>(entity: Entity): Repository<Entity>;
 }

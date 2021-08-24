@@ -45,7 +45,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 
 		const connection = new TestConnection({
 			entities: [TestEntity],
-			namingPattern: {
+			namingStrategy: {
 				entity: "snake_case",
 			},
 			suffix: {
@@ -178,7 +178,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity metadata with naming pattern", () => {
+	it("should get entity metadata with naming strategy", () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -190,7 +190,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 
 		const connection = new TestConnection({
 			entities: [TestEntity],
-			namingPattern: {
+			namingStrategy: {
 				column: "UPPER_CASE",
 			},
 		});
@@ -272,7 +272,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity metadata with prefix remove and naming pattern", () => {
+	it("should get entity metadata with prefix remove and naming strategy", () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -284,7 +284,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 
 		const connection = new TestConnection({
 			entities: [TestEntity],
-			namingPattern: {
+			namingStrategy: {
 				column: "camelCase",
 			},
 			prefix: {
@@ -335,7 +335,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		expect(result.details).toStrictEqual(["Entity: TestEntity"]);
 	});
 
-	it("should get basic entity metadata with naming pattern", () => {
+	it("should get basic entity metadata with naming strategy", () => {
 		@Entity()
 		class TestFooEntity {
 			@PrimaryColumn()
@@ -347,7 +347,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 
 		const connection = new TestConnection({
 			entities: [TestFooEntity],
-			namingPattern: {
+			namingStrategy: {
 				entity: "snake_case",
 			},
 		});
@@ -365,7 +365,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity + sub-entity metadata with naming pattern", () => {
+	it("should get entity + sub-entity metadata with naming strategy", () => {
 		@Entity({
 			isSubEntity: true,
 		})
@@ -388,7 +388,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 
 		const connection = new TestConnection({
 			entities: [TestFooEntity],
-			namingPattern: {
+			namingStrategy: {
 				entity: "snake_case",
 			},
 		});
