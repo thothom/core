@@ -1,1 +1,1 @@
-export const METADATA_PREFIX = "compass:";
+export const METADATA_PREFIX = "cosmos:";

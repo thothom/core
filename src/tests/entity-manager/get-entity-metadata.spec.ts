@@ -1,8 +1,8 @@
 import { Column } from "../../lib/decorators/column";
 import { Entity } from "../../lib/decorators/entity/entity";
 import { PrimaryColumn } from "../../lib/decorators/primary-column";
-import { CompassError } from "../../lib/error";
-import { CompassErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { CosmosError } from "../../lib/error";
+import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getEntityMetadata", () => {
@@ -128,10 +128,10 @@ describe("EntityManager > getEntityMetadata", () => {
 			result = err;
 		}
 
-		expect(result instanceof CompassError).toBe(true);
+		expect(result instanceof CosmosError).toBe(true);
 		expect(result.message).toBe("Entity not Registered");
-		expect(result.code).toBe(CompassErrorCodeEnum.ENTITY_ERROR);
-		expect(result.origin).toBe("COMPASS");
+		expect(result.code).toBe(CosmosErrorCodeEnum.ENTITY_ERROR);
+		expect(result.origin).toBe("COSMOS");
 		expect(result.details).toStrictEqual(["Entity: ", TestEntity]);
 	});
 });

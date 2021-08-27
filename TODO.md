@@ -87,7 +87,7 @@
 - [ ] Add tests to `src/utils/validations`
 - [x] Review code to check if is possible to split params in injectables and not injectables
 - [x] Unbind methods that receive `this`, change to receive the functions of the class instead, and make the methods PRIVATE
-- [ ] Create a template repository "compass-plugin"
+- [ ] Create a template repository "cosmos-plugin"
 - [x] Improve Documentation
   - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
   - [x] Use [Docusaurus](https://docusaurus.io/docs)

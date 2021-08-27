@@ -1,15 +1,15 @@
-import { CompassError } from "../../lib/error";
-import { CompassErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { CosmosError } from "../../lib/error";
+import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 
-describe("CompassError", () => {
+describe("CosmosError", () => {
 	it("should throw error correctly (simple details)", () => {
 		let result;
 
 		try {
-			throw new CompassError({
+			throw new CosmosError({
 				message: "Message",
-				code: CompassErrorCodeEnum.UNKNOWN,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.UNKNOWN,
+				origin: "COSMOS",
 				details: ["Details"],
 			});
 		} catch (err) {
@@ -17,11 +17,11 @@ describe("CompassError", () => {
 		}
 
 		expect(result instanceof Error).toBe(true);
-		expect(result instanceof CompassError).toBe(true);
+		expect(result instanceof CosmosError).toBe(true);
 		expect(result).toHaveProperty("stack");
-		expect(result.code).toBe(CompassErrorCodeEnum.UNKNOWN);
+		expect(result.code).toBe(CosmosErrorCodeEnum.UNKNOWN);
 		expect(result.message).toBe("Message");
-		expect(result.origin).toBe("COMPASS");
+		expect(result.origin).toBe("COSMOS");
 		expect(result.details).toStrictEqual(["Details"]);
 	});
 
@@ -29,10 +29,10 @@ describe("CompassError", () => {
 		let result;
 
 		try {
-			throw new CompassError({
+			throw new CosmosError({
 				message: "Message",
-				code: CompassErrorCodeEnum.UNKNOWN,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.UNKNOWN,
+				origin: "COSMOS",
 				details: [
 					{
 						foo: "bar",
@@ -44,11 +44,11 @@ describe("CompassError", () => {
 		}
 
 		expect(result instanceof Error).toBe(true);
-		expect(result instanceof CompassError).toBe(true);
+		expect(result instanceof CosmosError).toBe(true);
 		expect(result).toHaveProperty("stack");
-		expect(result.code).toBe(CompassErrorCodeEnum.UNKNOWN);
+		expect(result.code).toBe(CosmosErrorCodeEnum.UNKNOWN);
 		expect(result.message).toBe("Message");
-		expect(result.origin).toBe("COMPASS");
+		expect(result.origin).toBe("COSMOS");
 		expect(result.details).toStrictEqual([
 			{
 				foo: "bar",

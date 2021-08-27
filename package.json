@@ -1,21 +1,22 @@
 {
-	"name": "@techmmunity/compass",
+	"name": "@techmmunity/cosmos",
 	"version": "0.0.2",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
 	"author": "Techmmunity",
-	"description": "Compass - The Ultimate ORM For All Databases",
-	"homepage": "https://github.com/techmmunity/compass#readme",
+	"description": "Cosmos - The Ultimate ORM For All Databases",
+	"homepage": "https://github.com/techmmunity/cosmos#readme",
 	"bugs": {
-		"url": "https://github.com/techmmunity/compass/issues"
+		"url": "https://github.com/techmmunity/cosmos/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/techmmunity/compass.git"
+		"url": "git+https://github.com/techmmunity/cosmos.git"
 	},
 	"keywords": [
 		"orm",
+		"odm",
 		"nosql",
 		"dynamo",
 		"dynamodb",
@@ -23,7 +24,7 @@
 		"typescript",
 		"database",
 		"data-mapper",
-		"techmmunity-compass"
+		"techmmunity-cosmos"
 	],
 	"peerDependencies": {
 		"reflect-metadata": "^0.1.13",

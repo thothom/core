@@ -1,5 +1,5 @@
-import { CompassError } from "../../../error";
-import { CompassErrorCodeEnum } from "../../../error/types/error-code.enum";
+import { CosmosError } from "../../../error";
+import { CosmosErrorCodeEnum } from "../../../error/types/error-code.enum";
 import { MetadataType } from "../../../entity-manager/types/metadata-type";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { ColumnOptions } from "../../types/column-options";
@@ -56,9 +56,9 @@ export const getType = ({
 		/**
 		 * When array, the type must be explicitly declared
 		 */
-		throw new CompassError({
-			code: CompassErrorCodeEnum.INVALID_PARAM_TYPE,
-			origin: "COMPASS",
+		throw new CosmosError({
+			code: CosmosErrorCodeEnum.INVALID_PARAM_TYPE,
+			origin: "COSMOS",
 			message: "You must explicitly declare array types",
 			details: [
 				`Entity: ${entityPrototype.constructor.name}`,
@@ -79,9 +79,9 @@ export const getType = ({
 	/**
 	 * If the type cannot be guessed or isn't supported
 	 */
-	throw new CompassError({
-		code: CompassErrorCodeEnum.INVALID_PARAM_TYPE,
-		origin: "COMPASS",
+	throw new CosmosError({
+		code: CosmosErrorCodeEnum.INVALID_PARAM_TYPE,
+		origin: "COSMOS",
 		message: "Column type isn't supported",
 		details: [
 			`Entity: ${entityPrototype.constructor.name}`,

@@ -27,7 +27,7 @@ export const printMessage = ({
 
 	const pidMessage = addColor({
 		logLevel,
-		message: `[Compass] ${process.pid}  - `,
+		message: `[Cosmos] ${process.pid}  - `,
 	});
 	const timestamp = getTimestamp();
 	const formattedLogLevel = addColor({

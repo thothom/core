@@ -1,5 +1,5 @@
-import { CompassError } from "../../../error";
-import { CompassErrorCodeEnum } from "../../../error/types/error-code.enum";
+import { CosmosError } from "../../../error";
+import { CosmosErrorCodeEnum } from "../../../error/types/error-code.enum";
 import { FindOperator } from "./base";
 import { FindOperatorType } from "./base/find-operators-type";
 
@@ -10,46 +10,46 @@ const handleTypeError = (type: FindOperatorType) => {
 
 	switch (type) {
 		case "lessThan":
-			throw new CompassError({
+			throw new CosmosError({
 				message: ERROR_MESSAGE,
-				code: CompassErrorCodeEnum.INVALID_PARAM,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.INVALID_PARAM,
+				origin: "COSMOS",
 				details: [
 					"Not operator should not be used with LessThan operator, use MoreThanOrEqual operator instead",
 				],
 			});
 		case "lessThanOrEqual":
-			throw new CompassError({
+			throw new CosmosError({
 				message: ERROR_MESSAGE,
-				code: CompassErrorCodeEnum.INVALID_PARAM,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.INVALID_PARAM,
+				origin: "COSMOS",
 				details: [
 					"Not operator should not be used with LessThanOrEqual operator, use MoreThan operator instead",
 				],
 			});
 		case "moreThan":
-			throw new CompassError({
+			throw new CosmosError({
 				message: ERROR_MESSAGE,
-				code: CompassErrorCodeEnum.INVALID_PARAM,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.INVALID_PARAM,
+				origin: "COSMOS",
 				details: [
 					"Not operator should not be used with MoreThan operator, use LessThanOrEqual operator instead",
 				],
 			});
 		case "moreThanOrEqual":
-			throw new CompassError({
+			throw new CosmosError({
 				message: ERROR_MESSAGE,
-				code: CompassErrorCodeEnum.INVALID_PARAM,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.INVALID_PARAM,
+				origin: "COSMOS",
 				details: [
 					"Not operator should not be used with LessThanOrEqual operator, use LessThan operator instead",
 				],
 			});
 		case "not":
-			throw new CompassError({
+			throw new CosmosError({
 				message: ERROR_MESSAGE,
-				code: CompassErrorCodeEnum.INVALID_PARAM,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.INVALID_PARAM,
+				origin: "COSMOS",
 				details: ["Not operator should not be used with Not operator"],
 			});
 		default:

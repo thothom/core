@@ -3,8 +3,8 @@
 import { DeleteDateColumn } from "../../lib/decorators/date-columns/delete-date-column";
 import { SaveDateColumn } from "../../lib/decorators/date-columns/save-date-column";
 import { UpdateDateColumn } from "../../lib/decorators/date-columns/update-date-column";
-import { CompassError } from "../../lib/error";
-import { CompassErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { CosmosError } from "../../lib/error";
+import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../lib/utils/metadata-util";
 
 describe("Decorators > DateColumns", () => {
@@ -358,12 +358,12 @@ describe("Decorators > DateColumns", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe(
 				"Auto Generated Date columns can only have simple types, ARRAYS, OBJECTS and CLASSES aren't supported",
 			);
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual([
 				"Entity: Test",
 				"Column: createdAt",

@@ -1,5 +1,5 @@
-import { CompassError } from "../../../error";
-import { CompassErrorCodeEnum } from "../../../error/types/error-code.enum";
+import { CosmosError } from "../../../error";
+import { CosmosErrorCodeEnum } from "../../../error/types/error-code.enum";
 import { EntityMetadata } from "../../../entity-manager/types/entity-metadata";
 import { MetadataUtil } from "../../../utils/metadata-util";
 
@@ -18,10 +18,10 @@ export const addEntityMetadata = ({
 	});
 
 	if (!columns) {
-		throw new CompassError({
-			code: CompassErrorCodeEnum.MISSING_DECORATOR,
+		throw new CosmosError({
+			code: CosmosErrorCodeEnum.MISSING_DECORATOR,
 			message: "Entity must have at least one column",
-			origin: "COMPASS",
+			origin: "COSMOS",
 			details: [`Entity: ${entityConstructor.name}`],
 		});
 	}

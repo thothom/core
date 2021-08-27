@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { PrimaryGeneratedColumnStrategy } from "..";
-import { CompassError } from "../../../error";
-import { CompassErrorCodeEnum } from "../../../error/types/error-code.enum";
+import { CosmosError } from "../../../error";
+import { CosmosErrorCodeEnum } from "../../../error/types/error-code.enum";
 import { PrimaryGeneratedColumnOptions } from "../../types/column-options";
 
 interface GetStrategyParams {
@@ -44,10 +44,10 @@ export const getStrategy = ({
 			return v4;
 		}
 		default:
-			throw new CompassError({
+			throw new CosmosError({
 				message: "Invalid Strate To Auto Generation",
-				code: CompassErrorCodeEnum.INVALID_PARAM,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.INVALID_PARAM,
+				origin: "COSMOS",
 				details: [
 					`Entity: ${entityPrototype.constructor.name}`,
 					`Column: ${propertyName}`,

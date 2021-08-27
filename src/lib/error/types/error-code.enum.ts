@@ -1,4 +1,4 @@
-export enum CompassErrorCodeEnum {
+export enum CosmosErrorCodeEnum {
 	/**
 	 * Etc
 	 */

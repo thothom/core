@@ -1,8 +1,8 @@
 import { Column } from "../../lib/decorators/column";
 import { Entity } from "../../lib/decorators/entity/entity";
 import { PrimaryColumn } from "../../lib/decorators/primary-column";
-import { CompassError } from "../../lib/error";
-import { CompassErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { CosmosError } from "../../lib/error";
+import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
@@ -328,10 +328,10 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			result = err;
 		}
 
-		expect(result instanceof CompassError).toBe(true);
+		expect(result instanceof CosmosError).toBe(true);
 		expect(result.message).toBe("Duplicated Entity");
-		expect(result.code).toBe(CompassErrorCodeEnum.DUPLICATED_ENTITY);
-		expect(result.origin).toBe("COMPASS");
+		expect(result.code).toBe(CosmosErrorCodeEnum.DUPLICATED_ENTITY);
+		expect(result.origin).toBe("COSMOS");
 		expect(result.details).toStrictEqual(["Entity: TestEntity"]);
 	});
 

@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 import { PrimaryGeneratedColumn } from "../../lib/decorators/primary-generated-column";
-import { CompassError } from "../../lib/error";
-import { CompassErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { CosmosError } from "../../lib/error";
+import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../lib/utils/metadata-util";
 
 describe("Decorators > PrimaryGeneratedColumn", () => {
@@ -217,10 +217,10 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual(ERROR_DETAILS);
 		});
 
@@ -241,10 +241,10 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual(ERROR_DETAILS);
 		});
 
@@ -267,10 +267,10 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual(ERROR_DETAILS);
 		});
 
@@ -289,10 +289,10 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe("Invalid Strate To Auto Generation");
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual(["Entity: Test", "Column: foo"]);
 		});
 	});

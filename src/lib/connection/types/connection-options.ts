@@ -38,7 +38,7 @@ export interface BaseConnectionOptions {
 	 *
 	 * **DEBUG:** Logs EVERYTHING done by the lib
 	 *
-	 * **INFO:** Compass, connection, and general things status. Rarely used.
+	 * **INFO:** Cosmos, connection, and general things status. Rarely used.
 	 *
 	 * **WARN:** Alerts that the system cannot determine if it's wrong use of
 	 * the lib or just the expected functioning.

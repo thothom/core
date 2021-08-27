@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { BaseConnectionOptions } from "../connection/types/connection-options";
-import { CompassError } from "../error";
-import { CompassErrorCodeEnum } from "../error/types/error-code.enum";
+import { CosmosError } from "../error";
+import { CosmosErrorCodeEnum } from "../error/types/error-code.enum";
 import { Logger } from "../logger";
 import {
 	autoGenerateEntityToDatabase,
@@ -108,10 +108,10 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		const entityMetadata = this.entities[entity.name];
 
 		if (!entityMetadata) {
-			throw new CompassError({
+			throw new CosmosError({
 				message: "Entity not Registered",
-				code: CompassErrorCodeEnum.ENTITY_ERROR,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.ENTITY_ERROR,
+				origin: "COSMOS",
 				details: ["Entity: ", entity],
 			});
 		}
@@ -127,10 +127,10 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		);
 
 		if (!columnMetadata) {
-			throw new CompassError({
+			throw new CosmosError({
 				message: "Column not found",
-				code: CompassErrorCodeEnum.COLUMN_ERROR,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.COLUMN_ERROR,
+				origin: "COSMOS",
 				details: ["Entity: ", entity, "Column: ", columnName],
 			});
 		}
