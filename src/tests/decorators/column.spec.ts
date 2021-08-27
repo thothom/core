@@ -1,6 +1,6 @@
 import { Column } from "../../lib/decorators/column";
-import { CosmosError } from "../../lib/error";
-import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { SymbiosisError } from "../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../lib/utils/metadata-util";
 
 describe("Decorators > Column", () => {
@@ -347,7 +347,7 @@ describe("Decorators > Column", () => {
 		const DEFAULT_DETAILS = ["Entity: Test", "Column: foo"];
 
 		it("should throw an error if is array and type isn't specified", () => {
-			let result;
+			let result: any;
 
 			try {
 				/**
@@ -363,15 +363,15 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe("You must explicitly declare array types");
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 
 		it("should throw an error if invalid type specified", () => {
-			let result;
+			let result: any;
 
 			try {
 				/**
@@ -387,15 +387,15 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe("Column type isn't supported");
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 
 		it("should throw error if field has multiple types", () => {
-			let result;
+			let result: any;
 
 			try {
 				class Test {
@@ -409,10 +409,10 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe("Column type isn't supported");
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 	});

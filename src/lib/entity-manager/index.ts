@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { BaseConnectionOptions } from "../connection/types/connection-options";
-import { CosmosError } from "../error";
-import { CosmosErrorCodeEnum } from "../error/types/error-code.enum";
+import { SymbiosisError } from "../error";
+import { SymbiosisErrorCodeEnum } from "../error/types/error-code.enum";
 import { Logger } from "../logger";
 import {
 	autoGenerateEntityToDatabase,
@@ -108,10 +108,10 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		const entityMetadata = this.entities[entity.name];
 
 		if (!entityMetadata) {
-			throw new CosmosError({
+			throw new SymbiosisError({
 				message: "Entity not Registered",
-				code: CosmosErrorCodeEnum.ENTITY_ERROR,
-				origin: "COSMOS",
+				code: SymbiosisErrorCodeEnum.ENTITY_ERROR,
+				origin: "SYMBIOSIS",
 				details: ["Entity: ", entity],
 			});
 		}
@@ -127,10 +127,10 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		);
 
 		if (!columnMetadata) {
-			throw new CosmosError({
+			throw new SymbiosisError({
 				message: "Column not found",
-				code: CosmosErrorCodeEnum.COLUMN_ERROR,
-				origin: "COSMOS",
+				code: SymbiosisErrorCodeEnum.COLUMN_ERROR,
+				origin: "SYMBIOSIS",
 				details: ["Entity: ", entity, "Column: ", columnName],
 			});
 		}

@@ -1,31 +1,31 @@
 <div align="center">
-	<img src="https://github.com/techmmunity/cosmos/raw/master/resources/logo.gif" width="300" height="300">
+	<img src="https://github.com/techmmunity/symbiosis/raw/master/resources/logo.gif" width="300" height="300">
 </div>
 
 <div align="center">
 
-# Techmmunity - Cosmos
+# Techmmunity - Symbiosis
 
 <a href="https://github.com/techmmunity/eslint-config">
 	<img src="https://img.shields.io/badge/style%20guide-Techmmunity-01d2ce?style=flat" alt="Style Guide: Techmmunity">
 </a>
-<a href="https://www.codefactor.io/repository/github/techmmunity/cosmos">
-	<img src="https://www.codefactor.io/repository/github/techmmunity/cosmos/badge" alt="CodeFactor">
+<a href="https://www.codefactor.io/repository/github/techmmunity/symbiosis">
+	<img src="https://www.codefactor.io/repository/github/techmmunity/symbiosis/badge" alt="CodeFactor">
 </a>
 <a href="https://deepscan.io/dashboard#view=project&tid=13883&pid=18101&bid=434906">
 	<img src="https://deepscan.io/api/teams/13883/projects/18101/branches/434906/badge/grade.svg" alt="DeepScan">
 </a>
-<a href="https://coveralls.io/github/techmmunity/cosmos?branch=master">
-	<img src="https://coveralls.io/repos/github/techmmunity/cosmos/badge.svg?branch=master" alt="Coveralls">
+<a href="https://coveralls.io/github/techmmunity/symbiosis?branch=master">
+	<img src="https://coveralls.io/repos/github/techmmunity/symbiosis/badge.svg?branch=master" alt="Coveralls">
 </a>
-<a href="https://github.com/techmmunity/cosmos/actions/workflows/coverage.yml">
-	<img src="https://github.com/techmmunity/cosmos/actions/workflows/coverage.yml/badge.svg" alt="Tests">
+<a href="https://github.com/techmmunity/symbiosis/actions/workflows/coverage.yml">
+	<img src="https://github.com/techmmunity/symbiosis/actions/workflows/coverage.yml/badge.svg" alt="Tests">
 </a>
-<a href="https://www.npmjs.com/package/@techmmunity/cosmos">
-	<img src="https://img.shields.io/npm/v/@techmmunity/cosmos.svg?color=CC3534" alt="Npm">
+<a href="https://www.npmjs.com/package/@techmmunity/symbiosis">
+	<img src="https://img.shields.io/npm/v/@techmmunity/symbiosis.svg?color=CC3534" alt="Npm">
 </a>
-<a href="https://www.npmjs.com/package/@techmmunity/cosmos">
-	<img src="https://img.shields.io/npm/dw/@techmmunity/cosmos.svg" alt="Downloads">
+<a href="https://www.npmjs.com/package/@techmmunity/symbiosis">
+	<img src="https://img.shields.io/npm/dw/@techmmunity/symbiosis.svg" alt="Downloads">
 </a>
 
 <br>
@@ -33,14 +33,14 @@
 
 </div>
 
-Cosmos is an **Object Mapper**, that is an [ORM + ODM](https://medium.com/spidernitt/orm-and-odm-a-brief-introduction-369046ec57eb), based on [TypeORM syntax](https://github.com/typeorm/typeorm) and [ESLint plugable approach](https://eslint.org/). Our intention here is standardize the connection and implementation of **every database** with the best performance possible, and for this, we use an plugable approach, so more people can contribute and create their on integration. This package alone can't do anything besides typing, the plugins do all the "dirt work".
+Symbiosis is an **Object Mapper**, that is an [ORM + ODM](https://medium.com/spidernitt/orm-and-odm-a-brief-introduction-369046ec57eb), based on [TypeORM syntax](https://github.com/typeorm/typeorm) and [ESLint plugable approach](https://eslint.org/). Our intention here is standardize the connection and implementation of **every database** with the best performance possible, and for this, we use an plugable approach, so more people can contribute and create their on integration. This package alone can't do anything besides typing, the plugins do all the "dirt work".
 
 Currently it only works with TypeScript (and transpiled JavaScript), and we plan to keep this way.
 
 [![Discord Badge](https://img.shields.io/badge/discord-7289DA?style=for-the-badge&labelColor=7289DA&logo=discord&logoColor=white)](https://discord.gg/5hPnJzzAe2)
-[![Docs Badge](https://img.shields.io/badge/documentation-01d2ce?style=for-the-badge&labelColor=01d2ce)](https://cosmos.techmmunity.com.br)
+[![Docs Badge](https://img.shields.io/badge/documentation-01d2ce?style=for-the-badge&labelColor=01d2ce)](https://symbiosis.techmmunity.com.br)
 
-## Why use Techmmunity Cosmos?
+## Why use Techmmunity Symbiosis?
 
 - Easy to use and standardize. Regardless of the database, the implementation will be the same in all cases (except the most complex ones).
 - The plugable approach. With the community support, this ORM can work with **all** the databases, be they NoSQL or SQL, as long as it has a plugin for it.
@@ -50,14 +50,14 @@ Currently it only works with TypeScript (and transpiled JavaScript), and we plan
 With Yarn:
 
 ```sh
-yarn add @techmmunity/cosmos \
+yarn add @techmmunity/symbiosis \
 	reflect-metadata
 ```
 
 With NPM:
 
 ```sh
-npm i @techmmunity/cosmos reflect-metadata --save
+npm i @techmmunity/symbiosis reflect-metadata --save
 ```
 
 Configure `tsconfig.json`:
@@ -73,17 +73,17 @@ Configure `tsconfig.json`:
 
 ## Available Plugins
 
-### [Plugins List](https://www.npmjs.com/search?q=keywords:techmmunity-cosmos)
+### [Plugins List](https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis)
 
-All the Cosmos Plugins have the `techmmunity-cosmos` tag, so you can easily found all the plugins in [this link](https://www.npmjs.com/search?q=keywords:techmmunity-cosmos).
+All the Symbiosis Plugins have the `techmmunity-symbiosis` tag, so you can easily found all the plugins in [this link](https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis).
 
 ### DynamoDB
 
-- [@techmmunity/cosmos-dynamo](https://github.com/techmmunity/cosmos-dynamo)
+- [@techmmunity/symbiosis-dynamo](https://github.com/techmmunity/symbiosis-dynamo)
 
 ## Usage
 
-Cosmos only supports the [Data Mapper](https://en.wikipedia.org/wiki/Data_mapper_pattern) pattern, so we can avoid mutability and bad code practices.
+Symbiosis only supports the [Data Mapper](https://en.wikipedia.org/wiki/Data_mapper_pattern) pattern, so we can avoid mutability and bad code practices.
 
 ```ts
 import {
@@ -91,9 +91,9 @@ import {
 	Entity,
 	PrimaryGeneratedColumn,
 	Repository,
-} from "@techmmunity/cosmos";
+} from "@techmmunity/symbiosis";
 // All connections from the plugins follow this naming pattern
-import { ExampleConnection } from "example-cosmos-plugin";
+import { ExampleConnection } from "example-symbiosis-plugin";
 
 const Connection = new ExampleConnection({
 	// Connection config here
@@ -119,8 +119,8 @@ FooRepository.save({
 
 ## Documentation
 
-- [For the users](https://cosmos.techmmunity.com.br)
-- [For the plugin creators](https://cosmos.techmmunity.com.br/docs/create-plugin/first-steps)
+- [For the users](https://symbiosis.techmmunity.com.br)
+- [For the plugin creators](https://symbiosis.techmmunity.com.br/docs/create-plugin/first-steps)
 
 ## Limitations and warnings
 
@@ -131,9 +131,9 @@ FooRepository.save({
 
 ## How to contribute?
 
-All the details about contributing are in [our website](https://cosmos.techmmunity.com.br).
+All the details about contributing are in [our website](https://symbiosis.techmmunity.com.br).
 
-See [here](https://github.com/techmmunity/cosmos/blob/master/TODO.md) our to-dos.
+See [here](https://github.com/techmmunity/symbiosis/blob/master/TODO.md) our to-dos.
 
 ## Special Thanks
 
@@ -145,6 +145,6 @@ This project exists thanks to all the people who contribute:
 
 ### "Cool Kids" who helped with the initial idea
 
-- [Diozin](https://www.linkedin.com/in/diozhn/), who suggested the name "Cosmos"
+- [Diozin](https://www.linkedin.com/in/diozhn/), who suggested the name "Symbiosis"
 - [Zaetic](https://www.linkedin.com/in/joaoggs/), who make our _gorgeous_ logo
 - A very special thanks to [Umed Khudoiberdiev](https://github.com/pleerock) and [Attila Oláh](https://github.com/NoNameProvided), how created TypeORM. Without their code, this package would never exists.

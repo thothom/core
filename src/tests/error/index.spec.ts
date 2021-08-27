@@ -1,15 +1,15 @@
-import { CosmosError } from "../../lib/error";
-import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { SymbiosisError } from "../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 
-describe("CosmosError", () => {
+describe("SymbiosisError", () => {
 	it("should throw error correctly (simple details)", () => {
-		let result;
+		let result: any;
 
 		try {
-			throw new CosmosError({
+			throw new SymbiosisError({
 				message: "Message",
-				code: CosmosErrorCodeEnum.UNKNOWN,
-				origin: "COSMOS",
+				code: SymbiosisErrorCodeEnum.UNKNOWN,
+				origin: "SYMBIOSIS",
 				details: ["Details"],
 			});
 		} catch (err) {
@@ -17,22 +17,22 @@ describe("CosmosError", () => {
 		}
 
 		expect(result instanceof Error).toBe(true);
-		expect(result instanceof CosmosError).toBe(true);
+		expect(result instanceof SymbiosisError).toBe(true);
 		expect(result).toHaveProperty("stack");
-		expect(result.code).toBe(CosmosErrorCodeEnum.UNKNOWN);
+		expect(result.code).toBe(SymbiosisErrorCodeEnum.UNKNOWN);
 		expect(result.message).toBe("Message");
-		expect(result.origin).toBe("COSMOS");
+		expect(result.origin).toBe("SYMBIOSIS");
 		expect(result.details).toStrictEqual(["Details"]);
 	});
 
 	it("should throw error correctly (complex details)", () => {
-		let result;
+		let result: any;
 
 		try {
-			throw new CosmosError({
+			throw new SymbiosisError({
 				message: "Message",
-				code: CosmosErrorCodeEnum.UNKNOWN,
-				origin: "COSMOS",
+				code: SymbiosisErrorCodeEnum.UNKNOWN,
+				origin: "SYMBIOSIS",
 				details: [
 					{
 						foo: "bar",
@@ -44,11 +44,11 @@ describe("CosmosError", () => {
 		}
 
 		expect(result instanceof Error).toBe(true);
-		expect(result instanceof CosmosError).toBe(true);
+		expect(result instanceof SymbiosisError).toBe(true);
 		expect(result).toHaveProperty("stack");
-		expect(result.code).toBe(CosmosErrorCodeEnum.UNKNOWN);
+		expect(result.code).toBe(SymbiosisErrorCodeEnum.UNKNOWN);
 		expect(result.message).toBe("Message");
-		expect(result.origin).toBe("COSMOS");
+		expect(result.origin).toBe("SYMBIOSIS");
 		expect(result.details).toStrictEqual([
 			{
 				foo: "bar",

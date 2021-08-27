@@ -1,13 +1,13 @@
-import { CosmosErrorCodeEnum } from "./types/error-code.enum";
+import { SymbiosisErrorCodeEnum } from "./types/error-code.enum";
 
 interface CustomErrorParams {
-	code: CosmosErrorCodeEnum;
-	origin: "COSMOS" | "DATABASE";
+	code: SymbiosisErrorCodeEnum;
+	origin: "DATABASE" | "SYMBIOSIS";
 	message: string;
 	details: Array<any>;
 }
 
-export class CosmosError extends Error {
+export class SymbiosisError extends Error {
 	public code: CustomErrorParams["code"];
 
 	public origin: CustomErrorParams["origin"];
@@ -17,7 +17,7 @@ export class CosmosError extends Error {
 	public constructor({ message, code, origin, details }: CustomErrorParams) {
 		super(message);
 
-		this.name = "CosmosOrmError";
+		this.name = "SymbiosisOrmError";
 		this.code = code;
 		this.origin = origin;
 		this.details = details;
