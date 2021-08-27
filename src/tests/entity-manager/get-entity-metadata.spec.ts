@@ -1,8 +1,8 @@
 import { Column } from "../../lib/decorators/column";
 import { Entity } from "../../lib/decorators/entity/entity";
 import { PrimaryColumn } from "../../lib/decorators/primary-column";
-import { CosmosError } from "../../lib/error";
-import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { SymbiosisError } from "../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getEntityMetadata", () => {
@@ -120,7 +120,7 @@ describe("EntityManager > getEntityMetadata", () => {
 			entities: [],
 		});
 
-		let result;
+		let result: any;
 
 		try {
 			connection.metadataManager.getEntityMetadata(TestEntity);
@@ -128,10 +128,10 @@ describe("EntityManager > getEntityMetadata", () => {
 			result = err;
 		}
 
-		expect(result instanceof CosmosError).toBe(true);
+		expect(result instanceof SymbiosisError).toBe(true);
 		expect(result.message).toBe("Entity not Registered");
-		expect(result.code).toBe(CosmosErrorCodeEnum.ENTITY_ERROR);
-		expect(result.origin).toBe("COSMOS");
+		expect(result.code).toBe(SymbiosisErrorCodeEnum.ENTITY_ERROR);
+		expect(result.origin).toBe("SYMBIOSIS");
 		expect(result.details).toStrictEqual(["Entity: ", TestEntity]);
 	});
 });

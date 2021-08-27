@@ -1,5 +1,5 @@
-import { CosmosError } from "../../../../lib/error";
-import { CosmosErrorCodeEnum } from "../../../../lib/error/types/error-code.enum";
+import { SymbiosisError } from "../../../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../../../lib/error/types/error-code.enum";
 import { Between } from "../../../../lib/repository/queries/find-operators/between";
 import { Exist } from "../../../../lib/repository/queries/find-operators/exist";
 import { In } from "../../../../lib/repository/queries/find-operators/in";
@@ -86,7 +86,7 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 		const ERROR_MESSAGE = "Incorrect use of NOT operator";
 
 		it("should throw an error if a LessThanOrEqual operator is used as param", () => {
-			let result;
+			let result: any;
 
 			try {
 				Not(LessThanOrEqual(1));
@@ -94,17 +94,17 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with LessThanOrEqual operator, use MoreThan operator instead",
 			]);
 		});
 
 		it("should throw an error if a LessThan operator is used as param", () => {
-			let result;
+			let result: any;
 
 			try {
 				Not(LessThan(1));
@@ -112,17 +112,17 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with LessThan operator, use MoreThanOrEqual operator instead",
 			]);
 		});
 
 		it("should throw an error if a MoreThanOrEqual operator is used as param", () => {
-			let result;
+			let result: any;
 
 			try {
 				Not(MoreThanOrEqual(1));
@@ -130,17 +130,17 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with LessThanOrEqual operator, use LessThan operator instead",
 			]);
 		});
 
 		it("should throw an error if a MoreThan operator is used as param", () => {
-			let result;
+			let result: any;
 
 			try {
 				Not(MoreThan(1));
@@ -148,17 +148,17 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with MoreThan operator, use LessThanOrEqual operator instead",
 			]);
 		});
 
 		it("should throw an error if a Not operator is used as param", () => {
-			let result;
+			let result: any;
 
 			try {
 				Not(Not(1));
@@ -166,10 +166,10 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with Not operator",
 			]);

@@ -1,8 +1,8 @@
 import { Column } from "../../lib/decorators/column";
 import { Entity } from "../../lib/decorators/entity/entity";
 import { PrimaryColumn } from "../../lib/decorators/primary-column";
-import { CosmosError } from "../../lib/error";
-import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { SymbiosisError } from "../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
@@ -317,7 +317,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			public foo: number;
 		}
 
-		let result;
+		let result: any;
 
 		try {
 			// eslint-disable-next-line no-new
@@ -328,10 +328,10 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			result = err;
 		}
 
-		expect(result instanceof CosmosError).toBe(true);
+		expect(result instanceof SymbiosisError).toBe(true);
 		expect(result.message).toBe("Duplicated Entity");
-		expect(result.code).toBe(CosmosErrorCodeEnum.DUPLICATED_ENTITY);
-		expect(result.origin).toBe("COSMOS");
+		expect(result.code).toBe(SymbiosisErrorCodeEnum.DUPLICATED_ENTITY);
+		expect(result.origin).toBe("SYMBIOSIS");
 		expect(result.details).toStrictEqual(["Entity: TestEntity"]);
 	});
 

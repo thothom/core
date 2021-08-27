@@ -1,6 +1,6 @@
 import { PrimaryColumn } from "../../lib/decorators/primary-column";
-import { CosmosError } from "../../lib/error";
-import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { SymbiosisError } from "../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../lib/utils/metadata-util";
 
 describe("Decorators > PrimaryColumn", () => {
@@ -155,7 +155,7 @@ describe("Decorators > PrimaryColumn", () => {
 		const ERROR_DETAILS = ["Entity: Test", "Column: foo"];
 
 		it("should throw an error if invalid type specified", () => {
-			let result;
+			let result: any;
 
 			try {
 				/**
@@ -171,15 +171,15 @@ describe("Decorators > PrimaryColumn", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(ERROR_DETAILS);
 		});
 
 		it("should throw an error if complex type specified (array)", () => {
-			let result;
+			let result: any;
 
 			try {
 				/**
@@ -195,15 +195,15 @@ describe("Decorators > PrimaryColumn", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(ERROR_DETAILS);
 		});
 
 		it("should throw an error if complex type specified (custom type)", () => {
-			let result;
+			let result: any;
 
 			try {
 				class CustomType {}
@@ -221,10 +221,10 @@ describe("Decorators > PrimaryColumn", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(ERROR_DETAILS);
 		});
 	});

@@ -125,7 +125,7 @@ describe("Logger", () => {
 		const logger = new Logger("Default", ["LOG"]);
 
 		it("with object", () => {
-			let result;
+			let result: any;
 
 			try {
 				logger.log({
@@ -139,7 +139,7 @@ describe("Logger", () => {
 		});
 
 		it("with date", () => {
-			let result;
+			let result: any;
 
 			try {
 				logger.log({

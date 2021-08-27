@@ -1,5 +1,5 @@
-import { CosmosError } from "../../../error";
-import { CosmosErrorCodeEnum } from "../../../error/types/error-code.enum";
+import { SymbiosisError } from "../../../error";
+import { SymbiosisErrorCodeEnum } from "../../../error/types/error-code.enum";
 import { FindOperator } from "./base";
 import { FindOperatorType } from "./base/find-operators-type";
 
@@ -10,46 +10,46 @@ const handleTypeError = (type: FindOperatorType) => {
 
 	switch (type) {
 		case "lessThan":
-			throw new CosmosError({
+			throw new SymbiosisError({
 				message: ERROR_MESSAGE,
-				code: CosmosErrorCodeEnum.INVALID_PARAM,
-				origin: "COSMOS",
+				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				origin: "SYMBIOSIS",
 				details: [
 					"Not operator should not be used with LessThan operator, use MoreThanOrEqual operator instead",
 				],
 			});
 		case "lessThanOrEqual":
-			throw new CosmosError({
+			throw new SymbiosisError({
 				message: ERROR_MESSAGE,
-				code: CosmosErrorCodeEnum.INVALID_PARAM,
-				origin: "COSMOS",
+				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				origin: "SYMBIOSIS",
 				details: [
 					"Not operator should not be used with LessThanOrEqual operator, use MoreThan operator instead",
 				],
 			});
 		case "moreThan":
-			throw new CosmosError({
+			throw new SymbiosisError({
 				message: ERROR_MESSAGE,
-				code: CosmosErrorCodeEnum.INVALID_PARAM,
-				origin: "COSMOS",
+				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				origin: "SYMBIOSIS",
 				details: [
 					"Not operator should not be used with MoreThan operator, use LessThanOrEqual operator instead",
 				],
 			});
 		case "moreThanOrEqual":
-			throw new CosmosError({
+			throw new SymbiosisError({
 				message: ERROR_MESSAGE,
-				code: CosmosErrorCodeEnum.INVALID_PARAM,
-				origin: "COSMOS",
+				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				origin: "SYMBIOSIS",
 				details: [
 					"Not operator should not be used with LessThanOrEqual operator, use LessThan operator instead",
 				],
 			});
 		case "not":
-			throw new CosmosError({
+			throw new SymbiosisError({
 				message: ERROR_MESSAGE,
-				code: CosmosErrorCodeEnum.INVALID_PARAM,
-				origin: "COSMOS",
+				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				origin: "SYMBIOSIS",
 				details: ["Not operator should not be used with Not operator"],
 			});
 		default:

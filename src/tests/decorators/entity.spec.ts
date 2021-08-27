@@ -1,7 +1,7 @@
 import { Column } from "../../lib/decorators/column";
 import { Entity } from "../../lib/decorators/entity/entity";
-import { CosmosError } from "../../lib/error";
-import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { SymbiosisError } from "../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../lib/utils/metadata-util";
 
 describe("Decorators > Entity", () => {
@@ -147,7 +147,7 @@ describe("Decorators > Entity", () => {
 
 	describe("General Errors", () => {
 		it("should throw if entity doesn't have any columns", () => {
-			let result;
+			let result: any;
 
 			try {
 				@Entity() // <- Decorator here!
@@ -161,10 +161,10 @@ describe("Decorators > Entity", () => {
 				result = err;
 			}
 
-			expect(result instanceof CosmosError).toBe(true);
+			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe("Entity must have at least one column");
-			expect(result.code).toBe(CosmosErrorCodeEnum.MISSING_DECORATOR);
-			expect(result.origin).toBe("COSMOS");
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.MISSING_DECORATOR);
+			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(["Entity: Test"]);
 		});
 	});

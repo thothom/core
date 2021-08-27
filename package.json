@@ -1,18 +1,18 @@
 {
-	"name": "@techmmunity/cosmos",
-	"version": "0.0.2",
+	"name": "@techmmunity/symbiosis",
+	"version": "0.0.1",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
 	"author": "Techmmunity",
-	"description": "Cosmos - The Ultimate ORM For All Databases",
-	"homepage": "https://github.com/techmmunity/cosmos#readme",
+	"description": "Symbiosis - The Ultimate OM For All Databases",
+	"homepage": "https://github.com/techmmunity/symbiosis#readme",
 	"bugs": {
-		"url": "https://github.com/techmmunity/cosmos/issues"
+		"url": "https://github.com/techmmunity/symbiosis/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/techmmunity/cosmos.git"
+		"url": "git+https://github.com/techmmunity/symbiosis.git"
 	},
 	"keywords": [
 		"orm",
@@ -24,7 +24,7 @@
 		"typescript",
 		"database",
 		"data-mapper",
-		"techmmunity-cosmos"
+		"techmmunity-symbiosis"
 	],
 	"peerDependencies": {
 		"reflect-metadata": "^0.1.13",
