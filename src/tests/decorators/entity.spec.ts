@@ -1,7 +1,7 @@
 import { Column } from "../../lib/decorators/column";
 import { Entity } from "../../lib/decorators/entity/entity";
-import { CompassError } from "../../lib/error";
-import { CompassErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { CosmosError } from "../../lib/error";
+import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../lib/utils/metadata-util";
 
 describe("Decorators > Entity", () => {
@@ -161,10 +161,10 @@ describe("Decorators > Entity", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe("Entity must have at least one column");
-			expect(result.code).toBe(CompassErrorCodeEnum.MISSING_DECORATOR);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.MISSING_DECORATOR);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual(["Entity: Test"]);
 		});
 	});

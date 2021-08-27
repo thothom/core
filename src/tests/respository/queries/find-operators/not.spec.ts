@@ -1,5 +1,5 @@
-import { CompassError } from "../../../../lib/error";
-import { CompassErrorCodeEnum } from "../../../../lib/error/types/error-code.enum";
+import { CosmosError } from "../../../../lib/error";
+import { CosmosErrorCodeEnum } from "../../../../lib/error/types/error-code.enum";
 import { Between } from "../../../../lib/repository/queries/find-operators/between";
 import { Exist } from "../../../../lib/repository/queries/find-operators/exist";
 import { In } from "../../../../lib/repository/queries/find-operators/in";
@@ -94,10 +94,10 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with LessThanOrEqual operator, use MoreThan operator instead",
 			]);
@@ -112,10 +112,10 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with LessThan operator, use MoreThanOrEqual operator instead",
 			]);
@@ -130,10 +130,10 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with LessThanOrEqual operator, use LessThan operator instead",
 			]);
@@ -148,10 +148,10 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with MoreThan operator, use LessThanOrEqual operator instead",
 			]);
@@ -166,10 +166,10 @@ describe("Repository > Queries > Find > Operators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with Not operator",
 			]);

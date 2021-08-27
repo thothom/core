@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Convert `Connection` from type to abstract class
 - `Logger`
 - `lint-staged`
-- Custom error thrower (`CompassError`)
+- Custom error thrower (`CosmosError`)
 - Multiple connections
 - SubEntities
 - Prefix and Suffix aren't applied to sub-entities anymore

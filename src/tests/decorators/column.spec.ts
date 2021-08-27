@@ -1,6 +1,6 @@
 import { Column } from "../../lib/decorators/column";
-import { CompassError } from "../../lib/error";
-import { CompassErrorCodeEnum } from "../../lib/error/types/error-code.enum";
+import { CosmosError } from "../../lib/error";
+import { CosmosErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../lib/utils/metadata-util";
 
 describe("Decorators > Column", () => {
@@ -363,10 +363,10 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe("You must explicitly declare array types");
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 
@@ -387,10 +387,10 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe("Column type isn't supported");
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 
@@ -409,10 +409,10 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof CompassError).toBe(true);
+			expect(result instanceof CosmosError).toBe(true);
 			expect(result.message).toBe("Column type isn't supported");
-			expect(result.code).toBe(CompassErrorCodeEnum.INVALID_PARAM_TYPE);
-			expect(result.origin).toBe("COMPASS");
+			expect(result.code).toBe(CosmosErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("COSMOS");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 	});

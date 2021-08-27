@@ -1,6 +1,6 @@
 import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
-import { CompassError } from "../../../../error";
-import { CompassErrorCodeEnum } from "../../../../error/types/error-code.enum";
+import { CosmosError } from "../../../../error";
+import { CosmosErrorCodeEnum } from "../../../../error/types/error-code.enum";
 import { Logger } from "../../../../logger";
 import { MetadataUtil } from "../../../../utils/metadata-util";
 import { ColumnMetadata } from "../../../types/column-metadata";
@@ -29,10 +29,10 @@ export const getEntitiesMetadata = ({
 		});
 
 		if (entities[metadata.name]) {
-			throw new CompassError({
+			throw new CosmosError({
 				message: "Duplicated Entity",
-				code: CompassErrorCodeEnum.DUPLICATED_ENTITY,
-				origin: "COMPASS",
+				code: CosmosErrorCodeEnum.DUPLICATED_ENTITY,
+				origin: "COSMOS",
 				details: [`Entity: ${metadata.name}`],
 			});
 		}
