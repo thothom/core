@@ -31,4 +31,8 @@ export enum SymbiosisErrorCodeEnum {
 	 * Automation
 	 */
 	AUTOMATION_FAILED = "AUTOMATION_FAILED",
+	/**
+	 * Plugin
+	 */
+	NOT_IMPLEMENTED = "NOT_IMPLEMENTED",
 }
