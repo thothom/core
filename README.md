@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="https://github.com/techmmunity/symbiosis/raw/master/resources/logo.png" width="300" height="300">
+	<img src="https://github.com/techmmunity/symbiosis/raw/master/resources/logo.gif" width="300" height="300">
 </div>
 
 <div align="center">
