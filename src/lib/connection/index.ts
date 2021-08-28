@@ -17,7 +17,7 @@ export abstract class Connection<
 
 	private readonly _options: BaseConnectionOptions;
 
-	private readonly _metadataManager: EntityManager<
+	private readonly _entityManager: EntityManager<
 		EntityExtraData,
 		ColumnExtraData
 	>;
@@ -36,8 +36,8 @@ export abstract class Connection<
 		return this._options;
 	}
 
-	protected get metadataManager() {
-		return this._metadataManager;
+	protected get entityManager() {
+		return this._entityManager;
 	}
 
 	protected get logger() {
@@ -55,17 +55,17 @@ export abstract class Connection<
 
 		this._logger = new Logger(this._name, options.logging);
 
-		this._metadataManager = new EntityManager<EntityExtraData, ColumnExtraData>(
-			{
-				logger: this._logger,
-				connectionOptions: this._options,
-			},
-		);
+		this._entityManager = new EntityManager<EntityExtraData, ColumnExtraData>({
+			logger: this._logger,
+			connectionOptions: this._options,
+		});
 	}
 
 	/**
 	 * Methods
 	 */
 
-	public abstract getRepository<Entity>(entity: Entity): Repository<Entity>;
+	public abstract getRepository<Entity>(
+		entity: Entity,
+	): Repository<Entity, EntityExtraData, ColumnExtraData>;
 }

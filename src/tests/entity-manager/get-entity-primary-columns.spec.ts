@@ -21,7 +21,7 @@ describe("EntityManager > getEntityPrimaryColumns", () => {
 		});
 
 		expect(
-			connection.metadataManager.getEntityPrimaryColumns(TestEntity),
+			connection.entityManager.getEntityPrimaryColumns(TestEntity),
 		).toStrictEqual([
 			{
 				databaseName: "id",
@@ -47,7 +47,7 @@ describe("EntityManager > getEntityPrimaryColumns", () => {
 		});
 
 		expect(
-			connection.metadataManager.getEntityPrimaryColumns(TestEntity),
+			connection.entityManager.getEntityPrimaryColumns(TestEntity),
 		).toStrictEqual([
 			{
 				databaseName: "id",
@@ -81,7 +81,7 @@ describe("EntityManager > getEntityPrimaryColumns", () => {
 		let result: any;
 
 		try {
-			connection.metadataManager.getEntityPrimaryColumns(TestEntity);
+			connection.entityManager.getEntityPrimaryColumns(TestEntity);
 		} catch (err) {
 			result = err;
 		}

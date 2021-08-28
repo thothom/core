@@ -2,8 +2,10 @@ import { Connection } from "../../lib/connection";
 import { Repository } from "../../lib/repository";
 
 export class TestConnection extends Connection<any, any> {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public getRepository<Entity>(_entity: Entity): Repository<Entity> {
+	public getRepository<Entity>(
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		_entity: Entity,
+	): Repository<Entity, void, void> {
 		throw new Error("Method not implemented.");
 	}
 
@@ -15,8 +17,8 @@ export class TestConnection extends Connection<any, any> {
 		return super.options;
 	}
 
-	public override get metadataManager() {
-		return super.metadataManager;
+	public override get entityManager() {
+		return super.entityManager;
 	}
 
 	public override get logger() {

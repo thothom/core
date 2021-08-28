@@ -20,7 +20,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			entities: [TestEntity],
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
@@ -55,7 +55,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			},
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
@@ -94,7 +94,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			entities: [TestEntity],
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
@@ -144,7 +144,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			entities: [TestEntity],
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
@@ -195,7 +195,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			},
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
@@ -227,7 +227,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			},
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
@@ -259,7 +259,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			},
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
@@ -294,7 +294,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			},
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
@@ -352,7 +352,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			},
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestFooEntity: {
 				columns: [
@@ -393,7 +393,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			},
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestFooEntity: {
 				columns: [
@@ -437,7 +437,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			entities: [TestEntity, TestSubEntity],
 		});
 
-		expect(connection.metadataManager.getAllEntitiesMetadata()).toStrictEqual({
+		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
