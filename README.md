@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="https://github.com/techmmunity/symbiosis/raw/master/resources/logo.gif" width="300" height="300">
+	<img src="https://github.com/techmmunity/symbiosis/raw/master/resources/logo.svg" width="300" height="300">
 </div>
 
 <div align="center">
@@ -33,7 +33,7 @@
 
 </div>
 
-Symbiosis is an **Object Mapper**, that is an [ORM + ODM](https://medium.com/spidernitt/orm-and-odm-a-brief-introduction-369046ec57eb), based on [TypeORM syntax](https://github.com/typeorm/typeorm) and [ESLint plugable approach](https://eslint.org/). Our intention here is standardize the connection and implementation of **every database** with the best performance possible, and for this, we use an plugable approach, so more people can contribute and create their on integration. This package alone can't do anything besides typing, the plugins do all the "dirt work".
+Symbiosis is an **Object Mapper**, an [ORM + ODM](https://medium.com/spidernitt/orm-and-odm-a-brief-introduction-369046ec57eb), based on [TypeORM syntax](https://github.com/typeorm/typeorm) and [ESLint plugable approach](https://eslint.org/). Our intention here is standardize the connection and implementation of **every database** with the best performance possible, and for this, we use an plugable approach, so more people can contribute and create their on integration. This package alone can't do anything besides typing, the plugins do all the "dirt work".
 
 Currently it only works with TypeScript (and transpiled JavaScript), and we plan to keep this way.
 
@@ -71,15 +71,11 @@ Configure `tsconfig.json`:
 }
 ```
 
-## Available Plugins
+## Plugins List
 
-### [Plugins List](https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis)
+All the Symbiosis Plugins have the `techmmunity-symbiosis` tag, so you can easily found all the plugins at [this link](https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis).
 
-All the Symbiosis Plugins have the `techmmunity-symbiosis` tag, so you can easily found all the plugins in [this link](https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis).
-
-### DynamoDB
-
-- [@techmmunity/symbiosis-dynamo](https://github.com/techmmunity/symbiosis-dynamo)
+[https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis](https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis)
 
 ## Usage
 
@@ -143,8 +139,7 @@ This project exists thanks to all the people who contribute:
 
 > TODO
 
-### "Cool Kids" who helped with the initial idea
+### _Cool Kids_
 
-- [Diozin](https://www.linkedin.com/in/diozhn/), who suggested the name "Symbiosis"
 - [Zaetic](https://www.linkedin.com/in/joaoggs/), who make our _gorgeous_ logo
 - A very special thanks to [Umed Khudoiberdiev](https://github.com/pleerock) and [Attila Oláh](https://github.com/NoNameProvided), how created TypeORM. Without their code, this package would never exists.

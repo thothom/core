@@ -148,6 +148,9 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 
 	/**
 	 * Auto Generate Fields (Entity -> Database)
+	 *
+	 * AutoGenerate Columns Fields **BEFORE** the data
+	 * be formatted to the database pattern
 	 */
 	public autoGenerateEntityToDatabase(
 		params: AutoGenerateEntityToDatabaseParams,
@@ -163,6 +166,9 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 
 	/**
 	 * Converts an entity data to database data
+	 *
+	 * This must be called **AFTER** the
+	 * `autoGenerateEntityToDatabase` method
 	 */
 	public convertEntityToDatabase(
 		params: ConvertEntityToDatabaseParams,

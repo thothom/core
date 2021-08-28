@@ -17,10 +17,6 @@ export interface AutoGenerateEntityToDatabaseParams {
 	events?: Array<DatabaseEvents>;
 }
 
-/**
- * AutoGenerate Columns Fields BEFORE the data
- * be formatted to the database pattern
- */
 export const autoGenerateEntityToDatabase = (
 	{ metadataManager, connectionOptions }: Injectables,
 	{ entity, data, events = [] }: AutoGenerateEntityToDatabaseParams,

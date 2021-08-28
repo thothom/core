@@ -17,6 +17,7 @@
 	"keywords": [
 		"orm",
 		"odm",
+		"sql",
 		"nosql",
 		"dynamo",
 		"dynamodb",
@@ -24,6 +25,7 @@
 		"typescript",
 		"database",
 		"data-mapper",
+		"object-mapper",
 		"techmmunity-symbiosis"
 	],
 	"peerDependencies": {
