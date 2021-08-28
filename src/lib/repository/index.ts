@@ -1,5 +1,5 @@
 import { EntityManager } from "../entity-manager";
-import { afterSave } from "./methods/after-save";
+import { afterSave, AfterSaveParams } from "./methods/after-save";
 import { beforeSave, BeforeSaveParams } from "./methods/before-save";
 import { FindConditions } from "./queries/types/find-conditions";
 import { FindOneOptions, FindOptions } from "./queries/types/find-options";
@@ -169,21 +169,13 @@ export abstract class Repository<
 	 * data to the database format
 	 */
 	protected beforeSave(params: BeforeSaveParams<Entity>) {
-		const func = (data: any) =>
-			beforeSave<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
-				{
-					entity: this.entity,
-					entityManager: this.entityManager,
-				},
-				{
-					...params,
-					data,
-				},
-			);
-
-		return Array.isArray(params.data)
-			? params.data.map(data => func(data))
-			: func(params.data);
+		return beforeSave<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
 	}
 
 	/**
@@ -191,21 +183,13 @@ export abstract class Repository<
 	 *
 	 * Does things like format the data to the entity format
 	 */
-	protected afterSave(params: BeforeSaveParams<Entity>) {
-		const func = (data: any) =>
-			afterSave<EntityExtraMetadata, ColumnExtraMetadata>(
-				{
-					entity: this.entity,
-					entityManager: this.entityManager,
-				},
-				{
-					...params,
-					data,
-				},
-			);
-
-		return Array.isArray(params.data)
-			? params.data.map(data => func(data))
-			: func(params.data);
+	protected afterSave(params: AfterSaveParams) {
+		return afterSave<EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
 	}
 }

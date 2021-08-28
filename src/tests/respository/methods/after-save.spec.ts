@@ -1,8 +1,8 @@
 import { Column } from "../../../lib/decorators/column";
 import { Entity } from "../../../lib/decorators/entity/entity";
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/primary-generated-column";
-import { afterSave } from "../../../lib/repository/methods/after-save";
 import { TestConnection } from "../../constants/test-connection";
+import { TestRepository } from "../../constants/test-repository";
 
 describe("Repository > Methods > afterSave", () => {
 	@Entity()
@@ -14,36 +14,59 @@ describe("Repository > Methods > afterSave", () => {
 		public foo: number;
 	}
 
-	let connection: TestConnection;
+	let repository: TestRepository<any>;
+	const id = "11cb020e-6dcb-4c51-93ed-a7a6abbfc771";
 
 	beforeAll(() => {
-		connection = new TestConnection({
+		const connection = new TestConnection({
 			entities: [TestEntity],
 			namingStrategy: {
 				column: "UPPER_CASE",
 			},
 		});
+
+		repository = new TestRepository(connection.entityManager, TestEntity);
 	});
 
 	it("should convert fields to the entity format", () => {
-		const result = afterSave<void, void>(
-			{
-				entity: TestEntity,
-				entityManager: connection.entityManager,
+		const result = repository.afterSave({
+			data: {
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				ID: id,
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				FOO: 1,
 			},
-			{
-				data: {
+		});
+
+		expect(result).toStrictEqual({
+			data: {
+				id,
+				foo: 1,
+			},
+			options: undefined,
+		});
+	});
+
+	it("should convert of fields to the entity format (array)", () => {
+		const result = repository.afterSave({
+			data: [
+				{
 					// eslint-disable-next-line @typescript-eslint/naming-convention
-					ID: "11cb020e-6dcb-4c51-93ed-a7a6abbfc771",
+					ID: id,
 					// eslint-disable-next-line @typescript-eslint/naming-convention
 					FOO: 1,
 				},
-			},
-		);
+			],
+		});
 
 		expect(result).toStrictEqual({
-			id: "11cb020e-6dcb-4c51-93ed-a7a6abbfc771",
-			foo: 1,
+			data: [
+				{
+					id,
+					foo: 1,
+				},
+			],
+			options: undefined,
 		});
 	});
 });

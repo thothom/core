@@ -16,12 +16,22 @@ export const afterSave = <EntityExtraMetadata, ColumnExtraMetadata>(
 		entity,
 		entityManager,
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
-	{ data }: AfterSaveParams,
+	{ data, options }: AfterSaveParams,
 ) => {
-	const dataInEntityFormat = entityManager.convertDatabaseToEntity({
-		data,
-		entity,
-	});
+	const dataInEntityFormat = Array.isArray(data)
+		? data.map(d =>
+				entityManager.convertDatabaseToEntity({
+					data: d,
+					entity,
+				}),
+		  )
+		: entityManager.convertDatabaseToEntity({
+				data,
+				entity,
+		  });
 
-	return dataInEntityFormat;
+	return {
+		data: dataInEntityFormat,
+		options,
+	};
 };
