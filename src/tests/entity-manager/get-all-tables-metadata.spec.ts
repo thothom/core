@@ -18,7 +18,7 @@ describe("EntityManager > getAllTablesMetadata", () => {
 			entities: [TestEntity],
 		});
 
-		expect(connection.metadataManager.getAllTablesMetadata()).toStrictEqual([
+		expect(connection.entityManager.getAllTablesMetadata()).toStrictEqual([
 			{
 				columns: [
 					{ databaseName: "id", name: "id", primary: true, type: String },
@@ -55,7 +55,7 @@ describe("EntityManager > getAllTablesMetadata", () => {
 			entities: [TestEntity],
 		});
 
-		expect(connection.metadataManager.getAllTablesMetadata()).toStrictEqual([
+		expect(connection.entityManager.getAllTablesMetadata()).toStrictEqual([
 			{
 				columns: [
 					{ databaseName: "id", name: "id", primary: true, type: String },
@@ -97,7 +97,7 @@ describe("EntityManager > getAllTablesMetadata", () => {
 			entities: [TestEntity],
 		});
 
-		expect(connection.metadataManager.getAllTablesMetadata()).toStrictEqual([
+		expect(connection.entityManager.getAllTablesMetadata()).toStrictEqual([
 			{
 				columns: [
 					{ databaseName: "id", name: "id", primary: true, type: String },

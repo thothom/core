@@ -29,7 +29,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		const connection = createConnection([TestEntity]);
 
 		it("should generate fields", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					test: "foo",
@@ -68,7 +68,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		const connection = createConnection([TestEntity]);
 
 		it("should generate fields parent field is specified", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					id: "abc",
@@ -89,7 +89,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 
 		it("should generate fields parent field is not specified", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					id: "abc",
@@ -109,7 +109,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 
 		it("should generate fields parent field is undefined", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					id: "abc",
@@ -130,7 +130,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 
 		it("should generate fields parent field is null", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					id: "abc",
@@ -172,7 +172,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			const connection = createConnection([TestEntity]);
 
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					id: "abc",
@@ -204,7 +204,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			const connection = createConnection([TestEntity]);
 
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					id: "abc",
@@ -238,7 +238,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			const connection = createConnection([TestEntity]);
 
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					id: "abc",
@@ -272,7 +272,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			const connection = createConnection([TestEntity]);
 
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					id: "abc",
@@ -315,7 +315,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		const connection = createConnection([TestEntity]);
 
 		it("should generate fields of sub-sub-entity if empty object is passed", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					id: "abc",
@@ -341,7 +341,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 
 		it("should generate fields of sub-entity and sub-sub-entity", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
 					id: "abc",
@@ -375,7 +375,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		const connection = createConnection([TestEntity]);
 
 		it("should generate field", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				events: ["save"],
 				data: {
@@ -393,7 +393,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 
 		it("should NOT generate field", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				events: ["update"],
 				data: {
@@ -420,7 +420,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		const connection = createConnection([TestEntity]);
 
 		it("should generate field", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				events: ["update"],
 				data: {
@@ -438,7 +438,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 
 		it("should NOT generate field", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				events: ["delete"],
 				data: {
@@ -465,7 +465,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		const connection = createConnection([TestEntity]);
 
 		it("should generate field", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				events: ["delete"],
 				data: {
@@ -483,7 +483,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 
 		it("should NOT generate field", () => {
-			const result = connection.metadataManager.autoGenerateEntityToDatabase({
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				events: ["save"],
 				data: {

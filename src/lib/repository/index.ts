@@ -1,9 +1,23 @@
-import { Count } from "./queries/methods/count";
-import { Delete } from "./queries/methods/delete";
-import { Find, FindOne } from "./queries/methods/find";
-import { Save, Upsert } from "./queries/methods/save";
+import { EntityManager } from "../entity-manager";
+import { afterSave } from "./methods/after-save";
+import { beforeSave, BeforeSaveParams } from "./methods/before-save";
+import { FindConditions } from "./queries/types/find-conditions";
+import { FindOneOptions, FindOptions } from "./queries/types/find-options";
+import { BaseQueryOptions } from "./queries/types/query-options";
 
-export interface Repository<Entity> {
+export abstract class Repository<
+	Entity,
+	EntityExtraMetadata,
+	ColumnExtraMetadata,
+> {
+	public constructor(
+		private readonly entityManager: EntityManager<
+			EntityExtraMetadata,
+			ColumnExtraMetadata
+		>,
+		private readonly entity: Entity,
+	) {}
+
 	/**
 	 * --------------------------------------------------
 	 *
@@ -18,19 +32,36 @@ export interface Repository<Entity> {
 	 * This is an more performative way to make an "upsert",
 	 * and most of the databases supports this method.
 	 */
-	save: Save<Entity>;
+	public abstract save(
+		data: BeforeSaveParams<Entity>["data"],
+		options?: BeforeSaveParams<Entity>["options"],
+	): Promise<Array<Entity> | Entity>;
+
 	/**
 	 * Inserts a record on the database and fail if it's already exist.
 	 */
-	insert: Save<Entity>;
+	public abstract insert(
+		data: BeforeSaveParams<Entity>["data"],
+		options?: BeforeSaveParams<Entity>["options"],
+	): Promise<Array<Entity> | Entity>;
+
 	/**
 	 * Updates a record based on a query and fail if it's not exist.
 	 */
-	update: Upsert<Entity>;
+	public abstract update(
+		conditions: FindOptions<Entity>,
+		data: Partial<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<Array<Entity> | Entity>;
+
 	/**
 	 * Make an "upsert" operation based on a query.
 	 */
-	upsert: Upsert<Entity>;
+	public abstract upsert(
+		conditions: FindOptions<Entity>,
+		data: Partial<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<Array<Entity> | Entity>;
 
 	/**
 	 * --------------------------------------------------
@@ -43,11 +74,18 @@ export interface Repository<Entity> {
 	/**
 	 * Find many records based on a query.
 	 */
-	find: Find<Entity>;
+	public abstract find(
+		conditions: FindOptions<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<Array<Entity>>;
+
 	/**
 	 * Find one record based on a query.
 	 */
-	findOne: FindOne<Entity>;
+	public abstract findOne(
+		conditions: FindOneOptions<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<Entity>;
 
 	/**
 	 * --------------------------------------------------
@@ -60,21 +98,32 @@ export interface Repository<Entity> {
 	/**
 	 * Delete a record based on a query condition.
 	 */
-	delete: Delete<Entity>;
+	public abstract delete(
+		where: FindConditions<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<number>;
+
 	/**
 	 * Soft delete a record based on a query condition.
 	 *
 	 * **WARN:** To use this method, the entity must have
 	 * a column decorated with `DeleteDateColumn`.
 	 */
-	softDelete: Delete<Entity>;
+	public abstract softDelete(
+		where: FindConditions<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<number>;
+
 	/**
 	 * Recovers a record that was sof-deleted.
 	 *
 	 * **WARN:** To use this method, the entity must have
 	 * a column decorated with `DeleteDateColumn`.
 	 */
-	recover: Delete<Entity>;
+	public abstract recover(
+		where: FindConditions<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<number>;
 
 	/**
 	 * --------------------------------------------------
@@ -87,7 +136,10 @@ export interface Repository<Entity> {
 	/**
 	 * Count the records returned by a query condition.
 	 */
-	count: Count<Entity>;
+	public abstract count(
+		where: FindConditions<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<number>;
 
 	/**
 	 * Some databases, like PostgreSQL, have methods that allow
@@ -97,5 +149,63 @@ export interface Repository<Entity> {
 	 * This methods allow you to make a count operator, that
 	 * in some cases can be imprecise, but is more performative
 	 */
-	performativeCount: Count<Entity>;
+	public abstract performativeCount(
+		where: FindConditions<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<number>;
+
+	/**
+	 * --------------------------------------------------
+	 *
+	 * BEFORE & AFTER save
+	 *
+	 * --------------------------------------------------
+	 */
+
+	/**
+	 * Handles the data before the start of the function
+	 *
+	 * Does things like auto-generate values and format the
+	 * data to the database format
+	 */
+	protected beforeSave(params: BeforeSaveParams<Entity>) {
+		const func = (data: any) =>
+			beforeSave<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+				{
+					entity: this.entity,
+					entityManager: this.entityManager,
+				},
+				{
+					...params,
+					data,
+				},
+			);
+
+		return Array.isArray(params.data)
+			? params.data.map(data => func(data))
+			: func(params.data);
+	}
+
+	/**
+	 * Handles the data after the end of the function
+	 *
+	 * Does things like format the data to the entity format
+	 */
+	protected afterSave(params: BeforeSaveParams<Entity>) {
+		const func = (data: any) =>
+			afterSave<EntityExtraMetadata, ColumnExtraMetadata>(
+				{
+					entity: this.entity,
+					entityManager: this.entityManager,
+				},
+				{
+					...params,
+					data,
+				},
+			);
+
+		return Array.isArray(params.data)
+			? params.data.map(data => func(data))
+			: func(params.data);
+	}
 }

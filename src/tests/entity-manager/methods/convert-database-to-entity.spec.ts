@@ -40,7 +40,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert partial data correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -53,7 +53,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -68,7 +68,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should filter null values", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -82,7 +82,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should filter undefined values", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -96,7 +96,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should return an empty object if no data is passed", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: undefined as any,
 			});
@@ -118,7 +118,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 
 			const connection = createConnection([TestEntity]);
 
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					CUSTOM_FIELD_NAME: "Test",
@@ -146,7 +146,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 
 			const connection = createConnection([TestEntity]);
 
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					CUSTOM_FIELD_NAME: "Test",
@@ -174,7 +174,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 
 			const connection = createConnection([TestEntity]);
 
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -206,7 +206,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -249,7 +249,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert partial data of sub-entity correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -268,7 +268,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -317,7 +317,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert partial data of sub-entity correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -340,7 +340,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -412,7 +412,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert partial data of sub-sub-entity correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -437,7 +437,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -503,7 +503,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert partial data of sub-sub-entity correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",
@@ -532,7 +532,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.metadataManager.convertDatabaseToEntity({
+			const result = connection.entityManager.convertDatabaseToEntity({
 				entity: TestEntity,
 				data: {
 					test_id: "Test",

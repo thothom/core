@@ -157,7 +157,7 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	): Record<string, any> {
 		return autoGenerateEntityToDatabase(
 			{
-				metadataManager: this,
+				entityManager: this,
 				connectionOptions: this.connectionOptions,
 			},
 			params,
@@ -173,7 +173,7 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	public convertEntityToDatabase(
 		params: ConvertEntityToDatabaseParams,
 	): Record<string, any> {
-		return convertEntityToDatabase({ metadataManager: this }, params);
+		return convertEntityToDatabase({ entityManager: this }, params);
 	}
 
 	/**
@@ -182,6 +182,6 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	public convertDatabaseToEntity(
 		params: ConvertDatabaseToEntityParams,
 	): Record<string, any> {
-		return convertDatabaseToEntity({ metadataManager: this }, params);
+		return convertDatabaseToEntity({ entityManager: this }, params);
 	}
 }

@@ -12,8 +12,8 @@
 <a href="https://www.codefactor.io/repository/github/techmmunity/symbiosis">
 	<img src="https://www.codefactor.io/repository/github/techmmunity/symbiosis/badge" alt="CodeFactor">
 </a>
-<a href="https://deepscan.io/dashboard#view=project&tid=13883&pid=18101&bid=434906">
-	<img src="https://deepscan.io/api/teams/13883/projects/18101/branches/434906/badge/grade.svg" alt="DeepScan">
+<a href="https://deepscan.io/dashboard#view=project&tid=13883&pid=18404&bid=449722">
+	<img src="https://deepscan.io/api/teams/13883/projects/18404/branches/449722/badge/grade.svg" alt="DeepScan">
 </a>
 <a href="https://coveralls.io/github/techmmunity/symbiosis?branch=master">
 	<img src="https://coveralls.io/repos/github/techmmunity/symbiosis/badge.svg?branch=master" alt="Coveralls">

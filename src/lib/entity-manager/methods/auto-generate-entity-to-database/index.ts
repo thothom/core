@@ -7,7 +7,7 @@ import { DatabaseEvents } from "../../types/database-events";
 import { BaseConnectionOptions } from "../../../connection/types/connection-options";
 
 interface Injectables {
-	metadataManager: EntityManager<any, any>;
+	entityManager: EntityManager<any, any>;
 	connectionOptions: BaseConnectionOptions;
 }
 
@@ -18,16 +18,16 @@ export interface AutoGenerateEntityToDatabaseParams {
 }
 
 export const autoGenerateEntityToDatabase = (
-	{ metadataManager, connectionOptions }: Injectables,
+	{ entityManager, connectionOptions }: Injectables,
 	{ entity, data, events = [] }: AutoGenerateEntityToDatabaseParams,
 ) => {
 	if (isUndefined(data)) return {} as Record<string, any>;
 
-	const entityMetadata = metadataManager.getEntityMetadata(entity);
+	const entityMetadata = entityManager.getEntityMetadata(entity);
 
 	return entityMetadata.columns.reduce((acc, columnMetadata) => {
 		if (MetadataUtil.isCustomMetadataType(columnMetadata.type)) {
-			const subEntityMetadata = metadataManager.getEntityMetadata(
+			const subEntityMetadata = entityManager.getEntityMetadata(
 				columnMetadata.type,
 			);
 
@@ -35,7 +35,7 @@ export const autoGenerateEntityToDatabase = (
 
 			const generatedValue = autoGenerateEntityToDatabase(
 				{
-					metadataManager,
+					entityManager,
 					connectionOptions,
 				},
 				{

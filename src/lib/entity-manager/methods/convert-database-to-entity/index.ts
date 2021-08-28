@@ -4,7 +4,7 @@ import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
 
 interface Injectables {
-	metadataManager: EntityManager<any, any>;
+	entityManager: EntityManager<any, any>;
 }
 
 export interface ConvertDatabaseToEntityParams {
@@ -13,10 +13,10 @@ export interface ConvertDatabaseToEntityParams {
 }
 
 export const convertDatabaseToEntity = (
-	{ metadataManager }: Injectables,
+	{ entityManager }: Injectables,
 	{ entity, data }: ConvertDatabaseToEntityParams,
 ) => {
-	const entityMetadata = metadataManager.getEntityMetadata(entity);
+	const entityMetadata = entityManager.getEntityMetadata(entity);
 
 	return entityMetadata.columns.reduce((acc, columnMetadata) => {
 		if (isUndefined(data)) return acc;
@@ -26,7 +26,7 @@ export const convertDatabaseToEntity = (
 		if (isUndefined(value)) return acc;
 
 		if (MetadataUtil.isCustomMetadataType(columnMetadata.type)) {
-			const subEntityMetadata = metadataManager.getEntityMetadata(
+			const subEntityMetadata = entityManager.getEntityMetadata(
 				columnMetadata.type,
 			);
 
@@ -34,7 +34,7 @@ export const convertDatabaseToEntity = (
 				acc[columnMetadata.name] = value.map((val: CustomClass) =>
 					convertDatabaseToEntity(
 						{
-							metadataManager,
+							entityManager,
 						},
 						{
 							entity: subEntityMetadata,
@@ -48,7 +48,7 @@ export const convertDatabaseToEntity = (
 
 			acc[columnMetadata.name] = convertDatabaseToEntity(
 				{
-					metadataManager,
+					entityManager,
 				},
 				{
 					entity: subEntityMetadata,

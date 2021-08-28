@@ -8,6 +8,7 @@ module.exports = {
 	collectCoverageFrom: [
 		"lib/**/*.ts",
 		"!lib/**/types/**/*.ts",
+		"!lib/repository/index.ts",
 		"!lib/utils/date/*.ts",
 	],
 	setupFiles: ["./tests/setup.ts"],

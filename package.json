@@ -78,6 +78,7 @@
 		"lint": "eslint . --quiet",
 		"update-dependencies": "yarn upgrade-interactive --latest",
 		"husky:pre-commit": "tsc && lint-staged",
+		"husky:install": "husky install",
 		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd .."
 	}
 }

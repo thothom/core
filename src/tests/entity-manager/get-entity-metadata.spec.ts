@@ -21,7 +21,7 @@ describe("EntityManager > getEntityMetadata", () => {
 		});
 
 		expect(
-			connection.metadataManager.getEntityMetadata(TestEntity),
+			connection.entityManager.getEntityMetadata(TestEntity),
 		).toStrictEqual({
 			columns: [
 				{ databaseName: "id", name: "id", primary: true, type: String },
@@ -58,7 +58,7 @@ describe("EntityManager > getEntityMetadata", () => {
 		});
 
 		expect(
-			connection.metadataManager.getEntityMetadata(TestSubEntity),
+			connection.entityManager.getEntityMetadata(TestSubEntity),
 		).toStrictEqual({
 			columns: [{ databaseName: "bar", name: "bar", type: Number }],
 			databaseName: "TestSubEntity",
@@ -97,7 +97,7 @@ describe("EntityManager > getEntityMetadata", () => {
 		});
 
 		expect(
-			connection.metadataManager.getEntityMetadata(TestSubSubEntity),
+			connection.entityManager.getEntityMetadata(TestSubSubEntity),
 		).toStrictEqual({
 			columns: [{ databaseName: "bar", name: "bar", type: Number }],
 			databaseName: "TestSubSubEntity",
@@ -123,7 +123,7 @@ describe("EntityManager > getEntityMetadata", () => {
 		let result: any;
 
 		try {
-			connection.metadataManager.getEntityMetadata(TestEntity);
+			connection.entityManager.getEntityMetadata(TestEntity);
 		} catch (err) {
 			result = err;
 		}
