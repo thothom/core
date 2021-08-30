@@ -2,7 +2,9 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
 import { Repository } from "../../lib/repository";
+import { AfterInsertParams } from "../../lib/repository/methods/after-insert";
 import { AfterSaveParams } from "../../lib/repository/methods/after-save";
+import { BeforeInsertParams } from "../../lib/repository/methods/before-insert";
 import { BeforeSaveParams } from "../../lib/repository/methods/before-save";
 import { FindConditions } from "../../lib/repository/queries/types/find-conditions";
 import {
@@ -97,5 +99,13 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 
 	public override afterSave(params: AfterSaveParams) {
 		return super.afterSave(params);
+	}
+
+	public override beforeInsert(params: BeforeInsertParams<Entity>) {
+		return super.beforeInsert(params);
+	}
+
+	public override afterInsert(params: AfterInsertParams) {
+		return super.afterInsert(params);
 	}
 }

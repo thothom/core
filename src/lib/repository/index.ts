@@ -1,6 +1,8 @@
 import { EntityManager } from "../entity-manager";
 import { afterSave, AfterSaveParams } from "./methods/after-save";
+import { afterInsert, AfterInsertParams } from "./methods/after-insert";
 import { beforeSave, BeforeSaveParams } from "./methods/before-save";
+import { beforeInsert, BeforeInsertParams } from "./methods/before-insert";
 import { FindConditions } from "./queries/types/find-conditions";
 import { FindOneOptions, FindOptions } from "./queries/types/find-options";
 import { BaseQueryOptions } from "./queries/types/query-options";
@@ -185,6 +187,45 @@ export abstract class Repository<
 	 */
 	protected afterSave(params: AfterSaveParams) {
 		return afterSave<EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * --------------------------------------------------
+	 *
+	 * BEFORE & AFTER insert
+	 *
+	 * --------------------------------------------------
+	 */
+
+	/**
+	 * Handles the data before the start of the function
+	 *
+	 * Does things like auto-generate values and format the
+	 * data to the database format
+	 */
+	protected beforeInsert(params: BeforeInsertParams<Entity>) {
+		return beforeInsert<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * Handles the data after the end of the function
+	 *
+	 * Does things like format the data to the entity format
+	 */
+	protected afterInsert(params: AfterInsertParams) {
+		return afterInsert<EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
