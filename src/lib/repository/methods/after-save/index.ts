@@ -1,5 +1,6 @@
-import { EntityManager } from "../../entity-manager";
-import { BaseQueryOptions } from "../queries/types/query-options";
+import { EntityManager } from "../../../entity-manager";
+import { BaseQueryOptions } from "../../queries/types/query-options";
+import { handleDataArray } from "./helpers/handle-data-array";
 
 interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
@@ -18,20 +19,18 @@ export const afterSave = <EntityExtraMetadata, ColumnExtraMetadata>(
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
 	{ data, options }: AfterSaveParams,
 ) => {
-	const dataInEntityFormat = Array.isArray(data)
-		? data.map(d =>
-				entityManager.convertDatabaseToEntity({
-					data: d,
-					entity,
-				}),
-		  )
-		: entityManager.convertDatabaseToEntity({
-				data,
-				entity,
-		  });
+	const dataArray = Array.isArray(data) ? data : [data];
+
+	const dataHandled = handleDataArray({
+		data: dataArray,
+		entity,
+		entityManager,
+	});
+
+	const dataToReturn = Array.isArray(data) ? dataHandled : dataHandled.shift();
 
 	return {
-		data: dataInEntityFormat,
+		data: dataToReturn,
 		options,
 	};
 };
