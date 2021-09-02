@@ -4,8 +4,10 @@
 import { Repository } from "../../lib/repository";
 import { AfterInsertParams } from "../../lib/repository/methods/after-insert";
 import { AfterSaveParams } from "../../lib/repository/methods/after-save";
+import { AfterUpdateParams } from "../../lib/repository/methods/after-update";
 import { BeforeInsertParams } from "../../lib/repository/methods/before-insert";
 import { BeforeSaveParams } from "../../lib/repository/methods/before-save";
+import { BeforeUpdateParams } from "../../lib/repository/methods/before-update";
 import { FindConditions } from "../../lib/repository/queries/types/find-conditions";
 import {
 	FindOptions,
@@ -29,7 +31,7 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 	}
 
 	public update(
-		_conditions: FindOptions<Entity>,
+		_conditions: FindOneOptions<Entity>["where"],
 		_data: Partial<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
@@ -37,7 +39,7 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 	}
 
 	public upsert(
-		_conditions: FindOptions<Entity>,
+		_conditions: FindOneOptions<Entity>["where"],
 		_data: Partial<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
@@ -107,5 +109,13 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 
 	public override afterInsert(params: AfterInsertParams) {
 		return super.afterInsert(params);
+	}
+
+	public override beforeUpdate(params: BeforeUpdateParams<Entity>) {
+		return super.beforeUpdate(params);
+	}
+
+	public override afterUpdate(params: AfterUpdateParams<Entity>) {
+		return super.afterUpdate(params);
 	}
 }
