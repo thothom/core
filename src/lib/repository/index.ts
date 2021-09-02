@@ -8,6 +8,8 @@ import { FindOneOptions, FindOptions } from "./queries/types/find-options";
 import { BaseQueryOptions } from "./queries/types/query-options";
 import { beforeUpdate, BeforeUpdateParams } from "./methods/before-update";
 import { afterUpdate, AfterUpdateParams } from "./methods/after-update";
+import { AfterUpsertParams, afterUpsert } from "./methods/after-upsert";
+import { BeforeUpsertParams, beforeUpsert } from "./methods/before-upsert";
 
 export abstract class Repository<
 	Entity,
@@ -267,6 +269,45 @@ export abstract class Repository<
 	 */
 	protected afterUpdate(params: AfterUpdateParams<Entity>) {
 		return afterUpdate<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * --------------------------------------------------
+	 *
+	 * BEFORE & AFTER upsert
+	 *
+	 * --------------------------------------------------
+	 */
+
+	/**
+	 * Handles the data before the start of the function
+	 *
+	 * Does things like auto-generate values and format the
+	 * data to the database format
+	 */
+	protected beforeUpsert(params: BeforeUpsertParams<Entity>) {
+		return beforeUpsert<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * Handles the data after the end of the function
+	 *
+	 * Does things like format the data to the entity format
+	 */
+	protected afterUpsert(params: AfterUpsertParams<Entity>) {
+		return afterUpsert<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,

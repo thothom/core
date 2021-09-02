@@ -5,9 +5,11 @@ import { Repository } from "../../lib/repository";
 import { AfterInsertParams } from "../../lib/repository/methods/after-insert";
 import { AfterSaveParams } from "../../lib/repository/methods/after-save";
 import { AfterUpdateParams } from "../../lib/repository/methods/after-update";
+import { AfterUpsertParams } from "../../lib/repository/methods/after-upsert";
 import { BeforeInsertParams } from "../../lib/repository/methods/before-insert";
 import { BeforeSaveParams } from "../../lib/repository/methods/before-save";
 import { BeforeUpdateParams } from "../../lib/repository/methods/before-update";
+import { BeforeUpsertParams } from "../../lib/repository/methods/before-upsert";
 import { FindConditions } from "../../lib/repository/queries/types/find-conditions";
 import {
 	FindOptions,
@@ -117,5 +119,13 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 
 	public override afterUpdate(params: AfterUpdateParams<Entity>) {
 		return super.afterUpdate(params);
+	}
+
+	public override beforeUpsert(params: BeforeUpsertParams<Entity>) {
+		return super.beforeUpsert(params);
+	}
+
+	public override afterUpsert(params: AfterUpsertParams<Entity>) {
+		return super.afterUpsert(params);
 	}
 }
