@@ -37,8 +37,8 @@ Symbiosis is an **Object Mapper**, an [ORM + ODM](https://medium.com/spidernitt/
 
 Currently it only works with TypeScript (and transpiled JavaScript), and we plan to keep this way.
 
-[![Discord Badge](https://img.shields.io/badge/discord-7289DA?style=for-the-badge&labelColor=7289DA&logo=discord&logoColor=white)](https://discord.gg/5hPnJzzAe2)
-[![Docs Badge](https://img.shields.io/badge/documentation-01d2ce?style=for-the-badge&labelColor=01d2ce)](https://symbiosis.techmmunity.com.br)
+[![Guilded](https://img.shields.io/badge/guilded-F5C400?style=for-the-badge&labelColor=F5C400&logo=guilded&logoColor=111820)](https://guilded.gg/techmmunity)
+[![Docs](https://img.shields.io/badge/documentation-111820?style=for-the-badge&labelColor=111820)](https://symbiosis.techmmunity.com.br)
 
 ## Why use Techmmunity Symbiosis?
 
@@ -75,7 +75,7 @@ Configure `tsconfig.json`:
 
 All the Symbiosis Plugins have the `techmmunity-symbiosis` tag, so you can easily found all the plugins at [this link](https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis).
 
-[https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis](https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis)
+[![Plugins List](https://img.shields.io/badge/plugins%20list-CB3837?style=for-the-badge&labelColor=CB3837)](https://www.npmjs.com/search?q=keywords:techmmunity-symbiosis)
 
 ## Usage
 
@@ -137,7 +137,7 @@ See [here](https://github.com/techmmunity/symbiosis/blob/master/TODO.md) our to-
 
 This project exists thanks to all the people who contribute:
 
-> TODO
+> COMING SOON
 
 ### _Cool Kids_
 
