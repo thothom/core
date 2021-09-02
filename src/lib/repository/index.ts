@@ -6,6 +6,8 @@ import { beforeInsert, BeforeInsertParams } from "./methods/before-insert";
 import { FindConditions } from "./queries/types/find-conditions";
 import { FindOneOptions, FindOptions } from "./queries/types/find-options";
 import { BaseQueryOptions } from "./queries/types/query-options";
+import { beforeUpdate, BeforeUpdateParams } from "./methods/before-update";
+import { afterUpdate, AfterUpdateParams } from "./methods/after-update";
 
 export abstract class Repository<
 	Entity,
@@ -51,7 +53,7 @@ export abstract class Repository<
 	 * Updates a record based on a query and fail if it's not exist.
 	 */
 	public abstract update(
-		conditions: FindOptions<Entity>,
+		conditions: FindOneOptions<Entity>["where"],
 		data: Partial<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity>;
@@ -60,7 +62,7 @@ export abstract class Repository<
 	 * Make an "upsert" operation based on a query.
 	 */
 	public abstract upsert(
-		conditions: FindOptions<Entity>,
+		conditions: FindOneOptions<Entity>["where"],
 		data: Partial<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity>;
@@ -226,6 +228,45 @@ export abstract class Repository<
 	 */
 	protected afterInsert(params: AfterInsertParams) {
 		return afterInsert<EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * --------------------------------------------------
+	 *
+	 * BEFORE & AFTER update
+	 *
+	 * --------------------------------------------------
+	 */
+
+	/**
+	 * Handles the data before the start of the function
+	 *
+	 * Does things like auto-generate values and format the
+	 * data to the database format
+	 */
+	protected beforeUpdate(params: BeforeUpdateParams<Entity>) {
+		return beforeUpdate<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * Handles the data after the end of the function
+	 *
+	 * Does things like format the data to the entity format
+	 */
+	protected afterUpdate(params: AfterUpdateParams<Entity>) {
+		return afterUpdate<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
