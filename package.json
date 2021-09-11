@@ -47,7 +47,6 @@
 		"@types/uuid": "^8.3.1",
 		"@typescript-eslint/eslint-plugin": "^4.31.0",
 		"@typescript-eslint/parser": "^4.31.0",
-		"@vercel/ncc": "^0.31.0",
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-filenames": "^1.3.2",
@@ -70,15 +69,15 @@
 		"uuid": "^8.3.2"
 	},
 	"scripts": {
+		"postinstall": "husky install",
 		"ts-node": "ts-node",
 		"test": "jest",
 		"test:cov": "jest --coverage",
-		"build": "ncc build src/index.ts -o dist -m -e reflect-metadata -e uuid",
+		"build": "",
 		"format": "eslint . --fix --quiet",
 		"lint": "eslint . --quiet",
 		"update-dependencies": "yarn upgrade-interactive --latest",
 		"husky:pre-commit": "tsc && lint-staged",
-		"husky:install": "husky install",
 		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd .."
 	}
 }
