@@ -84,12 +84,19 @@
   - [x] Add `@DeleteDateColumn` decorator
   - [x] Add validation at `autoGenerateEntityToDatabase` to validate if the column should be auto-generated based on event
 - [x] Add `Exist` operator, to verify if a field doesn't exists
-- [ ] Add tests to `src/utils/validations`
 - [x] Review code to check if is possible to split params in injectables and not injectables
 - [x] Unbind methods that receive `this`, change to receive the functions of the class instead, and make the methods PRIVATE
+- [ ] Add tests to `src/utils/validations`
 - [ ] Create a template repository "symbiosis-plugin"
 - [ ] Fix build script
-- [x] Improve Documentation
+- [ ] Fix verify mandatory files workflow
+- [ ] Add `order` fields conversion at `beforeFind`
+- [ ] Fix all `after*` commands to return the correct value
+  - [ ] `afterSave`
+  - [ ] `afterInsert`
+  - [ ] `afterUpdate`
+  - [ ] `afterUpsert`
+- [ ] Improve Documentation
   - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
   - [x] Use [Docusaurus](https://docusaurus.io/docs)
   - [x] Give a bit of love to `CONTRIBUTING.md`

@@ -10,6 +10,8 @@ import { beforeUpdate, BeforeUpdateParams } from "./methods/before-update";
 import { afterUpdate, AfterUpdateParams } from "./methods/after-update";
 import { AfterUpsertParams, afterUpsert } from "./methods/after-upsert";
 import { BeforeUpsertParams, beforeUpsert } from "./methods/before-upsert";
+import { AfterFindParams, afterFind } from "./methods/after-find";
+import { BeforeFindParams, beforeFind } from "./methods/before-find";
 
 export abstract class Repository<
 	Entity,
@@ -308,6 +310,45 @@ export abstract class Repository<
 	 */
 	protected afterUpsert(params: AfterUpsertParams<Entity>) {
 		return afterUpsert<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * --------------------------------------------------
+	 *
+	 * BEFORE & AFTER find
+	 *
+	 * --------------------------------------------------
+	 */
+
+	/**
+	 * Handles the data before the start of the function
+	 *
+	 * Does things like auto-generate values and format the
+	 * data to the database format
+	 */
+	protected beforeFind(params: BeforeFindParams<Entity>) {
+		return beforeFind<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * Handles the data after the end of the function
+	 *
+	 * Does things like format the data to the entity format
+	 */
+	protected afterFind(params: AfterFindParams<Entity>): Array<Entity> {
+		return afterFind<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,

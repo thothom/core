@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable sonarjs/no-duplicate-string */
 
 import { Repository } from "../../lib/repository";
+import { AfterFindParams } from "../../lib/repository/methods/after-find";
 import { AfterInsertParams } from "../../lib/repository/methods/after-insert";
 import { AfterSaveParams } from "../../lib/repository/methods/after-save";
 import { AfterUpdateParams } from "../../lib/repository/methods/after-update";
 import { AfterUpsertParams } from "../../lib/repository/methods/after-upsert";
+import { BeforeFindParams } from "../../lib/repository/methods/before-find";
 import { BeforeInsertParams } from "../../lib/repository/methods/before-insert";
 import { BeforeSaveParams } from "../../lib/repository/methods/before-save";
 import { BeforeUpdateParams } from "../../lib/repository/methods/before-update";
@@ -17,19 +18,21 @@ import {
 } from "../../lib/repository/queries/types/find-options";
 import { BaseQueryOptions } from "../../lib/repository/queries/types/query-options";
 
+const ERROR_MESSAGE = "Method not implemented.";
+
 export class TestRepository<Entity> extends Repository<Entity, void, void> {
 	public save(
 		_data: Array<Partial<Entity>> | Partial<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public insert(
 		_data: Array<Partial<Entity>> | Partial<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public update(
@@ -37,7 +40,7 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 		_data: Partial<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public upsert(
@@ -45,56 +48,56 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 		_data: Partial<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public find(
 		_conditions: FindOptions<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity>> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public findOne(
 		_conditions: FindOneOptions<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Entity> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public delete(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<number> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public softDelete(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<number> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public recover(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<number> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public count(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<number> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public performativeCount(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<number> {
-		throw new Error("Method not implemented.");
+		throw new Error(ERROR_MESSAGE);
 	}
 
 	public override beforeSave(params: BeforeSaveParams<Entity>) {
@@ -127,5 +130,13 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 
 	public override afterUpsert(params: AfterUpsertParams<Entity>) {
 		return super.afterUpsert(params);
+	}
+
+	public override beforeFind(params: BeforeFindParams<Entity>) {
+		return super.beforeFind(params);
+	}
+
+	public override afterFind(params: AfterFindParams<Entity>) {
+		return super.afterFind(params);
 	}
 }
