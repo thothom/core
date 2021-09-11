@@ -5,6 +5,7 @@ import { shouldAutoGenerate } from "./helpers/should-auto-generate";
 import { isEmptyObject } from "../../../utils/validations/is-empty-object";
 import { DatabaseEvents } from "../../types/database-events";
 import { BaseConnectionOptions } from "../../../connection/types/connection-options";
+import { CustomClass } from "../../types/metadata-type";
 
 interface Injectables {
 	entityManager: EntityManager<any, any>;
@@ -12,7 +13,7 @@ interface Injectables {
 }
 
 export interface AutoGenerateEntityToDatabaseParams {
-	entity: any;
+	entity: CustomClass;
 	data: Record<string, any>;
 	events?: Array<DatabaseEvents>;
 }

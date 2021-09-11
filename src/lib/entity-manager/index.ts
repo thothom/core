@@ -16,6 +16,10 @@ import {
 	convertEntityToDatabase,
 	ConvertEntityToDatabaseParams,
 } from "./methods/convert-entity-to-database";
+import {
+	formatConditions,
+	FormatConditionsParams,
+} from "./methods/format-conditions";
 import { loadEntities } from "./methods/load-entities";
 import { EntityManagerEntities } from "./types/manager-metadata";
 
@@ -183,5 +187,14 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		params: ConvertDatabaseToEntityParams,
 	): Record<string, any> {
 		return convertDatabaseToEntity({ entityManager: this }, params);
+	}
+
+	/**
+	 * Format conditions to the database style
+	 */
+	public formatConditions(
+		params: FormatConditionsParams,
+	): FormatConditionsParams["conditions"] {
+		return formatConditions({ entityManager: this }, params);
 	}
 }
