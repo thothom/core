@@ -86,9 +86,9 @@
 - [x] Add `Exist` operator, to verify if a field doesn't exists
 - [x] Review code to check if is possible to split params in injectables and not injectables
 - [x] Unbind methods that receive `this`, change to receive the functions of the class instead, and make the methods PRIVATE
+- [x] Fix build script
 - [ ] Add tests to `src/utils/validations`
 - [ ] Create a template repository "symbiosis-plugin"
-- [ ] Fix build script
 - [ ] Fix verify mandatory files workflow
 - [ ] Add `order` fields conversion at `beforeFind`
 - [ ] Fix all `after*` commands to return the correct value
