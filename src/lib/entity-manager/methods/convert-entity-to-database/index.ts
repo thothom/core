@@ -8,7 +8,7 @@ interface Injectables {
 }
 
 export interface ConvertEntityToDatabaseParams {
-	entity: any;
+	entity: CustomClass;
 	data: Record<string, any>;
 }
 
