@@ -7,25 +7,22 @@
 # Techmmunity - Symbiosis
 
 <a href="https://github.com/techmmunity/eslint-config">
-	<img src="https://img.shields.io/badge/style%20guide-Techmmunity-01d2ce?style=flat" alt="Style Guide: Techmmunity">
+	<img src="https://img.shields.io/badge/style%20guide-Techmmunity-01d2ce?style=for-the-badge" alt="Style Guide: Techmmunity">
 </a>
 <a href="https://www.codefactor.io/repository/github/techmmunity/symbiosis">
-	<img src="https://www.codefactor.io/repository/github/techmmunity/symbiosis/badge" alt="CodeFactor">
-</a>
-<a href="https://deepscan.io/dashboard#view=project&tid=13883&pid=18404&bid=449722">
-	<img src="https://deepscan.io/api/teams/13883/projects/18404/branches/449722/badge/grade.svg" alt="DeepScan">
+	<img src="https://www.codefactor.io/repository/github/techmmunity/symbiosis/badge?style=for-the-badge" alt="CodeFactor">
 </a>
 <a href="https://coveralls.io/github/techmmunity/symbiosis?branch=master">
-	<img src="https://coveralls.io/repos/github/techmmunity/symbiosis/badge.svg?branch=master" alt="Coveralls">
+	<img src="https://img.shields.io/coveralls/github/techmmunity/symbiosis/master?style=for-the-badge" alt="Coveralls">
 </a>
 <a href="https://github.com/techmmunity/symbiosis/actions/workflows/coverage.yml">
-	<img src="https://github.com/techmmunity/symbiosis/actions/workflows/coverage.yml/badge.svg" alt="Tests">
+	<img src="https://img.shields.io/github/workflow/status/techmmunity/symbiosis/tests?label=tests&logo=github&style=for-the-badge" alt="Tests">
 </a>
 <a href="https://www.npmjs.com/package/@techmmunity/symbiosis">
-	<img src="https://img.shields.io/npm/v/@techmmunity/symbiosis.svg?color=CC3534" alt="Npm">
+	<img src="https://img.shields.io/npm/v/@techmmunity/symbiosis.svg?color=CC3534&style=for-the-badge" alt="Npm">
 </a>
 <a href="https://www.npmjs.com/package/@techmmunity/symbiosis">
-	<img src="https://img.shields.io/npm/dw/@techmmunity/symbiosis.svg" alt="Downloads">
+	<img src="https://img.shields.io/npm/dw/@techmmunity/symbiosis.svg?style=for-the-badge" alt="Downloads">
 </a>
 
 <br>
@@ -37,13 +34,16 @@ Symbiosis is an **Object Mapper**, an [ORM + ODM](https://medium.com/spidernitt/
 
 Currently it only works with TypeScript (and transpiled JavaScript), and we plan to keep this way.
 
-[![Guilded](https://img.shields.io/badge/guilded-F5C400?style=for-the-badge&labelColor=F5C400&logo=guilded&logoColor=111820)](https://guilded.gg/techmmunity)
-[![Docs](https://img.shields.io/badge/documentation-111820?style=for-the-badge&labelColor=111820)](https://symbiosis.techmmunity.com.br)
+[![Guilded Community](https://img.shields.io/badge/guilded%20community-F5C400?style=for-the-badge&labelColor=F5C400&logo=guilded&logoColor=111820)](https://guilded.gg/techmmunity)
+[![Docs](https://img.shields.io/badge/📄%20documentation-01d2ce?style=for-the-badge)](https://symbiosis.techmmunity.com.br)
 
 ## Why use Techmmunity Symbiosis?
 
-- Easy to use and standardize. Regardless of the database, the implementation will be the same in all cases (except the most complex ones).
-- The plugable approach. With the community support, this ORM can work with **all** the databases, be they NoSQL or SQL, as long as it has a plugin for it.
+- **Easy to use and standardize.** Regardless of the database, the implementation will be the same in all cases (except the most complex ones).
+- **The plugable approach.** With the community support, this OM can work with **all** the databases, be they NoSQL or SQL, as long as it has a plugin for it.
+- **No globals!** All that this package uses is encapsuled inside it's classes, so there is no need to worry about some config defined in a global scope compromising your code.
+- **Free and direct support.** If you have any question, you can join [our guilded community](https://guilded.gg/techmmunity), and we and the members of Techmmunity will help you!
+- **Focused on microservices and serverless!** We focus in keep it usable for serverless and microservices projects.
 
 ## Install and Config
 
@@ -115,8 +115,9 @@ FooRepository.save({
 
 ## Documentation
 
-- [For the users](https://symbiosis.techmmunity.com.br)
-- [For the plugin creators](https://symbiosis.techmmunity.com.br/docs/create-plugin/first-steps)
+- [For users](https://symbiosis.techmmunity.com.br)
+- [For plugin creators](https://symbiosis.techmmunity.com.br/docs/create-plugin/first-steps)
+- [For contributors](https://symbiosis.techmmunity.com.br/docs/contributing/first-steps)
 
 ## Limitations and warnings
 
