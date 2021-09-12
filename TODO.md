@@ -88,9 +88,10 @@
 - [x] Unbind methods that receive `this`, change to receive the functions of the class instead, and make the methods PRIVATE
 - [x] Fix build script
 - [x] Add tests to `src/lib/utils/validations`
-- [ ] Create a template repository "symbiosis-plugin"
-- [ ] Fix verify mandatory files workflow
-- [ ] Add `order` fields conversion at `beforeFind`
+- [x] Add `EntityManager.convertColumnsNames`
+  - Will convert a array of strings into an array of strings with the database columns manes
+- [ ] Add `order` option conversion at `beforeFind`
+- [ ] Add `select` option conversion at `beforeFind`
 - [ ] Fix all `after*` commands to return the correct value
   - [ ] `afterSave`
   - [ ] `afterInsert`
@@ -108,6 +109,8 @@
   - [ ] recover
   - [ ] count
   - [ ] performativeCount
+- [ ] Create a template repository "symbiosis-plugin"
+- [ ] Fix verify mandatory files workflow
 - [ ] Improve Documentation
   - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
   - [x] Use [Docusaurus](https://docusaurus.io/docs)
