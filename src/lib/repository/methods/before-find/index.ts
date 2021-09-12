@@ -1,4 +1,3 @@
-import { FindConditions } from "../../../..";
 import { EntityManager } from "../../../entity-manager";
 import { CustomClass } from "../../../entity-manager/types/metadata-type";
 import { FindOptions } from "../../queries/types/find-options";
@@ -20,14 +19,21 @@ export const beforeFind = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
 	{ conditions: rawConditions, options }: BeforeFindParams<Entity>,
 ) => {
-	const conditions: FindConditions<Record<string, any>> = {
-		...rawConditions,
+	const conditions: FindOptions<Record<string, any>> = {
+		...(rawConditions as FindOptions<Record<string, any>>),
 	};
 
 	if (rawConditions.where) {
 		conditions.where = entityManager.formatConditions({
 			entity,
 			conditions: rawConditions.where,
+		});
+	}
+
+	if (rawConditions.select) {
+		conditions.select = entityManager.convertColumnsNames({
+			entity,
+			columnsNames: rawConditions.select as Array<string>,
 		});
 	}
 

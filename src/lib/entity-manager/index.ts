@@ -205,9 +205,7 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	/**
 	 * Format convert array columns names to the database style
 	 */
-	public convertColumnsNames(
-		params: ConvertColumnsNamesParams,
-	): FormatConditionsParams["conditions"] {
+	public convertColumnsNames(params: ConvertColumnsNamesParams) {
 		return convertColumnsNames({ entityManager: this }, params);
 	}
 }
