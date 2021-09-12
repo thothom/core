@@ -90,8 +90,8 @@
 - [x] Add tests to `src/lib/utils/validations`
 - [x] Add `EntityManager.convertColumnsNames`
   - Will convert a array of strings into an array of strings with the database columns manes
+- [x] Add `select` option conversion at `beforeFind`
 - [ ] Add `order` option conversion at `beforeFind`
-- [ ] Add `select` option conversion at `beforeFind`
 - [ ] Fix all `after*` commands to return the correct value
   - [ ] `afterSave`
   - [ ] `afterInsert`

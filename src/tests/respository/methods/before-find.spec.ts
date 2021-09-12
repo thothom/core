@@ -28,7 +28,7 @@ describe("Repository > Methods > beforeFind", () => {
 		repository = new TestRepository(connection.entityManager, TestEntity);
 	});
 
-	it("should do nothing if no where is specified", () => {
+	it("should do nothing if no options are specified", () => {
 		const result = repository.beforeFind({
 			conditions: {},
 		});
@@ -39,7 +39,7 @@ describe("Repository > Methods > beforeFind", () => {
 		});
 	});
 
-	it("should convert to the database format", () => {
+	it("should convert 'where' option to the database format", () => {
 		const result = repository.beforeFind({
 			conditions: {
 				where: {
@@ -54,6 +54,21 @@ describe("Repository > Methods > beforeFind", () => {
 					// eslint-disable-next-line @typescript-eslint/naming-convention
 					FOO: 1,
 				},
+			},
+			options: undefined,
+		});
+	});
+
+	it("should convert 'select' option to the database format", () => {
+		const result = repository.beforeFind({
+			conditions: {
+				select: ["id", "foo"],
+			},
+		});
+
+		expect(result).toStrictEqual({
+			conditions: {
+				select: ["ID", "FOO"],
 			},
 			options: undefined,
 		});
