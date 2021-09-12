@@ -9,6 +9,10 @@ import {
 	AutoGenerateEntityToDatabaseParams,
 } from "./methods/auto-generate-entity-to-database";
 import {
+	convertColumnsNames,
+	ConvertColumnsNamesParams,
+} from "./methods/convert-columns-names";
+import {
 	convertDatabaseToEntity,
 	ConvertDatabaseToEntityParams,
 } from "./methods/convert-database-to-entity";
@@ -196,5 +200,14 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 		params: FormatConditionsParams,
 	): FormatConditionsParams["conditions"] {
 		return formatConditions({ entityManager: this }, params);
+	}
+
+	/**
+	 * Format convert array columns names to the database style
+	 */
+	public convertColumnsNames(
+		params: ConvertColumnsNamesParams,
+	): FormatConditionsParams["conditions"] {
+		return convertColumnsNames({ entityManager: this }, params);
 	}
 }
