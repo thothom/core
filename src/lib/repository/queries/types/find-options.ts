@@ -14,7 +14,7 @@ export interface FindOneOptions<Entity> {
 	/**
 	 * Order, in which entities should be ordered.
 	 */
-	order?: { [P in keyof Entity]?: "ASC" | "DESC" };
+	order?: Record<string, "ASC" | "DESC">;
 
 	/**
 	 * Indicates if soft-deleted rows should be included in entity result.
