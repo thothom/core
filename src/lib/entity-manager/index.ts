@@ -24,6 +24,7 @@ import {
 	formatConditions,
 	FormatConditionsParams,
 } from "./methods/format-conditions";
+import { formatOrder, FormatOrderParams } from "./methods/format-order";
 import { loadEntities } from "./methods/load-entities";
 import { EntityManagerEntities } from "./types/manager-metadata";
 
@@ -203,9 +204,16 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	}
 
 	/**
+	 * Format "order" to the database style
+	 */
+	public formatOrder(params: FormatOrderParams): FormatOrderParams["orderBy"] {
+		return formatOrder({ entityManager: this }, params);
+	}
+
+	/**
 	 * Format convert array columns names to the database style
 	 */
-	public convertColumnsNames(params: ConvertColumnsNamesParams) {
+	public convertColumnsNames(params: ConvertColumnsNamesParams): Array<string> {
 		return convertColumnsNames({ entityManager: this }, params);
 	}
 }

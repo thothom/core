@@ -91,6 +91,8 @@
 - [x] Add `EntityManager.convertColumnsNames`
   - Will convert a array of strings into an array of strings with the database columns manes
 - [x] Add `select` option conversion at `beforeFind`
+- [x] Add `EntityManager.formatOrder`
+  - Will convert an object with columns ordenation to the database names
 - [ ] Add `order` option conversion at `beforeFind`
 - [ ] Fix all `after*` commands to return the correct value
   - [ ] `afterSave`
