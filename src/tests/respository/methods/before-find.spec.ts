@@ -74,6 +74,26 @@ describe("Repository > Methods > beforeFind", () => {
 		});
 	});
 
+	it("should convert 'order' option to the database format", () => {
+		const result = repository.beforeFind({
+			conditions: {
+				order: {
+					id: "ASC",
+				},
+			},
+		});
+
+		expect(result).toStrictEqual({
+			conditions: {
+				order: {
+					// eslint-disable-next-line @typescript-eslint/naming-convention
+					ID: "ASC",
+				},
+			},
+			options: undefined,
+		});
+	});
+
 	it("should convert to the database format (with find operators)", () => {
 		const result = repository.beforeFind({
 			conditions: {
