@@ -93,7 +93,7 @@
 - [x] Add `select` option conversion at `beforeFind`
 - [x] Add `EntityManager.formatOrder`
   - Will convert an object with columns ordenation to the database names
-- [ ] Add `order` option conversion at `beforeFind`
+- [x] Add `order` option conversion at `beforeFind`
 - [ ] Fix all `after*` commands to return the correct value
   - [ ] `afterSave`
   - [ ] `afterInsert`

@@ -37,6 +37,13 @@ export const beforeFind = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 		});
 	}
 
+	if (rawConditions.order) {
+		conditions.order = entityManager.formatOrder({
+			entity,
+			orderBy: rawConditions.order,
+		});
+	}
+
 	return {
 		conditions,
 		options,
