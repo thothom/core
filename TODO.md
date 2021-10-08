@@ -108,7 +108,7 @@
   - [x] findOne
   - [x] delete
   - [x] softDelete
-  - [ ] recover
+  - [x] recover
   - [ ] count
   - [ ] performativeCount
 - [ ] Create a template repository "symbiosis-plugin"
