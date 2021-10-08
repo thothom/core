@@ -110,7 +110,7 @@
   - [x] softDelete
   - [x] recover
   - [x] count
-  - [ ] performativeCount
+  - [x] performativeCount
 - [ ] Create a template repository "symbiosis-plugin"
 - [ ] Fix verify mandatory files workflow
 - [ ] Improve Documentation

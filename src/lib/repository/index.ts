@@ -28,6 +28,14 @@ import { beforeRecover, BeforeRecoverParams } from "./methods/before-recover";
 import { AfterRecoverParams, afterRecover } from "./methods/after-recover";
 import { AfterCountParams, afterCount } from "./methods/after-count";
 import { BeforeCountParams, beforeCount } from "./methods/before-count";
+import {
+	AfterPerformativeCountParams,
+	afterPerformativeCount,
+} from "./methods/after-performative-count";
+import {
+	BeforePerformativeCountParams,
+	beforePerformativeCount,
+} from "./methods/before-performative-count";
 
 export abstract class Repository<
 	Entity,
@@ -560,6 +568,57 @@ export abstract class Repository<
 	 */
 	protected afterCount(params: AfterCountParams<Entity>): number {
 		return afterCount<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * --------------------------------------------------
+	 *
+	 * BEFORE & AFTER performativeCount
+	 *
+	 * --------------------------------------------------
+	 */
+
+	/**
+	 * Handles the data before the start of the function
+	 *
+	 * Does things like auto-generate values and format the
+	 * data to the database format
+	 */
+	protected beforePerformativeCount(
+		params: BeforePerformativeCountParams<Entity>,
+	) {
+		return beforePerformativeCount<
+			Entity,
+			EntityExtraMetadata,
+			ColumnExtraMetadata
+		>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * Handles the data after the end of the function
+	 *
+	 * Does things like format the data to the entity format
+	 */
+	protected afterPerformativeCount(
+		params: AfterPerformativeCountParams<Entity>,
+	): number {
+		return afterPerformativeCount<
+			Entity,
+			EntityExtraMetadata,
+			ColumnExtraMetadata
+		>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
