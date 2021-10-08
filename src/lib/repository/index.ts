@@ -24,6 +24,8 @@ import {
 	afterSoftDelete,
 	AfterSoftDeleteParams,
 } from "./methods/after-soft-delete";
+import { beforeRecover, BeforeRecoverParams } from "./methods/before-recover";
+import { AfterRecoverParams, afterRecover } from "./methods/after-recover";
 
 export abstract class Repository<
 	Entity,
@@ -478,6 +480,45 @@ export abstract class Repository<
 	 */
 	protected afterSoftDelete(params: AfterSoftDeleteParams<Entity>): number {
 		return afterSoftDelete<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * --------------------------------------------------
+	 *
+	 * BEFORE & AFTER softDelete
+	 *
+	 * --------------------------------------------------
+	 */
+
+	/**
+	 * Handles the data before the start of the function
+	 *
+	 * Does things like auto-generate values and format the
+	 * data to the database format
+	 */
+	protected beforeRecover(params: BeforeRecoverParams<Entity>) {
+		return beforeRecover<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * Handles the data after the end of the function
+	 *
+	 * Does things like format the data to the entity format
+	 */
+	protected afterRecover(params: AfterRecoverParams<Entity>): number {
+		return afterRecover<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
