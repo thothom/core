@@ -2,11 +2,13 @@
 
 import { Repository } from "../../lib/repository";
 import { AfterFindParams } from "../../lib/repository/methods/after-find";
+import { AfterFindOneParams } from "../../lib/repository/methods/after-find-one";
 import { AfterInsertParams } from "../../lib/repository/methods/after-insert";
 import { AfterSaveParams } from "../../lib/repository/methods/after-save";
 import { AfterUpdateParams } from "../../lib/repository/methods/after-update";
 import { AfterUpsertParams } from "../../lib/repository/methods/after-upsert";
 import { BeforeFindParams } from "../../lib/repository/methods/before-find";
+import { BeforeFindOneParams } from "../../lib/repository/methods/before-find-one";
 import { BeforeInsertParams } from "../../lib/repository/methods/before-insert";
 import { BeforeSaveParams } from "../../lib/repository/methods/before-save";
 import { BeforeUpdateParams } from "../../lib/repository/methods/before-update";
@@ -138,5 +140,13 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 
 	public override afterFind(params: AfterFindParams<Entity>) {
 		return super.afterFind(params);
+	}
+
+	public override beforeFindOne(params: BeforeFindOneParams<Entity>) {
+		return super.beforeFindOne(params);
+	}
+
+	public override afterFindOne(params: AfterFindOneParams<Entity>) {
+		return super.afterFindOne(params);
 	}
 }
