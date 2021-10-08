@@ -14,6 +14,8 @@ import { AfterFindParams, afterFind } from "./methods/after-find";
 import { BeforeFindParams, beforeFind } from "./methods/before-find";
 import { beforeFindOne, BeforeFindOneParams } from "./methods/before-find-one";
 import { afterFindOne, AfterFindOneParams } from "./methods/after-find-one";
+import { beforeDelete, BeforeDeleteParams } from "./methods/before-delete";
+import { afterDelete, AfterDeleteParams } from "./methods/after-delete";
 
 export abstract class Repository<
 	Entity,
@@ -390,6 +392,45 @@ export abstract class Repository<
 	 */
 	protected afterFindOne(params: AfterFindOneParams<Entity>): Entity {
 		return afterFindOne<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * --------------------------------------------------
+	 *
+	 * BEFORE & AFTER delete
+	 *
+	 * --------------------------------------------------
+	 */
+
+	/**
+	 * Handles the data before the start of the function
+	 *
+	 * Does things like auto-generate values and format the
+	 * data to the database format
+	 */
+	protected beforeDelete(params: BeforeDeleteParams<Entity>) {
+		return beforeDelete<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * Handles the data after the end of the function
+	 *
+	 * Does things like format the data to the entity format
+	 */
+	protected afterDelete(params: AfterDeleteParams<Entity>): number {
+		return afterDelete<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,

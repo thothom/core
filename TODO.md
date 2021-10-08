@@ -106,7 +106,7 @@
   - [x] upsert
   - [x] find
   - [x] findOne
-  - [ ] delete
+  - [x] delete
   - [ ] softDelete
   - [ ] recover
   - [ ] count

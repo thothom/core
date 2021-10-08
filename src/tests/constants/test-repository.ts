@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Repository } from "../../lib/repository";
+import { AfterDeleteParams } from "../../lib/repository/methods/after-delete";
 import { AfterFindParams } from "../../lib/repository/methods/after-find";
 import { AfterFindOneParams } from "../../lib/repository/methods/after-find-one";
 import { AfterInsertParams } from "../../lib/repository/methods/after-insert";
 import { AfterSaveParams } from "../../lib/repository/methods/after-save";
 import { AfterUpdateParams } from "../../lib/repository/methods/after-update";
 import { AfterUpsertParams } from "../../lib/repository/methods/after-upsert";
+import { BeforeDeleteParams } from "../../lib/repository/methods/before-delete";
 import { BeforeFindParams } from "../../lib/repository/methods/before-find";
 import { BeforeFindOneParams } from "../../lib/repository/methods/before-find-one";
 import { BeforeInsertParams } from "../../lib/repository/methods/before-insert";
@@ -148,5 +150,13 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 
 	public override afterFindOne(params: AfterFindOneParams<Entity>) {
 		return super.afterFindOne(params);
+	}
+
+	public override beforeDelete(params: BeforeDeleteParams<Entity>) {
+		return super.beforeDelete(params);
+	}
+
+	public override afterDelete(params: AfterDeleteParams<Entity>) {
+		return super.afterDelete(params);
 	}
 }
