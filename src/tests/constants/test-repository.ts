@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Repository } from "../../lib/repository";
+import { AfterCountParams } from "../../lib/repository/methods/after-count";
 import { AfterDeleteParams } from "../../lib/repository/methods/after-delete";
 import { AfterFindParams } from "../../lib/repository/methods/after-find";
 import { AfterFindOneParams } from "../../lib/repository/methods/after-find-one";
@@ -10,6 +11,7 @@ import { AfterSaveParams } from "../../lib/repository/methods/after-save";
 import { AfterSoftDeleteParams } from "../../lib/repository/methods/after-soft-delete";
 import { AfterUpdateParams } from "../../lib/repository/methods/after-update";
 import { AfterUpsertParams } from "../../lib/repository/methods/after-upsert";
+import { BeforeCountParams } from "../../lib/repository/methods/before-count";
 import { BeforeDeleteParams } from "../../lib/repository/methods/before-delete";
 import { BeforeFindParams } from "../../lib/repository/methods/before-find";
 import { BeforeFindOneParams } from "../../lib/repository/methods/before-find-one";
@@ -178,5 +180,13 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 
 	public override afterRecover(params: AfterRecoverParams<Entity>) {
 		return super.afterRecover(params);
+	}
+
+	public override beforeCount(params: BeforeCountParams<Entity>) {
+		return super.beforeCount(params);
+	}
+
+	public override afterCount(params: AfterCountParams<Entity>) {
+		return super.afterCount(params);
 	}
 }

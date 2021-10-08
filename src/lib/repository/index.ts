@@ -26,6 +26,8 @@ import {
 } from "./methods/after-soft-delete";
 import { beforeRecover, BeforeRecoverParams } from "./methods/before-recover";
 import { AfterRecoverParams, afterRecover } from "./methods/after-recover";
+import { AfterCountParams, afterCount } from "./methods/after-count";
+import { BeforeCountParams, beforeCount } from "./methods/before-count";
 
 export abstract class Repository<
 	Entity,
@@ -491,7 +493,7 @@ export abstract class Repository<
 	/**
 	 * --------------------------------------------------
 	 *
-	 * BEFORE & AFTER softDelete
+	 * BEFORE & AFTER recover
 	 *
 	 * --------------------------------------------------
 	 */
@@ -519,6 +521,45 @@ export abstract class Repository<
 	 */
 	protected afterRecover(params: AfterRecoverParams<Entity>): number {
 		return afterRecover<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * --------------------------------------------------
+	 *
+	 * BEFORE & AFTER count
+	 *
+	 * --------------------------------------------------
+	 */
+
+	/**
+	 * Handles the data before the start of the function
+	 *
+	 * Does things like auto-generate values and format the
+	 * data to the database format
+	 */
+	protected beforeCount(params: BeforeCountParams<Entity>) {
+		return beforeCount<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * Handles the data after the end of the function
+	 *
+	 * Does things like format the data to the entity format
+	 */
+	protected afterCount(params: AfterCountParams<Entity>): number {
+		return afterCount<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
