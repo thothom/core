@@ -39,11 +39,8 @@ describe("Repository > Methods > afterSave", () => {
 		});
 
 		expect(result).toStrictEqual({
-			data: {
-				id,
-				foo: 1,
-			},
-			options: undefined,
+			id,
+			foo: 1,
 		});
 	});
 
@@ -59,14 +56,11 @@ describe("Repository > Methods > afterSave", () => {
 			],
 		});
 
-		expect(result).toStrictEqual({
-			data: [
-				{
-					id,
-					foo: 1,
-				},
-			],
-			options: undefined,
-		});
+		expect(result).toStrictEqual([
+			{
+				id,
+				foo: 1,
+			},
+		]);
 	});
 });

@@ -92,13 +92,13 @@
   - Will convert a array of strings into an array of strings with the database columns manes
 - [x] Add `select` option conversion at `beforeFind`
 - [x] Add `EntityManager.formatOrder`
-  - Will convert an object with columns ordenation to the database names
+  - Will convert an object with columns order to the database names
 - [x] Add `order` option conversion at `beforeFind`
-- [ ] Fix all `after*` commands to return the correct value
-  - [ ] `afterSave`
-  - [ ] `afterInsert`
-  - [ ] `afterUpdate`
-  - [ ] `afterUpsert`
+- [x] Fix all `after*` commands to return the correct value
+  - [x] `afterSave`
+  - [x] `afterInsert`
+  - [x] `afterUpdate`
+  - [x] `afterUpsert`
 - [ ] Add before and after methods
   - [x] save
   - [x] insert

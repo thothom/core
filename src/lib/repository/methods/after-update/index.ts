@@ -19,7 +19,7 @@ export const afterUpdate = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 		entity,
 		entityManager,
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
-	{ conditions, data, options }: AfterUpdateParams<Entity>,
+	{ data }: AfterUpdateParams<Entity>,
 ) => {
 	const dataHandled = handleData({
 		data,
@@ -27,9 +27,5 @@ export const afterUpdate = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 		entityManager,
 	});
 
-	return {
-		data: dataHandled,
-		conditions,
-		options,
-	};
+	return dataHandled as Entity;
 };
