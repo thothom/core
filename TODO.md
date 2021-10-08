@@ -107,7 +107,7 @@
   - [x] find
   - [x] findOne
   - [x] delete
-  - [ ] softDelete
+  - [x] softDelete
   - [ ] recover
   - [ ] count
   - [ ] performativeCount
@@ -132,6 +132,8 @@
 
 ### General
 
+- [ ] Review column name converter
+  - SubEntity columns also should be converted?
 - [ ] Add `@Index` decorator
 - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - This column will be auto-generated **on save**

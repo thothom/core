@@ -16,6 +16,14 @@ import { beforeFindOne, BeforeFindOneParams } from "./methods/before-find-one";
 import { afterFindOne, AfterFindOneParams } from "./methods/after-find-one";
 import { beforeDelete, BeforeDeleteParams } from "./methods/before-delete";
 import { afterDelete, AfterDeleteParams } from "./methods/after-delete";
+import {
+	beforeSoftDelete,
+	BeforeSoftDeleteParams,
+} from "./methods/before-soft-delete";
+import {
+	afterSoftDelete,
+	AfterSoftDeleteParams,
+} from "./methods/after-soft-delete";
 
 export abstract class Repository<
 	Entity,
@@ -431,6 +439,45 @@ export abstract class Repository<
 	 */
 	protected afterDelete(params: AfterDeleteParams<Entity>): number {
 		return afterDelete<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * --------------------------------------------------
+	 *
+	 * BEFORE & AFTER softDelete
+	 *
+	 * --------------------------------------------------
+	 */
+
+	/**
+	 * Handles the data before the start of the function
+	 *
+	 * Does things like auto-generate values and format the
+	 * data to the database format
+	 */
+	protected beforeSoftDelete(params: BeforeSoftDeleteParams<Entity>) {
+		return beforeSoftDelete<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+			{
+				entity: this.entity,
+				entityManager: this.entityManager,
+			},
+			params,
+		);
+	}
+
+	/**
+	 * Handles the data after the end of the function
+	 *
+	 * Does things like format the data to the entity format
+	 */
+	protected afterSoftDelete(params: AfterSoftDeleteParams<Entity>): number {
+		return afterSoftDelete<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
