@@ -104,8 +104,8 @@
   - [x] insert
   - [x] update
   - [x] upsert
-  - [ ] find
-  - [ ] findOne
+  - [x] find
+  - [x] findOne
   - [ ] delete
   - [ ] softDelete
   - [ ] recover
