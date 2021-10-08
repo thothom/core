@@ -192,7 +192,7 @@ export abstract class Repository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterSave(params: AfterSaveParams) {
-		return afterSave<EntityExtraMetadata, ColumnExtraMetadata>(
+		return afterSave<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -231,7 +231,7 @@ export abstract class Repository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterInsert(params: AfterInsertParams) {
-		return afterInsert<EntityExtraMetadata, ColumnExtraMetadata>(
+		return afterInsert<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,

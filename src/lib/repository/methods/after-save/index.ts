@@ -12,12 +12,12 @@ export interface AfterSaveParams {
 	options?: BaseQueryOptions;
 }
 
-export const afterSave = <EntityExtraMetadata, ColumnExtraMetadata>(
+export const afterSave = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	{
 		entity,
 		entityManager,
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
-	{ data, options }: AfterSaveParams,
+	{ data }: AfterSaveParams,
 ) => {
 	const dataArray = Array.isArray(data) ? data : [data];
 
@@ -27,10 +27,7 @@ export const afterSave = <EntityExtraMetadata, ColumnExtraMetadata>(
 		entityManager,
 	});
 
-	const dataToReturn = Array.isArray(data) ? dataHandled : dataHandled.shift();
-
-	return {
-		data: dataToReturn,
-		options,
-	};
+	return Array.isArray(data)
+		? (dataHandled as Array<Entity>)
+		: (dataHandled.shift() as Entity);
 };

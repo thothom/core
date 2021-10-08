@@ -12,12 +12,12 @@ export interface AfterInsertParams {
 	options?: BaseQueryOptions;
 }
 
-export const afterInsert = <EntityExtraMetadata, ColumnExtraMetadata>(
+export const afterInsert = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	{
 		entity,
 		entityManager,
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
-	{ data, options }: AfterInsertParams,
+	{ data }: AfterInsertParams,
 ) => {
 	const dataArray = Array.isArray(data) ? data : [data];
 
@@ -27,10 +27,7 @@ export const afterInsert = <EntityExtraMetadata, ColumnExtraMetadata>(
 		entityManager,
 	});
 
-	const dataToReturn = Array.isArray(data) ? dataHandled : dataHandled.shift();
-
-	return {
-		data: dataToReturn,
-		options,
-	};
+	return Array.isArray(data)
+		? (dataHandled as Array<Entity>)
+		: (dataHandled.shift() as Entity);
 };

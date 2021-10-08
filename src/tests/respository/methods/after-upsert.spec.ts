@@ -43,14 +43,8 @@ describe("Repository > Methods > afterUpsert", () => {
 		});
 
 		expect(result).toStrictEqual({
-			conditions: {
-				id,
-			},
-			data: {
-				id,
-				foo: 1,
-			},
-			options: undefined,
+			id,
+			foo: 1,
 		});
 	});
 
@@ -73,19 +67,8 @@ describe("Repository > Methods > afterUpsert", () => {
 		});
 
 		expect(result).toStrictEqual({
-			conditions: [
-				{
-					id,
-				},
-				{
-					foo: 2,
-				},
-			],
-			data: {
-				id,
-				foo: 1,
-			},
-			options: undefined,
+			id,
+			foo: 1,
 		});
 	});
 });
