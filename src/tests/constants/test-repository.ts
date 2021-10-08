@@ -6,6 +6,7 @@ import { AfterDeleteParams } from "../../lib/repository/methods/after-delete";
 import { AfterFindParams } from "../../lib/repository/methods/after-find";
 import { AfterFindOneParams } from "../../lib/repository/methods/after-find-one";
 import { AfterInsertParams } from "../../lib/repository/methods/after-insert";
+import { AfterPerformativeCountParams } from "../../lib/repository/methods/after-performative-count";
 import { AfterRecoverParams } from "../../lib/repository/methods/after-recover";
 import { AfterSaveParams } from "../../lib/repository/methods/after-save";
 import { AfterSoftDeleteParams } from "../../lib/repository/methods/after-soft-delete";
@@ -16,6 +17,7 @@ import { BeforeDeleteParams } from "../../lib/repository/methods/before-delete";
 import { BeforeFindParams } from "../../lib/repository/methods/before-find";
 import { BeforeFindOneParams } from "../../lib/repository/methods/before-find-one";
 import { BeforeInsertParams } from "../../lib/repository/methods/before-insert";
+import { BeforePerformativeCountParams } from "../../lib/repository/methods/before-performative-count";
 import { BeforeRecoverParams } from "../../lib/repository/methods/before-recover";
 import { BeforeSaveParams } from "../../lib/repository/methods/before-save";
 import { BeforeSoftDeleteParams } from "../../lib/repository/methods/before-soft-delete";
@@ -188,5 +190,17 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 
 	public override afterCount(params: AfterCountParams<Entity>) {
 		return super.afterCount(params);
+	}
+
+	public override beforePerformativeCount(
+		params: BeforePerformativeCountParams<Entity>,
+	) {
+		return super.beforePerformativeCount(params);
+	}
+
+	public override afterPerformativeCount(
+		params: AfterPerformativeCountParams<Entity>,
+	) {
+		return super.afterPerformativeCount(params);
 	}
 }
