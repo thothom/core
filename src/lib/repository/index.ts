@@ -81,7 +81,7 @@ export abstract class Repository<
 	 * Updates a record based on a query and fail if it's not exist.
 	 */
 	public abstract update(
-		conditions: FindOneOptions<Entity>["where"],
+		conditions: FindConditions<Entity>,
 		data: Partial<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity>;
@@ -90,7 +90,7 @@ export abstract class Repository<
 	 * Make an "upsert" operation based on a query.
 	 */
 	public abstract upsert(
-		conditions: FindOneOptions<Entity>["where"],
+		conditions: FindConditions<Entity>,
 		data: Partial<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity>;
