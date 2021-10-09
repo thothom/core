@@ -46,6 +46,7 @@ export * from "./lib/connection/types/connection-options";
  */
 
 export * from "./lib/repository";
+export * from "./lib/repository/queries/types/query-options";
 
 /**
  * FindOptions
