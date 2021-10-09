@@ -43,11 +43,11 @@ export abstract class Repository<
 	ColumnExtraMetadata,
 > {
 	public constructor(
-		private readonly entityManager: EntityManager<
+		protected readonly entityManager: EntityManager<
 			EntityExtraMetadata,
 			ColumnExtraMetadata
 		>,
-		private readonly entity: Entity,
+		protected readonly entity: Entity,
 	) {}
 
 	/**
