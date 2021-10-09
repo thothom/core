@@ -29,19 +29,20 @@ import {
 	FindOneOptions,
 } from "../../lib/repository/queries/types/find-options";
 import { BaseQueryOptions } from "../../lib/repository/queries/types/query-options";
+import { ClassType } from "../../lib/types/class-type";
 
 const ERROR_MESSAGE = "Method not implemented.";
 
 export class TestRepository<Entity> extends Repository<Entity, void, void> {
 	public save(
-		_data: Array<Partial<Entity>> | Partial<Entity>,
+		_data: Array<ClassType<Entity>> | ClassType<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
 	public insert(
-		_data: Array<Partial<Entity>> | Partial<Entity>,
+		_data: Array<ClassType<Entity>> | ClassType<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
 		throw new Error(ERROR_MESSAGE);
@@ -49,7 +50,7 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 
 	public update(
 		_conditions: FindOneOptions<Entity>["where"],
-		_data: Partial<Entity>,
+		_data: ClassType<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
 		throw new Error(ERROR_MESSAGE);
@@ -57,7 +58,7 @@ export class TestRepository<Entity> extends Repository<Entity, void, void> {
 
 	public upsert(
 		_conditions: FindOneOptions<Entity>["where"],
-		_data: Partial<Entity>,
+		_data: ClassType<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
 		throw new Error(ERROR_MESSAGE);

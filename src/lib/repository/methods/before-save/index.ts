@@ -1,4 +1,5 @@
 import { EntityManager } from "../../../entity-manager";
+import { ClassType } from "../../../types/class-type";
 import { DatabaseEntity } from "../../../types/database-entity";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 import { formatDataArray } from "./helpers/format-data-array";
@@ -9,7 +10,7 @@ interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 }
 
 export interface BeforeSaveParams<Entity> {
-	data: Array<Partial<Entity>> | Partial<Entity>;
+	data: Array<ClassType<Entity>> | ClassType<Entity>;
 	options?: BaseQueryOptions;
 }
 export const beforeSave = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(

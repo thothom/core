@@ -36,11 +36,12 @@ import {
 	BeforePerformativeCountParams,
 	beforePerformativeCount,
 } from "./methods/before-performative-count";
+import { ClassType } from "../types/class-type";
 
 export abstract class Repository<
 	Entity,
-	EntityExtraMetadata,
-	ColumnExtraMetadata,
+	EntityExtraMetadata = any,
+	ColumnExtraMetadata = any,
 > {
 	public constructor(
 		protected readonly entityManager: EntityManager<
@@ -65,16 +66,16 @@ export abstract class Repository<
 	 * and most of the databases supports this method.
 	 */
 	public abstract save(
-		data: BeforeSaveParams<Entity>["data"],
-		options?: BeforeSaveParams<Entity>["options"],
+		data: Array<ClassType<Entity>> | ClassType<Entity>,
+		options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity>;
 
 	/**
 	 * Inserts a record on the database and fail if it's already exist.
 	 */
 	public abstract insert(
-		data: BeforeSaveParams<Entity>["data"],
-		options?: BeforeSaveParams<Entity>["options"],
+		data: Array<ClassType<Entity>> | ClassType<Entity>,
+		options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity>;
 
 	/**
@@ -82,7 +83,7 @@ export abstract class Repository<
 	 */
 	public abstract update(
 		conditions: FindConditions<Entity>,
-		data: Partial<Entity>,
+		data: ClassType<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity>;
 
@@ -91,7 +92,7 @@ export abstract class Repository<
 	 */
 	public abstract upsert(
 		conditions: FindConditions<Entity>,
-		data: Partial<Entity>,
+		data: ClassType<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity>;
 
