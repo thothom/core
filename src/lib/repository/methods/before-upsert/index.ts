@@ -1,7 +1,8 @@
 import { EntityManager } from "../../../entity-manager";
-import { FindOneOptions } from "../../queries/types/find-options";
+import { FindConditions } from "../../queries/types/find-conditions";
 import { BaseQueryOptions } from "../../queries/types/query-options";
-import { handleData } from "./helpers/handle-data";
+import { formatData } from "./helpers/format-data";
+import { DatabaseEntity } from "../../../types/database-entity";
 
 interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
@@ -9,7 +10,7 @@ interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 }
 
 export interface BeforeUpsertParams<Entity> {
-	conditions: FindOneOptions<Entity>["where"];
+	conditions: FindConditions<Entity>;
 	data: Partial<Entity>;
 	options?: BaseQueryOptions;
 }
@@ -18,17 +19,28 @@ export const beforeUpsert = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 		entity,
 		entityManager,
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
-	{ conditions, data, options }: BeforeUpsertParams<Entity>,
+	{
+		conditions: rawConditions,
+		data: rawData,
+		options: rawOptions,
+	}: BeforeUpsertParams<Entity>,
 ) => {
-	const dataHandled = handleData({
-		data,
+	const result = {} as BeforeUpsertParams<DatabaseEntity>;
+
+	result.data = formatData({
+		data: rawData,
 		entity,
 		entityManager,
 	});
 
-	return {
-		data: dataHandled,
-		conditions,
-		options,
-	};
+	result.conditions = entityManager.formatConditions({
+		entity,
+		conditions: rawConditions,
+	});
+
+	if (rawOptions) {
+		result.options = rawOptions;
+	}
+
+	return result;
 };

@@ -1,6 +1,7 @@
 import { EntityManager } from "../../../entity-manager";
+import { DatabaseEntity } from "../../../types/database-entity";
 import { BaseQueryOptions } from "../../queries/types/query-options";
-import { handleDataArray } from "./helpers/handle-data-array";
+import { formatDataArray } from "./helpers/format-data-array";
 
 interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
@@ -16,20 +17,25 @@ export const beforeSave = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 		entity,
 		entityManager,
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
-	{ data, options }: BeforeSaveParams<Entity>,
+	{ data: rawData, options: rawOptions }: BeforeSaveParams<Entity>,
 ) => {
-	const dataArray = Array.isArray(data) ? data : [data];
+	const result = {} as BeforeSaveParams<DatabaseEntity>;
 
-	const dataHandled = handleDataArray({
+	const dataArray = Array.isArray(rawData) ? rawData : [rawData];
+
+	const dataHandled = formatDataArray({
 		data: dataArray,
 		entity,
 		entityManager,
 	});
 
-	const dataToReturn = Array.isArray(data) ? dataHandled : dataHandled.shift();
+	result.data = Array.isArray(rawData)
+		? dataHandled
+		: (dataHandled.shift() as DatabaseEntity);
 
-	return {
-		data: dataToReturn,
-		options,
-	};
+	if (rawOptions) {
+		result.options = rawOptions;
+	}
+
+	return result;
 };

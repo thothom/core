@@ -1,5 +1,6 @@
 import { EntityManager } from "../..";
 import { FindConditions } from "../../../repository/queries/types/find-conditions";
+import { DatabaseEntity } from "../../../types/database-entity";
 import { isUndefined } from "../../../utils/validations/is-undefined";
 import { CustomClass } from "../../types/metadata-type";
 import { getConditionsArray } from "./helpers/get-conditions-array";
@@ -11,7 +12,7 @@ interface Injectables {
 
 export interface FormatConditionsParams {
 	entity: CustomClass;
-	conditions: FindConditions<Record<string, any>>;
+	conditions: FindConditions<Record<string, any>>; // Normal Entity, NOT Database Entity
 }
 
 export const formatConditions = (
@@ -46,5 +47,5 @@ export const formatConditions = (
 	 */
 	return Array.isArray(rawConditions)
 		? conditionsFormatted
-		: (conditionsFormatted.shift() as Record<string, any>);
+		: (conditionsFormatted.shift() as DatabaseEntity);
 };

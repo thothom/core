@@ -1,8 +1,8 @@
 import { EntityManager } from "../..";
 import { CustomClass } from "../../types/metadata-type";
-import { getColumnDatabaseName } from "./helpers/get-column-database-name";
-import { getMultipleLevelColumnName } from "./helpers/get-multiple-level-column-name";
-import { isMultipleLevelsColumn } from "./helpers/is-multiple-levels-column";
+import { getColumnDatabaseName } from "../../../utils/convert/get-column-database-name";
+import { getMultipleLevelColumnName } from "../../../utils/convert/get-multiple-level-column-name";
+import { isMultipleLevelsColumn } from "../../../utils/convert/is-multiple-levels-column";
 
 interface Injectables {
 	entityManager: EntityManager<any, any>;

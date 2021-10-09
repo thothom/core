@@ -1,5 +1,6 @@
 import { EntityManager } from "../../../entity-manager";
 import { CustomClass } from "../../../entity-manager/types/metadata-type";
+import { DatabaseEntity } from "../../../types/database-entity";
 import { FindOptions } from "../../queries/types/find-options";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 
@@ -17,35 +18,38 @@ export const beforeFind = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 		entityManager,
 		entity,
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
-	{ conditions: rawConditions, options }: BeforeFindParams<Entity>,
+	{ conditions: rawConditions, options: rawOptions }: BeforeFindParams<Entity>,
 ) => {
-	const conditions: FindOptions<Record<string, any>> = {
-		...(rawConditions as FindOptions<Record<string, any>>),
+	const result = {} as BeforeFindParams<DatabaseEntity>;
+
+	result.conditions = {
+		...(rawConditions as FindOptions<DatabaseEntity>),
 	};
 
 	if (rawConditions.where) {
-		conditions.where = entityManager.formatConditions({
+		result.conditions.where = entityManager.formatConditions({
 			entity,
 			conditions: rawConditions.where,
 		});
 	}
 
 	if (rawConditions.select) {
-		conditions.select = entityManager.convertColumnsNames({
+		result.conditions.select = entityManager.convertColumnsNames({
 			entity,
 			columnsNames: rawConditions.select as Array<string>,
 		});
 	}
 
 	if (rawConditions.order) {
-		conditions.order = entityManager.formatOrder({
+		result.conditions.order = entityManager.formatOrder({
 			entity,
 			orderBy: rawConditions.order,
 		});
 	}
 
-	return {
-		conditions,
-		options,
-	};
+	if (rawOptions) {
+		result.options = rawOptions;
+	}
+
+	return result;
 };

@@ -7,7 +7,7 @@ interface HandleDataParams {
 	entity: CustomClass;
 }
 
-export const handleData = ({
+export const formatData = ({
 	data,
 	entity,
 	entityManager,

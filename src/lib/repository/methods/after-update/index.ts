@@ -1,7 +1,8 @@
 import { EntityManager } from "../../../entity-manager";
+import { DatabaseEntity } from "../../../types/database-entity";
 import { FindOneOptions } from "../../queries/types/find-options";
 import { BaseQueryOptions } from "../../queries/types/query-options";
-import { handleData } from "./helpers/handle-data";
+import { formatData } from "./helpers/format-data";
 
 interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
@@ -10,7 +11,7 @@ interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 
 export interface AfterUpdateParams<Entity> {
 	conditions: FindOneOptions<Entity>["where"];
-	data: Partial<Record<string, any>>;
+	data: Partial<DatabaseEntity>;
 	options?: BaseQueryOptions;
 }
 
@@ -21,7 +22,7 @@ export const afterUpdate = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
 	{ data }: AfterUpdateParams<Entity>,
 ) => {
-	const dataHandled = handleData({
+	const dataHandled = formatData({
 		data,
 		entity,
 		entityManager,

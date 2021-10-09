@@ -2,6 +2,7 @@ import { EntityManager } from "../..";
 import { isUndefined } from "../../../utils/validations/is-undefined";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
+import { DatabaseEntity } from "../../../types/database-entity";
 
 interface Injectables {
 	entityManager: EntityManager<any, any>;
@@ -9,7 +10,7 @@ interface Injectables {
 
 export interface ConvertDatabaseToEntityParams {
 	entity: CustomClass;
-	data: Record<string, any>;
+	data: DatabaseEntity;
 }
 
 export const convertDatabaseToEntity = (
@@ -62,5 +63,5 @@ export const convertDatabaseToEntity = (
 		acc[columnMetadata.name] = value;
 
 		return acc;
-	}, {} as Record<string, any>);
+	}, {} as DatabaseEntity);
 };

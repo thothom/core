@@ -2,21 +2,24 @@ import { EntityManager } from "../..";
 import { isUndefined } from "../../../utils/validations/is-undefined";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
+import { DatabaseEntity } from "../../../types/database-entity";
+import { isNotEmptyObject } from "../../../utils/validations/is-not-empty-object";
 
 interface Injectables {
 	entityManager: EntityManager<any, any>;
 }
 
+// eslint-disable-next-line import/exports-last
 export interface ConvertEntityToDatabaseParams {
 	entity: CustomClass;
-	data: Record<string, any>;
+	data: Record<string, any>; // Normal Entity, NOT an database entity
 }
 
-export const convertEntityToDatabase = (
+const recursiveConvertEntityToDatabase = (
 	{ entityManager }: Injectables,
 	{ entity, data }: ConvertEntityToDatabaseParams,
 ) => {
-	if (isUndefined(data)) return {};
+	if (isUndefined(data)) return;
 
 	const entityMetadata = entityManager.getEntityMetadata(entity);
 
@@ -31,8 +34,13 @@ export const convertEntityToDatabase = (
 			);
 
 			if (columnMetadata.isArray) {
+				/**
+				 * ALERT: Recursive call!!!
+				 * ALERT: Recursive call!!!
+				 * ALERT: Recursive call!!!
+				 */
 				acc[columnMetadata.databaseName] = value.map((val: CustomClass) =>
-					convertEntityToDatabase(
+					recursiveConvertEntityToDatabase(
 						{
 							entityManager,
 						},
@@ -46,7 +54,12 @@ export const convertEntityToDatabase = (
 				return acc;
 			}
 
-			acc[columnMetadata.databaseName] = convertEntityToDatabase(
+			/**
+			 * ALERT: Recursive call!!!
+			 * ALERT: Recursive call!!!
+			 * ALERT: Recursive call!!!
+			 */
+			const convertedSubEntityValue = recursiveConvertEntityToDatabase(
 				{
 					entityManager,
 				},
@@ -56,11 +69,24 @@ export const convertEntityToDatabase = (
 				},
 			);
 
+			if (
+				convertedSubEntityValue &&
+				isNotEmptyObject(convertedSubEntityValue)
+			) {
+				acc[columnMetadata.databaseName] = convertedSubEntityValue;
+			}
+
 			return acc;
 		}
 
 		acc[columnMetadata.databaseName] = value;
 
 		return acc;
-	}, {} as Record<string, any>);
+	}, {} as DatabaseEntity);
 };
+
+export const convertEntityToDatabase = (
+	{ entityManager }: Injectables,
+	{ entity, data }: ConvertEntityToDatabaseParams,
+) =>
+	recursiveConvertEntityToDatabase({ entityManager }, { entity, data }) || {};

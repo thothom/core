@@ -1,3 +1,4 @@
+import { Order } from "../../../types/order";
 import { FindConditions } from "./find-conditions";
 
 export interface FindOneOptions<Entity> {
@@ -14,7 +15,7 @@ export interface FindOneOptions<Entity> {
 	/**
 	 * Order, in which entities should be ordered.
 	 */
-	order?: Record<string, "ASC" | "DESC">;
+	order?: Record<string, Order>;
 
 	/**
 	 * Indicates if soft-deleted rows should be included in entity result.

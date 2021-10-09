@@ -1,5 +1,6 @@
 import { EntityManager } from "../../../entity-manager";
 import { CustomClass } from "../../../entity-manager/types/metadata-type";
+import { DatabaseEntity } from "../../../types/database-entity";
 import { FindConditions } from "../../queries/types/find-conditions";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 
@@ -22,15 +23,21 @@ export const beforePerformativeCount = <
 		entityManager,
 		entity,
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
-	{ where: rawWhere, options }: BeforePerformativeCountParams<Entity>,
+	{
+		where: rawWhere,
+		options: rawOptions,
+	}: BeforePerformativeCountParams<Entity>,
 ) => {
-	const where = entityManager.formatConditions({
+	const result = {} as BeforePerformativeCountParams<DatabaseEntity>;
+
+	result.where = entityManager.formatConditions({
 		entity,
 		conditions: rawWhere,
 	});
 
-	return {
-		where,
-		options,
-	};
+	if (rawOptions) {
+		result.options = rawOptions;
+	}
+
+	return result;
 };

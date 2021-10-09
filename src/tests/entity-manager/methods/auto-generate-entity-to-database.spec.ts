@@ -340,7 +340,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			});
 		});
 
-		it("should generate fields of sub-entity and sub-sub-entity", () => {
+		it("should NOT generate columns of sub-sub-entity if sub-entity isn't specified or doesn't has any auto-genetared columns", () => {
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
 				data: {
@@ -348,16 +348,11 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 				},
 			});
 
-			expect(result.testSub.subSubEntity).toHaveProperty("id");
-			expect(typeof result.testSub.subSubEntity.id === "string").toBeTruthy();
-			expect(validate(result.testSub.subSubEntity.id)).toBeTruthy();
+			expect(result.testSub).toBeUndefined();
+			expect(result.testSub?.subSubEntity).toBeUndefined();
+			expect(result.testSub?.subSubEntity?.id).toBeUndefined();
 			expect(result).toStrictEqual({
 				id: "abc",
-				testSub: {
-					subSubEntity: {
-						id: result.testSub.subSubEntity.id,
-					},
-				},
 			});
 		});
 	});
