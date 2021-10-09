@@ -91,22 +91,23 @@ import {
 // All connections from the plugins follow this naming pattern
 import { ExampleConnection } from "example-symbiosis-plugin";
 
-const Connection = new ExampleConnection({
-	// Connection config here
-});
-
 @Entity()
 class FooEntity {
-	@PrimaryGeneratedColumn()
-	id: string;
+	@PrimaryColumn()
+	public id: string;
 
 	@Column()
-	bar: string;
+	public foo: string;
 }
+
+const Connection = new ExampleConnection({
+	// Connection config here
+	entities: [FooEntity]
+});
 
 type FooRepository = Repository<FooEntity>;
 
-const FooRepository = Connection.getRepository(FooEntity);
+const FooRepository: FooRepository = Connection.getRepository<FooEntity>(FooEntity);
 
 FooRepository.save({
 	bar: "foo",
