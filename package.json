@@ -1,6 +1,6 @@
 {
 	"name": "@techmmunity/symbiosis",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
@@ -58,7 +58,7 @@
 		"uuid": "^8.3.2"
 	},
 	"scripts": {
-		"postinstall": "husky install",
+		"prepare": "husky install",
 		"ts-node": "ts-node",
 		"test": "jest",
 		"test:cov": "jest --coverage",
