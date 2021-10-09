@@ -142,4 +142,4 @@ This project exists thanks to all the people who contribute:
 
 ### _Cool Kids_
 
-- A very special thanks to [Umed Khudoiberdiev](https://github.com/pleerock) and [Attila Oláh](https://github.com/NoNameProvided), how created TypeORM. Without their code, this package would never exists.
+- A very special thanks to the creators of TypeORM, without their code, this package would never exists.

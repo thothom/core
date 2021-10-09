@@ -111,7 +111,7 @@
   - [x] recover
   - [x] count
   - [x] performativeCount
-- [ ] Create a template repository "symbiosis-plugin"
+- [x] Create a template repository "symbiosis-plugin"
 - [ ] Fix verify mandatory files workflow
 - [ ] Improve Documentation
   - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
