@@ -43,10 +43,10 @@ jobs:
         # This script must be removed because it uses
         # a devDependency and they doesn't exist in this context
         run: |
-          npm set-script prepare ""
+          cd ./dist && npm set-script prepare "" && cd ..
 
       - name: Publish to NPM
         run: |
-          npm publish dist --access public
+          npm publish ./dist --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
