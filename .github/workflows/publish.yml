@@ -34,6 +34,11 @@ jobs:
           node-version: 14
           registry-url: "https://registry.npmjs.org/"
 
+      - name: Install the most recent version of NPM
+        # This is done so the "set-script" command can be used
+        run: |
+          npm install -g npm@latest
+
       - name: Remove "prepare" script
         # This script must be removed because it uses
         # a devDependency and they doesn't exist in this context
