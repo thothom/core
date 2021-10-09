@@ -2,7 +2,7 @@ import { LogLevel } from "../../logger/types/log-level";
 import { CustomClass } from "../../entity-manager/types/metadata-type";
 import { NamingStrategy } from "../../utils/format-naming-strategy/types/naming-strategy";
 
-export interface BaseConnectionOptions {
+export interface BaseConnectionOptions<DatabaseConnectionConfig = void> {
 	/**
 	 * Connection name, to use in case of multiple connections
 	 */
@@ -182,4 +182,9 @@ export interface BaseConnectionOptions {
 	 * **DEFAULT:** UTC
 	 */
 	timeZone?: string;
+
+	/**
+	 * Specific options to the database
+	 */
+	databaseConnectionConfig?: DatabaseConnectionConfig;
 }
