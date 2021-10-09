@@ -99,7 +99,7 @@
   - [x] `afterInsert`
   - [x] `afterUpdate`
   - [x] `afterUpsert`
-- [ ] Add before and after methods
+- [x] Add before and after methods
   - [x] save
   - [x] insert
   - [x] update
@@ -132,8 +132,11 @@
 
 ### General
 
-- [ ] Review column name converter
+- [x] Review column name converter
   - SubEntity columns also should be converted?
+    - Yes, they will be converted, only the prefixes aren't will be applied
+- [ ] Add "defaultValue" option to "@Column" decorator
+  - Will receive the default value of the column
 - [ ] Add `@Index` decorator
 - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - This column will be auto-generated **on save**
@@ -154,6 +157,8 @@
 - [ ] Add `@OneToMany` decorator
 - [ ] Add `@ManyToMany` decorator
 - [ ] Add support to Enums (currently, it already works with enums, but it doesn't saves the enums values. The `Column` decorator need to be modified to accept an enum too, and use `Object.values` to get the **VALUES** of the array)
+  - [ ] Add "enum" option to "@Column" decorator
+    - Will receive an enum to get it's values
 
 ### CLI
 

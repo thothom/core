@@ -3,6 +3,7 @@ import { Column } from "../../../lib/decorators/column";
 import { Entity } from "../../../lib/decorators/entity/entity";
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/primary-generated-column";
 import { BaseQueryOptions } from "../../../lib/repository/queries/types/query-options";
+import { DatabaseEntity } from "../../../lib/types/database-entity";
 import { TestConnection } from "../../constants/test-connection";
 import { TestRepository } from "../../constants/test-repository";
 
@@ -35,7 +36,7 @@ describe("Repository > Methods > beforeInsert", () => {
 				foo: 1,
 			},
 		}) as {
-			data: Record<string, any>;
+			data: DatabaseEntity;
 			options: BaseQueryOptions | undefined;
 		};
 
@@ -46,7 +47,6 @@ describe("Repository > Methods > beforeInsert", () => {
 				// eslint-disable-next-line @typescript-eslint/naming-convention
 				FOO: 1,
 			},
-			options: undefined,
 		});
 		expect(typeof result.data.ID === "string").toBeTruthy();
 		expect(validate(result.data.ID)).toBeTruthy();
@@ -60,7 +60,7 @@ describe("Repository > Methods > beforeInsert", () => {
 				},
 			],
 		}) as {
-			data: Array<Record<string, any>>;
+			data: Array<DatabaseEntity>;
 			options: BaseQueryOptions | undefined;
 		};
 
@@ -73,9 +73,36 @@ describe("Repository > Methods > beforeInsert", () => {
 					FOO: 1,
 				},
 			],
-			options: undefined,
 		});
 		expect(typeof result.data[0].ID === "string").toBeTruthy();
 		expect(validate(result.data[0].ID)).toBeTruthy();
+	});
+
+	it("should do nothing with the options", () => {
+		const result = repository.beforeInsert({
+			data: {
+				foo: 1,
+			},
+			options: {
+				retries: 3,
+			},
+		}) as {
+			data: DatabaseEntity;
+			options: BaseQueryOptions | undefined;
+		};
+
+		expect(result).toStrictEqual({
+			data: {
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				ID: result.data.ID,
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				FOO: 1,
+			},
+			options: {
+				retries: 3,
+			},
+		});
+		expect(typeof result.data.ID === "string").toBeTruthy();
+		expect(validate(result.data.ID)).toBeTruthy();
 	});
 });

@@ -39,7 +39,27 @@ describe("Repository > Methods > beforeRecover", () => {
 				// eslint-disable-next-line @typescript-eslint/naming-convention
 				FOO: 1,
 			},
-			options: undefined,
+		});
+	});
+
+	it("should do nothing with the options", () => {
+		const result = repository.beforeRecover({
+			where: {
+				foo: 1,
+			},
+			options: {
+				retries: 3,
+			},
+		});
+
+		expect(result).toStrictEqual({
+			where: {
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				FOO: 1,
+			},
+			options: {
+				retries: 3,
+			},
 		});
 	});
 });

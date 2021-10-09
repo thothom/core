@@ -1,13 +1,14 @@
 import { EntityManager } from "../../../../entity-manager";
 import { CustomClass } from "../../../../entity-manager/types/metadata-type";
+import { DatabaseEntity } from "../../../../types/database-entity";
 
 interface HandleDataParams {
-	data: Record<string, any>;
+	data: DatabaseEntity;
 	entityManager: EntityManager<any, any>;
 	entity: CustomClass;
 }
 
-export const handleData = ({
+export const formatData = ({
 	data,
 	entity,
 	entityManager,

@@ -1,17 +1,17 @@
 import { EntityManager } from "../../../../entity-manager";
 import { CustomClass } from "../../../../entity-manager/types/metadata-type";
 
-interface HandleDataParams {
-	data: Array<Record<string, any>>;
+interface HandleDataArrayParams {
+	data: Array<any>;
 	entityManager: EntityManager<any, any>;
 	entity: CustomClass;
 }
 
-export const handleData = ({
+export const formatDataArray = ({
 	data,
 	entity,
 	entityManager,
-}: HandleDataParams) => {
+}: HandleDataArrayParams) => {
 	const dataInEntityFormat = data.map(d =>
 		entityManager.convertDatabaseToEntity({
 			data: d,

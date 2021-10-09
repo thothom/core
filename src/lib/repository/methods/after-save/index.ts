@@ -1,6 +1,7 @@
 import { EntityManager } from "../../../entity-manager";
+import { DatabaseEntity } from "../../../types/database-entity";
 import { BaseQueryOptions } from "../../queries/types/query-options";
-import { handleDataArray } from "./helpers/handle-data-array";
+import { formatDataArray } from "./helpers/format-data-array";
 
 interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
@@ -8,7 +9,7 @@ interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 }
 
 export interface AfterSaveParams {
-	data: Array<Record<string, any>> | Partial<Record<string, any>>;
+	data: Array<DatabaseEntity> | Partial<DatabaseEntity>;
 	options?: BaseQueryOptions;
 }
 
@@ -21,7 +22,7 @@ export const afterSave = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 ) => {
 	const dataArray = Array.isArray(data) ? data : [data];
 
-	const dataHandled = handleDataArray({
+	const dataHandled = formatDataArray({
 		data: dataArray,
 		entity,
 		entityManager,

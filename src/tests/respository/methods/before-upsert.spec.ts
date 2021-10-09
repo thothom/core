@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { validate } from "uuid";
 import { Column } from "../../../lib/decorators/column";
 import { Entity } from "../../../lib/decorators/entity/entity";
@@ -42,15 +43,12 @@ describe("Repository > Methods > beforeUpsert", () => {
 
 		expect(result).toStrictEqual({
 			conditions: {
-				id,
+				ID: id,
 			},
 			data: {
-				// eslint-disable-next-line @typescript-eslint/naming-convention
 				ID: result.data.ID,
-				// eslint-disable-next-line @typescript-eslint/naming-convention
 				FOO: 1,
 			},
-			options: undefined,
 		});
 		expect(typeof result.data.ID === "string").toBeTruthy();
 		expect(validate(result.data.ID)).toBeTruthy();
@@ -74,21 +72,47 @@ describe("Repository > Methods > beforeUpsert", () => {
 		expect(result).toStrictEqual({
 			conditions: [
 				{
-					id,
+					ID: id,
 				},
 				{
-					foo: 2,
+					FOO: 2,
 				},
 			],
 			data: {
-				// eslint-disable-next-line @typescript-eslint/naming-convention
 				ID: result.data?.ID,
-				// eslint-disable-next-line @typescript-eslint/naming-convention
 				FOO: 1,
 			},
-			options: undefined,
 		});
 		expect(typeof result.data?.ID === "string").toBeTruthy();
 		expect(validate(result.data?.ID)).toBeTruthy();
+	});
+
+	it("should do nothing with the options", () => {
+		const result = repository.beforeUpsert({
+			conditions: {
+				id,
+			},
+			data: {
+				foo: 1,
+			},
+			options: {
+				retries: 3,
+			},
+		});
+
+		expect(result).toStrictEqual({
+			conditions: {
+				ID: id,
+			},
+			data: {
+				ID: result.data.ID,
+				FOO: 1,
+			},
+			options: {
+				retries: 3,
+			},
+		});
+		expect(typeof result.data.ID === "string").toBeTruthy();
+		expect(validate(result.data.ID)).toBeTruthy();
 	});
 });

@@ -1,6 +1,7 @@
 import { formatConditions } from "..";
 import { EntityManager } from "../../..";
 import { ArrayFindConditions } from "../../../../repository/queries/types/find-conditions";
+import { DatabaseEntity } from "../../../../types/database-entity";
 import { MetadataUtil } from "../../../../utils/metadata-util";
 import { isFindOperator } from "../../../../utils/validations/is-find-operator";
 import { isUndefined } from "../../../../utils/validations/is-undefined";
@@ -8,7 +9,7 @@ import { IncrementedEntitiesMetadata } from "../../../types/manager-metadata";
 import { CustomClass } from "../../../types/metadata-type";
 
 interface GetConditionsFormattedParams {
-	conditionsArray: ArrayFindConditions<Record<string, any>>;
+	conditionsArray: ArrayFindConditions<Record<string, any>>; // Normal Entity, NOT Database Entity
 	entityMetadata: IncrementedEntitiesMetadata<void, void>;
 	entityManager: EntityManager<void, void>;
 }
@@ -85,5 +86,5 @@ export const getConditionsFormatted = ({
 			acc[columnMetadata.databaseName] = value;
 
 			return acc;
-		}, {} as Record<string, any>),
+		}, {} as DatabaseEntity),
 	);

@@ -4,6 +4,7 @@ import { BaseConnectionOptions } from "../connection/types/connection-options";
 import { SymbiosisError } from "../error";
 import { SymbiosisErrorCodeEnum } from "../error/types/error-code.enum";
 import { Logger } from "../logger";
+import { DatabaseEntity } from "../types/database-entity";
 import {
 	autoGenerateEntityToDatabase,
 	AutoGenerateEntityToDatabaseParams,
@@ -163,7 +164,7 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	 */
 	public autoGenerateEntityToDatabase(
 		params: AutoGenerateEntityToDatabaseParams,
-	): Record<string, any> {
+	): DatabaseEntity {
 		return autoGenerateEntityToDatabase(
 			{
 				entityManager: this,
@@ -181,7 +182,7 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	 */
 	public convertEntityToDatabase(
 		params: ConvertEntityToDatabaseParams,
-	): Record<string, any> {
+	): DatabaseEntity {
 		return convertEntityToDatabase({ entityManager: this }, params);
 	}
 
@@ -190,7 +191,7 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	 */
 	public convertDatabaseToEntity(
 		params: ConvertDatabaseToEntityParams,
-	): Record<string, any> {
+	): DatabaseEntity {
 		return convertDatabaseToEntity({ entityManager: this }, params);
 	}
 

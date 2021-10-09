@@ -35,7 +35,6 @@ describe("Repository > Methods > beforeFind", () => {
 
 		expect(result).toStrictEqual({
 			conditions: {},
-			options: undefined,
 		});
 	});
 
@@ -55,7 +54,6 @@ describe("Repository > Methods > beforeFind", () => {
 					FOO: 1,
 				},
 			},
-			options: undefined,
 		});
 	});
 
@@ -70,7 +68,6 @@ describe("Repository > Methods > beforeFind", () => {
 			conditions: {
 				select: ["ID", "FOO"],
 			},
-			options: undefined,
 		});
 	});
 
@@ -90,7 +87,6 @@ describe("Repository > Methods > beforeFind", () => {
 					ID: "ASC",
 				},
 			},
-			options: undefined,
 		});
 	});
 
@@ -110,7 +106,6 @@ describe("Repository > Methods > beforeFind", () => {
 					FOO: MoreThan(1),
 				},
 			},
-			options: undefined,
 		});
 	});
 
@@ -134,7 +129,6 @@ describe("Repository > Methods > beforeFind", () => {
 					},
 				],
 			},
-			options: undefined,
 		});
 	});
 
@@ -158,7 +152,31 @@ describe("Repository > Methods > beforeFind", () => {
 					},
 				],
 			},
-			options: undefined,
+		});
+	});
+
+	it("should do nothing with the options", () => {
+		const result = repository.beforeFind({
+			conditions: {
+				where: {
+					foo: 1,
+				},
+			},
+			options: {
+				retries: 3,
+			},
+		});
+
+		expect(result).toStrictEqual({
+			conditions: {
+				where: {
+					// eslint-disable-next-line @typescript-eslint/naming-convention
+					FOO: 1,
+				},
+			},
+			options: {
+				retries: 3,
+			},
 		});
 	});
 });

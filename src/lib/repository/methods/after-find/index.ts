@@ -1,7 +1,8 @@
 import { EntityManager } from "../../../entity-manager";
+import { DatabaseEntity } from "../../../types/database-entity";
 import { FindOptions } from "../../queries/types/find-options";
 import { BaseQueryOptions } from "../../queries/types/query-options";
-import { handleData } from "./helpers/handle-data";
+import { formatData } from "./helpers/format-data";
 
 interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
@@ -9,7 +10,7 @@ interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 }
 
 export interface AfterFindParams<Entity> {
-	dataToReturn: Array<Record<string, any>>;
+	dataToReturn: Array<DatabaseEntity>;
 	conditions: FindOptions<Entity>;
 	options?: BaseQueryOptions;
 }
@@ -21,7 +22,7 @@ export const afterFind = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
 	{ dataToReturn }: AfterFindParams<Entity>,
 ) => {
-	const dataHandled = handleData({
+	const dataHandled = formatData({
 		data: dataToReturn,
 		entity,
 		entityManager,
