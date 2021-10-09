@@ -1,7 +1,7 @@
 import { Connection } from "../../lib/connection";
 import { Repository } from "../../lib/repository";
 
-export class TestConnection extends Connection<any, any> {
+export class TestConnection extends Connection<any, any, any> {
 	public getRepository<Entity>(
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		_entity: Entity,

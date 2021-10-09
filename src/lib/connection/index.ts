@@ -6,6 +6,7 @@ import { BaseConnectionOptions } from "./types/connection-options";
 type DefaultExtraMetadata = Record<string, any>;
 
 export abstract class Connection<
+	DatabaseConnectionConfig = void,
 	EntityExtraData = DefaultExtraMetadata,
 	ColumnExtraData = DefaultExtraMetadata,
 > {
@@ -15,7 +16,7 @@ export abstract class Connection<
 
 	private readonly _name: string;
 
-	private readonly _options: BaseConnectionOptions;
+	private readonly _options: BaseConnectionOptions<DatabaseConnectionConfig>;
 
 	private readonly _entityManager: EntityManager<
 		EntityExtraData,
@@ -48,7 +49,7 @@ export abstract class Connection<
 	 * Constructor
 	 */
 
-	public constructor(options: BaseConnectionOptions) {
+	public constructor(options: BaseConnectionOptions<DatabaseConnectionConfig>) {
 		this._name = options.name || "Default";
 
 		this._options = options;
