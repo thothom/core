@@ -34,6 +34,12 @@ jobs:
           node-version: 14
           registry-url: "https://registry.npmjs.org/"
 
+      - name: Remove "prepare" script
+        # This script must be removed because it uses
+        # a devDependency and they doesn't exist in this context
+        run: |
+          npm set-script prepare ""
+
       - name: Publish to NPM
         run: |
           npm publish dist --access public
