@@ -6,6 +6,7 @@ export type FindOperatorType =
 	| "endsWith"
 	| "exist"
 	| "in"
+	| "includes"
 	| "isNull"
 	| "lessThan"
 	| "lessThanOrEqual"

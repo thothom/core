@@ -64,6 +64,7 @@ export * from "./lib/repository/queries/find-operators/between";
 export * from "./lib/repository/queries/find-operators/ends-with";
 export * from "./lib/repository/queries/find-operators/exist";
 export * from "./lib/repository/queries/find-operators/in";
+export * from "./lib/repository/queries/find-operators/includes";
 export * from "./lib/repository/queries/find-operators/is-null";
 export * from "./lib/repository/queries/find-operators/less-than";
 export * from "./lib/repository/queries/find-operators/less-than-or-equal";
