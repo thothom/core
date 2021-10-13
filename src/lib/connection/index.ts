@@ -66,6 +66,8 @@ export abstract class Connection<
 	 * Methods
 	 */
 
+	public abstract connect(): Promise<void>;
+
 	public abstract getRepository<Entity>(
 		entity: Entity,
 	): Repository<Entity, EntityExtraData, ColumnExtraData>;

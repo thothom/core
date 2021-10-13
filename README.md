@@ -100,18 +100,24 @@ class FooEntity {
 	public foo: string;
 }
 
-const Connection = new ExampleConnection({
-	// Connection config here
-	entities: [FooEntity]
-});
-
 type FooRepository = Repository<FooEntity>;
 
-const FooRepository: FooRepository = Connection.getRepository<FooEntity>(FooEntity);
+const foo = async () => {
+	const connection = new ExampleConnection({
+		// Connection config here
+		entities: [FooEntity],
+	});
 
-FooRepository.save({
-	bar: "foo",
-}).then(...);
+	// Always call the "connect" to connect to the database
+	await connection.connect();
+
+	const fooRepository: FooRepository =
+		connection.getRepository<FooEntity>(FooEntity);
+
+	await fooRepository.save({
+		bar: "foo",
+	});
+};
 ```
 
 ## Documentation
