@@ -13,7 +13,6 @@ Please check if your PR fulfills the following requirements:
 - [ ] I followed GitFlow pattern to create the branch
 - [ ] Tests for the changes have been added
 - [ ] I created a PR to add / update the documentation (or aren't necessary)
-- [ ] The `package.json` version has been upgraded
 - [ ] The changes has been added to `CHANGELOG.md`
 - [ ] My code produces no warnings or errors
 
