@@ -28,6 +28,10 @@ jobs:
           cp README.md dist/README.md
           cp LICENSE dist/LICENSE
 
+      - name: Remove Tests
+        run: |
+          rm -rf dist/tests
+
       - name: Setup Package Manager
         uses: actions/setup-node@master
         with:

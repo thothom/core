@@ -1,9 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { Connection } from "../../lib/connection";
 import { Repository } from "../../lib/repository";
 
 export class TestConnection extends Connection<any, any, any> {
+	public connect(): Promise<void> {
+		throw new Error("Method not implemented.");
+	}
+
 	public getRepository<Entity>(
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		_entity: Entity,
 	): Repository<Entity, void, void> {
 		throw new Error("Method not implemented.");
