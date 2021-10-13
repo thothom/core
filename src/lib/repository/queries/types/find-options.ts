@@ -26,8 +26,22 @@ export interface FindOneOptions<Entity> {
 export interface FindOptions<Entity> extends FindOneOptions<Entity> {
 	/**
 	 * Offset (paginated) where from entities should be taken.
+	 *
+	 * **Alert: This option isn't supported in most of the NoSQL databases,
+	 * try to use the "startFrom" option.**
 	 */
 	skip?: number;
+
+	/**
+	 * Primary Keys of the last item of the previous query.
+	 * Used for paginated queries in NoSQL databases.
+	 *
+	 * In another libs, this option wold be:
+	 * - firebase: "startAfter"
+	 * - dynamodb: "ExclusiveStartKey"
+	 * - mongodb: `{'_id': {'$gt': last_id}}`
+	 */
+	startFrom?: Partial<Entity>;
 
 	/**
 	 * Limit (paginated) - max number of entities should be taken.
