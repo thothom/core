@@ -47,6 +47,13 @@ export const beforeFind = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 		});
 	}
 
+	if (rawConditions.startFrom) {
+		result.conditions.startFrom = entityManager.formatConditions({
+			entity,
+			conditions: rawConditions.startFrom,
+		});
+	}
+
 	if (rawOptions) {
 		result.options = rawOptions;
 	}
