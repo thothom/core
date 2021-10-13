@@ -25,6 +25,7 @@ export const PrimaryGeneratedColumn = (
 			strategyOrOptions,
 			entityPrototype,
 			propertyName,
+			checkIfLibExists: require.resolve,
 		});
 
 		MetadataUtil.addColumnMetadataToEntity({

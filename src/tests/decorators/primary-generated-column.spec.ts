@@ -290,7 +290,7 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 			}
 
 			expect(result instanceof SymbiosisError).toBe(true);
-			expect(result.message).toBe("Invalid Strate To Auto Generation");
+			expect(result.message).toBe("Invalid Strategy To Auto Generation");
 			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM);
 			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(["Entity: Test", "Column: foo"]);
