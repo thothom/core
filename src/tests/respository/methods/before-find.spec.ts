@@ -90,6 +90,25 @@ describe("Repository > Methods > beforeFind", () => {
 		});
 	});
 
+	it("should convert 'startFrom' option to the database format", () => {
+		const result = repository.beforeFind({
+			conditions: {
+				startFrom: {
+					foo: 1,
+				},
+			},
+		});
+
+		expect(result).toStrictEqual({
+			conditions: {
+				startFrom: {
+					// eslint-disable-next-line @typescript-eslint/naming-convention
+					FOO: 1,
+				},
+			},
+		});
+	});
+
 	it("should convert to the database format (with find operators)", () => {
 		const result = repository.beforeFind({
 			conditions: {
