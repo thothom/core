@@ -22,7 +22,7 @@ jobs:
       - name: Verify Files Changed
         run: |
           if case ${{ steps.branch_name.outputs.name }} in feature/*) true;; *) false;; esac; then
-            MANDATORY_FILES="CHANGELOG.md package.json"
+            MANDATORY_FILES="CHANGELOG.md"
           else
             MANDATORY_FILES=""
           fi
