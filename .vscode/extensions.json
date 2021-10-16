@@ -1,13 +1,3 @@
 {
-	"recommendations": [
-		"editorconfig.editorconfig",
-		"irongeek.vscode-env",
-		"dbaeumer.vscode-eslint",
-		"eamodio.gitlens",
-		"bierner.markdown-preview-github-styles",
-		"pkief.material-icon-theme",
-		"esbenp.prettier-vscode",
-		"gruntfuggly.todo-tree",
-		"shardulm94.trailing-spaces"
-	]
+	"recommendations": ["techmmunity.extensions"]
 }

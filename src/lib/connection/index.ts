@@ -2,13 +2,12 @@ import { Logger } from "../logger";
 import { EntityManager } from "../entity-manager";
 import { Repository } from "../repository";
 import { BaseConnectionOptions } from "./types/connection-options";
-
-type DefaultExtraMetadata = Record<string, any>;
+import { CustomClass } from "../entity-manager/types/metadata-type";
 
 export abstract class Connection<
-	DatabaseConnectionConfig = void,
-	EntityExtraData = DefaultExtraMetadata,
-	ColumnExtraData = DefaultExtraMetadata,
+	DatabaseConfig = any,
+	EntityExtraData = any,
+	ColumnExtraData = any,
 > {
 	/**
 	 * Properties
@@ -16,7 +15,7 @@ export abstract class Connection<
 
 	private readonly _name: string;
 
-	private readonly _options: BaseConnectionOptions<DatabaseConnectionConfig>;
+	private readonly _options: BaseConnectionOptions<DatabaseConfig>;
 
 	private readonly _entityManager: EntityManager<
 		EntityExtraData,
@@ -49,7 +48,7 @@ export abstract class Connection<
 	 * Constructor
 	 */
 
-	public constructor(options: BaseConnectionOptions<DatabaseConnectionConfig>) {
+	public constructor(options: BaseConnectionOptions<DatabaseConfig>) {
 		this._name = options.name || "Default";
 
 		this._options = options;
@@ -69,6 +68,6 @@ export abstract class Connection<
 	public abstract connect(): Promise<void>;
 
 	public abstract getRepository<Entity>(
-		entity: Entity,
+		entity: CustomClass,
 	): Repository<Entity, EntityExtraData, ColumnExtraData>;
 }
