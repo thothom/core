@@ -411,7 +411,9 @@ export abstract class Repository<
 	 *
 	 * Does things like format the data to the entity format
 	 */
-	protected afterFindOne(params: AfterFindOneParams<Entity>): Entity {
+	protected afterFindOne(
+		params: AfterFindOneParams<Entity>,
+	): Entity | undefined {
 		return afterFindOne<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 			{
 				entity: this.entity,

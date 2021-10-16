@@ -189,10 +189,12 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	/**
 	 * Converts database data to an entity data
 	 */
-	public convertDatabaseToEntity(
+	public convertDatabaseToEntity<Entity>(
 		params: ConvertDatabaseToEntityParams,
-	): DatabaseEntity {
-		return convertDatabaseToEntity({ entityManager: this }, params);
+	): Entity | undefined {
+		return convertDatabaseToEntity({ entityManager: this }, params) as
+			| Entity
+			| undefined;
 	}
 
 	/**

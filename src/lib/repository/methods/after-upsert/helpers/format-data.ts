@@ -7,12 +7,12 @@ interface HandleDataParams {
 	entity: CustomClass;
 }
 
-export const formatData = ({
+export const formatData = <Entity>({
 	data,
 	entity,
 	entityManager,
 }: HandleDataParams) => {
-	const dataInEntityFormat = entityManager.convertDatabaseToEntity({
+	const dataInEntityFormat = entityManager.convertDatabaseToEntity<Entity>({
 		data,
 		entity,
 	});

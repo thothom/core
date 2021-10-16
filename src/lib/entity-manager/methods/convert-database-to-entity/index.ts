@@ -10,18 +10,18 @@ interface Injectables {
 
 export interface ConvertDatabaseToEntityParams {
 	entity: CustomClass;
-	data: DatabaseEntity;
+	data?: DatabaseEntity;
 }
 
 export const convertDatabaseToEntity = (
 	{ entityManager }: Injectables,
 	{ entity, data }: ConvertDatabaseToEntityParams,
 ) => {
+	if (!data) return;
+
 	const entityMetadata = entityManager.getEntityMetadata(entity);
 
 	return entityMetadata.columns.reduce((acc, columnMetadata) => {
-		if (isUndefined(data)) return acc;
-
 		const value = data[columnMetadata.databaseName];
 
 		if (isUndefined(value)) return acc;

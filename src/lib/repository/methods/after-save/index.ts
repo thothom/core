@@ -22,7 +22,7 @@ export const afterSave = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 ) => {
 	const dataArray = Array.isArray(data) ? data : [data];
 
-	const dataHandled = formatDataArray({
+	const dataHandled = formatDataArray<Entity>({
 		data: dataArray,
 		entity,
 		entityManager,
