@@ -314,8 +314,8 @@ describe("Decorators > Column", () => {
 		});
 	});
 
-	describe("Specified Extras At Decorator Options", () => {
-		it("should define extras that is passed at the options", () => {
+	describe("Using Column Options", () => {
+		it('should define "extras" that is passed at the options', () => {
 			class Test {
 				@Column({
 					extras: {
@@ -336,6 +336,29 @@ describe("Decorators > Column", () => {
 					extras: {
 						foo: "bar",
 					},
+					name: "foo",
+					type: String,
+				},
+			]);
+		});
+
+		it('should define "defaultValue" that is passed at the options', () => {
+			class Test {
+				@Column({
+					defaultValue: true,
+				})
+				public foo: string;
+			}
+
+			const metadata = MetadataUtil.getEntityMetadata({
+				metadataKey: "columns",
+				entity: Test,
+			});
+
+			expect(metadata).toStrictEqual([
+				{
+					databaseName: "foo",
+					defaultValue: true,
 					name: "foo",
 					type: String,
 				},
