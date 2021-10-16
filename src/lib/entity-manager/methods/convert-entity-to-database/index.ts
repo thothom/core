@@ -4,6 +4,7 @@ import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
 import { DatabaseEntity } from "../../../types/database-entity";
 import { isNotEmptyObject } from "../../../utils/validations/is-not-empty-object";
+import { generateDefaultValue } from "./helpers/generate-default-value";
 
 interface Injectables {
 	entityManager: EntityManager<any, any>;
@@ -26,7 +27,15 @@ const recursiveConvertEntityToDatabase = (
 	return entityMetadata.columns.reduce((acc, columnMetadata) => {
 		const value = data[columnMetadata.name];
 
-		if (isUndefined(value)) return acc;
+		if (isUndefined(value)) {
+			// Has mutability!!!
+			generateDefaultValue({
+				columnMetadata,
+				acc,
+			});
+
+			return acc;
+		}
 
 		if (MetadataUtil.isCustomMetadataType(columnMetadata.type)) {
 			const subEntityMetadata = entityManager.getEntityMetadata(

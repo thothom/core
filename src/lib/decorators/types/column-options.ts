@@ -3,6 +3,7 @@ import { PrimaryGeneratedColumnStrategy } from "../primary-generated-column";
 
 export interface BaseColumnOptions {
 	name?: string;
+	defaultValue?: any;
 	extras?: any;
 }
 

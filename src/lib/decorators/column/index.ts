@@ -17,15 +17,18 @@ export const Column = (typeOrOptions?: ColumnOptions | MetadataType) => {
 			typeOrOptions,
 		});
 
+		const possiblyColumnOptions = typeOrOptions as ColumnOptions;
+
 		MetadataUtil.addColumnMetadataToEntity({
 			entity: entityPrototype.constructor,
 			metadata: {
-				name: propertyName,
 				databaseName,
 				isNameAlreadyFormatted,
 				type,
 				isArray,
-				extras: (typeOrOptions as ColumnOptions)?.extras,
+				name: propertyName,
+				defaultValue: possiblyColumnOptions?.defaultValue,
+				extras: possiblyColumnOptions?.extras,
 			},
 		});
 	};

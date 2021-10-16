@@ -35,6 +35,9 @@ export interface ColumnMetadata<ExtraData = Record<string, any>> {
 	autoGenerationType?: "DATABASE_TO_ENTITY" | "ENTITY_TO_DATABASE";
 	autoGenerateOnlyOnEvents?: Array<DatabaseEvents>;
 
+	// THIS ALSO CAN BE A FUNCTION!!!
+	defaultValue?: any;
+
 	isArray?: boolean;
 
 	primary?: boolean;
@@ -60,4 +63,5 @@ export const COLUMN_METADATA_KEYS: Array<keyof ColumnMetadata> = [
 	"isArray",
 	"primary",
 	"extras",
+	"defaultValue",
 ];
