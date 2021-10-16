@@ -10,7 +10,7 @@ interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
 }
 
 export interface AfterFindOneParams<Entity> {
-	dataToReturn: DatabaseEntity;
+	dataToReturn?: DatabaseEntity;
 	conditions: FindOneOptions<Entity>;
 	options?: BaseQueryOptions;
 }
@@ -22,11 +22,11 @@ export const afterFindOne = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
 	{ dataToReturn }: AfterFindOneParams<Entity>,
 ) => {
-	const dataHandled = formatData({
+	const dataHandled = formatData<Entity>({
 		data: dataToReturn,
 		entity,
 		entityManager,
 	});
 
-	return dataHandled as Entity;
+	return dataHandled;
 };

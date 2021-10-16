@@ -3,17 +3,17 @@ import { CustomClass } from "../../../../entity-manager/types/metadata-type";
 import { DatabaseEntity } from "../../../../types/database-entity";
 
 interface HandleDataParams {
-	data: DatabaseEntity;
+	data?: DatabaseEntity;
 	entityManager: EntityManager<any, any>;
 	entity: CustomClass;
 }
 
-export const formatData = ({
+export const formatData = <Entity>({
 	data,
 	entity,
 	entityManager,
 }: HandleDataParams) => {
-	const dataInEntityFormat = entityManager.convertDatabaseToEntity({
+	const dataInEntityFormat = entityManager.convertDatabaseToEntity<Entity>({
 		data,
 		entity,
 	});

@@ -22,7 +22,7 @@ export const afterUpsert = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
 	{ data }: AfterUpsertParams<Entity>,
 ) => {
-	const dataHandled = formatData({
+	const dataHandled = formatData<Entity>({
 		data,
 		entity,
 		entityManager,

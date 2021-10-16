@@ -40,12 +40,13 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert partial data correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-				},
-			});
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+					},
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -53,13 +54,14 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_test: "SuperTest",
-				},
-			});
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_test: "SuperTest",
+					},
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -68,13 +70,14 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should filter null values", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_test: null,
-				},
-			});
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_test: null,
+					},
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -82,26 +85,28 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should filter undefined values", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_test: undefined,
-				},
-			});
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_test: undefined,
+					},
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
 			});
 		});
 
-		it("should return an empty object if no data is passed", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: undefined as any,
-			});
+		it("should return undefined if no data is passed", () => {
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: undefined as any,
+				});
 
-			expect(result).toStrictEqual({});
+			expect(result).toBeUndefined();
 		});
 	});
 
@@ -118,13 +123,14 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 
 			const connection = createConnection([TestEntity]);
 
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					CUSTOM_FIELD_NAME: "Test",
-					test_test: "foo",
-				},
-			});
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						CUSTOM_FIELD_NAME: "Test",
+						test_test: "foo",
+					},
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -146,13 +152,14 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 
 			const connection = createConnection([TestEntity]);
 
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					CUSTOM_FIELD_NAME: "Test",
-					test_test: "foo",
-				},
-			});
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						CUSTOM_FIELD_NAME: "Test",
+						test_test: "foo",
+					},
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -174,13 +181,14 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 
 			const connection = createConnection([TestEntity]);
 
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					CUSTOM_FIELD_NAME: "foo",
-				},
-			});
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						CUSTOM_FIELD_NAME: "foo",
+					},
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -206,13 +214,14 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_test: ["SuperTest"],
-				},
-			});
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_test: ["SuperTest"],
+					},
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -249,15 +258,16 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert partial data of sub-entity correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_subEntity: {
-						anotherField: 1,
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_subEntity: {
+							anotherField: 1,
+						},
 					},
-				},
-			});
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -268,16 +278,17 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_subEntity: {
-						field: "foo",
-						anotherField: 1,
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_subEntity: {
+							field: "foo",
+							anotherField: 1,
+						},
 					},
-				},
-			});
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -317,17 +328,18 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert partial data of sub-entity correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_subEntities: [
-						{
-							anotherField: 1,
-						},
-					],
-				},
-			});
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_subEntities: [
+							{
+								anotherField: 1,
+							},
+						],
+					},
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -340,22 +352,23 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_subEntities: [
-						{
-							field: "foo",
-							anotherField: 1,
-						},
-						{
-							field: "bar",
-							anotherField: 2,
-						},
-					],
-				},
-			});
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_subEntities: [
+							{
+								field: "foo",
+								anotherField: 1,
+							},
+							{
+								field: "bar",
+								anotherField: 2,
+							},
+						],
+					},
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -412,18 +425,19 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert partial data of sub-sub-entity correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_subEntity: {
-						field: "1",
-						subSubEntity: {
-							subField: "foo",
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_subEntity: {
+							field: "1",
+							subSubEntity: {
+								subField: "foo",
+							},
 						},
 					},
-				},
-			});
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -437,19 +451,20 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_subEntity: {
-						field: "1",
-						subSubEntity: {
-							subField: "foo",
-							subFieldTwo: 1,
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_subEntity: {
+							field: "1",
+							subSubEntity: {
+								subField: "foo",
+								subFieldTwo: 1,
+							},
 						},
 					},
-				},
-			});
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -503,20 +518,21 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert partial data of sub-sub-entity correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_subEntity: {
-						field: "1",
-						subSubEntity: [
-							{
-								subField: "foo",
-							},
-						],
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_subEntity: {
+							field: "1",
+							subSubEntity: [
+								{
+									subField: "foo",
+								},
+							],
+						},
 					},
-				},
-			});
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",
@@ -532,25 +548,26 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 		});
 
 		it("should convert complete data correctly", () => {
-			const result = connection.entityManager.convertDatabaseToEntity({
-				entity: TestEntity,
-				data: {
-					test_id: "Test",
-					test_subEntity: {
-						field: "1",
-						subSubEntity: [
-							{
-								subField: "foo",
-								subFieldTwo: 1,
-							},
-							{
-								subField: "bar",
-								subFieldTwo: 2,
-							},
-						],
+			const result =
+				connection.entityManager.convertDatabaseToEntity<TestEntity>({
+					entity: TestEntity,
+					data: {
+						test_id: "Test",
+						test_subEntity: {
+							field: "1",
+							subSubEntity: [
+								{
+									subField: "foo",
+									subFieldTwo: 1,
+								},
+								{
+									subField: "bar",
+									subFieldTwo: 2,
+								},
+							],
+						},
 					},
-				},
-			});
+				});
 
 			expect(result).toStrictEqual({
 				id: "Test",

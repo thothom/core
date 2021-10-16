@@ -22,7 +22,7 @@ export const afterUpdate = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
 	{ data }: AfterUpdateParams<Entity>,
 ) => {
-	const dataHandled = formatData({
+	const dataHandled = formatData<Entity>({
 		data,
 		entity,
 		entityManager,

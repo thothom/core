@@ -22,7 +22,7 @@ export const afterFind = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
 	{ dataToReturn }: AfterFindParams<Entity>,
 ) => {
-	const dataHandled = formatData({
+	const dataHandled = formatData<Entity>({
 		data: dataToReturn,
 		entity,
 		entityManager,

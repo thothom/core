@@ -48,4 +48,16 @@ describe("Repository > Methods > afterFindOne", () => {
 			foo: 1,
 		});
 	});
+
+	it("should convert return undefined if receive undefined", () => {
+		const result = repository.afterFindOne({
+			conditions: {
+				where: {
+					id: "foo",
+				},
+			},
+		});
+
+		expect(result).toBeUndefined();
+	});
 });

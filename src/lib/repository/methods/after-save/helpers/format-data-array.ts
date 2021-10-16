@@ -7,13 +7,13 @@ interface HandleDataArrayParams {
 	entity: CustomClass;
 }
 
-export const formatDataArray = ({
+export const formatDataArray = <Entity>({
 	data,
 	entity,
 	entityManager,
 }: HandleDataArrayParams) => {
 	const dataInEntityFormat = data.map(d =>
-		entityManager.convertDatabaseToEntity({
+		entityManager.convertDatabaseToEntity<Entity>({
 			data: d,
 			entity,
 		}),
