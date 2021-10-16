@@ -30,6 +30,7 @@ describe("Decorators > DateColumns", () => {
 					type: String,
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(typeof columnMetadata.autoGenerate({})).toBe("string");
 		});
@@ -55,6 +56,7 @@ describe("Decorators > DateColumns", () => {
 					type: Number,
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(typeof columnMetadata.autoGenerate({})).toBe("number");
 		});
@@ -80,6 +82,7 @@ describe("Decorators > DateColumns", () => {
 					type: Date,
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(columnMetadata.autoGenerate({}) instanceof Date).toBeTruthy();
 		});
@@ -107,6 +110,7 @@ describe("Decorators > DateColumns", () => {
 					type: String,
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(typeof columnMetadata.autoGenerate({})).toBe("string");
 		});
@@ -132,6 +136,7 @@ describe("Decorators > DateColumns", () => {
 					type: Number,
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(typeof columnMetadata.autoGenerate({})).toBe("number");
 		});
@@ -157,6 +162,7 @@ describe("Decorators > DateColumns", () => {
 					type: Date,
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(columnMetadata.autoGenerate({}) instanceof Date).toBeTruthy();
 		});
@@ -184,6 +190,7 @@ describe("Decorators > DateColumns", () => {
 					type: String,
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(typeof columnMetadata.autoGenerate({})).toBe("string");
 		});
@@ -209,6 +216,7 @@ describe("Decorators > DateColumns", () => {
 					type: Number,
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(typeof columnMetadata.autoGenerate({})).toBe("number");
 		});
@@ -234,6 +242,7 @@ describe("Decorators > DateColumns", () => {
 					type: Date,
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(columnMetadata.autoGenerate({}) instanceof Date).toBeTruthy();
 		});
@@ -269,6 +278,7 @@ describe("Decorators > DateColumns", () => {
 					},
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(typeof columnMetadata.autoGenerate({})).toBe("string");
 		});
@@ -302,6 +312,7 @@ describe("Decorators > DateColumns", () => {
 					},
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(typeof columnMetadata.autoGenerate({})).toBe("string");
 		});
@@ -335,6 +346,7 @@ describe("Decorators > DateColumns", () => {
 					},
 				}),
 			);
+			expect(columnMetadata.primary).toBeUndefined();
 			expect(typeof columnMetadata.autoGenerate).toBe("function");
 			expect(typeof columnMetadata.autoGenerate({})).toBe("string");
 		});
