@@ -342,7 +342,7 @@ describe("Decorators > Column", () => {
 			]);
 		});
 
-		it('should define "defaultValue" that is passed at the options', () => {
+		it('should define "defaultValue" that is passed at the options (raw value)', () => {
 			class Test {
 				@Column({
 					defaultValue: true,
@@ -359,6 +359,54 @@ describe("Decorators > Column", () => {
 				{
 					databaseName: "foo",
 					defaultValue: true,
+					name: "foo",
+					type: String,
+				},
+			]);
+		});
+
+		it('should define "defaultValue" that is passed at the options (function value)', () => {
+			const generateDefaultValue = () => "foo";
+
+			class Test {
+				@Column({
+					defaultValue: generateDefaultValue,
+				})
+				public foo: string;
+			}
+
+			const metadata = MetadataUtil.getEntityMetadata({
+				metadataKey: "columns",
+				entity: Test,
+			});
+
+			expect(metadata).toStrictEqual([
+				{
+					databaseName: "foo",
+					defaultValue: generateDefaultValue,
+					name: "foo",
+					type: String,
+				},
+			]);
+		});
+
+		it('should define "comment" that is passed at the options', () => {
+			class Test {
+				@Column({
+					comment: "foo",
+				})
+				public foo: string;
+			}
+
+			const metadata = MetadataUtil.getEntityMetadata({
+				metadataKey: "columns",
+				entity: Test,
+			});
+
+			expect(metadata).toStrictEqual([
+				{
+					databaseName: "foo",
+					comment: "foo",
 					name: "foo",
 					type: String,
 				},

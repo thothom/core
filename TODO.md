@@ -138,7 +138,7 @@
 - [ ] Change the way that prefix and suffix work
   - EntityToDatabase -> Will be applyed BEFORE the naming strategy
   - DatabaseToEntity -> Will be applyed AFTER the naming strategy
-- [ ] Add "comment" option to "@Column" decorator
+- [x] Add "comment" option to "@Column" decorator
   - Will receive a comment about the column
 - [ ] Add "enum" option to "@Column" decorator
   - Will receive a enum and get it's values
