@@ -2,6 +2,11 @@ import { Column } from "../../lib/decorators/column";
 import { SymbiosisError } from "../../lib/error";
 import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../lib/utils/metadata-util";
+import {
+	TestNumberEnum,
+	TestStringEnum,
+	TestUnknownEnum,
+} from "../constants/test-enum";
 
 describe("Decorators > Column", () => {
 	describe("Implicitly Type", () => {
@@ -413,16 +418,62 @@ describe("Decorators > Column", () => {
 			]);
 		});
 
-		it('should define get values from "enum" that is passed at the options', () => {
-			enum FooEnum {
+		it('should define get values from "enum" that is passed at the options (enum Object-String)', () => {
+			class Test {
+				@Column({
+					enum: TestStringEnum,
+				})
+				public foo: TestStringEnum;
+			}
+
+			const metadata = MetadataUtil.getEntityMetadata({
+				metadataKey: "columns",
+				entity: Test,
+			});
+
+			expect(metadata).toStrictEqual([
+				{
+					databaseName: "foo",
+					enumValues: ["FOO", "BAR"],
+					name: "foo",
+					type: String,
+				},
+			]);
+		});
+
+		it('should define get values from "enum" that is passed at the options (enum Object-Number)', () => {
+			class Test {
+				@Column({
+					enum: TestNumberEnum,
+				})
+				public foo: TestNumberEnum;
+			}
+
+			const metadata = MetadataUtil.getEntityMetadata({
+				metadataKey: "columns",
+				entity: Test,
+			});
+
+			expect(metadata).toStrictEqual([
+				{
+					databaseName: "foo",
+					enumValues: [1, 2],
+					name: "foo",
+					type: Number,
+				},
+			]);
+		});
+
+		it('should define get values from "enum" that is passed at the options (enum String)', () => {
+			enum StringEnum {
 				FOO = "FOO",
 			}
 
 			class Test {
 				@Column({
-					enum: FooEnum,
+					enum: StringEnum,
 				})
-				public foo: FooEnum;
+				public foo: StringEnum;
 			}
 
 			const metadata = MetadataUtil.getEntityMetadata({
@@ -439,10 +490,38 @@ describe("Decorators > Column", () => {
 				},
 			]);
 		});
+
+		it('should define get values from "enum" that is passed at the options (enum Number)', () => {
+			enum NumberEnum {
+				FOO = 1,
+			}
+
+			class Test {
+				@Column({
+					enum: NumberEnum,
+				})
+				public foo: NumberEnum;
+			}
+
+			const metadata = MetadataUtil.getEntityMetadata({
+				metadataKey: "columns",
+				entity: Test,
+			});
+
+			expect(metadata).toStrictEqual([
+				{
+					databaseName: "foo",
+					enumValues: ["FOO", 1],
+					name: "foo",
+					type: Number,
+				},
+			]);
+		});
 	});
 
 	describe("General Errors", () => {
 		const DEFAULT_DETAILS = ["Entity: Test", "Column: foo"];
+		const ERROR_MESSAGE_INVALID_TYPE = "Column type isn't supported";
 
 		it("should throw an error if is array and type isn't specified", () => {
 			let result: any;
@@ -472,11 +551,6 @@ describe("Decorators > Column", () => {
 			let result: any;
 
 			try {
-				/**
-				 * Because TypeScript Doesn't like variables that are unused
-				 */
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				//@ts-ignore
 				class Test {
 					@Column()
 					public foo: any;
@@ -486,7 +560,28 @@ describe("Decorators > Column", () => {
 			}
 
 			expect(result instanceof SymbiosisError).toBeTruthy();
-			expect(result.message).toBe("Column type isn't supported");
+			expect(result.message).toBe(ERROR_MESSAGE_INVALID_TYPE);
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
+		});
+
+		it("should throw an error if invalid type specified (enum Object-Unknown)", () => {
+			let result: any;
+
+			try {
+				class Test {
+					@Column({
+						enum: TestUnknownEnum,
+					})
+					public foo: TestUnknownEnum;
+				}
+			} catch (err) {
+				result = err;
+			}
+
+			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result.message).toBe(ERROR_MESSAGE_INVALID_TYPE);
 			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);

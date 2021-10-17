@@ -1,8 +1,11 @@
+import { getTypeof } from "@techmmunity/utils";
 import { SymbiosisError } from "../../error";
 import { SymbiosisErrorCodeEnum } from "../../error/types/error-code.enum";
 import { MetadataType } from "../../entity-manager/types/metadata-type";
 import { MetadataUtil } from "../../utils/metadata-util";
 import { MetadataName } from "../../types/metadata-name";
+
+const ERROR_MESSAGE = "Column type isn't supported";
 
 type AcceptedTypes = MetadataName | "all";
 
@@ -12,6 +15,7 @@ export interface GetTypeParams {
 	propertyName: string;
 	acceptedTypes?: Array<AcceptedTypes>;
 	suggestedType?: MetadataType;
+	enumValues?: Array<number | string>;
 }
 
 interface GetTypeResult {
@@ -31,7 +35,7 @@ const handleUnacceptedType = (
 		throw new SymbiosisError({
 			code: SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE,
 			origin: "SYMBIOSIS",
-			message: "Column type isn't supported",
+			message: ERROR_MESSAGE,
 			details: [
 				`Entity: ${entityPrototype.constructor.name}`,
 				`Column: ${propertyName}`,
@@ -44,6 +48,7 @@ export const getType = ({
 	entityPrototype,
 	propertyName,
 	suggestedType,
+	enumValues,
 	acceptedTypes = ["all"],
 }: GetTypeParams): GetTypeResult => {
 	const reflectType = Reflect.getMetadata(
@@ -100,13 +105,38 @@ export const getType = ({
 		};
 	}
 
+	if (enumValues) {
+		const [firstValue] = enumValues;
+
+		switch (getTypeof(firstValue)) {
+			case "string":
+				return {
+					type: String,
+				};
+			case "number":
+				return {
+					type: Number,
+				};
+			default:
+				throw new SymbiosisError({
+					code: SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE,
+					origin: "SYMBIOSIS",
+					message: ERROR_MESSAGE,
+					details: [
+						`Entity: ${entityPrototype.constructor.name}`,
+						`Column: ${propertyName}`,
+					],
+				});
+		}
+	}
+
 	/**
 	 * If the type cannot be guessed or isn't supported
 	 */
 	throw new SymbiosisError({
 		code: SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE,
 		origin: "SYMBIOSIS",
-		message: "Column type isn't supported",
+		message: ERROR_MESSAGE,
 		details: [
 			`Entity: ${entityPrototype.constructor.name}`,
 			`Column: ${propertyName}`,
