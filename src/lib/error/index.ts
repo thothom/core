@@ -17,9 +17,9 @@ export class SymbiosisError extends Error {
 	public constructor({ message, code, origin, details }: CustomErrorParams) {
 		super(message);
 
-		this.name = "SymbiosisOrmError";
 		this.code = code;
 		this.origin = origin;
 		this.details = details;
+		this.stack = JSON.stringify({ message, code, origin, details }, null, "\t");
 	}
 }

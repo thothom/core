@@ -29,22 +29,25 @@ export const makeColumnDecorator =
 		suggestedType,
 	}: MakeColumnDecoratorParams) =>
 	(entityPrototype: any, propertyName: string) => {
+		const enumValues = rawMetadata.enum
+			? getEnumValues<number | string>(rawMetadata.enum)
+			: undefined;
+
 		const { type, isArray } = getType({
 			entityPrototype,
 			propertyName,
 			acceptedTypes,
 			suggestedType,
+			enumValues,
 		});
 
 		const metadata = cleanObj({
 			...rawMetadata,
 			type,
 			isArray,
+			enumValues,
 			name: propertyName,
 			databaseName: rawMetadata.databaseName || propertyName,
-			enumValues: rawMetadata.enum
-				? getEnumValues<number | string>(rawMetadata.enum)
-				: undefined,
 			isNameAlreadyFormatted: rawMetadata.databaseName ? true : undefined,
 		});
 
