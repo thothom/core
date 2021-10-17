@@ -17,7 +17,7 @@ describe("Repository > Methods > beforeInsert", () => {
 		public foo: number;
 	}
 
-	let repository: TestRepository<any>;
+	let repository: TestRepository<TestEntity>;
 
 	beforeAll(() => {
 		const connection = new TestConnection({
@@ -27,7 +27,10 @@ describe("Repository > Methods > beforeInsert", () => {
 			},
 		});
 
-		repository = new TestRepository(connection.entityManager, TestEntity);
+		repository = new TestRepository<TestEntity>(
+			connection.entityManager,
+			TestEntity,
+		);
 	});
 
 	it("should auto-generate fields and convert to the database format", () => {

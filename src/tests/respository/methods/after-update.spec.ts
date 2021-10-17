@@ -14,7 +14,7 @@ describe("Repository > Methods > afterUpdate", () => {
 		public foo: number;
 	}
 
-	let repository: TestRepository<any>;
+	let repository: TestRepository<TestEntity>;
 
 	const id = "11cb020e-6dcb-4c51-93ed-a7a6abbfc771";
 

@@ -16,7 +16,7 @@ describe("Repository > Methods > beforeUpsert", () => {
 		public foo: number;
 	}
 
-	let repository: TestRepository<any>;
+	let repository: TestRepository<TestEntity>;
 
 	const id = "11cb020e-6dcb-4c51-93ed-a7a6abbfc771";
 
@@ -51,7 +51,7 @@ describe("Repository > Methods > beforeUpsert", () => {
 			ID: id,
 		});
 		expect(typeof result.data.ID === "string").toBeTruthy();
-		expect(validate(result.data.ID)).toBeTruthy();
+		expect(validate(result.data.ID as any)).toBeTruthy();
 	});
 
 	it("should auto-generate fields and convert to the database format (array)", () => {
@@ -80,7 +80,7 @@ describe("Repository > Methods > beforeUpsert", () => {
 			},
 		]);
 		expect(typeof result.data?.ID === "string").toBeTruthy();
-		expect(validate(result.data?.ID)).toBeTruthy();
+		expect(validate(result.data?.ID as any)).toBeTruthy();
 	});
 
 	it("should do nothing with the options", () => {
