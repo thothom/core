@@ -15,7 +15,7 @@ describe("Repository > Methods > beforeFindOne", () => {
 		public foo: number;
 	}
 
-	let repository: TestRepository<any>;
+	let repository: TestRepository<TestEntity>;
 
 	beforeAll(() => {
 		const connection = new TestConnection({

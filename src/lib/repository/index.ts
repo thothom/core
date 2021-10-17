@@ -43,13 +43,17 @@ export abstract class Repository<
 	EntityExtraMetadata = any,
 	ColumnExtraMetadata = any,
 > {
+	protected readonly entity: Entity;
+
 	public constructor(
 		protected readonly entityManager: EntityManager<
 			EntityExtraMetadata,
 			ColumnExtraMetadata
 		>,
-		protected readonly entity: Entity,
-	) {}
+		entity: any,
+	) {
+		this.entity = entity;
+	}
 
 	/**
 	 * --------------------------------------------------

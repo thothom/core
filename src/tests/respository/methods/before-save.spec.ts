@@ -17,7 +17,7 @@ describe("Repository > Methods > beforeSave", () => {
 		public foo: number;
 	}
 
-	let repository: TestRepository<any>;
+	let repository: TestRepository<TestEntity>;
 
 	beforeAll(() => {
 		const connection = new TestConnection({
