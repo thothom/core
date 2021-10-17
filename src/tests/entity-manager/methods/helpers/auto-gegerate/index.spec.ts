@@ -4,11 +4,10 @@ import { autoGenerate } from "../../../../../lib/entity-manager/methods/helpers/
 describe("autoGenerate", () => {
 	describe("With custom function", () => {
 		it("should return the result of the function (with no params)", () => {
-			const result: Record<string, any> = {};
+			let result: any;
 
 			try {
-				autoGenerate({
-					acc: result,
+				result = autoGenerate({
 					columnMetadata: {
 						name: "foo",
 						autoGenerate: () => "foo",
@@ -20,19 +19,17 @@ describe("autoGenerate", () => {
 					entity: {} as any,
 				});
 			} catch (err) {
-				result.err = err;
+				result = err;
 			}
 
-			expect(result.err).toBeUndefined();
-			expect(result.foo).toBe("foo");
+			expect(result).toBe("foo");
 		});
 
 		it("should return the result of the function (with params)", () => {
-			const result: Record<string, any> = {};
+			let result: any;
 
 			try {
-				autoGenerate({
-					acc: result,
+				result = autoGenerate({
 					connectionOptions: {
 						entities: [],
 						prefix: {
@@ -53,11 +50,10 @@ describe("autoGenerate", () => {
 					} as any,
 				});
 			} catch (err) {
-				result.err = err;
+				result = err;
 			}
 
-			expect(result.err).toBeUndefined();
-			expect(result.foo).toBe("foo_foo");
+			expect(result).toBe("foo_foo");
 		});
 	});
 
@@ -66,8 +62,7 @@ describe("autoGenerate", () => {
 			let result: any;
 
 			try {
-				autoGenerate({
-					acc: {},
+				result = autoGenerate({
 					columnMetadata: {
 						name: "foo",
 						autoGenerate: "invalid-method",

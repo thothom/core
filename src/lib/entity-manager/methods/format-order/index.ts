@@ -6,7 +6,7 @@ import { isMultipleLevelsColumn } from "../../../utils/convert/is-multiple-level
 import { Order } from "../../../types/order";
 
 interface Injectables {
-	entityManager: EntityManager<any, any>;
+	entityManager: EntityManager;
 }
 
 export interface FormatOrderParams {

@@ -3,7 +3,7 @@ import { CustomClass } from "../../../../entity-manager/types/metadata-type";
 
 interface HandleDataParams {
 	data: any;
-	entityManager: EntityManager<any, any>;
+	entityManager: EntityManager;
 	entity: CustomClass;
 }
 

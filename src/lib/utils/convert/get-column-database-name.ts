@@ -11,7 +11,7 @@ interface ErrorOptions {
 }
 
 interface GetColumnDatabaseNameParams {
-	entityManager: EntityManager<any, any>;
+	entityManager: EntityManager;
 	entity: CustomClass;
 	columnName: string;
 	errorOptions?: ErrorOptions;

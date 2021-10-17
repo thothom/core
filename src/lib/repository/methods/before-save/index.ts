@@ -24,8 +24,8 @@ export const beforeSave = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 
 	const dataArray = Array.isArray(rawData) ? rawData : [rawData];
 
-	const dataHandled = formatDataArray({
-		data: dataArray,
+	const dataHandled = formatDataArray<Entity>({
+		data: dataArray as Array<Entity>,
 		entity,
 		entityManager,
 	});

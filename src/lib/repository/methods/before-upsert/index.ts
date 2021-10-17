@@ -28,8 +28,8 @@ export const beforeUpsert = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 ) => {
 	const result = {} as BeforeUpsertParams<DatabaseEntity>;
 
-	result.data = formatData({
-		data: rawData,
+	result.data = formatData<Entity>({
+		data: rawData as Entity,
 		entity,
 		entityManager,
 	});

@@ -5,7 +5,7 @@ import { CustomClass } from "../../types/metadata-type";
 import { DatabaseEntity } from "../../../types/database-entity";
 
 interface Injectables {
-	entityManager: EntityManager<any, any>;
+	entityManager: EntityManager;
 }
 
 export interface ConvertDatabaseToEntityParams {

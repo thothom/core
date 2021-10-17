@@ -8,8 +8,7 @@ import { CustomClass } from "../../../types/metadata-type";
 import { generateDate } from "./generate-date";
 import { generateUuid } from "./generate-uuid";
 
-interface AutoGenerateParams<Entity> {
-	acc: Entity;
+interface AutoGenerateParams {
 	connectionOptions: BaseConnectionOptions;
 	columnMetadata: ColumnMetadata;
 	entityMetadata: EntityMetadata;
@@ -17,36 +16,29 @@ interface AutoGenerateParams<Entity> {
 	data?: any;
 }
 
-export const autoGenerate = <Entity>({
-	acc,
+export const autoGenerate = ({
 	columnMetadata,
 	entityMetadata,
 	connectionOptions,
 	entity,
 	data,
-}: AutoGenerateParams<Entity>) => {
-	const key = columnMetadata.name as keyof Entity;
-
+}: AutoGenerateParams) => {
 	if (getTypeof(columnMetadata.autoGenerate) === "function") {
-		acc[key] = (columnMetadata.autoGenerate as (...p: any) => any)({
+		return (columnMetadata.autoGenerate as (...p: any) => any)({
 			connectionOptions,
 			columnMetadata,
 			entityMetadata,
 			data,
 		});
-
-		return;
 	}
 
 	switch (columnMetadata.autoGenerate) {
 		case "date":
-			acc[key] = generateDate(columnMetadata.type, connectionOptions) as any;
+			return generateDate(columnMetadata.type, connectionOptions) as any;
 
-			return;
 		case "uuid":
-			acc[key] = generateUuid(require.resolve);
+			return generateUuid(require.resolve);
 
-			return;
 		default:
 			throw new SymbiosisError({
 				code: SymbiosisErrorCodeEnum.INVALID_PARAM,

@@ -4,7 +4,7 @@ import { DatabaseEntity } from "../../../../types/database-entity";
 
 interface HandleDataParams {
 	data?: DatabaseEntity;
-	entityManager: EntityManager<any, any>;
+	entityManager: EntityManager;
 	entity: CustomClass;
 }
 
