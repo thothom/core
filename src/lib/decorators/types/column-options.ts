@@ -9,6 +9,7 @@ export interface BaseColumnOptions {
 
 export interface ColumnOptions extends BaseColumnOptions {
 	defaultValue?: any;
+	enum?: any;
 	type?: MetadataType;
 }
 
