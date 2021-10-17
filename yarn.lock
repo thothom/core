@@ -629,10 +629,10 @@
     eslint-plugin-sonarjs "^0.10.0"
     typescript "^4.2.4"
 
-"@techmmunity/utils@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@techmmunity/utils/-/utils-1.0.3.tgz#c1ce029e9e00b4280d5aad477145ff2dcdfd4145"
-  integrity sha512-VuRiTKQ70D8a9CcFcHpYPx5KV1LV7hlmuzHCBKacHp0tA6nzyViaNYdVpRPbhpVnWyYufxJ8BL+BERVfnm9rVg==
+"@techmmunity/utils@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@techmmunity/utils/-/utils-1.1.0.tgz#e30eead50ddf60b3432c2110162906ab8debdda4"
+  integrity sha512-lY5kWhs9QlwMKJMZmi0NSQjFptG2GFFlhvND0ezCDdMOxGa7XU1RjdFRNFBh/KZbjvXveHJrOSjKNXXOZ+5ibA==
 
 "@tootallnate/once@1":
   version "1.1.2"

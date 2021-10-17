@@ -38,7 +38,7 @@
 		}
 	},
 	"dependencies": {
-		"@techmmunity/utils": "^1.0.3",
+		"@techmmunity/utils": "^1.1.0",
 		"change-case": "^4.1.2",
 		"dayjs": "^1.10.6"
 	},

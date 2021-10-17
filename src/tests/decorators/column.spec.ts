@@ -412,6 +412,33 @@ describe("Decorators > Column", () => {
 				},
 			]);
 		});
+
+		it('should define get values from "enum" that is passed at the options', () => {
+			enum FooEnum {
+				FOO = "FOO",
+			}
+
+			class Test {
+				@Column({
+					enum: FooEnum,
+				})
+				public foo: FooEnum;
+			}
+
+			const metadata = MetadataUtil.getEntityMetadata({
+				metadataKey: "columns",
+				entity: Test,
+			});
+
+			expect(metadata).toStrictEqual([
+				{
+					databaseName: "foo",
+					enumValues: ["FOO"],
+					name: "foo",
+					type: String,
+				},
+			]);
+		});
 	});
 
 	describe("General Errors", () => {

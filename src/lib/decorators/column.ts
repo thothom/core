@@ -6,8 +6,14 @@ import { MetadataUtil } from "../..";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const Column = (typeOrOptions?: ColumnOptions | MetadataType) => {
-	const { extras, name, type, defaultValue, comment } =
-		getOptions<ColumnOptions>(typeOrOptions);
+	const {
+		extras,
+		name,
+		type,
+		defaultValue,
+		comment,
+		enum: enumParam,
+	} = getOptions<ColumnOptions>(typeOrOptions);
 
 	const suggestedType =
 		type ||
@@ -19,6 +25,7 @@ export const Column = (typeOrOptions?: ColumnOptions | MetadataType) => {
 		metadata: {
 			extras,
 			comment,
+			enum: enumParam,
 			defaultValue,
 			databaseName: name,
 		},

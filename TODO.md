@@ -136,11 +136,11 @@
   - SubEntity columns also should be converted?
     - Yes, they will be converted, only the prefixes aren't will be applied
 - [ ] Change the way that prefix and suffix work
-  - EntityToDatabase -> Will be applyed BEFORE the naming strategy
-  - DatabaseToEntity -> Will be applyed AFTER the naming strategy
+  - EntityToDatabase -> Will be applied BEFORE the naming strategy
+  - DatabaseToEntity -> Will be applied AFTER the naming strategy
 - [x] Add "comment" option to "@Column" decorator
   - Will receive a comment about the column
-- [ ] Add "enum" option to "@Column" decorator
+- [x] Add "enum" option to "@Column" decorator
   - Will receive a enum and get it's values
 - [x] Add "defaultValue" option to "@Column" decorator
   - Will receive the default value of the column
