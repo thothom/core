@@ -14,7 +14,7 @@
 	<img src="https://img.shields.io/coveralls/github/techmmunity/symbiosis/master?style=for-the-badge" alt="Coveralls">
 </a>
 <a href="https://github.com/techmmunity/symbiosis/actions/workflows/coverage.yml">
-	<img src="https://img.shields.io/github/workflow/status/techmmunity/symbiosis/tests?label=tests&logo=github&style=for-the-badge" alt="Tests">
+	<img src="https://img.shields.io/github/workflow/status/techmmunity/symbiosis/Collect%20Coverage?label=tests&logo=github&style=for-the-badge" alt="Tests">
 </a>
 <a href="https://www.npmjs.com/package/@techmmunity/symbiosis">
 	<img src="https://img.shields.io/npm/v/@techmmunity/symbiosis.svg?color=CC3534&style=for-the-badge" alt="Npm">
