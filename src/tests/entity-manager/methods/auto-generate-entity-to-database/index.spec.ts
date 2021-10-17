@@ -1,14 +1,14 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
 import { validate } from "uuid";
-import { Column } from "../../../lib/decorators/column";
-import { DeleteDateColumn } from "../../../lib/decorators/date-columns/delete-date-column";
-import { SaveDateColumn } from "../../../lib/decorators/date-columns/save-date-column";
-import { UpdateDateColumn } from "../../../lib/decorators/date-columns/update-date-column";
-import { Entity } from "../../../lib/decorators/entity/entity";
-import { PrimaryColumn } from "../../../lib/decorators/primary-column";
-import { PrimaryGeneratedColumn } from "../../../lib/decorators/primary-generated-column";
-import { TestConnection } from "../../constants/test-connection";
+import { Column } from "../../../../lib/decorators/column";
+import { DeleteDateColumn } from "../../../../lib/decorators/delete-date-column";
+import { SaveDateColumn } from "../../../../lib/decorators/save-date-column";
+import { UpdateDateColumn } from "../../../../lib/decorators/update-date-column";
+import { Entity } from "../../../../lib/decorators/entity/entity";
+import { PrimaryColumn } from "../../../../lib/decorators/primary-column";
+import { PrimaryGeneratedColumn } from "../../../../lib/decorators/primary-generated-column";
+import { TestConnection } from "../../../constants/test-connection";
 
 const createConnection = (entities: Array<any>) =>
 	new TestConnection({
@@ -31,6 +31,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		it("should generate fields", () => {
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					test: "foo",
 				},
@@ -67,9 +68,10 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 		const connection = createConnection([TestEntity]);
 
-		it("should generate fields parent field is specified", () => {
+		it("should generate fields if parent field is specified", () => {
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					id: "abc",
 					testSub: {},
@@ -91,6 +93,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		it("should generate fields parent field is not specified", () => {
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					id: "abc",
 				},
@@ -111,6 +114,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		it("should generate fields parent field is undefined", () => {
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					id: "abc",
 					testSub: undefined,
@@ -132,6 +136,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		it("should generate fields parent field is null", () => {
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					id: "abc",
 					testSub: null,
@@ -174,6 +179,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					id: "abc",
 				},
@@ -206,6 +212,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					id: "abc",
 					testSub: {},
@@ -240,6 +247,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					id: "abc",
 					testSub: undefined,
@@ -274,6 +282,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					id: "abc",
 					testSub: null,
@@ -317,6 +326,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		it("should generate fields of sub-sub-entity if empty object is passed", () => {
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					id: "abc",
 					testSub: {
@@ -343,6 +353,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		it("should NOT generate columns of sub-sub-entity if sub-entity isn't specified or doesn't has any auto-genetared columns", () => {
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
+				events: ["save"],
 				data: {
 					id: "abc",
 				},

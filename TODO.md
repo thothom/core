@@ -142,7 +142,7 @@
   - Will receive a comment about the column
 - [ ] Add "enum" option to "@Column" decorator
   - Will receive a enum and get it's values
-- [ ] Add "defaultValue" option to "@Column" decorator
+- [x] Add "defaultValue" option to "@Column" decorator
   - Will receive the default value of the column
 - [ ] Add `@Index` decorator
 - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)

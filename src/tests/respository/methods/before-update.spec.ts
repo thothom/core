@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { validate } from "uuid";
 import { Column } from "../../../lib/decorators/column";
 import { Entity } from "../../../lib/decorators/entity/entity";
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/primary-generated-column";
@@ -46,12 +45,9 @@ describe("Repository > Methods > beforeUpdate", () => {
 				ID: id,
 			},
 			data: {
-				ID: result.data.ID,
 				FOO: 1,
 			},
 		});
-		expect(typeof result.data.ID === "string").toBeTruthy();
-		expect(validate(result.data.ID)).toBeTruthy();
 	});
 
 	it("should auto-generate fields and convert to the database format (array)", () => {
@@ -79,12 +75,9 @@ describe("Repository > Methods > beforeUpdate", () => {
 				},
 			],
 			data: {
-				ID: result.data?.ID,
 				FOO: 1,
 			},
 		});
-		expect(typeof result.data?.ID === "string").toBeTruthy();
-		expect(validate(result.data?.ID)).toBeTruthy();
 	});
 
 	it("should do nothing with the options", () => {
@@ -105,14 +98,11 @@ describe("Repository > Methods > beforeUpdate", () => {
 				ID: id,
 			},
 			data: {
-				ID: result.data.ID,
 				FOO: 1,
 			},
 			options: {
 				retries: 3,
 			},
 		});
-		expect(typeof result.data.ID === "string").toBeTruthy();
-		expect(validate(result.data.ID)).toBeTruthy();
 	});
 });

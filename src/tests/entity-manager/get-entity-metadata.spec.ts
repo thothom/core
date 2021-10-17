@@ -16,13 +16,19 @@ describe("EntityManager > getEntityMetadata", () => {
 			public foo: number;
 		}
 
-		const connection = new TestConnection({
-			entities: [TestEntity],
-		});
+		let result: any;
 
-		expect(
-			connection.entityManager.getEntityMetadata(TestEntity),
-		).toStrictEqual({
+		try {
+			const connection = new TestConnection({
+				entities: [TestEntity],
+			});
+
+			result = connection.entityManager.getEntityMetadata(TestEntity);
+		} catch (err: any) {
+			result = err;
+		}
+
+		expect(result).toStrictEqual({
 			columns: [
 				{ databaseName: "id", name: "id", primary: true, type: String },
 				{ databaseName: "foo", name: "foo", type: Number },

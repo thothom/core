@@ -1,3 +1,4 @@
+import { getOptions } from "../helpers/get-options";
 import { EntityOptions } from "../types/entity-options";
 import { addEntityMetadata } from "./helpers/add-entity-metadata";
 import { getDatabaseName } from "./helpers/get-name";
@@ -10,6 +11,8 @@ export const Entity = (nameOrOptions?: EntityOptions | string) => {
 			nameOrOptions,
 		});
 
+		const { isSubEntity, extras } = getOptions<EntityOptions>(nameOrOptions);
+
 		/**
 		 * "Fix" the tipping, so it doesn't need
 		 * to be done multiple times
@@ -17,16 +20,15 @@ export const Entity = (nameOrOptions?: EntityOptions | string) => {
 		 * **Obs:** Besides the type is defined as "EntityOptions | undefined",
 		 * it also can be a string, so be aware!
 		 */
-		const options = nameOrOptions as EntityOptions | undefined;
 
 		addEntityMetadata({
 			entityConstructor,
 			metadata: {
+				name: entityConstructor.name,
 				databaseName,
 				isNameAlreadyFormatted,
-				name: entityConstructor.name,
-				isSubEntity: options?.isSubEntity,
-				extras: options?.extras,
+				isSubEntity,
+				extras,
 			},
 		});
 	};

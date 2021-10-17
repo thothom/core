@@ -40,13 +40,12 @@ describe("Repository > Methods > beforeSave", () => {
 			options: BaseQueryOptions | undefined;
 		};
 
-		expect(result).toStrictEqual({
-			data: {
-				// eslint-disable-next-line @typescript-eslint/naming-convention
-				ID: result.data.ID,
-				// eslint-disable-next-line @typescript-eslint/naming-convention
-				FOO: 1,
-			},
+		expect(result).toHaveProperty("data");
+		expect(result.data).toStrictEqual({
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			ID: result.data.ID,
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			FOO: 1,
 		});
 		expect(typeof result.data.ID === "string").toBeTruthy();
 		expect(validate(result.data.ID)).toBeTruthy();
@@ -64,16 +63,15 @@ describe("Repository > Methods > beforeSave", () => {
 			options: BaseQueryOptions | undefined;
 		};
 
-		expect(result).toStrictEqual({
-			data: [
-				{
-					// eslint-disable-next-line @typescript-eslint/naming-convention
-					ID: result.data[0].ID,
-					// eslint-disable-next-line @typescript-eslint/naming-convention
-					FOO: 1,
-				},
-			],
-		});
+		expect(result).toHaveProperty("data");
+		expect(result.data).toStrictEqual([
+			{
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				ID: result.data[0].ID,
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				FOO: 1,
+			},
+		]);
 		expect(typeof result.data[0].ID === "string").toBeTruthy();
 		expect(validate(result.data[0].ID)).toBeTruthy();
 	});
@@ -91,16 +89,16 @@ describe("Repository > Methods > beforeSave", () => {
 			options: BaseQueryOptions | undefined;
 		};
 
-		expect(result).toStrictEqual({
-			data: {
-				// eslint-disable-next-line @typescript-eslint/naming-convention
-				ID: result.data.ID,
-				// eslint-disable-next-line @typescript-eslint/naming-convention
-				FOO: 1,
-			},
-			options: {
-				retries: 3,
-			},
+		expect(result).toHaveProperty("data");
+		expect(result).toHaveProperty("options");
+		expect(result.data).toStrictEqual({
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			ID: result.data.ID,
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			FOO: 1,
+		});
+		expect(result.options).toStrictEqual({
+			retries: 3,
 		});
 		expect(typeof result.data.ID === "string").toBeTruthy();
 		expect(validate(result.data.ID)).toBeTruthy();

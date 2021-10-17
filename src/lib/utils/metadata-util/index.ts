@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { getTypeof } from "@techmmunity/utils";
 import { METADATA_PREFIX } from "../../../config";
 import {
 	ColumnMetadata,
@@ -9,6 +10,7 @@ import {
 	EntityMetadata,
 	ENTITY_METADATA_KEYS,
 } from "../../entity-manager/types/entity-metadata";
+import { MetadataName } from "../../types/metadata-name";
 import { isUndefined } from "../validations/is-undefined";
 import {
 	AddColumnMetadataToEntityParams,
@@ -23,11 +25,13 @@ const formatMetadataKey = (metadataKey: string) =>
 
 export class MetadataUtil {
 	public static isDefaultMetadataType(type: any) {
-		return type === Date || type === Number || type === String;
+		return (
+			type === Date || type === Number || type === String || type === Boolean
+		);
 	}
 
 	public static isCustomMetadataType(type: any) {
-		return typeof type === "function" && /^\s*class\s+/.test(type.toString());
+		return getTypeof(type) === "class";
 	}
 
 	public static isMetadataType(type: any) {
@@ -35,6 +39,14 @@ export class MetadataUtil {
 			MetadataUtil.isDefaultMetadataType(type) ||
 			MetadataUtil.isCustomMetadataType(type)
 		);
+	}
+
+	public static getMetadataName(type: any): MetadataName {
+		if (MetadataUtil.isDefaultMetadataType(type)) {
+			return type.name.toLowerCase();
+		}
+
+		return "custom-class";
 	}
 
 	public static hasEntityMetadata({
