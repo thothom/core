@@ -7,7 +7,7 @@ import { isNotEmptyObject } from "../../../utils/validations/is-not-empty-object
 import { generateDefaultValue } from "./helpers/generate-default-value";
 
 interface Injectables {
-	entityManager: EntityManager<any, any>;
+	entityManager: EntityManager;
 }
 
 // eslint-disable-next-line import/exports-last

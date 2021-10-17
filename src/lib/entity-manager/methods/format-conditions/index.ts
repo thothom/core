@@ -7,7 +7,7 @@ import { getConditionsArray } from "./helpers/get-conditions-array";
 import { getConditionsFormatted } from "./helpers/get-conditions-formatted";
 
 interface Injectables {
-	entityManager: EntityManager<any, any>;
+	entityManager: EntityManager;
 }
 
 export interface FormatConditionsParams {

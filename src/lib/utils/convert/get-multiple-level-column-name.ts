@@ -5,7 +5,7 @@ import { CustomClass } from "../../entity-manager/types/metadata-type";
 
 interface GetMultipleLevelColumnNameParams {
 	entity: CustomClass;
-	entityManager: EntityManager<any, any>;
+	entityManager: EntityManager;
 	/**
 	 * When the father function receives an string of multilevel columns,
 	 * like "columnOne.columnTwo.columnThree", it splits the string in an

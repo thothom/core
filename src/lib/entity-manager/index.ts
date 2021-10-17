@@ -38,7 +38,10 @@ interface EntityManagerConstructorParams {
  * Responsible of store and manage all entities metadata
  * for a specific connection.
  */
-export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
+export class EntityManager<
+	EntityExtraMetadata = any,
+	ColumnExtraMetadata = any,
+> {
 	/**
 	 * Logger
 	 */
@@ -164,7 +167,7 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	 */
 	public autoGenerateEntityToDatabase<Entity>(
 		params: AutoGenerateEntityToDatabaseParams<Entity>,
-	): DatabaseEntity {
+	): Entity {
 		return autoGenerateEntityToDatabase(
 			{
 				entityManager: this,

@@ -5,7 +5,7 @@ import { getMultipleLevelColumnName } from "../../../utils/convert/get-multiple-
 import { isMultipleLevelsColumn } from "../../../utils/convert/is-multiple-levels-column";
 
 interface Injectables {
-	entityManager: EntityManager<any, any>;
+	entityManager: EntityManager;
 }
 
 export interface ConvertColumnsNamesParams {
