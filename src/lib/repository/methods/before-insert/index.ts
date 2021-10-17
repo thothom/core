@@ -13,6 +13,7 @@ export interface BeforeInsertParams<Entity> {
 	data: Array<ClassType<Entity>> | ClassType<Entity>;
 	options?: BaseQueryOptions;
 }
+
 export const beforeInsert = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	{
 		entity,

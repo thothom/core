@@ -41,14 +41,14 @@ describe("Repository > Methods > beforeUpsert", () => {
 			},
 		});
 
-		expect(result).toStrictEqual({
-			conditions: {
-				ID: id,
-			},
-			data: {
-				ID: result.data.ID,
-				FOO: 1,
-			},
+		expect(result).toHaveProperty("data");
+		expect(result).toHaveProperty("conditions");
+		expect(result.data).toStrictEqual({
+			ID: result.data.ID,
+			FOO: 1,
+		});
+		expect(result.conditions).toStrictEqual({
+			ID: id,
 		});
 		expect(typeof result.data.ID === "string").toBeTruthy();
 		expect(validate(result.data.ID)).toBeTruthy();
@@ -69,20 +69,16 @@ describe("Repository > Methods > beforeUpsert", () => {
 			},
 		});
 
-		expect(result).toStrictEqual({
-			conditions: [
-				{
-					ID: id,
-				},
-				{
-					FOO: 2,
-				},
-			],
-			data: {
-				ID: result.data?.ID,
-				FOO: 1,
+		expect(result).toHaveProperty("conditions");
+		expect(result).toHaveProperty("data");
+		expect(result.conditions).toStrictEqual([
+			{
+				ID: id,
 			},
-		});
+			{
+				FOO: 2,
+			},
+		]);
 		expect(typeof result.data?.ID === "string").toBeTruthy();
 		expect(validate(result.data?.ID)).toBeTruthy();
 	});
@@ -100,19 +96,8 @@ describe("Repository > Methods > beforeUpsert", () => {
 			},
 		});
 
-		expect(result).toStrictEqual({
-			conditions: {
-				ID: id,
-			},
-			data: {
-				ID: result.data.ID,
-				FOO: 1,
-			},
-			options: {
-				retries: 3,
-			},
+		expect(result?.options).toStrictEqual({
+			retries: 3,
 		});
-		expect(typeof result.data.ID === "string").toBeTruthy();
-		expect(validate(result.data.ID)).toBeTruthy();
 	});
 });

@@ -1,13 +1,17 @@
-import { SymbiosisError } from "../../../error";
-import { SymbiosisErrorCodeEnum } from "../../../error/types/error-code.enum";
-import { MetadataType } from "../../../entity-manager/types/metadata-type";
-import { MetadataUtil } from "../../../utils/metadata-util";
-import { ColumnOptions } from "../../types/column-options";
+import { SymbiosisError } from "../../error";
+import { SymbiosisErrorCodeEnum } from "../../error/types/error-code.enum";
+import { MetadataType } from "../../entity-manager/types/metadata-type";
+import { MetadataUtil } from "../../utils/metadata-util";
+import { MetadataName } from "../../types/metadata-name";
 
-interface GetTypeParams {
+type AcceptedTypes = MetadataName | "all";
+
+// eslint-disable-next-line import/exports-last
+export interface GetTypeParams {
 	entityPrototype: any;
 	propertyName: string;
-	typeOrOptions?: ColumnOptions | MetadataType;
+	acceptedTypes?: Array<AcceptedTypes>;
+	suggestedType?: MetadataType;
 }
 
 interface GetTypeResult {
@@ -15,10 +19,32 @@ interface GetTypeResult {
 	isArray?: true;
 }
 
+const handleUnacceptedType = (
+	acceptedTypes: Array<AcceptedTypes>,
+	type: MetadataType,
+	entityPrototype: any,
+	propertyName: string,
+) => {
+	const typeName = MetadataUtil.getMetadataName(type);
+
+	if (!acceptedTypes.includes("all") && !acceptedTypes.includes(typeName)) {
+		throw new SymbiosisError({
+			code: SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE,
+			origin: "SYMBIOSIS",
+			message: "Column type isn't supported",
+			details: [
+				`Entity: ${entityPrototype.constructor.name}`,
+				`Column: ${propertyName}`,
+			],
+		});
+	}
+};
+
 export const getType = ({
 	entityPrototype,
 	propertyName,
-	typeOrOptions,
+	suggestedType,
+	acceptedTypes = ["all"],
 }: GetTypeParams): GetTypeResult => {
 	const reflectType = Reflect.getMetadata(
 		"design:type",
@@ -31,24 +57,15 @@ export const getType = ({
 	 * so they have to be defined manually
 	 */
 	if (reflectType === Array) {
+		handleUnacceptedType(acceptedTypes, "array", entityPrototype, propertyName);
+
 		/**
 		 * If the type is passed directly
 		 * Ex: @Column(Type)
 		 */
-		if (MetadataUtil.isMetadataType(typeOrOptions)) {
+		if (suggestedType && MetadataUtil.isMetadataType(suggestedType)) {
 			return {
-				type: typeOrOptions as MetadataType,
-				isArray: true,
-			};
-		}
-
-		/**
-		 * If the type is passed in the options
-		 * Ex: @Column({ type: Type })
-		 */
-		if (MetadataUtil.isMetadataType((typeOrOptions as ColumnOptions)?.type)) {
-			return {
-				type: (typeOrOptions as ColumnOptions).type as MetadataType,
+				type: suggestedType,
 				isArray: true,
 			};
 		}
@@ -71,6 +88,13 @@ export const getType = ({
 	 * If the type is get automatically
 	 */
 	if (MetadataUtil.isMetadataType(reflectType)) {
+		handleUnacceptedType(
+			acceptedTypes,
+			reflectType,
+			entityPrototype,
+			propertyName,
+		);
+
 		return {
 			type: reflectType,
 		};

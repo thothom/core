@@ -12,9 +12,9 @@ export * from "./lib/decorators/column";
 export * from "./lib/decorators/entity/entity";
 export * from "./lib/decorators/primary-column";
 export * from "./lib/decorators/primary-generated-column";
-export * from "./lib/decorators/date-columns/delete-date-column";
-export * from "./lib/decorators/date-columns/save-date-column";
-export * from "./lib/decorators/date-columns/update-date-column";
+export * from "./lib/decorators/delete-date-column";
+export * from "./lib/decorators/save-date-column";
+export * from "./lib/decorators/update-date-column";
 
 /**
  * ---------------------------------------------------------------------------

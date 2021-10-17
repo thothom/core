@@ -5,9 +5,9 @@ import { shouldAutoGenerate } from "./helpers/should-auto-generate";
 import { DatabaseEvents } from "../../types/database-events";
 import { BaseConnectionOptions } from "../../../connection/types/connection-options";
 import { CustomClass } from "../../types/metadata-type";
-import { DatabaseEntity } from "../../../types/database-entity";
 import { isNotEmptyObject } from "../../../utils/validations/is-not-empty-object";
 import { getSubEntityValue } from "./helpers/get-sub-entity-value";
+import { autoGenerate } from "../helpers/auto-generate";
 
 interface Injectables {
 	entityManager: EntityManager<any, any>;
@@ -15,15 +15,15 @@ interface Injectables {
 }
 
 // eslint-disable-next-line import/exports-last
-export interface AutoGenerateEntityToDatabaseParams {
+export interface AutoGenerateEntityToDatabaseParams<Entity> {
 	entity: CustomClass;
-	data: DatabaseEntity;
-	events?: Array<DatabaseEvents>;
+	data: Entity;
+	events: Array<DatabaseEvents>;
 }
 
-const recursiveAutoGenerateEntityToDatabase = (
+const recursiveAutoGenerateEntityToDatabase = <Entity>(
 	{ entityManager, connectionOptions }: Injectables,
-	{ entity, data, events = [] }: AutoGenerateEntityToDatabaseParams,
+	{ entity, data, events }: AutoGenerateEntityToDatabaseParams<Entity>,
 ) => {
 	if (isUndefined(data)) return;
 
@@ -63,7 +63,7 @@ const recursiveAutoGenerateEntityToDatabase = (
 			 * aren't just an empty object
 			 */
 			if (isNotEmptyObject(generatedValue)) {
-				acc[columnMetadata.databaseName] = generatedValue;
+				acc[columnMetadata.name as keyof Entity] = generatedValue;
 			}
 
 			return acc;
@@ -78,9 +78,13 @@ const recursiveAutoGenerateEntityToDatabase = (
 				events,
 			})
 		) {
-			acc[columnMetadata.name] =
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				columnMetadata.autoGenerate!(connectionOptions);
+			autoGenerate<Entity>({
+				acc,
+				columnMetadata,
+				entityMetadata,
+				connectionOptions,
+				entity,
+			});
 
 			return acc;
 		}
@@ -89,10 +93,10 @@ const recursiveAutoGenerateEntityToDatabase = (
 	}, data);
 };
 
-export const autoGenerateEntityToDatabase = (
+export const autoGenerateEntityToDatabase = <Entity>(
 	{ entityManager, connectionOptions }: Injectables,
-	{ entity, data, events = [] }: AutoGenerateEntityToDatabaseParams,
-): DatabaseEntity =>
+	{ entity, data, events }: AutoGenerateEntityToDatabaseParams<Entity>,
+): Entity =>
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	recursiveAutoGenerateEntityToDatabase(
 		{ entityManager, connectionOptions },

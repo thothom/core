@@ -1,8 +1,8 @@
-import { getStrategy } from "../../../lib/decorators/primary-generated-column/helpers/get-strategy";
-import { SymbiosisError } from "../../../lib/error";
-import { SymbiosisErrorCodeEnum } from "../../../lib/error/types/error-code.enum";
+import { generateUuid } from "../../../../../lib/entity-manager/methods/helpers/auto-generate/generate-uuid";
+import { SymbiosisError } from "../../../../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../../../../lib/error/types/error-code.enum";
 
-describe("getStrategy Util", () => {
+describe("generateUuid", () => {
 	it("should throw an error if uuid is not installed", () => {
 		let result: any;
 
@@ -14,13 +14,7 @@ describe("getStrategy Util", () => {
 				throw new Error();
 			});
 
-			result = getStrategy({
-				strategyOrOptions: "uuid",
-				checkIfLibExists,
-				// Unnecessary params
-				entityPrototype: {} as any,
-				propertyName: "",
-			});
+			result = generateUuid(checkIfLibExists);
 		} catch (err) {
 			result = err;
 		}

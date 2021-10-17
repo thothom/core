@@ -22,7 +22,7 @@ describe("Connection > entity", () => {
 
 		const connection = new TestConnection(options);
 
-		expect(connection.name).toStrictEqual("Default");
+		expect(connection.name).toBe("Default");
 		expect(connection.options).toStrictEqual(options);
 		expect(connection.logger instanceof Logger).toBeTruthy();
 	});
@@ -57,7 +57,7 @@ describe("Connection > entity", () => {
 
 		const connection = new TestConnection(options);
 
-		expect(connection.name).toStrictEqual("Custom");
+		expect(connection.name).toBe("Custom");
 		expect(connection.options).toStrictEqual(options);
 		expect(connection.logger instanceof Logger).toBeTruthy();
 	});

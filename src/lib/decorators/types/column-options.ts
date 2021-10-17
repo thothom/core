@@ -1,20 +1,20 @@
+import { PreDefinedAutoGenerationMethods } from "../../entity-manager/types/column-metadata";
 import { MetadataType } from "../../entity-manager/types/metadata-type";
-import { PrimaryGeneratedColumnStrategy } from "../primary-generated-column";
 
 export interface BaseColumnOptions {
 	name?: string;
-	defaultValue?: any;
 	extras?: any;
 }
 
 export interface ColumnOptions extends BaseColumnOptions {
+	defaultValue?: any;
 	type?: MetadataType;
 }
 
 export type PrimaryColumnOptions = BaseColumnOptions;
 
 export interface PrimaryGeneratedColumnOptions extends BaseColumnOptions {
-	strategy?: PrimaryGeneratedColumnStrategy;
+	strategy?: PreDefinedAutoGenerationMethods;
 }
 
 export type DateColumnOptions = BaseColumnOptions;

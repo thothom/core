@@ -386,7 +386,7 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBe(true);
+			expect(result instanceof SymbiosisError).toBeTruthy();
 			expect(result.message).toBe("You must explicitly declare array types");
 			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("SYMBIOSIS");
@@ -410,7 +410,7 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBe(true);
+			expect(result instanceof SymbiosisError).toBeTruthy();
 			expect(result.message).toBe("Column type isn't supported");
 			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("SYMBIOSIS");
@@ -432,7 +432,7 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBe(true);
+			expect(result instanceof SymbiosisError).toBeTruthy();
 			expect(result.message).toBe("Column type isn't supported");
 			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
 			expect(result.origin).toBe("SYMBIOSIS");

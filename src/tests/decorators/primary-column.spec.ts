@@ -46,27 +46,6 @@ describe("Decorators > PrimaryColumn", () => {
 				},
 			]);
 		});
-
-		it("should add column metadata correctly (date)", () => {
-			class Test {
-				@PrimaryColumn()
-				public foo: Date;
-			}
-
-			const metadata = MetadataUtil.getEntityMetadata({
-				metadataKey: "columns",
-				entity: Test,
-			});
-
-			expect(metadata).toStrictEqual([
-				{
-					databaseName: "foo",
-					primary: true,
-					name: "foo",
-					type: Date,
-				},
-			]);
-		});
 	});
 
 	describe("Specified Name Parameter", () => {
@@ -150,8 +129,7 @@ describe("Decorators > PrimaryColumn", () => {
 	});
 
 	describe("General Errors", () => {
-		const ERROR_MESSAGE =
-			"Primary columns can only have simple types, ARRAYS, OBJECTS and CLASSES aren't supported";
+		const ERROR_MESSAGE = "Column type isn't supported";
 		const ERROR_DETAILS = ["Entity: Test", "Column: foo"];
 
 		it("should throw an error if invalid type specified", () => {
@@ -166,6 +144,30 @@ describe("Decorators > PrimaryColumn", () => {
 				class Test {
 					@PrimaryColumn()
 					public foo: any;
+				}
+			} catch (err) {
+				result = err;
+			}
+
+			expect(result instanceof SymbiosisError).toBe(true);
+			expect(result.message).toBe(ERROR_MESSAGE);
+			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.details).toStrictEqual(ERROR_DETAILS);
+		});
+
+		it("should throw an error if invalid type specified (date)", () => {
+			let result: any;
+
+			try {
+				/**
+				 * Because TypeScript Doesn't like variables that are unused
+				 */
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				//@ts-ignore
+				class Test {
+					@PrimaryColumn()
+					public foo: Date;
 				}
 			} catch (err) {
 				result = err;

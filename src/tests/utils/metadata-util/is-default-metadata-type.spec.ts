@@ -19,6 +19,12 @@ describe("Utils > MetadataUtil > isDefaultMetadataType", () => {
 
 			expect(result).toBe(true);
 		});
+
+		it("should return true with Boolean", () => {
+			const result = MetadataUtil.isDefaultMetadataType(Boolean);
+
+			expect(result).toBe(true);
+		});
 	});
 
 	describe("Invalid types", () => {

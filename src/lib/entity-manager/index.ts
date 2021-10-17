@@ -162,8 +162,8 @@ export class EntityManager<EntityExtraMetadata, ColumnExtraMetadata> {
 	 * AutoGenerate Columns Fields **BEFORE** the data
 	 * be formatted to the database pattern
 	 */
-	public autoGenerateEntityToDatabase(
-		params: AutoGenerateEntityToDatabaseParams,
+	public autoGenerateEntityToDatabase<Entity>(
+		params: AutoGenerateEntityToDatabaseParams<Entity>,
 	): DatabaseEntity {
 		return autoGenerateEntityToDatabase(
 			{
