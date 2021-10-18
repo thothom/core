@@ -152,7 +152,7 @@ describe("EntityMetadata > formatOrder", () => {
 				// eslint-disable-next-line @typescript-eslint/naming-convention
 				"ID": "ASC",
 				// eslint-disable-next-line @typescript-eslint/naming-convention
-				"SUB_ENTITY.field": "DESC",
+				"SUB_ENTITY.FIELD": "DESC",
 			});
 		});
 
@@ -258,7 +258,7 @@ describe("EntityMetadata > formatOrder", () => {
 				// eslint-disable-next-line @typescript-eslint/naming-convention
 				"ID": "ASC",
 				// eslint-disable-next-line @typescript-eslint/naming-convention
-				"SUB_ENTITY.FIELD.anotherField": "DESC",
+				"SUB_ENTITY.FIELD.ANOTHER_FIELD": "DESC",
 			});
 		});
 	});

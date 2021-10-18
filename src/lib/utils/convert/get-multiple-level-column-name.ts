@@ -35,6 +35,27 @@ interface GetMultipleLevelColumnNameParams {
 	acc?: Array<string>;
 }
 
+const getColumnMetadata = (
+	entityManager: EntityManager,
+	entity: any,
+	currentColumnName: string,
+	originalColumnsNames: Array<string>,
+) => {
+	try {
+		return entityManager.getColumnMetadata(entity, currentColumnName);
+	} catch (err) {
+		throw new SymbiosisError({
+			message: "Invalid column",
+			code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+			origin: "SYMBIOSIS",
+			details: [
+				`Invalid column: ${currentColumnName}`,
+				`Value received: ${originalColumnsNames.join(".")}`,
+			],
+		});
+	}
+};
+
 export const getMultipleLevelColumnName = ({
 	entity,
 	entityManager,
@@ -42,11 +63,17 @@ export const getMultipleLevelColumnName = ({
 	currentColumnsNames = originalColumnsNames,
 	acc = [],
 }: GetMultipleLevelColumnNameParams): string => {
-	const currentColumnName = currentColumnsNames.slice().shift() as string;
+	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+	const currentColumnName = currentColumnsNames
+		.slice()
+		.shift()!
+		.replace(/\[\]/g, "") as string;
 
-	const columnMetadata = entityManager.getColumnMetadata(
+	const columnMetadata = getColumnMetadata(
+		entityManager,
 		entity,
 		currentColumnName,
+		originalColumnsNames,
 	);
 
 	/**
@@ -70,7 +97,10 @@ export const getMultipleLevelColumnName = ({
 				entity: columnMetadata.type,
 				// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 				currentColumnsNames: currentColumnsNames.slice(1),
-				acc: [...acc, columnMetadata.databaseName],
+				acc: [
+					...acc,
+					`${columnMetadata.databaseName}${columnMetadata.isArray ? "[]" : ""}`,
+				],
 			});
 		}
 
@@ -95,5 +125,8 @@ export const getMultipleLevelColumnName = ({
 	 * The final stage of the loop,
 	 * when all the columns names are validated and formatted
 	 */
-	return [...acc, currentColumnName].join(".");
+	return [
+		...acc,
+		`${columnMetadata.databaseName}${columnMetadata.isArray ? "[]" : ""}`,
+	].join(".");
 };

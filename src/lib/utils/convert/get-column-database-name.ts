@@ -20,10 +20,12 @@ interface GetColumnDatabaseNameParams {
 export const getColumnDatabaseName = ({
 	entityManager,
 	entity,
-	columnName,
+	columnName: rawColumnName,
 	errorOptions = {},
 }: GetColumnDatabaseNameParams) => {
 	const { ifLastFieldIsSubEntity } = errorOptions;
+
+	const columnName = rawColumnName.replace(/\[\]/g, "");
 
 	const columnMetadata = entityManager.getColumnMetadata(entity, columnName);
 
@@ -39,5 +41,5 @@ export const getColumnDatabaseName = ({
 		});
 	}
 
-	return columnMetadata.databaseName;
+	return `${columnMetadata.databaseName}${columnMetadata.isArray ? "[]" : ""}`;
 };
