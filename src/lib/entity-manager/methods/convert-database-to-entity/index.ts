@@ -1,5 +1,5 @@
+import { getTypeof } from "@techmmunity/utils";
 import { EntityManager } from "../..";
-import { isUndefined } from "../../../utils/validations/is-undefined";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
 import { DatabaseEntity } from "../../../types/database-entity";
@@ -24,7 +24,7 @@ export const convertDatabaseToEntity = (
 	return entityMetadata.columns.reduce((acc, columnMetadata) => {
 		const value = data[columnMetadata.databaseName];
 
-		if (isUndefined(value)) return acc;
+		if (getTypeof(value) === "undefined") return acc;
 
 		if (MetadataUtil.isCustomMetadataType(columnMetadata.type)) {
 			const subEntityMetadata = entityManager.getEntityMetadata(

@@ -1,7 +1,7 @@
+import { getTypeof } from "@techmmunity/utils";
 import { EntityManager } from "../..";
 import { FindConditions } from "../../../repository/queries/types/find-conditions";
 import { DatabaseEntity } from "../../../types/database-entity";
-import { isUndefined } from "../../../utils/validations/is-undefined";
 import { CustomClass } from "../../types/metadata-type";
 import { getConditionsArray } from "./helpers/get-conditions-array";
 import { getConditionsFormatted } from "./helpers/get-conditions-formatted";
@@ -19,7 +19,7 @@ export const formatConditions = (
 	{ entityManager }: Injectables,
 	{ entity, conditions: rawConditions }: FormatConditionsParams,
 ) => {
-	if (isUndefined(rawConditions)) return {};
+	if (getTypeof(rawConditions) === "undefined") return {};
 
 	const entityMetadata = entityManager.getEntityMetadata(entity);
 

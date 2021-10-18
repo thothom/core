@@ -1,10 +1,10 @@
+import { getTypeof } from "@techmmunity/utils";
 import { formatConditions } from "..";
 import { EntityManager } from "../../..";
 import { ArrayFindConditions } from "../../../../repository/queries/types/find-conditions";
 import { DatabaseEntity } from "../../../../types/database-entity";
 import { MetadataUtil } from "../../../../utils/metadata-util";
 import { isFindOperator } from "../../../../utils/validations/is-find-operator";
-import { isUndefined } from "../../../../utils/validations/is-undefined";
 import { IncrementedEntitiesMetadata } from "../../../types/manager-metadata";
 import { CustomClass } from "../../../types/metadata-type";
 
@@ -23,7 +23,7 @@ export const getConditionsFormatted = ({
 		entityMetadata.columns.reduce((acc, columnMetadata) => {
 			const value = conditions[columnMetadata.name];
 
-			if (isUndefined(value)) return acc;
+			if (getTypeof(value) === "undefined") return acc;
 
 			/**
 			 * If it is a find operator, just change de key name
