@@ -551,6 +551,8 @@ describe("Decorators > Column", () => {
 			let result: any;
 
 			try {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				//@ts-ignore
 				class Test {
 					@Column()
 					public foo: any;
@@ -570,6 +572,8 @@ describe("Decorators > Column", () => {
 			let result: any;
 
 			try {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				//@ts-ignore
 				class Test {
 					@Column({
 						enum: TestUnknownEnum,

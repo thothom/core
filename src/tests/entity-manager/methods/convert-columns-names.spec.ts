@@ -44,7 +44,7 @@ describe("EntityMetadata > convertColumnsNames", () => {
 		});
 	});
 
-	describe("Simple Entity With Custom Column Names", () => {
+	describe("Simple Entity with custom column names", () => {
 		it("should convert columns if it is passed on primary-column param", () => {
 			@Entity()
 			class TestEntity {
@@ -88,7 +88,7 @@ describe("EntityMetadata > convertColumnsNames", () => {
 		});
 	});
 
-	describe("Entity With SubEntity", () => {
+	describe("Entity with SubEntity", () => {
 		let connection: TestConnection;
 
 		@Entity({
@@ -121,7 +121,7 @@ describe("EntityMetadata > convertColumnsNames", () => {
 				columnsNames: ["id", "subEntity.field"],
 			});
 
-			expect(result).toStrictEqual(["ID", "SUB_ENTITY.field"]);
+			expect(result).toStrictEqual(["ID", "SUB_ENTITY.FIELD"]);
 		});
 
 		it("should convert columns with multilevel (all the sub-columns)", () => {
@@ -154,6 +154,43 @@ describe("EntityMetadata > convertColumnsNames", () => {
 				'This column has the "String" type, and it cannot be used as an multiple level column',
 				"Value received: id.field",
 			]);
+		});
+	});
+
+	describe("Entity with array of SubEntities", () => {
+		let connection: TestConnection;
+
+		@Entity({
+			isSubEntity: true,
+		})
+		class SubTestEntity {
+			@Column()
+			public field?: string;
+
+			@Column()
+			public anotherField: number;
+		}
+
+		@Entity()
+		class TestEntity {
+			@Column()
+			public id: string;
+
+			@Column(SubTestEntity)
+			public subEntity: Array<SubTestEntity>;
+		}
+
+		beforeAll(() => {
+			connection = createConnection([TestEntity]);
+		});
+
+		it("should convert columns with multilevel", () => {
+			const result = connection.entityManager.convertColumnsNames({
+				entity: TestEntity,
+				columnsNames: ["id", "subEntity[].field"],
+			});
+
+			expect(result).toStrictEqual(["ID", "SUB_ENTITY[].FIELD"]);
 		});
 	});
 });

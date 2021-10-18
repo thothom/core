@@ -39,7 +39,7 @@ export const beforeFindOne = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
 	if (rawConditions.select) {
 		result.conditions.select = entityManager.convertColumnsNames({
 			entity,
-			columnsNames: rawConditions.select as Array<string>,
+			columnsNames: rawConditions.select,
 		});
 	}
 

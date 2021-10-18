@@ -5,7 +5,7 @@ export interface FindOneOptions<Entity> {
 	/**
 	 * Specifies what columns should be retrieved.
 	 */
-	select?: Array<keyof Entity>;
+	select?: Array<string>;
 
 	/**
 	 * Simple condition that should be applied to match entities.

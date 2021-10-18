@@ -13,6 +13,8 @@
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 		"allowSyntheticDefaultImports": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
 		"sourceMap": true,
 		"incremental": true,
 		"types": ["node", "jest", "reflect-metadata"]
