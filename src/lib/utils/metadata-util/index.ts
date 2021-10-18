@@ -11,7 +11,6 @@ import {
 	ENTITY_METADATA_KEYS,
 } from "../../entity-manager/types/entity-metadata";
 import { MetadataName } from "../../types/metadata-name";
-import { isUndefined } from "../validations/is-undefined";
 import {
 	AddColumnMetadataToEntityParams,
 	DefineAllEntityMetadataParams,
@@ -84,7 +83,7 @@ export class MetadataUtil {
 		const columnMetadata = COLUMN_METADATA_KEYS.reduce((acc, metadataKey) => {
 			const value = metadata[metadataKey];
 
-			if (isUndefined(value)) {
+			if (getTypeof(value) === "undefined") {
 				return acc;
 			}
 
@@ -115,7 +114,7 @@ export class MetadataUtil {
 			/**
 			 * Does this validation because some fields are optional
 			 */
-			if (isUndefined(metadataValue)) return;
+			if (getTypeof(metadataValue) === "undefined") return;
 
 			MetadataUtil.defineEntityMetadata({
 				metadataKey,
@@ -134,7 +133,7 @@ export class MetadataUtil {
 				entity,
 			});
 
-			if (isUndefined(value)) {
+			if (getTypeof(value) === "undefined") {
 				return acc;
 			}
 

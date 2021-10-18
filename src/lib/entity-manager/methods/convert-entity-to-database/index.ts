@@ -1,9 +1,8 @@
+import { getTypeof, isNotEmptyObject } from "@techmmunity/utils";
 import { EntityManager } from "../..";
-import { isUndefined } from "../../../utils/validations/is-undefined";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
 import { DatabaseEntity } from "../../../types/database-entity";
-import { isNotEmptyObject } from "../../../utils/validations/is-not-empty-object";
 import { generateDefaultValue } from "./helpers/generate-default-value";
 
 interface Injectables {
@@ -20,14 +19,14 @@ const recursiveConvertEntityToDatabase = (
 	{ entityManager }: Injectables,
 	{ entity, data }: ConvertEntityToDatabaseParams,
 ) => {
-	if (isUndefined(data)) return;
+	if (getTypeof(data) === "undefined") return;
 
 	const entityMetadata = entityManager.getEntityMetadata(entity);
 
 	return entityMetadata.columns.reduce((acc, columnMetadata) => {
 		const value = data[columnMetadata.name];
 
-		if (isUndefined(value)) {
+		if (getTypeof(value) === "undefined") {
 			// Has mutability!!!
 			generateDefaultValue({
 				columnMetadata,
