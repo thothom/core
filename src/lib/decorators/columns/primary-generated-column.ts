@@ -1,18 +1,20 @@
 import { getTypeof } from "@techmmunity/utils";
-import { PrimaryGeneratedColumnOptions } from "./types/column-options";
+import { PrimaryGeneratedColumnOptions } from "../types/column-options";
 import { makeColumnDecorator } from "./helpers/make-column-decorator";
-import { getOptions } from "./helpers/get-options";
+import { getOptions } from "../helpers/get-options";
 
 type PrimaryColumnPreDefinedAutoGenerationMethods = "uuid";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const PrimaryGeneratedColumn = (
+export const PrimaryGeneratedColumn = <ColumnExtraMetadata = any>(
 	strategyOrOptions?:
 		| PrimaryColumnPreDefinedAutoGenerationMethods
-		| PrimaryGeneratedColumnOptions,
+		| PrimaryGeneratedColumnOptions<ColumnExtraMetadata>,
 ) => {
-	const { extras, name } =
-		getOptions<PrimaryGeneratedColumnOptions>(strategyOrOptions);
+	const { name, ...metadata } =
+		getOptions<PrimaryGeneratedColumnOptions<ColumnExtraMetadata>>(
+			strategyOrOptions,
+		);
 
 	const autoGenerate =
 		getTypeof(strategyOrOptions) === "string"
@@ -21,7 +23,7 @@ export const PrimaryGeneratedColumn = (
 
 	return makeColumnDecorator({
 		metadata: {
-			extras,
+			...metadata,
 			autoGenerate,
 			databaseName: name,
 			primary: true,

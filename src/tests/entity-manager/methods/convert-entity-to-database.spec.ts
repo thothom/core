@@ -2,9 +2,9 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/naming-convention */
 
-import { Column } from "../../../lib/decorators/column";
-import { Entity } from "../../../lib/decorators/entity/entity";
-import { PrimaryColumn } from "../../../lib/decorators/primary-column";
+import { Column } from "../../../lib/decorators/columns/column";
+import { Entity } from "../../../lib/decorators/entity";
+import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { TestConnection } from "../../constants/test-connection";
 
 const createConnection = (entities: Array<any>) =>

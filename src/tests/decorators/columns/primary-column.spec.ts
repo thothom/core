@@ -1,7 +1,7 @@
-import { PrimaryColumn } from "../../lib/decorators/primary-column";
-import { SymbiosisError } from "../../lib/error";
-import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
-import { MetadataUtil } from "../../lib/utils/metadata-util";
+import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
+import { SymbiosisError } from "../../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../../lib/error/types/error-code.enum";
+import { MetadataUtil } from "../../../lib/utils/metadata-util";
 
 describe("Decorators > PrimaryColumn", () => {
 	describe("Implicitly Type", () => {

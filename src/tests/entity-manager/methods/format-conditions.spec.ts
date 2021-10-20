@@ -4,9 +4,9 @@
 
 import { Like } from "../../../lib/repository/queries/find-operators/like";
 import { In } from "../../../lib/repository/queries/find-operators/in";
-import { Column } from "../../../lib/decorators/column";
-import { Entity } from "../../../lib/decorators/entity/entity";
-import { PrimaryColumn } from "../../../lib/decorators/primary-column";
+import { Column } from "../../../lib/decorators/columns/column";
+import { Entity } from "../../../lib/decorators/entity";
+import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { TestConnection } from "../../constants/test-connection";
 import { MoreThan } from "../../../lib/repository/queries/find-operators/more-than";
 import { Exist } from "../../../lib/repository/queries/find-operators/exist";

@@ -2,7 +2,7 @@
 
 import { Connection } from "../../lib/connection";
 import { CustomClass } from "../../lib/entity-manager/types/metadata-type";
-import { Repository } from "../../lib/repository";
+import { BaseRepository } from "../../lib/repository";
 
 export class TestConnection extends Connection {
 	public connect(): Promise<void> {
@@ -11,7 +11,7 @@ export class TestConnection extends Connection {
 
 	public getRepository<Entity>(
 		_entity: CustomClass,
-	): Repository<Entity, void, void> {
+	): BaseRepository<Entity, void, void> {
 		throw new Error("Method not implemented.");
 	}
 

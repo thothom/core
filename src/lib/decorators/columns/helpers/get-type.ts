@@ -1,9 +1,9 @@
 import { getTypeof } from "@techmmunity/utils";
-import { SymbiosisError } from "../../error";
-import { SymbiosisErrorCodeEnum } from "../../error/types/error-code.enum";
-import { MetadataType } from "../../entity-manager/types/metadata-type";
-import { MetadataUtil } from "../../utils/metadata-util";
-import { MetadataName } from "../../types/metadata-name";
+import { SymbiosisError } from "../../../error";
+import { SymbiosisErrorCodeEnum } from "../../../error/types/error-code.enum";
+import { MetadataType } from "../../../entity-manager/types/metadata-type";
+import { MetadataUtil } from "../../../utils/metadata-util";
+import { MetadataName } from "../../../types/metadata-name";
 
 const ERROR_MESSAGE = "Column type isn't supported";
 

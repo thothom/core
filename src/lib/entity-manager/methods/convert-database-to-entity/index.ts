@@ -13,7 +13,7 @@ export interface ConvertDatabaseToEntityParams {
 	data?: DatabaseEntity;
 }
 
-export const convertDatabaseToEntity = (
+export const convertDatabaseToEntity = <Entity>(
 	{ entityManager }: Injectables,
 	{ entity, data }: ConvertDatabaseToEntityParams,
 ) => {
@@ -22,6 +22,8 @@ export const convertDatabaseToEntity = (
 	const entityMetadata = entityManager.getEntityMetadata(entity);
 
 	return entityMetadata.columns.reduce((acc, columnMetadata) => {
+		const key = columnMetadata.name as keyof Entity;
+
 		const value = data[columnMetadata.databaseName];
 
 		if (getTypeof(value) === "undefined") return acc;
@@ -32,7 +34,7 @@ export const convertDatabaseToEntity = (
 			);
 
 			if (columnMetadata.isArray) {
-				acc[columnMetadata.name] = value.map((val: CustomClass) =>
+				acc[key] = value.map((val: CustomClass) =>
 					convertDatabaseToEntity(
 						{
 							entityManager,
@@ -47,7 +49,8 @@ export const convertDatabaseToEntity = (
 				return acc;
 			}
 
-			acc[columnMetadata.name] = convertDatabaseToEntity(
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			acc[key] = convertDatabaseToEntity(
 				{
 					entityManager,
 				},
@@ -55,13 +58,13 @@ export const convertDatabaseToEntity = (
 					entity: subEntityMetadata,
 					data: value,
 				},
-			);
+			)!;
 
 			return acc;
 		}
 
-		acc[columnMetadata.name] = value;
+		acc[key] = value;
 
 		return acc;
-	}, {} as DatabaseEntity);
+	}, {} as Entity);
 };

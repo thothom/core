@@ -1,11 +1,11 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import { DeleteDateColumn } from "../../lib/decorators/delete-date-column";
-import { SaveDateColumn } from "../../lib/decorators/save-date-column";
-import { UpdateDateColumn } from "../../lib/decorators/update-date-column";
-import { SymbiosisError } from "../../lib/error";
-import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
-import { MetadataUtil } from "../../lib/utils/metadata-util";
+import { DeleteDateColumn } from "../../../lib/decorators/columns/delete-date-column";
+import { SaveDateColumn } from "../../../lib/decorators/columns/save-date-column";
+import { UpdateDateColumn } from "../../../lib/decorators/columns/update-date-column";
+import { SymbiosisError } from "../../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../../lib/error/types/error-code.enum";
+import { MetadataUtil } from "../../../lib/utils/metadata-util";
 
 describe("Decorators > DateColumns", () => {
 	describe("Implicitly Type (DeleteDateColumn)", () => {

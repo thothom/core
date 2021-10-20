@@ -1,8 +1,9 @@
 import { ColumnMetadata } from "./column-metadata";
 
 export interface EntityMetadata<
-	EntityExtraMetadata = Record<string, any>,
-	ColumnExtraMetadata = Record<string, any>,
+	EntityExtraMetadata = any,
+	ColumnExtraMetadata = any,
+	IndexExtraMetadata = any,
 > {
 	/**
 	 * ----------------------------------------------
@@ -17,6 +18,14 @@ export interface EntityMetadata<
 	isSubEntity?: boolean;
 
 	columns: Array<ColumnMetadata<ColumnExtraMetadata>>;
+
+	indexes?: Array<{
+		databaseName: string;
+		columns: Array<{
+			name: string;
+			extras: IndexExtraMetadata;
+		}>;
+	}>;
 
 	extras?: EntityExtraMetadata;
 	/**
@@ -33,5 +42,6 @@ export const ENTITY_METADATA_KEYS: Array<keyof EntityMetadata> = [
 	"isSubEntity",
 	"isNameAlreadyFormatted",
 	"columns",
+	"indexes",
 	"extras",
 ];

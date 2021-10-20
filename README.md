@@ -48,8 +48,7 @@ Currently it only works with TypeScript (and transpiled JavaScript), and we plan
 With Yarn:
 
 ```sh
-yarn add @techmmunity/symbiosis \
-	reflect-metadata
+yarn add @techmmunity/symbiosis reflect-metadata
 ```
 
 With NPM:
@@ -80,14 +79,9 @@ All the Symbiosis Plugins have the `techmmunity-symbiosis` tag, so you can easil
 Symbiosis only supports the [Data Mapper](https://en.wikipedia.org/wiki/Data_mapper_pattern) pattern, so we can avoid mutability and bad code practices.
 
 ```ts
-import {
-	Column,
-	Entity,
-	PrimaryGeneratedColumn,
-	Repository,
-} from "@techmmunity/symbiosis";
-// All connections from the plugins follow this naming pattern
-import { ExampleConnection } from "example-symbiosis-plugin";
+import { Column, Entity, PrimaryGeneratedColumn } from "@techmmunity/symbiosis";
+// All plugins export a Connection class and a Repository type
+import { Connection, Repository } from "example-symbiosis-plugin";
 
 @Entity()
 class FooEntity {
@@ -101,12 +95,11 @@ class FooEntity {
 type FooRepository = Repository<FooEntity>;
 
 const foo = async () => {
-	const connection = new ExampleConnection({
+	const connection = new Connection({
 		// Connection config here
 		entities: [FooEntity],
 	});
 
-	// Always call the "connect" to connect to the database
 	await connection.connect();
 
 	const fooRepository: FooRepository =
@@ -116,6 +109,8 @@ const foo = async () => {
 		bar: "foo",
 	});
 };
+
+foo();
 ```
 
 ## Documentation

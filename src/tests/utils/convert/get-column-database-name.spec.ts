@@ -1,5 +1,5 @@
-import { Column } from "../../../lib/decorators/column";
-import { Entity } from "../../../lib/decorators/entity/entity";
+import { Column } from "../../../lib/decorators/columns/column";
+import { Entity } from "../../../lib/decorators/entity";
 import { getColumnDatabaseName } from "../../../lib/utils/convert/get-column-database-name";
 import { TestConnection } from "../../constants/test-connection";
 

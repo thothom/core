@@ -195,9 +195,7 @@ export class EntityManager<
 	public convertDatabaseToEntity<Entity>(
 		params: ConvertDatabaseToEntityParams,
 	): Entity | undefined {
-		return convertDatabaseToEntity({ entityManager: this }, params) as
-			| Entity
-			| undefined;
+		return convertDatabaseToEntity<Entity>({ entityManager: this }, params);
 	}
 
 	/**

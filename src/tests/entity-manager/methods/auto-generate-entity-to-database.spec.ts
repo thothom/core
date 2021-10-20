@@ -2,13 +2,13 @@
 
 import { validate } from "uuid";
 import { getTypeof } from "@techmmunity/utils";
-import { Column } from "../../../lib/decorators/column";
-import { DeleteDateColumn } from "../../../lib/decorators/delete-date-column";
-import { SaveDateColumn } from "../../../lib/decorators/save-date-column";
-import { UpdateDateColumn } from "../../../lib/decorators/update-date-column";
-import { Entity } from "../../../lib/decorators/entity/entity";
-import { PrimaryColumn } from "../../../lib/decorators/primary-column";
-import { PrimaryGeneratedColumn } from "../../../lib/decorators/primary-generated-column";
+import { Column } from "../../../lib/decorators/columns/column";
+import { DeleteDateColumn } from "../../../lib/decorators/columns/delete-date-column";
+import { SaveDateColumn } from "../../../lib/decorators/columns/save-date-column";
+import { UpdateDateColumn } from "../../../lib/decorators/columns/update-date-column";
+import { Entity } from "../../../lib/decorators/entity";
+import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
+import { PrimaryGeneratedColumn } from "../../../lib/decorators/columns/primary-generated-column";
 import { TestConnection } from "../../constants/test-connection";
 
 const createConnection = (entities: Array<any>) =>
