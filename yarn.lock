@@ -630,9 +630,9 @@
     typescript "^4.2.4"
 
 "@techmmunity/utils@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@techmmunity/utils/-/utils-1.1.0.tgz#e30eead50ddf60b3432c2110162906ab8debdda4"
-  integrity sha512-lY5kWhs9QlwMKJMZmi0NSQjFptG2GFFlhvND0ezCDdMOxGa7XU1RjdFRNFBh/KZbjvXveHJrOSjKNXXOZ+5ibA==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@techmmunity/utils/-/utils-1.2.0.tgz#6c40c9ca390bbc4899913a7d9acaa98c4e8a2d1f"
+  integrity sha512-jdW7p0Ais1tELrQCiPZmg0/7d5oN/araerIaTgJdLWECAS/wTzRJwQrbn8GhmDgYCBwpam9Uzn2fHMBxht7nGQ==
 
 "@tootallnate/once@1":
   version "1.1.2"
