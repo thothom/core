@@ -4,8 +4,8 @@ import { FindConditions } from "../../queries/types/find-conditions";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 import { formatData } from "./helpers/format-data";
 
-interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+interface Injectables {
+	entityManager: EntityManager;
 	entity: any;
 }
 
@@ -15,11 +15,8 @@ export interface AfterUpsertParams<Entity> {
 	options?: BaseQueryOptions;
 }
 
-export const afterUpsert = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
-	{
-		entity,
-		entityManager,
-	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
+export const afterUpsert = <Entity>(
+	{ entity, entityManager }: Injectables,
 	{ data }: AfterUpsertParams<Entity>,
 ) => {
 	const dataHandled = formatData<Entity>({

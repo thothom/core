@@ -20,11 +20,11 @@ export const getEntitiesMetadata = ({
 	rawEntities,
 	connectionOptions,
 }: GetEntitiesMetadataParams) => {
-	const entities: EntityManagerEntities<any, any> = {};
+	const entities: EntityManagerEntities<any, any, any> = {};
 	const columns: Array<ColumnMetadata> = [];
 
 	rawEntities.forEach(rawEntity => {
-		const metadata = MetadataUtil.getAllEntityMetadata<any, any>({
+		const metadata = MetadataUtil.getAllEntityMetadata({
 			entity: rawEntity,
 		});
 

@@ -4,8 +4,8 @@ import { DatabaseEntity } from "../../../types/database-entity";
 import { FindConditions } from "../../queries/types/find-conditions";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 
-interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+interface Injectables {
+	entityManager: EntityManager;
 	entity: CustomClass;
 }
 
@@ -14,11 +14,8 @@ export interface BeforeCountParams<Entity> {
 	options?: BaseQueryOptions;
 }
 
-export const beforeCount = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
-	{
-		entityManager,
-		entity,
-	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
+export const beforeCount = <Entity>(
+	{ entityManager, entity }: Injectables,
 	{ where: rawWhere, options: rawOptions }: BeforeCountParams<Entity>,
 ) => {
 	const result = {} as BeforeCountParams<DatabaseEntity>;

@@ -11,7 +11,11 @@ export interface LoadEntitiesParams {
 	entities: Array<CustomClass>;
 }
 
-export const loadEntities = <EntityExtraMetadata, ColumnExtraMetadata>({
+export const loadEntities = <
+	EntityExtraMetadata,
+	ColumnExtraMetadata,
+	IndexExtraMetadata,
+>({
 	connectionOptions,
 	logger,
 	entities: rawEntities,
@@ -31,6 +35,7 @@ export const loadEntities = <EntityExtraMetadata, ColumnExtraMetadata>({
 
 	return entities as EntityManagerEntities<
 		EntityExtraMetadata,
-		ColumnExtraMetadata
+		ColumnExtraMetadata,
+		IndexExtraMetadata
 	>;
 };

@@ -41,6 +41,7 @@ interface EntityManagerConstructorParams {
 export class EntityManager<
 	EntityExtraMetadata = any,
 	ColumnExtraMetadata = any,
+	IndexExtraMetadata = any,
 > {
 	/**
 	 * Logger
@@ -69,7 +70,8 @@ export class EntityManager<
 	 */
 	private readonly entities: EntityManagerEntities<
 		EntityExtraMetadata,
-		ColumnExtraMetadata
+		ColumnExtraMetadata,
+		IndexExtraMetadata
 	> = {};
 
 	/**
@@ -87,7 +89,11 @@ export class EntityManager<
 		this.logger = logger;
 		this.connectionOptions = connectionOptions;
 
-		const entities = loadEntities<EntityExtraMetadata, ColumnExtraMetadata>({
+		const entities = loadEntities<
+			EntityExtraMetadata,
+			ColumnExtraMetadata,
+			IndexExtraMetadata
+		>({
 			connectionOptions: this.connectionOptions,
 			logger: this.logger,
 			entities: this.connectionOptions.entities,

@@ -4,8 +4,8 @@ import { FindOneOptions } from "../../queries/types/find-options";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 import { formatData } from "./helpers/format-data";
 
-interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+interface Injectables {
+	entityManager: EntityManager;
 	entity: any;
 }
 
@@ -15,11 +15,8 @@ export interface AfterFindOneParams<Entity> {
 	options?: BaseQueryOptions;
 }
 
-export const afterFindOne = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
-	{
-		entity,
-		entityManager,
-	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
+export const afterFindOne = <Entity>(
+	{ entity, entityManager }: Injectables,
 	{ dataToReturn }: AfterFindOneParams<Entity>,
 ) => {
 	const dataHandled = formatData<Entity>({

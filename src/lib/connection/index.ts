@@ -4,10 +4,11 @@ import { BaseRepository } from "../repository";
 import { BaseConnectionOptions } from "./types/connection-options";
 import { CustomClass } from "../entity-manager/types/metadata-type";
 
-export abstract class Connection<
+export abstract class BaseConnection<
 	DatabaseConfig = any,
-	EntityExtraData = any,
-	ColumnExtraData = any,
+	EntityExtraMetadata = any,
+	ColumnExtraMetadata = any,
+	IndexExtraMetadata = any,
 > {
 	/**
 	 * Properties
@@ -18,8 +19,9 @@ export abstract class Connection<
 	private readonly _options: BaseConnectionOptions<DatabaseConfig>;
 
 	private readonly _entityManager: EntityManager<
-		EntityExtraData,
-		ColumnExtraData
+		EntityExtraMetadata,
+		ColumnExtraMetadata,
+		IndexExtraMetadata
 	>;
 
 	private readonly _logger: Logger;
@@ -55,7 +57,10 @@ export abstract class Connection<
 
 		this._logger = new Logger(this._name, options.logging);
 
-		this._entityManager = new EntityManager<EntityExtraData, ColumnExtraData>({
+		this._entityManager = new EntityManager<
+			EntityExtraMetadata,
+			ColumnExtraMetadata
+		>({
 			logger: this._logger,
 			connectionOptions: this._options,
 		});
@@ -69,5 +74,5 @@ export abstract class Connection<
 
 	public abstract getRepository<Entity>(
 		entity: CustomClass,
-	): BaseRepository<Entity, EntityExtraData, ColumnExtraData>;
+	): BaseRepository<Entity, EntityExtraMetadata, ColumnExtraMetadata>;
 }

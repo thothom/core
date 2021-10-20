@@ -9,7 +9,7 @@ import { getDatabaseName } from "./get-database-name";
 interface GetSubEntitiesMetadataParams {
 	logger: Logger;
 	allEntitiesColumns: Array<ColumnMetadata>;
-	entities: EntityManagerEntities<any, any>;
+	entities: EntityManagerEntities<any, any, any>;
 	connectionOptions: BaseConnectionOptions;
 }
 
@@ -26,7 +26,7 @@ export const getSubEntitiesMetadata = ({
 		.map(columnMetadata => columnMetadata.type);
 
 	rawSubEntities.forEach(rawSubEntity => {
-		const metadata = MetadataUtil.getAllEntityMetadata<any, any>({
+		const metadata = MetadataUtil.getAllEntityMetadata({
 			entity: rawSubEntity,
 		});
 

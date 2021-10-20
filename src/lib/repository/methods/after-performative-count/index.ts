@@ -2,8 +2,8 @@ import { FindConditions } from "../../queries/types/find-conditions";
 import { EntityManager } from "../../../entity-manager";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 
-interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+interface Injectables {
+	entityManager: EntityManager;
 	entity: any;
 }
 
@@ -13,12 +13,8 @@ export interface AfterPerformativeCountParams<Entity> {
 	options?: BaseQueryOptions;
 }
 
-export const afterPerformativeCount = <
-	Entity,
-	EntityExtraMetadata,
-	ColumnExtraMetadata,
->(
-	_injectables: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
+export const afterPerformativeCount = <Entity>(
+	_injectables: Injectables,
 	{ dataToReturn }: AfterPerformativeCountParams<Entity>,
 ) => {
 	return dataToReturn;

@@ -2,8 +2,8 @@ import { FindConditions } from "../../queries/types/find-conditions";
 import { EntityManager } from "../../../entity-manager";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 
-interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+interface Injectables {
+	entityManager: EntityManager;
 	entity: any;
 }
 
@@ -13,12 +13,8 @@ export interface AfterSoftDeleteParams<Entity> {
 	options?: BaseQueryOptions;
 }
 
-export const afterSoftDelete = <
-	Entity,
-	EntityExtraMetadata,
-	ColumnExtraMetadata,
->(
-	_injectables: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
+export const afterSoftDelete = <Entity>(
+	_injectables: Injectables,
 	{ dataToReturn }: AfterSoftDeleteParams<Entity>,
 ) => {
 	return dataToReturn;

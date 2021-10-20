@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { Connection } from "../../lib/connection";
+import { BaseConnection } from "../../lib/connection";
 import { CustomClass } from "../../lib/entity-manager/types/metadata-type";
 import { BaseRepository } from "../../lib/repository";
 
-export class TestConnection extends Connection {
+export class TestConnection extends BaseConnection {
 	public connect(): Promise<void> {
 		throw new Error("Method not implemented.");
 	}
