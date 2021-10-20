@@ -1,5 +1,5 @@
-import { Column } from "../../lib/decorators/column";
-import { Entity } from "../../lib/decorators/entity/entity";
+import { Column } from "../../lib/decorators/columns/column";
+import { Entity } from "../../lib/decorators/entity";
 import { SymbiosisError } from "../../lib/error";
 import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../lib/utils/metadata-util";

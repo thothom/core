@@ -1,14 +1,14 @@
 import { getTypeof } from "@techmmunity/utils";
-import { PrimaryColumnOptions } from "./types/column-options";
+import { PrimaryColumnOptions } from "../types/column-options";
 import { makeColumnDecorator } from "./helpers/make-column-decorator";
-import { getOptions } from "./helpers/get-options";
+import { getOptions } from "../helpers/get-options";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const PrimaryColumn = (
-	nameOrOptions?: PrimaryColumnOptions | string,
+export const PrimaryColumn = <ColumnExtraMetadata = any>(
+	nameOrOptions?: PrimaryColumnOptions<ColumnExtraMetadata> | string,
 ) => {
-	const { extras, name: rawName } =
-		getOptions<PrimaryColumnOptions>(nameOrOptions);
+	const { name: rawName, ...metadata } =
+		getOptions<PrimaryColumnOptions<ColumnExtraMetadata>>(nameOrOptions);
 
 	const name =
 		rawName ||
@@ -18,7 +18,7 @@ export const PrimaryColumn = (
 
 	return makeColumnDecorator({
 		metadata: {
-			extras,
+			...metadata,
 			databaseName: name,
 			primary: true,
 		},

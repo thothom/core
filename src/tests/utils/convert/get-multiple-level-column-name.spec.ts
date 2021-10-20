@@ -1,6 +1,6 @@
 import { SymbiosisError, SymbiosisErrorCodeEnum } from "../../..";
-import { Column } from "../../../lib/decorators/column";
-import { Entity } from "../../../lib/decorators/entity/entity";
+import { Column } from "../../../lib/decorators/columns/column";
+import { Entity } from "../../../lib/decorators/entity";
 import { getMultipleLevelColumnName } from "../../../lib/utils/convert/get-multiple-level-column-name";
 import { TestConnection } from "../../constants/test-connection";
 

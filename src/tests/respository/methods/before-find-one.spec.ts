@@ -1,6 +1,6 @@
-import { Column } from "../../../lib/decorators/column";
-import { Entity } from "../../../lib/decorators/entity/entity";
-import { PrimaryGeneratedColumn } from "../../../lib/decorators/primary-generated-column";
+import { Column } from "../../../lib/decorators/columns/column";
+import { Entity } from "../../../lib/decorators/entity";
+import { PrimaryGeneratedColumn } from "../../../lib/decorators/columns/primary-generated-column";
 import { MoreThan } from "../../../lib/repository/queries/find-operators/more-than";
 import { TestConnection } from "../../constants/test-connection";
 import { TestRepository } from "../../constants/test-repository";

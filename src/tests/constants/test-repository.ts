@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { Repository } from "../../lib/repository";
+import { BaseRepository } from "../../lib/repository";
 import { AfterCountParams } from "../../lib/repository/methods/after-count";
 import { AfterDeleteParams } from "../../lib/repository/methods/after-delete";
 import { AfterFindParams } from "../../lib/repository/methods/after-find";
@@ -33,34 +33,34 @@ import { ClassType } from "../../lib/types/class-type";
 
 const ERROR_MESSAGE = "Method not implemented.";
 
-export class TestRepository<Entity> extends Repository<Entity, void, void> {
-	public save(
+export class TestRepository<Entity> extends BaseRepository<Entity, void, void> {
+	public save<Result = Array<Entity> | Entity>(
 		_data: Array<ClassType<Entity>> | ClassType<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity> {
+	): Promise<Result> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
-	public insert(
+	public insert<Result = Array<Entity> | Entity>(
 		_data: Array<ClassType<Entity>> | ClassType<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity> {
+	): Promise<Result> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
-	public update(
+	public update<Result = Array<Entity> | Entity>(
 		_conditions: FindOneOptions<Entity>["where"],
 		_data: ClassType<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity> {
+	): Promise<Result> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
-	public upsert(
+	public upsert<Result = Array<Entity> | Entity>(
 		_conditions: FindOneOptions<Entity>["where"],
 		_data: ClassType<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity> {
+	): Promise<Result> {
 		throw new Error(ERROR_MESSAGE);
 	}
 

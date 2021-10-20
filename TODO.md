@@ -144,7 +144,9 @@
   - Will receive a enum and get it's values
 - [x] Add "defaultValue" option to "@Column" decorator
   - Will receive the default value of the column
-- [ ] Add `@Index` decorator
+- [x] Add `@Index` decorator
+- [x] Add "index" to FindOptions
+- [x] Add "databaseType" to ColumnOptions
 - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - This column will be auto-generated **on save**
 - [ ] Add entities auto-import from string path, like TypeORM
@@ -153,8 +155,7 @@
   - [ ] Add `@VirtualColumn` decorator
     - Will be applied to a class method, and will be generated after a query from database
     - Remember to check: If the `select` be passed, so verify if the virtual field in the array
-  - [ ] Edit the auto-generation method of primary columns
-- [ ] Maybe in the future accept more column type and handle the correspondent function automatically? Types like accept "bigint" as param for @Column, convert this automatically to Number, and store the "bigint" at the "extras" field, so relational databases can take more advantage of this package
+  - [x] Edit the auto-generation method of primary columns
 
 ### SQL
 
@@ -163,8 +164,8 @@
 - [ ] Add `@OneToOne` decorator
 - [ ] Add `@OneToMany` decorator
 - [ ] Add `@ManyToMany` decorator
-- [ ] Add support to Enums (currently, it already works with enums, but it doesn't saves the enums values. The `Column` decorator need to be modified to accept an enum too, and use `Object.values` to get the **VALUES** of the array)
-  - [ ] Add "enum" option to "@Column" decorator
+- [x] Add support to Enums (currently, it already works with enums, but it doesn't saves the enums values. The `Column` decorator need to be modified to accept an enum too, and use `Object.values` to get the **VALUES** of the array)
+  - [x] Add "enum" option to "@Column" decorator
     - Will receive an enum to get it's values
 
 ### CLI
@@ -179,3 +180,5 @@
   - What if a entity be an entity and also a subEntity? This may cause a lot of bugs, so it's better think another way to handle this, with only one decorator
 - Add `@SecondaryColumn` decorator (This will be used in cases like `DynamoDB - sortKey`)
   - `extras` field will be used
+- Maybe in the future accept more column type and handle the correspondent function automatically? Types like accept "bigint" as param for @Column, convert this automatically to Number, and store the "bigint" at the "extras" field, so relational databases can take more advantage of this package
+  - No, the option "databaseType" was added to this purpose

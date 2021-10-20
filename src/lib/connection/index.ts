@@ -1,6 +1,6 @@
 import { Logger } from "../logger";
 import { EntityManager } from "../entity-manager";
-import { Repository } from "../repository";
+import { BaseRepository } from "../repository";
 import { BaseConnectionOptions } from "./types/connection-options";
 import { CustomClass } from "../entity-manager/types/metadata-type";
 
@@ -69,5 +69,5 @@ export abstract class Connection<
 
 	public abstract getRepository<Entity>(
 		entity: CustomClass,
-	): Repository<Entity, EntityExtraData, ColumnExtraData>;
+	): BaseRepository<Entity, EntityExtraData, ColumnExtraData>;
 }

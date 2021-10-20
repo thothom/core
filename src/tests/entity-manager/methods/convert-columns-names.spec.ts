@@ -5,8 +5,8 @@ import {
 	SymbiosisError,
 	SymbiosisErrorCodeEnum,
 } from "../../..";
-import { Column } from "../../../lib/decorators/column";
-import { Entity } from "../../../lib/decorators/entity/entity";
+import { Column } from "../../../lib/decorators/columns/column";
+import { Entity } from "../../../lib/decorators/entity";
 import { TestConnection } from "../../constants/test-connection";
 
 const createConnection = (entities: Array<any>) =>

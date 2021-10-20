@@ -18,6 +18,11 @@ export interface FindOneOptions<Entity> {
 	order?: Record<string, Order>;
 
 	/**
+	 * Index to be used to find the record.
+	 */
+	index?: string;
+
+	/**
 	 * Indicates if soft-deleted rows should be included in entity result.
 	 */
 	withDeleted?: boolean;

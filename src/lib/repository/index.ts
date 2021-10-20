@@ -38,7 +38,7 @@ import {
 } from "./methods/before-performative-count";
 import { ClassType } from "../types/class-type";
 
-export abstract class Repository<
+export abstract class BaseRepository<
 	Entity,
 	EntityExtraMetadata = any,
 	ColumnExtraMetadata = any,
@@ -69,36 +69,36 @@ export abstract class Repository<
 	 * This is an more performative way to make an "upsert",
 	 * and most of the databases supports this method.
 	 */
-	public abstract save(
+	public abstract save<Result = Array<Entity> | Entity>(
 		data: Array<ClassType<Entity>> | ClassType<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity>;
+	): Promise<Result>;
 
 	/**
 	 * Inserts a record on the database and fail if it's already exist.
 	 */
-	public abstract insert(
+	public abstract insert<Result = Array<Entity> | Entity>(
 		data: Array<ClassType<Entity>> | ClassType<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity>;
+	): Promise<Result>;
 
 	/**
 	 * Updates a record based on a query and fail if it's not exist.
 	 */
-	public abstract update(
+	public abstract update<Result = Array<Entity> | Entity>(
 		conditions: FindConditions<Entity>,
 		data: ClassType<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity>;
+	): Promise<Result>;
 
 	/**
 	 * Make an "upsert" operation based on a query.
 	 */
-	public abstract upsert(
+	public abstract upsert<Result = Array<Entity> | Entity>(
 		conditions: FindConditions<Entity>,
 		data: ClassType<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity>;
+	): Promise<Result>;
 
 	/**
 	 * --------------------------------------------------

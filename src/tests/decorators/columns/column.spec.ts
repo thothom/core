@@ -1,12 +1,12 @@
-import { Column } from "../../lib/decorators/column";
-import { SymbiosisError } from "../../lib/error";
-import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
-import { MetadataUtil } from "../../lib/utils/metadata-util";
+import { Column } from "../../../lib/decorators/columns/column";
+import { SymbiosisError } from "../../../lib/error";
+import { SymbiosisErrorCodeEnum } from "../../../lib/error/types/error-code.enum";
+import { MetadataUtil } from "../../../lib/utils/metadata-util";
 import {
 	TestNumberEnum,
 	TestStringEnum,
 	TestUnknownEnum,
-} from "../constants/test-enum";
+} from "../../constants/test-enum";
 
 describe("Decorators > Column", () => {
 	describe("Implicitly Type", () => {
