@@ -54,7 +54,7 @@ yarn add @techmmunity/symbiosis reflect-metadata
 With NPM:
 
 ```sh
-npm i @techmmunity/symbiosis reflect-metadata --save
+npm i @techmmunity/symbiosis reflect-metadata
 ```
 
 Configure `tsconfig.json`:

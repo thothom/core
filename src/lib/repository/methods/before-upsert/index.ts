@@ -5,8 +5,8 @@ import { formatData } from "./helpers/format-data";
 import { DatabaseEntity } from "../../../types/database-entity";
 import { ClassType } from "../../../types/class-type";
 
-interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+interface Injectables {
+	entityManager: EntityManager;
 	entity: any;
 }
 
@@ -15,11 +15,8 @@ export interface BeforeUpsertParams<Entity> {
 	data: ClassType<Entity>;
 	options?: BaseQueryOptions;
 }
-export const beforeUpsert = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
-	{
-		entity,
-		entityManager,
-	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
+export const beforeUpsert = <Entity>(
+	{ entity, entityManager }: Injectables,
 	{
 		conditions: rawConditions,
 		data: rawData,

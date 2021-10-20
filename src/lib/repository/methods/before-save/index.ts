@@ -4,8 +4,8 @@ import { DatabaseEntity } from "../../../types/database-entity";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 import { formatDataArray } from "./helpers/format-data-array";
 
-interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+interface Injectables {
+	entityManager: EntityManager;
 	entity: any;
 }
 
@@ -13,11 +13,8 @@ export interface BeforeSaveParams<Entity> {
 	data: Array<ClassType<Entity>> | ClassType<Entity>;
 	options?: BaseQueryOptions;
 }
-export const beforeSave = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
-	{
-		entity,
-		entityManager,
-	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
+export const beforeSave = <Entity>(
+	{ entity, entityManager }: Injectables,
 	{ data: rawData, options: rawOptions }: BeforeSaveParams<Entity>,
 ) => {
 	const result = {} as BeforeSaveParams<DatabaseEntity>;

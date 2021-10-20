@@ -3,8 +3,8 @@ import { DatabaseEntity } from "../../../types/database-entity";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 import { formatDataArray } from "./helpers/format-data-array";
 
-interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+interface Injectables {
+	entityManager: EntityManager;
 	entity: any;
 }
 
@@ -13,11 +13,8 @@ export interface AfterInsertParams {
 	options?: BaseQueryOptions;
 }
 
-export const afterInsert = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
-	{
-		entity,
-		entityManager,
-	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
+export const afterInsert = <Entity>(
+	{ entity, entityManager }: Injectables,
 	{ data }: AfterInsertParams,
 ) => {
 	const dataArray = Array.isArray(data) ? data : [data];

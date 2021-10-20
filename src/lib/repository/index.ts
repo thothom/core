@@ -42,13 +42,15 @@ export abstract class BaseRepository<
 	Entity,
 	EntityExtraMetadata = any,
 	ColumnExtraMetadata = any,
+	IndexExtraMetadata = any,
 > {
 	protected readonly entity: Entity;
 
 	public constructor(
 		protected readonly entityManager: EntityManager<
 			EntityExtraMetadata,
-			ColumnExtraMetadata
+			ColumnExtraMetadata,
+			IndexExtraMetadata
 		>,
 		entity: any,
 	) {
@@ -206,7 +208,7 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforeSave(params: BeforeSaveParams<Entity>) {
-		return beforeSave<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return beforeSave<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -221,13 +223,15 @@ export abstract class BaseRepository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterSave(params: AfterSaveParams) {
-		return afterSave<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		const result: Array<Entity> | Entity = afterSave<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
 			},
 			params,
 		);
+
+		return result;
 	}
 
 	/**
@@ -245,7 +249,7 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforeInsert(params: BeforeInsertParams<Entity>) {
-		return beforeInsert<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return beforeInsert<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -260,13 +264,15 @@ export abstract class BaseRepository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterInsert(params: AfterInsertParams) {
-		return afterInsert<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		const result: Array<Entity> | Entity = afterInsert<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
 			},
 			params,
 		);
+
+		return result;
 	}
 
 	/**
@@ -284,7 +290,7 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforeUpdate(params: BeforeUpdateParams<Entity>) {
-		return beforeUpdate<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return beforeUpdate<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -299,13 +305,15 @@ export abstract class BaseRepository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterUpdate(params: AfterUpdateParams<Entity>) {
-		return afterUpdate<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		const result: Array<Entity> | Entity = afterUpdate<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
 			},
 			params,
 		);
+
+		return result;
 	}
 
 	/**
@@ -323,7 +331,7 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforeUpsert(params: BeforeUpsertParams<Entity>) {
-		return beforeUpsert<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return beforeUpsert<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -338,13 +346,15 @@ export abstract class BaseRepository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterUpsert(params: AfterUpsertParams<Entity>) {
-		return afterUpsert<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		const result: Array<Entity> | Entity = afterUpsert<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
 			},
 			params,
 		);
+
+		return result as any;
 	}
 
 	/**
@@ -362,7 +372,7 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforeFind(params: BeforeFindParams<Entity>) {
-		return beforeFind<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return beforeFind<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -377,7 +387,7 @@ export abstract class BaseRepository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterFind(params: AfterFindParams<Entity>): Array<Entity> {
-		return afterFind<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return afterFind<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -401,7 +411,7 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforeFindOne(params: BeforeFindOneParams<Entity>) {
-		return beforeFindOne<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return beforeFindOne<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -418,7 +428,7 @@ export abstract class BaseRepository<
 	protected afterFindOne(
 		params: AfterFindOneParams<Entity>,
 	): Entity | undefined {
-		return afterFindOne<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return afterFindOne<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -442,7 +452,7 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforeDelete(params: BeforeDeleteParams<Entity>) {
-		return beforeDelete<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return beforeDelete<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -457,7 +467,7 @@ export abstract class BaseRepository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterDelete(params: AfterDeleteParams<Entity>): number {
-		return afterDelete<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return afterDelete<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -481,7 +491,7 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforeSoftDelete(params: BeforeSoftDeleteParams<Entity>) {
-		return beforeSoftDelete<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return beforeSoftDelete<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -496,7 +506,7 @@ export abstract class BaseRepository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterSoftDelete(params: AfterSoftDeleteParams<Entity>): number {
-		return afterSoftDelete<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return afterSoftDelete<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -520,7 +530,7 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforeRecover(params: BeforeRecoverParams<Entity>) {
-		return beforeRecover<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return beforeRecover<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -535,7 +545,7 @@ export abstract class BaseRepository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterRecover(params: AfterRecoverParams<Entity>): number {
-		return afterRecover<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return afterRecover<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -559,7 +569,7 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforeCount(params: BeforeCountParams<Entity>) {
-		return beforeCount<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return beforeCount<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -574,7 +584,7 @@ export abstract class BaseRepository<
 	 * Does things like format the data to the entity format
 	 */
 	protected afterCount(params: AfterCountParams<Entity>): number {
-		return afterCount<Entity, EntityExtraMetadata, ColumnExtraMetadata>(
+		return afterCount<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -600,11 +610,7 @@ export abstract class BaseRepository<
 	protected beforePerformativeCount(
 		params: BeforePerformativeCountParams<Entity>,
 	) {
-		return beforePerformativeCount<
-			Entity,
-			EntityExtraMetadata,
-			ColumnExtraMetadata
-		>(
+		return beforePerformativeCount<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,
@@ -621,11 +627,7 @@ export abstract class BaseRepository<
 	protected afterPerformativeCount(
 		params: AfterPerformativeCountParams<Entity>,
 	): number {
-		return afterPerformativeCount<
-			Entity,
-			EntityExtraMetadata,
-			ColumnExtraMetadata
-		>(
+		return afterPerformativeCount<Entity>(
 			{
 				entity: this.entity,
 				entityManager: this.entityManager,

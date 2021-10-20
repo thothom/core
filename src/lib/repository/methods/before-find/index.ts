@@ -4,8 +4,8 @@ import { DatabaseEntity } from "../../../types/database-entity";
 import { FindOptions } from "../../queries/types/find-options";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 
-interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+interface Injectables {
+	entityManager: EntityManager;
 	entity: CustomClass;
 }
 
@@ -13,11 +13,8 @@ export interface BeforeFindParams<Entity> {
 	conditions: FindOptions<Entity>;
 	options?: BaseQueryOptions;
 }
-export const beforeFind = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
-	{
-		entityManager,
-		entity,
-	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
+export const beforeFind = <Entity>(
+	{ entityManager, entity }: Injectables,
 	{ conditions: rawConditions, options: rawOptions }: BeforeFindParams<Entity>,
 ) => {
 	const result = {} as BeforeFindParams<DatabaseEntity>;

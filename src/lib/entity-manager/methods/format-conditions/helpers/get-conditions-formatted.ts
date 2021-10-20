@@ -10,8 +10,8 @@ import { CustomClass } from "../../../types/metadata-type";
 
 interface GetConditionsFormattedParams {
 	conditionsArray: ArrayFindConditions<Record<string, any>>; // Normal Entity, NOT Database Entity
-	entityMetadata: IncrementedEntitiesMetadata<void, void>;
-	entityManager: EntityManager<void, void>;
+	entityMetadata: IncrementedEntitiesMetadata<any, any, any>;
+	entityManager: EntityManager;
 }
 
 export const getConditionsFormatted = ({

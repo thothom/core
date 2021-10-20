@@ -4,8 +4,8 @@ import { DatabaseEntity } from "../../../types/database-entity";
 import { BaseQueryOptions } from "../../queries/types/query-options";
 import { formatDataArray } from "./helpers/format-data-array";
 
-interface Injectables<EntityExtraMetadata, ColumnExtraMetadata> {
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+interface Injectables {
+	entityManager: EntityManager;
 	entity: any;
 }
 
@@ -14,11 +14,8 @@ export interface BeforeInsertParams<Entity> {
 	options?: BaseQueryOptions;
 }
 
-export const beforeInsert = <Entity, EntityExtraMetadata, ColumnExtraMetadata>(
-	{
-		entity,
-		entityManager,
-	}: Injectables<EntityExtraMetadata, ColumnExtraMetadata>,
+export const beforeInsert = <Entity>(
+	{ entity, entityManager }: Injectables,
 	{ data, options: rawOptions }: BeforeInsertParams<Entity>,
 ) => {
 	const result = {} as BeforeInsertParams<DatabaseEntity>;

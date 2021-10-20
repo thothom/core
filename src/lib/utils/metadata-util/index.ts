@@ -124,9 +124,11 @@ export class MetadataUtil {
 		});
 	}
 
-	public static getAllEntityMetadata<EntityExtraMetadata, ColumnExtraMetadata>({
-		entity,
-	}: GetAllEntityMetadataParams) {
+	public static getAllEntityMetadata<
+		EntityExtraMetadata = any,
+		ColumnExtraMetadata = any,
+		IndexExtraMetadata = any,
+	>({ entity }: GetAllEntityMetadataParams) {
 		return ENTITY_METADATA_KEYS.reduce((acc, metadataKey) => {
 			const value = MetadataUtil.getEntityMetadata({
 				metadataKey,
@@ -146,6 +148,6 @@ export class MetadataUtil {
 			acc[metadataKey] = value;
 
 			return acc;
-		}, {} as EntityMetadata<EntityExtraMetadata, ColumnExtraMetadata>);
+		}, {} as EntityMetadata<EntityExtraMetadata, ColumnExtraMetadata, IndexExtraMetadata>);
 	}
 }
