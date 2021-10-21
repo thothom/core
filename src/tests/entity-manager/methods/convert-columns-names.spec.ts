@@ -1,12 +1,9 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import {
-	PrimaryColumn,
-	SymbiosisError,
-	SymbiosisErrorCodeEnum,
-} from "../../..";
 import { Column } from "../../../lib/decorators/columns/column";
+import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { Entity } from "../../../lib/decorators/entity";
+import { SymbiosisError } from "../../../lib/error";
 import { TestConnection } from "../../constants/test-connection";
 
 const createConnection = (entities: Array<any>) =>
@@ -147,7 +144,7 @@ describe("EntityMetadata > convertColumnsNames", () => {
 
 			expect(result instanceof SymbiosisError).toBeTruthy();
 			expect(result.message).toBe("Invalid column");
-			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM);
+			expect(result.code).toBe("INVALID_PARAM");
 			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual([
 				"Invalid column: id",

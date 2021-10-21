@@ -1,6 +1,5 @@
 import { getTypeof } from "@techmmunity/utils";
 import { SymbiosisError } from "../../../error";
-import { SymbiosisErrorCodeEnum } from "../../../error/types/error-code.enum";
 import { MetadataType } from "../../../entity-manager/types/metadata-type";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { MetadataName } from "../../../types/metadata-name";
@@ -33,7 +32,7 @@ const handleUnacceptedType = (
 
 	if (!acceptedTypes.includes("all") && !acceptedTypes.includes(typeName)) {
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE,
+			code: "INVALID_PARAM_TYPE",
 			origin: "SYMBIOSIS",
 			message: ERROR_MESSAGE,
 			details: [
@@ -79,7 +78,7 @@ export const getType = ({
 		 * When array, the type must be explicitly declared
 		 */
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE,
+			code: "INVALID_PARAM_TYPE",
 			origin: "SYMBIOSIS",
 			message: "You must explicitly declare array types",
 			details: [
@@ -119,7 +118,7 @@ export const getType = ({
 				};
 			default:
 				throw new SymbiosisError({
-					code: SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE,
+					code: "INVALID_PARAM_TYPE",
 					origin: "SYMBIOSIS",
 					message: ERROR_MESSAGE,
 					details: [
@@ -134,7 +133,7 @@ export const getType = ({
 	 * If the type cannot be guessed or isn't supported
 	 */
 	throw new SymbiosisError({
-		code: SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE,
+		code: "INVALID_PARAM_TYPE",
 		origin: "SYMBIOSIS",
 		message: ERROR_MESSAGE,
 		details: [

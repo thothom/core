@@ -1,7 +1,7 @@
 import { EntityManager } from "../../entity-manager";
-import { MetadataUtil, SymbiosisErrorCodeEnum } from "../../..";
 import { SymbiosisError } from "../../error";
 import { CustomClass } from "../../entity-manager/types/metadata-type";
+import { MetadataUtil } from "../metadata-util";
 
 interface GetMultipleLevelColumnNameParams {
 	entity: CustomClass;
@@ -46,7 +46,7 @@ const getColumnMetadata = (
 	} catch (err) {
 		throw new SymbiosisError({
 			message: "Invalid column",
-			code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+			code: "INVALID_PARAM",
 			origin: "SYMBIOSIS",
 			details: [
 				`Invalid column: ${currentColumnName}`,
@@ -106,7 +106,7 @@ export const getMultipleLevelColumnName = ({
 
 		throw new SymbiosisError({
 			message: "Invalid column",
-			code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+			code: "INVALID_PARAM",
 			origin: "SYMBIOSIS",
 			details: [
 				`Invalid column: ${currentColumnName}`,

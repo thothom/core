@@ -1,5 +1,4 @@
 import { SymbiosisError } from "../../../error";
-import { SymbiosisErrorCodeEnum } from "../../../error/types/error-code.enum";
 import { EntityMetadata } from "../../../entity-manager/types/entity-metadata";
 import { MetadataUtil } from "../../../utils/metadata-util";
 
@@ -19,7 +18,7 @@ export const addEntityMetadata = ({
 
 	if (!columns) {
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.MISSING_DECORATOR,
+			code: "MISSING_DECORATOR",
 			message: "Entity must have at least one column",
 			origin: "SYMBIOSIS",
 			details: [`Entity: ${entityConstructor.name}`],

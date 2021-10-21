@@ -1,7 +1,7 @@
-import { SymbiosisErrorCodeEnum } from "./types/error-code.enum";
+import { SymbiosisErrorCode } from "../types/error-code";
 
 interface CustomErrorParams {
-	code: SymbiosisErrorCodeEnum;
+	code: SymbiosisErrorCode;
 	origin: "DATABASE" | "SYMBIOSIS";
 	message: string;
 	details: Array<any>;

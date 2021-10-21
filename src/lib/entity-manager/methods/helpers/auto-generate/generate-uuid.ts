@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 import { SymbiosisError } from "../../../../error";
-import { SymbiosisErrorCodeEnum } from "../../../../error/types/error-code.enum";
 
 export const generateUuid = (
 	/*
@@ -19,7 +18,7 @@ export const generateUuid = (
 		return v4();
 	} catch (_) {
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+			code: "INVALID_PARAM",
 			message: "Invalid param",
 			origin: "SYMBIOSIS",
 			details: [

@@ -1,7 +1,7 @@
 import { EntityManager } from "../../entity-manager";
-import { MetadataUtil, SymbiosisErrorCodeEnum } from "../../..";
 import { SymbiosisError } from "../../error";
 import { CustomClass } from "../../entity-manager/types/metadata-type";
+import { MetadataUtil } from "../metadata-util";
 
 interface ErrorOptions {
 	ifLastFieldIsSubEntity?: {
@@ -35,7 +35,7 @@ export const getColumnDatabaseName = ({
 	) {
 		throw new SymbiosisError({
 			message: ifLastFieldIsSubEntity.message,
-			code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+			code: "INVALID_PARAM",
 			origin: "SYMBIOSIS",
 			details: ifLastFieldIsSubEntity.getDetails(columnName),
 		});
