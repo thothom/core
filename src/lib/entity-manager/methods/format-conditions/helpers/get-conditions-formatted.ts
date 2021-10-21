@@ -4,7 +4,7 @@ import { EntityManager } from "../../..";
 import { ArrayFindConditions } from "../../../../repository/types/find-conditions";
 import { DatabaseEntity } from "../../../../types/database-entity";
 import { MetadataUtil } from "../../../../utils/metadata-util";
-import { isFindOperator } from "../../../../utils/validations/is-find-operator";
+import { isFindOperator } from "../../../../utils/operators/is-find-operator";
 import { IncrementedEntitiesMetadata } from "../../../types/manager-metadata";
 import { CustomClass } from "../../../types/metadata-type";
 

@@ -2,9 +2,9 @@ import { IfNotExists } from "../../../../lib/repository/operators/save/if-not-ex
 
 describe("Repository > SaveOperators > IfNotExists", () => {
 	it("should create a IfNotExists operator", () => {
-		const operator = IfNotExists();
+		const operator = IfNotExists("abc");
 
-		expect(operator.type).toBe("if-not-exists");
-		expect(operator.values).toStrictEqual([]);
+		expect(operator.type).toBe("ifNotExists");
+		expect(operator.values).toStrictEqual(["abc"]);
 	});
 });

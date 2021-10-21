@@ -3,9 +3,10 @@
  */
 export type SaveOperatorType =
 	| "append"
-	| "if-not-exists"
+	| "ifNotExists"
 	| "max"
 	| "min"
 	| "minus"
 	| "plus"
+	| "pop"
 	| "remove";

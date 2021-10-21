@@ -10,7 +10,7 @@ import { MoreThan } from "../../../lib/repository/operators/find/more-than";
 import { MoreThanOrEqual } from "../../../lib/repository/operators/find/more-than-or-equal";
 import { Not } from "../../../lib/repository/operators/find/not";
 import { StartsWith } from "../../../lib/repository/operators/find/starts-with";
-import { isFindOperator } from "../../../lib/utils/validations/is-find-operator";
+import { isFindOperator } from "../../../lib/utils/operators/is-find-operator";
 
 describe("Utils > Validations > isFindOperator", () => {
 	describe("With find operators", () => {

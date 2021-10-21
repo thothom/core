@@ -61,6 +61,7 @@ export * from "./lib/repository/types/find-options";
  */
 
 export * from "./lib/repository/operators/find/base";
+
 export * from "./lib/repository/operators/find/between";
 export * from "./lib/repository/operators/find/ends-with";
 export * from "./lib/repository/operators/find/exist";
@@ -79,12 +80,15 @@ export * from "./lib/repository/operators/find/starts-with";
  * SaveOperators
  */
 
+export * from "./lib/repository/operators/save/base";
+
 export * from "./lib/repository/operators/save/append";
 export * from "./lib/repository/operators/save/if-not-exists";
 export * from "./lib/repository/operators/save/max";
 export * from "./lib/repository/operators/save/min";
 export * from "./lib/repository/operators/save/minus";
 export * from "./lib/repository/operators/save/plus";
+export * from "./lib/repository/operators/save/pop";
 export * from "./lib/repository/operators/save/remove";
 
 /**
@@ -132,3 +136,11 @@ export * from "./lib/types/class-type";
  */
 
 export * from "./lib/utils/metadata-util";
+
+/**
+ * Operators
+ */
+
+export * from "./lib/utils/operators/is-operator";
+export * from "./lib/utils/operators/is-find-operator";
+export * from "./lib/utils/operators/is-save-operator";

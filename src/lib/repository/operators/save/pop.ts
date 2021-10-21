@@ -1,11 +1,11 @@
 import { SaveOperator } from "./base";
 
 /**
- * Only sets the column if it NOT already exists
+ * Removes elements of a list
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const IfNotExists = (value: any) =>
+export const Pop = <T>(...value: Array<T>) =>
 	new SaveOperator({
-		type: "ifNotExists",
-		values: [value],
+		type: "pop",
+		values: value,
 	});
