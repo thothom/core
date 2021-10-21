@@ -1,6 +1,6 @@
-import { MoreThan } from "../../../../lib/repository/queries/find-operators/more-than";
+import { MoreThan } from "../../../../lib/repository/operators/find/more-than";
 
-describe("Repository > Queries > Find > Operators > MoreThan", () => {
+describe("Repository > FindOperators > MoreThan", () => {
 	it("should create a MoreThan operator", () => {
 		const operator = MoreThan(1);
 

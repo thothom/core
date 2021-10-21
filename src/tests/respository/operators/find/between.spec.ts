@@ -1,6 +1,6 @@
-import { Between } from "../../../../lib/repository/queries/find-operators/between";
+import { Between } from "../../../../lib/repository/operators/find/between";
 
-describe("Repository > Queries > Find > Operators > Between", () => {
+describe("Repository > FindOperators > Between", () => {
 	it("should create a Between operator", () => {
 		const operator = Between(1, 10);
 

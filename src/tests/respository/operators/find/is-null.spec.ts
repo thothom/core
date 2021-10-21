@@ -1,6 +1,6 @@
-import { IsNull } from "../../../../lib/repository/queries/find-operators/is-null";
+import { IsNull } from "../../../../lib/repository/operators/find/is-null";
 
-describe("Repository > Queries > Find > Operators > IsNull", () => {
+describe("Repository > FindOperators > IsNull", () => {
 	it("should create a IsNull operator", () => {
 		const operator = IsNull();
 

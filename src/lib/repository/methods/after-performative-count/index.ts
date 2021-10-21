@@ -1,6 +1,6 @@
-import { FindConditions } from "../../queries/types/find-conditions";
+import { FindConditions } from "../../types/find-conditions";
 import { EntityManager } from "../../../entity-manager";
-import { BaseQueryOptions } from "../../queries/types/query-options";
+import { BaseQueryOptions } from "../../types/query-options";
 
 interface Injectables {
 	entityManager: EntityManager;

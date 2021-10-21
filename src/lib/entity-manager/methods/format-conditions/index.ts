@@ -1,6 +1,6 @@
 import { getTypeof } from "@techmmunity/utils";
 import { EntityManager } from "../..";
-import { FindConditions } from "../../../repository/queries/types/find-conditions";
+import { FindConditions } from "../../../repository/types/find-conditions";
 import { DatabaseEntity } from "../../../types/database-entity";
 import { CustomClass } from "../../types/metadata-type";
 import { getConditionsArray } from "./helpers/get-conditions-array";

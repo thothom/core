@@ -1,6 +1,6 @@
-import { Exist } from "../../../../lib/repository/queries/find-operators/exist";
+import { Exist } from "../../../../lib/repository/operators/find/exist";
 
-describe("Repository > Queries > Find > Operators > Exist", () => {
+describe("Repository > FindOperators > Exist", () => {
 	it("should create a Exist operator", () => {
 		const operator = Exist();
 

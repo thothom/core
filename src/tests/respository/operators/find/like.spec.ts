@@ -1,6 +1,6 @@
-import { Like } from "../../../../lib/repository/queries/find-operators/like";
+import { Like } from "../../../../lib/repository/operators/find/like";
 
-describe("Repository > Queries > Find > Operators > Like", () => {
+describe("Repository > FindOperators > Like", () => {
 	it("should create a Like operator", () => {
 		const operator = Like("foo");
 

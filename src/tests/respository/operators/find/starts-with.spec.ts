@@ -1,6 +1,6 @@
-import { StartsWith } from "../../../../lib/repository/queries/find-operators/starts-with";
+import { StartsWith } from "../../../../lib/repository/operators/find/starts-with";
 
-describe("Repository > Queries > Find > Operators > StartsWith", () => {
+describe("Repository > FindOperators > StartsWith", () => {
 	it("should create a StartsWith operator", () => {
 		const operator = StartsWith("foo");
 

@@ -1,6 +1,6 @@
-import { EndsWith } from "../../../../lib/repository/queries/find-operators/ends-with";
+import { EndsWith } from "../../../../lib/repository/operators/find/ends-with";
 
-describe("Repository > Queries > Find > Operators > EndsWith", () => {
+describe("Repository > FindOperators > EndsWith", () => {
 	it("should create a EndsWith operator", () => {
 		const operator = EndsWith("foo");
 

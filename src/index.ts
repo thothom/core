@@ -47,33 +47,39 @@ export * from "./lib/connection/types/connection-options";
  */
 
 export * from "./lib/repository";
-export * from "./lib/repository/queries/types/query-options";
+export * from "./lib/repository/types/query-options";
 
 /**
  * FindOptions
  */
 
-export * from "./lib/repository/queries/types/find-conditions";
-export * from "./lib/repository/queries/types/find-options";
+export * from "./lib/repository/types/find-conditions";
+export * from "./lib/repository/types/find-options";
 
 /**
  * FindOperators
  */
 
-export * from "./lib/repository/queries/find-operators/base";
-export * from "./lib/repository/queries/find-operators/between";
-export * from "./lib/repository/queries/find-operators/ends-with";
-export * from "./lib/repository/queries/find-operators/exist";
-export * from "./lib/repository/queries/find-operators/in";
-export * from "./lib/repository/queries/find-operators/includes";
-export * from "./lib/repository/queries/find-operators/is-null";
-export * from "./lib/repository/queries/find-operators/less-than";
-export * from "./lib/repository/queries/find-operators/less-than-or-equal";
-export * from "./lib/repository/queries/find-operators/like";
-export * from "./lib/repository/queries/find-operators/more-than";
-export * from "./lib/repository/queries/find-operators/more-than-or-equal";
-export * from "./lib/repository/queries/find-operators/not";
-export * from "./lib/repository/queries/find-operators/starts-with";
+export * from "./lib/repository/operators/find/base";
+export * from "./lib/repository/operators/find/between";
+export * from "./lib/repository/operators/find/ends-with";
+export * from "./lib/repository/operators/find/exist";
+export * from "./lib/repository/operators/find/in";
+export * from "./lib/repository/operators/find/includes";
+export * from "./lib/repository/operators/find/is-null";
+export * from "./lib/repository/operators/find/less-than";
+export * from "./lib/repository/operators/find/less-than-or-equal";
+export * from "./lib/repository/operators/find/like";
+export * from "./lib/repository/operators/find/more-than";
+export * from "./lib/repository/operators/find/more-than-or-equal";
+export * from "./lib/repository/operators/find/not";
+export * from "./lib/repository/operators/find/starts-with";
+
+/**
+ * SaveOperators
+ */
+
+export * from "./lib/repository/operators/save/remove";
 
 /**
  * ---------------------------------------------------------------------------

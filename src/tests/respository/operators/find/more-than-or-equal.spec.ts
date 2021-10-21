@@ -1,6 +1,6 @@
-import { MoreThanOrEqual } from "../../../../lib/repository/queries/find-operators/more-than-or-equal";
+import { MoreThanOrEqual } from "../../../../lib/repository/operators/find/more-than-or-equal";
 
-describe("Repository > Queries > Find > Operators > MoreThanOrEqual", () => {
+describe("Repository > FindOperators > MoreThanOrEqual", () => {
 	it("should create a MoreThanOrEqual operator", () => {
 		const operator = MoreThanOrEqual(1);
 
