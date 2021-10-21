@@ -144,8 +144,12 @@
 - [x] Add "databaseType" to ColumnOptions
 - [x] Add "Save Operators"
   - [x] `Remove` -> deletes a column from a record
-  - [ ] `Plus` -> Sets the value of a column as itself + the value passed as param
-  - [ ] `Minus` -> Sets the value of a column as itself - the value passed as param
+  - [x] `Plus` -> Sets the value of a column as itself + the value passed as param
+  - [x] `Minus` -> Sets the value of a column as itself - the value passed as param
+  - [x] `Append` -> Add element to the end of a list
+  - [x] `Min` -> Changes the value of the column ONLY IF it's greater than the value specified
+  - [x] `Max` -> Changes the value of the column ONLY IF it's lower than the value specified
+  - [ ] `IfNotExists` -> Only sets the column if it NOT already exists
 - [ ] Change the way that prefix and suffix work
   - EntityToDatabase -> Will be applied BEFORE the naming strategy
   - DatabaseToEntity -> Will be applied AFTER the naming strategy

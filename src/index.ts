@@ -79,6 +79,12 @@ export * from "./lib/repository/operators/find/starts-with";
  * SaveOperators
  */
 
+export * from "./lib/repository/operators/save/append";
+export * from "./lib/repository/operators/save/if-not-exists";
+export * from "./lib/repository/operators/save/max";
+export * from "./lib/repository/operators/save/min";
+export * from "./lib/repository/operators/save/minus";
+export * from "./lib/repository/operators/save/plus";
 export * from "./lib/repository/operators/save/remove";
 
 /**
