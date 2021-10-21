@@ -1,16 +1,16 @@
 import { SymbiosisError } from "../../../../lib/error";
-import { Between } from "../../../../lib/repository/queries/find-operators/between";
-import { Exist } from "../../../../lib/repository/queries/find-operators/exist";
-import { In } from "../../../../lib/repository/queries/find-operators/in";
-import { IsNull } from "../../../../lib/repository/queries/find-operators/is-null";
-import { LessThan } from "../../../../lib/repository/queries/find-operators/less-than";
-import { LessThanOrEqual } from "../../../../lib/repository/queries/find-operators/less-than-or-equal";
-import { Like } from "../../../../lib/repository/queries/find-operators/like";
-import { MoreThan } from "../../../../lib/repository/queries/find-operators/more-than";
-import { MoreThanOrEqual } from "../../../../lib/repository/queries/find-operators/more-than-or-equal";
-import { Not } from "../../../../lib/repository/queries/find-operators/not";
+import { Between } from "../../../../lib/repository/operators/find/between";
+import { Exist } from "../../../../lib/repository/operators/find/exist";
+import { In } from "../../../../lib/repository/operators/find/in";
+import { IsNull } from "../../../../lib/repository/operators/find/is-null";
+import { LessThan } from "../../../../lib/repository/operators/find/less-than";
+import { LessThanOrEqual } from "../../../../lib/repository/operators/find/less-than-or-equal";
+import { Like } from "../../../../lib/repository/operators/find/like";
+import { MoreThan } from "../../../../lib/repository/operators/find/more-than";
+import { MoreThanOrEqual } from "../../../../lib/repository/operators/find/more-than-or-equal";
+import { Not } from "../../../../lib/repository/operators/find/not";
 
-describe("Repository > Queries > Find > Operators > Not", () => {
+describe("Repository > FindOperators > Not", () => {
 	describe("Valid Simple Values", () => {
 		it("should create a Not operator with a string", () => {
 			const operator = Not("foo");

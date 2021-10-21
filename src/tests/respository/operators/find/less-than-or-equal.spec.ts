@@ -1,6 +1,6 @@
-import { LessThanOrEqual } from "../../../../lib/repository/queries/find-operators/less-than-or-equal";
+import { LessThanOrEqual } from "../../../../lib/repository/operators/find/less-than-or-equal";
 
-describe("Repository > Queries > Find > Operators > LessThanOrEqual", () => {
+describe("Repository > FindOperators > LessThanOrEqual", () => {
 	it("should create a LessThanOrEqual operator", () => {
 		const operator = LessThanOrEqual(1);
 

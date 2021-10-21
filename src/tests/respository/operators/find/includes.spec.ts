@@ -1,6 +1,6 @@
-import { Includes } from "../../../../lib/repository/queries/find-operators/includes";
+import { Includes } from "../../../../lib/repository/operators/find/includes";
 
-describe("Repository > Queries > Find > Operators > Includes", () => {
+describe("Repository > FindOperators > Includes", () => {
 	it("should create a Includes operator", () => {
 		const operator = Includes(["foo", 10]);
 

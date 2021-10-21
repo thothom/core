@@ -1,4 +1,4 @@
-import { FindOperator } from "../find-operators/base";
+import { FindOperator } from "../operators/find/base";
 
 type InternalFindConditions<T> = {
 	[P in keyof T]?: FindOperator | T[P];

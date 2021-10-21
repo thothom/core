@@ -23,12 +23,12 @@ import { BeforeSaveParams } from "../../lib/repository/methods/before-save";
 import { BeforeSoftDeleteParams } from "../../lib/repository/methods/before-soft-delete";
 import { BeforeUpdateParams } from "../../lib/repository/methods/before-update";
 import { BeforeUpsertParams } from "../../lib/repository/methods/before-upsert";
-import { FindConditions } from "../../lib/repository/queries/types/find-conditions";
+import { FindConditions } from "../../lib/repository/types/find-conditions";
 import {
 	FindOptions,
 	FindOneOptions,
-} from "../../lib/repository/queries/types/find-options";
-import { BaseQueryOptions } from "../../lib/repository/queries/types/query-options";
+} from "../../lib/repository/types/find-options";
+import { BaseQueryOptions } from "../../lib/repository/types/query-options";
 import { ClassType } from "../../lib/types/class-type";
 
 const ERROR_MESSAGE = "Method not implemented.";

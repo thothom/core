@@ -1,15 +1,15 @@
-import { Between } from "../../../lib/repository/queries/find-operators/between";
-import { EndsWith } from "../../../lib/repository/queries/find-operators/ends-with";
-import { Exist } from "../../../lib/repository/queries/find-operators/exist";
-import { In } from "../../../lib/repository/queries/find-operators/in";
-import { IsNull } from "../../../lib/repository/queries/find-operators/is-null";
-import { LessThan } from "../../../lib/repository/queries/find-operators/less-than";
-import { LessThanOrEqual } from "../../../lib/repository/queries/find-operators/less-than-or-equal";
-import { Like } from "../../../lib/repository/queries/find-operators/like";
-import { MoreThan } from "../../../lib/repository/queries/find-operators/more-than";
-import { MoreThanOrEqual } from "../../../lib/repository/queries/find-operators/more-than-or-equal";
-import { Not } from "../../../lib/repository/queries/find-operators/not";
-import { StartsWith } from "../../../lib/repository/queries/find-operators/starts-with";
+import { Between } from "../../../lib/repository/operators/find/between";
+import { EndsWith } from "../../../lib/repository/operators/find/ends-with";
+import { Exist } from "../../../lib/repository/operators/find/exist";
+import { In } from "../../../lib/repository/operators/find/in";
+import { IsNull } from "../../../lib/repository/operators/find/is-null";
+import { LessThan } from "../../../lib/repository/operators/find/less-than";
+import { LessThanOrEqual } from "../../../lib/repository/operators/find/less-than-or-equal";
+import { Like } from "../../../lib/repository/operators/find/like";
+import { MoreThan } from "../../../lib/repository/operators/find/more-than";
+import { MoreThanOrEqual } from "../../../lib/repository/operators/find/more-than-or-equal";
+import { Not } from "../../../lib/repository/operators/find/not";
+import { StartsWith } from "../../../lib/repository/operators/find/starts-with";
 import { isFindOperator } from "../../../lib/utils/validations/is-find-operator";
 
 describe("Utils > Validations > isFindOperator", () => {

@@ -1,6 +1,6 @@
-import { LessThan } from "../../../../lib/repository/queries/find-operators/less-than";
+import { LessThan } from "../../../../lib/repository/operators/find/less-than";
 
-describe("Repository > Queries > Find > Operators > LessThan", () => {
+describe("Repository > FindOperators > LessThan", () => {
 	it("should create a LessThan operator", () => {
 		const operator = LessThan(1);
 

@@ -1,7 +1,7 @@
 import { EntityManager } from "../../../entity-manager";
 import { DatabaseEntity } from "../../../types/database-entity";
-import { FindOptions } from "../../queries/types/find-options";
-import { BaseQueryOptions } from "../../queries/types/query-options";
+import { FindOptions } from "../../types/find-options";
+import { BaseQueryOptions } from "../../types/query-options";
 import { formatData } from "./helpers/format-data";
 
 interface Injectables {

@@ -1,7 +1,7 @@
 import { getTypeof } from "@techmmunity/utils";
 import { formatConditions } from "..";
 import { EntityManager } from "../../..";
-import { ArrayFindConditions } from "../../../../repository/queries/types/find-conditions";
+import { ArrayFindConditions } from "../../../../repository/types/find-conditions";
 import { DatabaseEntity } from "../../../../types/database-entity";
 import { MetadataUtil } from "../../../../utils/metadata-util";
 import { isFindOperator } from "../../../../utils/validations/is-find-operator";

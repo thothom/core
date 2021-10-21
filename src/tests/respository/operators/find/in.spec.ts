@@ -1,6 +1,6 @@
-import { In } from "../../../../lib/repository/queries/find-operators/in";
+import { In } from "../../../../lib/repository/operators/find/in";
 
-describe("Repository > Queries > Find > Operators > In", () => {
+describe("Repository > FindOperators > In", () => {
 	it("should create a In operator", () => {
 		const operator = In([1, 10]);
 

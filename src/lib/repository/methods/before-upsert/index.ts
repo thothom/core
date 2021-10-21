@@ -1,6 +1,6 @@
 import { EntityManager } from "../../../entity-manager";
-import { FindConditions } from "../../queries/types/find-conditions";
-import { BaseQueryOptions } from "../../queries/types/query-options";
+import { FindConditions } from "../../types/find-conditions";
+import { BaseQueryOptions } from "../../types/query-options";
 import { formatData } from "./helpers/format-data";
 import { DatabaseEntity } from "../../../types/database-entity";
 import { ClassType } from "../../../types/class-type";

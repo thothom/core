@@ -1,7 +1,7 @@
 import { Column } from "../../../lib/decorators/columns/column";
 import { Entity } from "../../../lib/decorators/entity";
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/columns/primary-generated-column";
-import { MoreThan } from "../../../lib/repository/queries/find-operators/more-than";
+import { MoreThan } from "../../../lib/repository/operators/find/more-than";
 import { TestConnection } from "../../constants/test-connection";
 import { TestRepository } from "../../constants/test-repository";
 

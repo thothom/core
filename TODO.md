@@ -125,8 +125,6 @@
     - [ ] "how to work with multiple value types for the same field"
     - [ ] "how to work with the same table for multiple entities" / "how to work with a table that have multiple entities schemas"
     - [ ] "how to work with array columns that can have multiple types" (Ex: `column: Array<Entity1 | Entity2>`)
-- [ ] Add "Save Operators"
-  - [ ] `Remove` -> deletes a column
 
 ## To Do Future
 
@@ -135,9 +133,6 @@
 - [x] Review column name converter
   - SubEntity columns also should be converted?
     - Yes, they will be converted, only the prefixes aren't will be applied
-- [ ] Change the way that prefix and suffix work
-  - EntityToDatabase -> Will be applied BEFORE the naming strategy
-  - DatabaseToEntity -> Will be applied AFTER the naming strategy
 - [x] Add "comment" option to "@Column" decorator
   - Will receive a comment about the column
 - [x] Add "enum" option to "@Column" decorator
@@ -147,6 +142,13 @@
 - [x] Add `@Index` decorator
 - [x] Add "index" to FindOptions
 - [x] Add "databaseType" to ColumnOptions
+- [x] Add "Save Operators"
+  - [x] `Remove` -> deletes a column from a record
+  - [ ] `Plus` -> Sets the value of a column as itself + the value passed as param
+  - [ ] `Minus` -> Sets the value of a column as itself - the value passed as param
+- [ ] Change the way that prefix and suffix work
+  - EntityToDatabase -> Will be applied BEFORE the naming strategy
+  - DatabaseToEntity -> Will be applied AFTER the naming strategy
 - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - This column will be auto-generated **on save**
 - [ ] Add entities auto-import from string path, like TypeORM

@@ -2,14 +2,14 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/naming-convention */
 
-import { Like } from "../../../lib/repository/queries/find-operators/like";
-import { In } from "../../../lib/repository/queries/find-operators/in";
+import { Like } from "../../../lib/repository/operators/find/like";
+import { In } from "../../../lib/repository/operators/find/in";
 import { Column } from "../../../lib/decorators/columns/column";
 import { Entity } from "../../../lib/decorators/entity";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { TestConnection } from "../../constants/test-connection";
-import { MoreThan } from "../../../lib/repository/queries/find-operators/more-than";
-import { Exist } from "../../../lib/repository/queries/find-operators/exist";
+import { MoreThan } from "../../../lib/repository/operators/find/more-than";
+import { Exist } from "../../../lib/repository/operators/find/exist";
 
 const createConnection = (entities: Array<any>) =>
 	new TestConnection({
