@@ -2,7 +2,6 @@
 
 import { BaseConnectionOptions } from "../connection/types/connection-options";
 import { SymbiosisError } from "../error";
-import { SymbiosisErrorCodeEnum } from "../error/types/error-code.enum";
 import { Logger } from "../logger";
 import { DatabaseEntity } from "../types/database-entity";
 import {
@@ -129,7 +128,7 @@ export class EntityManager<
 		if (!entityMetadata) {
 			throw new SymbiosisError({
 				message: "Entity not Registered",
-				code: SymbiosisErrorCodeEnum.ENTITY_ERROR,
+				code: "ENTITY_ERROR",
 				origin: "SYMBIOSIS",
 				details: ["Entity: ", entity],
 			});
@@ -148,7 +147,7 @@ export class EntityManager<
 		if (!columnMetadata) {
 			throw new SymbiosisError({
 				message: "Column not found",
-				code: SymbiosisErrorCodeEnum.COLUMN_ERROR,
+				code: "COLUMN_ERROR",
 				origin: "SYMBIOSIS",
 				details: ["Entity: ", entity, "Column: ", columnName],
 			});

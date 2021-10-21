@@ -35,4 +35,8 @@ export enum SymbiosisErrorCodeEnum {
 	 * Plugin
 	 */
 	NOT_IMPLEMENTED = "NOT_IMPLEMENTED",
+	/**
+	 * Database
+	 */
+	OPERATION_FAILED = "OPERATION_FAILED",
 }

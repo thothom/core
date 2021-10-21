@@ -1,5 +1,4 @@
 import { getTypeof } from "@techmmunity/utils";
-import { SymbiosisErrorCodeEnum } from "../../../../..";
 import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
 import { SymbiosisError } from "../../../../error";
 import { ColumnMetadata } from "../../../types/column-metadata";
@@ -41,7 +40,7 @@ export const autoGenerate = ({
 
 		default:
 			throw new SymbiosisError({
-				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				code: "INVALID_PARAM",
 				origin: "SYMBIOSIS",
 				message: "Invalid auto generation method",
 				details: [

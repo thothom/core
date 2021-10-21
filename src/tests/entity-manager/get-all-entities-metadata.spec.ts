@@ -2,7 +2,6 @@ import { Column } from "../../lib/decorators/columns/column";
 import { Entity } from "../../lib/decorators/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
 import { SymbiosisError } from "../../lib/error";
-import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
@@ -330,7 +329,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 
 		expect(result instanceof SymbiosisError).toBe(true);
 		expect(result.message).toBe("Duplicated Entity");
-		expect(result.code).toBe(SymbiosisErrorCodeEnum.DUPLICATED_ENTITY);
+		expect(result.code).toBe("DUPLICATED_ENTITY");
 		expect(result.origin).toBe("SYMBIOSIS");
 		expect(result.details).toStrictEqual(["Entity: TestEntity"]);
 	});

@@ -1,6 +1,6 @@
-import { SymbiosisError, SymbiosisErrorCodeEnum } from "../../..";
 import { Column } from "../../../lib/decorators/columns/column";
 import { Entity } from "../../../lib/decorators/entity";
+import { SymbiosisError } from "../../../lib/error";
 import { getMultipleLevelColumnName } from "../../../lib/utils/convert/get-multiple-level-column-name";
 import { TestConnection } from "../../constants/test-connection";
 
@@ -87,7 +87,7 @@ describe("getMultipleLevelColumnName", () => {
 
 			expect(result instanceof SymbiosisError).toBeTruthy();
 			expect(result.message).toBe("Invalid column");
-			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM);
+			expect(result.code).toBe("INVALID_PARAM");
 			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual([
 				"Invalid column: subEntities",

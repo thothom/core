@@ -1,5 +1,4 @@
 import { SymbiosisError } from "../../../error";
-import { SymbiosisErrorCodeEnum } from "../../../error/types/error-code.enum";
 import { FindOperator } from "./base";
 import { FindOperatorType } from "./base/find-operators-type";
 
@@ -12,7 +11,7 @@ const handleTypeError = (type: FindOperatorType) => {
 		case "lessThan":
 			throw new SymbiosisError({
 				message: ERROR_MESSAGE,
-				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				code: "INVALID_PARAM",
 				origin: "SYMBIOSIS",
 				details: [
 					"Not operator should not be used with LessThan operator, use MoreThanOrEqual operator instead",
@@ -21,7 +20,7 @@ const handleTypeError = (type: FindOperatorType) => {
 		case "lessThanOrEqual":
 			throw new SymbiosisError({
 				message: ERROR_MESSAGE,
-				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				code: "INVALID_PARAM",
 				origin: "SYMBIOSIS",
 				details: [
 					"Not operator should not be used with LessThanOrEqual operator, use MoreThan operator instead",
@@ -30,7 +29,7 @@ const handleTypeError = (type: FindOperatorType) => {
 		case "moreThan":
 			throw new SymbiosisError({
 				message: ERROR_MESSAGE,
-				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				code: "INVALID_PARAM",
 				origin: "SYMBIOSIS",
 				details: [
 					"Not operator should not be used with MoreThan operator, use LessThanOrEqual operator instead",
@@ -39,7 +38,7 @@ const handleTypeError = (type: FindOperatorType) => {
 		case "moreThanOrEqual":
 			throw new SymbiosisError({
 				message: ERROR_MESSAGE,
-				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				code: "INVALID_PARAM",
 				origin: "SYMBIOSIS",
 				details: [
 					"Not operator should not be used with LessThanOrEqual operator, use LessThan operator instead",
@@ -48,7 +47,7 @@ const handleTypeError = (type: FindOperatorType) => {
 		case "not":
 			throw new SymbiosisError({
 				message: ERROR_MESSAGE,
-				code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+				code: "INVALID_PARAM",
 				origin: "SYMBIOSIS",
 				details: ["Not operator should not be used with Not operator"],
 			});

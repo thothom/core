@@ -1,6 +1,5 @@
 import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
 import { SymbiosisError } from "../../../../error";
-import { SymbiosisErrorCodeEnum } from "../../../../error/types/error-code.enum";
 import { Logger } from "../../../../logger";
 import { MetadataUtil } from "../../../../utils/metadata-util";
 import { ColumnMetadata } from "../../../types/column-metadata";
@@ -31,7 +30,7 @@ export const getEntitiesMetadata = ({
 		if (entities[metadata.name]) {
 			throw new SymbiosisError({
 				message: "Duplicated Entity",
-				code: SymbiosisErrorCodeEnum.DUPLICATED_ENTITY,
+				code: "DUPLICATED_ENTITY",
 				origin: "SYMBIOSIS",
 				details: [`Entity: ${metadata.name}`],
 			});

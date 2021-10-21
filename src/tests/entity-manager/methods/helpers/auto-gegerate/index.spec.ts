@@ -1,5 +1,5 @@
-import { SymbiosisError, SymbiosisErrorCodeEnum } from "../../../../..";
 import { autoGenerate } from "../../../../../lib/entity-manager/methods/helpers/auto-generate";
+import { SymbiosisError } from "../../../../../lib/error";
 
 describe("autoGenerate", () => {
 	describe("With custom function", () => {
@@ -79,7 +79,7 @@ describe("autoGenerate", () => {
 
 			expect(result instanceof SymbiosisError).toBeTruthy();
 			expect(result.message).toBe("Invalid auto generation method");
-			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM);
+			expect(result.code).toBe("INVALID_PARAM");
 			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(["Entity: Foo", "Column: foo"]);
 		});

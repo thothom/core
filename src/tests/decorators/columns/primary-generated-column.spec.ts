@@ -1,6 +1,5 @@
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/columns/primary-generated-column";
 import { SymbiosisError } from "../../../lib/error";
-import { SymbiosisErrorCodeEnum } from "../../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../../lib/utils/metadata-util";
 
 describe("Decorators > PrimaryGeneratedColumn", () => {
@@ -199,7 +198,7 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 
 			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.code).toBe("INVALID_PARAM_TYPE");
 			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(ERROR_DETAILS);
 		});
@@ -223,7 +222,7 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 
 			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.code).toBe("INVALID_PARAM_TYPE");
 			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(ERROR_DETAILS);
 		});
@@ -247,7 +246,7 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 
 			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.code).toBe("INVALID_PARAM_TYPE");
 			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(ERROR_DETAILS);
 		});
@@ -273,7 +272,7 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 
 			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
-			expect(result.code).toBe(SymbiosisErrorCodeEnum.INVALID_PARAM_TYPE);
+			expect(result.code).toBe("INVALID_PARAM_TYPE");
 			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(ERROR_DETAILS);
 		});

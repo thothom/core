@@ -1,7 +1,6 @@
 import { Column } from "../../lib/decorators/columns/column";
 import { Entity } from "../../lib/decorators/entity";
 import { SymbiosisError } from "../../lib/error";
-import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { MetadataUtil } from "../../lib/utils/metadata-util";
 
 describe("Decorators > Entity", () => {
@@ -163,7 +162,7 @@ describe("Decorators > Entity", () => {
 
 			expect(result instanceof SymbiosisError).toBe(true);
 			expect(result.message).toBe("Entity must have at least one column");
-			expect(result.code).toBe(SymbiosisErrorCodeEnum.MISSING_DECORATOR);
+			expect(result.code).toBe("MISSING_DECORATOR");
 			expect(result.origin).toBe("SYMBIOSIS");
 			expect(result.details).toStrictEqual(["Entity: Test"]);
 		});

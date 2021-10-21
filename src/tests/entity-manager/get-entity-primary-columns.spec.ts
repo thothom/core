@@ -2,7 +2,6 @@ import { Column } from "../../lib/decorators/columns/column";
 import { Entity } from "../../lib/decorators/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
 import { SymbiosisError } from "../../lib/error";
-import { SymbiosisErrorCodeEnum } from "../../lib/error/types/error-code.enum";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getEntityPrimaryColumns", () => {
@@ -88,7 +87,7 @@ describe("EntityManager > getEntityPrimaryColumns", () => {
 
 		expect(result instanceof SymbiosisError).toBe(true);
 		expect(result.message).toBe("Entity not Registered");
-		expect(result.code).toBe(SymbiosisErrorCodeEnum.ENTITY_ERROR);
+		expect(result.code).toBe("ENTITY_ERROR");
 		expect(result.origin).toBe("SYMBIOSIS");
 		expect(result.details).toStrictEqual(["Entity: ", TestEntity]);
 	});

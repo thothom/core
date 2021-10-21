@@ -84,7 +84,7 @@ export * from "./lib/repository/queries/find-operators/starts-with";
  */
 
 export * from "./lib/error";
-export * from "./lib/error/types/error-code.enum";
+export * from "./lib/types/error-code";
 
 /**
  * ---------------------------------------------------------------------------
