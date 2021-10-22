@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/cognitive-complexity */
+
 import { cleanObj, getTypeof } from "@techmmunity/utils";
 import { EntityManager } from "../../../entity-manager";
 import { MetadataUtil } from "../../../utils/metadata-util";
@@ -7,17 +9,18 @@ import { BaseConnectionOptions } from "../../../connection/types/connection-opti
 import { CustomClass } from "../../types/metadata-type";
 import { autoGenerate } from "../helpers/auto-generate";
 import { handleCustomMetadata } from "./helpers/handle-custom-metadata";
-import { ClassType } from "../../../types/class-type";
+import { SingleSaveData } from "../../../repository/types/save-conditions";
+import { isSaveOperator } from "../../../utils/operators/is-save-operator";
+import { isFindOperator } from "../../../utils/operators/is-find-operator";
 
 interface Injectables {
 	entityManager: EntityManager;
 	connectionOptions: BaseConnectionOptions;
 }
 
-// eslint-disable-next-line import/exports-last
 export interface AutoGenerateEntityToDatabaseParams<Entity> {
 	entity: CustomClass;
-	data: ClassType<Entity>;
+	data: SingleSaveData<Entity>;
 	events: Array<DatabaseEvents>;
 }
 
@@ -30,6 +33,26 @@ export const recursiveAutoGenerateEntityToDatabase = <Entity>(
 	const entityMetadata = entityManager.getEntityMetadata(entity);
 
 	const result = entityMetadata.columns.reduce((acc, columnMetadata) => {
+		const key = columnMetadata.name as keyof Entity;
+
+		const value = data[key];
+
+		if (isFindOperator(value)) {
+			/**
+			 * Remove find operators
+			 * (It will be cleaned below, at cleanObj(result))
+			 */
+			acc[key] = undefined;
+
+			return acc;
+		}
+
+		if (isSaveOperator(value)) {
+			acc[key] = value;
+
+			return acc;
+		}
+
 		if (MetadataUtil.isCustomMetadataType(columnMetadata.type)) {
 			/*
 			 * ALERT: Mutability!
@@ -47,12 +70,26 @@ export const recursiveAutoGenerateEntityToDatabase = <Entity>(
 			return acc;
 		}
 
-		const key = columnMetadata.name as keyof Entity;
-
-		const value = data[key];
-
+		/**
+		 * Already has a value
+		 */
 		if (getTypeof(value) !== "undefined") {
 			acc[key] = value;
+
+			return acc;
+		}
+
+		/**
+		 * Has default value
+		 */
+		if (getTypeof(columnMetadata.defaultValue) !== "undefined") {
+			const defaultValue = columnMetadata.defaultValue;
+
+			if (typeof defaultValue === "function") {
+				acc[key] = defaultValue();
+			} else {
+				acc[key] = defaultValue;
+			}
 
 			return acc;
 		}

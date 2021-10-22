@@ -1,7 +1,7 @@
 import { EntityManager } from "../../../entity-manager";
-import { ClassType } from "../../../types/class-type";
 import { DatabaseEntity } from "../../../types/database-entity";
 import { BaseQueryOptions } from "../../types/query-options";
+import { SaveData } from "../../types/save-conditions";
 import { formatDataArray } from "./helpers/format-data-array";
 
 interface Injectables {
@@ -10,7 +10,7 @@ interface Injectables {
 }
 
 export interface BeforeInsertParams<Entity> {
-	data: Array<ClassType<Entity>> | ClassType<Entity>;
+	data: SaveData<Entity>;
 	options?: BaseQueryOptions;
 }
 

@@ -50,13 +50,6 @@ export * from "./lib/repository";
 export * from "./lib/repository/types/query-options";
 
 /**
- * FindOptions
- */
-
-export * from "./lib/repository/types/find-conditions";
-export * from "./lib/repository/types/find-options";
-
-/**
  * FindOperators
  */
 
@@ -122,6 +115,19 @@ export * from "./lib/logger/types/log-level";
  */
 
 export * from "./lib/types/class-type";
+
+/**
+ * FindOptions
+ */
+
+export * from "./lib/repository/types/find-conditions";
+export * from "./lib/repository/types/find-options";
+
+/**
+ * SaveOptions
+ */
+
+export * from "./lib/repository/types/save-conditions";
 
 /**
  * ---------------------------------------------------------------------------
