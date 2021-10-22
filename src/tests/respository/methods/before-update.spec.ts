@@ -27,7 +27,11 @@ describe("Repository > Methods > beforeUpdate", () => {
 			},
 		});
 
-		repository = new TestRepository(connection.entityManager, TestEntity);
+		repository = new TestRepository<TestEntity>(
+			connection.entityManager,
+			connection.logger,
+			TestEntity,
+		);
 	});
 
 	it("should auto-generate fields and convert to the database format", () => {
