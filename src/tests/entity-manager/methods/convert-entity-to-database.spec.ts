@@ -6,6 +6,7 @@ import { Column } from "../../../lib/decorators/columns/column";
 import { Entity } from "../../../lib/decorators/entity";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { TestConnection } from "../../constants/test-connection";
+import { Remove } from "../../../lib/repository/operators/save/remove";
 
 const createConnection = (entities: Array<any>) =>
 	new TestConnection({
@@ -105,6 +106,21 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({});
+		});
+
+		it("should convert data with save operators correctly", () => {
+			const result = connection.entityManager.convertEntityToDatabase({
+				entity: TestEntity,
+				data: {
+					id: "Test",
+					test: Remove(),
+				},
+			});
+
+			expect(result).toStrictEqual({
+				test_ID: "Test",
+				test_TEST: Remove(),
+			});
 		});
 	});
 
@@ -612,62 +628,6 @@ describe("EntityManager > convertEntityToDatabase", () => {
 						},
 					],
 				},
-			});
-		});
-	});
-
-	describe("Special Tests", () => {
-		it("should generate default column value (simple value)", () => {
-			@Entity()
-			class TestEntity {
-				@PrimaryColumn()
-				public id: string;
-
-				@Column({
-					defaultValue: "foo",
-				})
-				public test?: string;
-			}
-
-			const connection = createConnection([TestEntity]);
-
-			const result = connection.entityManager.convertEntityToDatabase({
-				entity: TestEntity,
-				data: {
-					id: "Test",
-				},
-			});
-
-			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_TEST: "foo",
-			});
-		});
-
-		it("should generate default column value (function)", () => {
-			@Entity()
-			class TestEntity {
-				@PrimaryColumn()
-				public id: string;
-
-				@Column({
-					defaultValue: () => "foo",
-				})
-				public test?: string;
-			}
-
-			const connection = createConnection([TestEntity]);
-
-			const result = connection.entityManager.convertEntityToDatabase({
-				entity: TestEntity,
-				data: {
-					id: "Test",
-				},
-			});
-
-			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_TEST: "foo",
 			});
 		});
 	});

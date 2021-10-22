@@ -3,7 +3,7 @@ import { EntityManager } from "../..";
 import { MetadataUtil } from "../../../utils/metadata-util";
 import { CustomClass } from "../../types/metadata-type";
 import { DatabaseEntity } from "../../../types/database-entity";
-import { generateDefaultValue } from "./helpers/generate-default-value";
+import { isSaveOperator } from "../../../utils/operators/is-save-operator";
 
 interface Injectables {
 	entityManager: EntityManager;
@@ -27,11 +27,11 @@ const recursiveConvertEntityToDatabase = (
 		const value = data[columnMetadata.name];
 
 		if (getTypeof(value) === "undefined") {
-			// Has mutability!!!
-			generateDefaultValue({
-				columnMetadata,
-				acc,
-			});
+			return acc;
+		}
+
+		if (isSaveOperator(value)) {
+			acc[columnMetadata.databaseName] = value;
 
 			return acc;
 		}

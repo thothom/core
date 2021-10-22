@@ -10,6 +10,8 @@ import { Entity } from "../../../lib/decorators/entity";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/columns/primary-generated-column";
 import { TestConnection } from "../../constants/test-connection";
+import { Remove } from "../../../lib/repository/operators/save/remove";
+import { IsNull } from "../../../lib/repository/operators/find/is-null";
 
 const createConnection = (entities: Array<any>) =>
 	new TestConnection({
@@ -17,7 +19,7 @@ const createConnection = (entities: Array<any>) =>
 	});
 
 describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
-	describe("Auto Generate Fields of Entity", () => {
+	describe("Auto generate columns of Entity", () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryGeneratedColumn()
@@ -66,6 +68,39 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			});
 		});
 
+		it("should maintain the value if is a SaveOperator", () => {
+			const result =
+				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
+					entity: TestEntity,
+					events: ["save"],
+					data: {
+						id: "NOT_AUTO_GENERATED",
+						test: Remove(),
+					},
+				});
+
+			expect(result).toStrictEqual({
+				id: "NOT_AUTO_GENERATED",
+				test: Remove(),
+			});
+		});
+
+		it("should remove the value if is a FindOperator", () => {
+			const result =
+				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
+					entity: TestEntity,
+					events: ["save"],
+					data: {
+						id: "NOT_AUTO_GENERATED",
+						test: IsNull() as any,
+					},
+				});
+
+			expect(result).toStrictEqual({
+				id: "NOT_AUTO_GENERATED",
+			});
+		});
+
 		it("should return undefined if receive undefined", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
@@ -78,7 +113,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 	});
 
-	describe("Auto Generate Fields of SubEntity (simple)", () => {
+	describe("Auto generate columns of SubEntity (simple)", () => {
 		@Entity({
 			isSubEntity: true,
 		})
@@ -169,7 +204,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 	});
 
-	describe("Auto Generate Fields of SubEntity (array of sub-entities)", () => {
+	describe("Auto generate columns of SubEntity (array of sub-entities)", () => {
 		@Entity({
 			isSubEntity: true,
 		})
@@ -235,7 +270,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 	});
 
-	describe("NOT Auto Generate Fields of SubEntity", () => {
+	describe("NOT auto generate columns of SubEntity", () => {
 		it("should NOT generate empty objects if sub-entity doesn't has any auto-generated field", () => {
 			let result: any;
 
@@ -383,7 +418,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 	});
 
-	describe("Auto Generate Fields of SubSubEntity", () => {
+	describe("Auto generate columns of SubSubEntity", () => {
 		@Entity({ isSubEntity: true })
 		class TestSubSubEntity {
 			@PrimaryGeneratedColumn()
@@ -457,7 +492,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 	});
 
-	describe("Only Generate Fields If Events Match (save)", () => {
+	describe("Only Generate columns If Events Match (save)", () => {
 		@Entity()
 		class TestEntity {
 			@Column()
@@ -504,7 +539,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 	});
 
-	describe("Only Generate Fields If Events Match (update)", () => {
+	describe("Only Generate columns If Events Match (update)", () => {
 		@Entity()
 		class TestEntity {
 			@Column()
@@ -551,7 +586,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 	});
 
-	describe("Only Generate Fields If Events Match (delete)", () => {
+	describe("Only Generate columns If Events Match (delete)", () => {
 		@Entity()
 		class TestEntity {
 			@Column()
@@ -594,6 +629,64 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			expect(result).toStrictEqual({
 				id: "foo",
+			});
+		});
+	});
+
+	describe("Auto generate columns with default value", () => {
+		it("should generate default column value (simple value)", () => {
+			@Entity()
+			class TestEntity {
+				@PrimaryColumn()
+				public id: string;
+
+				@Column({
+					defaultValue: "foo",
+				})
+				public test?: string;
+			}
+
+			const connection = createConnection([TestEntity]);
+
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
+				entity: TestEntity,
+				events: ["save"],
+				data: {
+					id: "Test",
+				},
+			});
+
+			expect(result).toStrictEqual({
+				id: "Test",
+				test: "foo",
+			});
+		});
+
+		it("should generate default column value (function)", () => {
+			@Entity()
+			class TestEntity {
+				@PrimaryColumn()
+				public id: string;
+
+				@Column({
+					defaultValue: () => "foo",
+				})
+				public test?: string;
+			}
+
+			const connection = createConnection([TestEntity]);
+
+			const result = connection.entityManager.autoGenerateEntityToDatabase({
+				entity: TestEntity,
+				events: ["save"],
+				data: {
+					id: "Test",
+				},
+			});
+
+			expect(result).toStrictEqual({
+				id: "Test",
+				test: "foo",
 			});
 		});
 	});

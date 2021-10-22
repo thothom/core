@@ -36,7 +36,7 @@ import {
 	BeforePerformativeCountParams,
 	beforePerformativeCount,
 } from "./methods/before-performative-count";
-import { ClassType } from "../types/class-type";
+import { SaveData, SingleSaveData } from "./types/save-conditions";
 
 export abstract class BaseRepository<
 	Entity,
@@ -72,7 +72,7 @@ export abstract class BaseRepository<
 	 * and most of the databases supports this method.
 	 */
 	public abstract save<Result = Array<Entity> | Entity>(
-		data: Array<ClassType<Entity>> | ClassType<Entity>,
+		data: SaveData<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Result>;
 
@@ -80,7 +80,7 @@ export abstract class BaseRepository<
 	 * Inserts a record on the database and fail if it's already exist.
 	 */
 	public abstract insert<Result = Array<Entity> | Entity>(
-		data: Array<ClassType<Entity>> | ClassType<Entity>,
+		data: SaveData<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Result>;
 
@@ -89,7 +89,7 @@ export abstract class BaseRepository<
 	 */
 	public abstract update<Result = Array<Entity> | Entity>(
 		conditions: FindConditions<Entity>,
-		data: ClassType<Entity>,
+		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Result>;
 
@@ -98,7 +98,7 @@ export abstract class BaseRepository<
 	 */
 	public abstract upsert<Result = Array<Entity> | Entity>(
 		conditions: FindConditions<Entity>,
-		data: ClassType<Entity>,
+		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Result>;
 

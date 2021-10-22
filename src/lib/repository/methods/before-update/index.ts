@@ -3,7 +3,7 @@ import { FindConditions } from "../../types/find-conditions";
 import { BaseQueryOptions } from "../../types/query-options";
 import { formatData } from "./helpers/format-data";
 import { DatabaseEntity } from "../../../types/database-entity";
-import { ClassType } from "../../../types/class-type";
+import { SingleSaveData } from "../../types/save-conditions";
 
 interface Injectables {
 	entityManager: EntityManager;
@@ -12,7 +12,7 @@ interface Injectables {
 
 export interface BeforeUpdateParams<Entity> {
 	conditions: FindConditions<Entity>;
-	data: ClassType<Entity>;
+	data: SingleSaveData<Entity>;
 	options?: BaseQueryOptions;
 }
 export const beforeUpdate = <Entity>(
