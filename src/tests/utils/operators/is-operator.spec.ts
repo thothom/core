@@ -147,8 +147,6 @@ describe("Utils > Validations > isOperator", () => {
 
 	describe("With not find operators values", () => {
 		it("should return true with no params", () => {
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			//@ts-expect-error
 			const result = isOperator();
 
 			expect(result).toBe(false);
