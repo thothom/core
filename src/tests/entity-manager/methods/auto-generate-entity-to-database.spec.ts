@@ -49,6 +49,23 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			});
 		});
 
+		it("should NOT generate fields that have been already specified", () => {
+			const result =
+				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
+					entity: TestEntity,
+					events: ["save"],
+					data: {
+						id: "NOT_AUTO_GENERATED",
+						test: "foo",
+					},
+				});
+
+			expect(result).toStrictEqual({
+				id: "NOT_AUTO_GENERATED",
+				test: "foo",
+			});
+		});
+
 		it("should return undefined if receive undefined", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
