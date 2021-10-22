@@ -47,6 +47,8 @@ export abstract class BaseRepository<
 > {
 	protected readonly entity: Entity;
 
+	protected readonly tableName: string;
+
 	public constructor(
 		protected readonly entityManager: EntityManager<
 			EntityExtraMetadata,
@@ -56,7 +58,12 @@ export abstract class BaseRepository<
 		protected readonly logger: Logger,
 		entity: any,
 	) {
+		// This is made so the entity can have the right type
 		this.entity = entity;
+
+		const entityMetadata = this.entityManager.getEntityMetadata(entity);
+
+		this.tableName = entityMetadata.databaseName;
 	}
 
 	/**
