@@ -25,7 +25,11 @@ describe("Repository > Methods > beforeFindOne", () => {
 			},
 		});
 
-		repository = new TestRepository(connection.entityManager, TestEntity);
+		repository = new TestRepository<TestEntity>(
+			connection.entityManager,
+			connection.logger,
+			TestEntity,
+		);
 	});
 
 	it("should do nothing if no options are specified", () => {

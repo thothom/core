@@ -29,6 +29,7 @@ describe("Repository > Methods > beforeInsert", () => {
 
 		repository = new TestRepository<TestEntity>(
 			connection.entityManager,
+			connection.logger,
 			TestEntity,
 		);
 	});

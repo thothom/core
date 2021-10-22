@@ -26,7 +26,11 @@ describe("Repository > Methods > afterUpdate", () => {
 			},
 		});
 
-		repository = new TestRepository(connection.entityManager, TestEntity);
+		repository = new TestRepository<TestEntity>(
+			connection.entityManager,
+			connection.logger,
+			TestEntity,
+		);
 	});
 
 	it("should convert fields to the entity format", () => {

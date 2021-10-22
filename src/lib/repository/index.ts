@@ -37,6 +37,7 @@ import {
 	beforePerformativeCount,
 } from "./methods/before-performative-count";
 import { SaveData, SingleSaveData } from "./types/save-conditions";
+import { Logger } from "../logger";
 
 export abstract class BaseRepository<
 	Entity,
@@ -52,6 +53,7 @@ export abstract class BaseRepository<
 			ColumnExtraMetadata,
 			IndexExtraMetadata
 		>,
+		protected readonly logger: Logger,
 		entity: any,
 	) {
 		this.entity = entity;
