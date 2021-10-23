@@ -150,3 +150,11 @@ export * from "./lib/utils/metadata-util";
 export * from "./lib/utils/operators/is-operator";
 export * from "./lib/utils/operators/is-find-operator";
 export * from "./lib/utils/operators/is-save-operator";
+
+/**
+ * Globals
+ */
+
+export * from "./lib/utils/globals/get-global-connection";
+export * from "./lib/utils/globals/get-global-repository";
+export * from "./lib/utils/globals/set-global-connection";

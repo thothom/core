@@ -38,6 +38,10 @@ export type SymbiosisErrorCode =
 	 */
 	| "NOT_IMPLEMENTED"
 	/**
+	 * Execution order
+	 */
+	| "INVALID_EXECUTION_ORDER"
+	/**
 	 * Database
 	 */
 	| "OPERATION_FAILED";

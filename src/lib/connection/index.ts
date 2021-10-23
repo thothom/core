@@ -3,6 +3,7 @@ import { EntityManager } from "../entity-manager";
 import { BaseRepository } from "../repository";
 import { BaseConnectionOptions } from "./types/connection-options";
 import { CustomClass } from "../entity-manager/types/metadata-type";
+import { DEFAULT_CONNECTION_NAME } from "../../config";
 
 export abstract class BaseConnection<
 	DatabaseConfig = any,
@@ -30,7 +31,7 @@ export abstract class BaseConnection<
 	 * Getters
 	 */
 
-	protected get name() {
+	public get name() {
 		return this._name;
 	}
 
@@ -51,7 +52,7 @@ export abstract class BaseConnection<
 	 */
 
 	public constructor(options: BaseConnectionOptions<DatabaseConfig>) {
-		this._name = options.name || "Default";
+		this._name = options.name || DEFAULT_CONNECTION_NAME;
 
 		this._options = options;
 
