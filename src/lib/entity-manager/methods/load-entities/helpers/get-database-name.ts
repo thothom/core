@@ -28,13 +28,8 @@ export const getDatabaseName = ({
 		return value;
 	}
 
-	const databaseName = formatNamingStrategy({
-		value,
-		namingStrategy,
-	});
-
 	const databaseNameWithPrefix = formatPrefix({
-		value: databaseName,
+		value,
 		options: optionsPrefix,
 	});
 
@@ -43,5 +38,10 @@ export const getDatabaseName = ({
 		options: optionsSuffix,
 	});
 
-	return databaseNameWithPrefixAndSuffix;
+	const databaseName = formatNamingStrategy({
+		value: databaseNameWithPrefixAndSuffix,
+		namingStrategy,
+	});
+
+	return databaseName;
 };

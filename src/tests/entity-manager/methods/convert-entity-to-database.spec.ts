@@ -52,7 +52,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
+				TEST_ID: "Test",
 			});
 		});
 
@@ -66,8 +66,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_TEST: "SuperTest",
+				TEST_ID: "Test",
+				TEST_TEST: "SuperTest",
 			});
 		});
 
@@ -81,7 +81,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
+				TEST_ID: "Test",
 			});
 		});
 
@@ -95,7 +95,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
+				TEST_ID: "Test",
 			});
 		});
 
@@ -118,8 +118,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_TEST: Remove(),
+				TEST_ID: "Test",
+				TEST_TEST: Remove(),
 			});
 		});
 	});
@@ -147,7 +147,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 
 			expect(result).toStrictEqual({
 				CUSTOM_FIELD_NAME: "Test",
-				test_TEST: "foo",
+				TEST_TEST: "foo",
 			});
 		});
 
@@ -175,7 +175,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 
 			expect(result).toStrictEqual({
 				CUSTOM_FIELD_NAME: "Test",
-				test_TEST: "foo",
+				TEST_TEST: "foo",
 			});
 		});
 
@@ -202,7 +202,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
+				TEST_ID: "Test",
 				CUSTOM_FIELD_NAME: "foo",
 			});
 		});
@@ -234,8 +234,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_TEST: ["SuperTest"],
+				TEST_ID: "Test",
+				TEST_TEST: ["SuperTest"],
 			});
 		});
 	});
@@ -279,8 +279,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_SUB_ENTITY: {
+				TEST_ID: "Test",
+				TEST_SUB_ENTITY: {
 					ANOTHER_FIELD: 1,
 				},
 			});
@@ -299,8 +299,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_SUB_ENTITY: {
+				TEST_ID: "Test",
+				TEST_SUB_ENTITY: {
 					FIELD: "foo",
 					ANOTHER_FIELD: 1,
 				},
@@ -317,7 +317,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
+				TEST_ID: "Test",
 			});
 		});
 
@@ -331,7 +331,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
+				TEST_ID: "Test",
 			});
 		});
 
@@ -345,7 +345,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
+				TEST_ID: "Test",
 			});
 		});
 	});
@@ -391,8 +391,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_SUB_ENTITIES: [
+				TEST_ID: "Test",
+				TEST_SUB_ENTITIES: [
 					{
 						ANOTHER_FIELD: 1,
 					},
@@ -419,8 +419,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_SUB_ENTITIES: [
+				TEST_ID: "Test",
+				TEST_SUB_ENTITIES: [
 					{
 						FIELD: "foo",
 						ANOTHER_FIELD: 1,
@@ -487,8 +487,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_SUB_ENTITY: {
+				TEST_ID: "Test",
+				TEST_SUB_ENTITY: {
 					FIELD: "1",
 					SUB_SUB_ENTITY: {
 						SUB_FIELD: "foo",
@@ -513,8 +513,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_SUB_ENTITY: {
+				TEST_ID: "Test",
+				TEST_SUB_ENTITY: {
 					FIELD: "1",
 					SUB_SUB_ENTITY: {
 						SUB_FIELD: "foo",
@@ -580,8 +580,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_SUB_ENTITY: {
+				TEST_ID: "Test",
+				TEST_SUB_ENTITY: {
 					FIELD: "1",
 					SUB_SUB_ENTITY: [
 						{
@@ -614,8 +614,8 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			});
 
 			expect(result).toStrictEqual({
-				test_ID: "Test",
-				test_SUB_ENTITY: {
+				TEST_ID: "Test",
+				TEST_SUB_ENTITY: {
 					FIELD: "1",
 					SUB_SUB_ENTITY: [
 						{

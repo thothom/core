@@ -69,34 +69,7 @@ export interface BaseConnectionOptions<DatabaseConfig = any> {
 	 *
 	 * ---
 	 *
-	 * ## ALERT: The naming strategy are applied **BEFORE** the prefix and suffix
-	 *
-	 * So, in some cases, your column names maybe don't follow it,
-	 * like in this example:
-	 *
-	 * ```ts
-	 * // If you have the entity:
-	 * Entity()
-	 * class ExampleEntity {
-	 *    Column()
-	 *    fooBar: string;
-	 * }
-	 *
-	 * // And your connection options are like this:
-	 * {
-	 *   namingStrategy: {
-	 *     column: "camelCase",
-	 *   },
-	 *   prefix: {
-	 *     column: {
-	 *       remove: "foo",
-	 *     },
-	 *   },
-	 * }
-	 *
-	 * // The name of the column `fooBar` in the database will be:
-	 * Bar
-	 * ```
+	 * ## ALERT: The naming strategy are applied **AFTER** the prefix and suffix
 	 */
 	namingStrategy?: {
 		entity?: NamingStrategy;
@@ -111,9 +84,9 @@ export interface BaseConnectionOptions<DatabaseConfig = any> {
 	 *
 	 * **Execution order:** Remove -> Add
 	 *
-	 * **ATTENTION:** The prefixes aren't affected by the namingStrategy config!
-	 * They are applied AFTER the namingStrategy formatting, so be careful with
-	 * which naming strategy you use in this config.
+	 * ## ALERT: The prefix is applied **BEFORE** the naming strategy
+	 *
+	 * ## ALERT: Prefix isn't applied to sub-entities
 	 */
 	prefix?: {
 		entity?: {
@@ -146,9 +119,9 @@ export interface BaseConnectionOptions<DatabaseConfig = any> {
 	 *
 	 * **Execution order:** Remove -> Add
 	 *
-	 * **ATTENTION:** The suffixes aren't affected by the namingStrategy config!
-	 * They are applied AFTER the namingStrategy formatting, so be careful with
-	 * which naming strategy you use in this config.
+	 * ## ALERT: The suffix is applied **BEFORE** the naming strategy
+	 *
+	 * ## ALERT: Prefix isn't applied to sub-entities
 	 */
 	suffix?: {
 		entity?: {
