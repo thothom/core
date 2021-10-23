@@ -154,7 +154,7 @@
 - [x] Change the way that prefix and suffix work
   - EntityToDatabase -> Will be applied BEFORE the naming strategy
   - DatabaseToEntity -> Will be applied AFTER the naming strategy
-- [ ] Make the `@PrimaryColumn*` decorators accept only `string` and `number` as types
+- [x] Make the `@PrimaryColumn*` decorators accept only `string` and `number` as types
 - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - This column will be auto-generated **on save**
 - [ ] Add entities auto-import from string path, like TypeORM
