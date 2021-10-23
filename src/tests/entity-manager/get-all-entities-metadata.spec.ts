@@ -297,8 +297,8 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
-					{ databaseName: "Id", name: "testId", primary: true, type: String },
-					{ databaseName: "Foo", name: "testFoo", type: Number },
+					{ databaseName: "id", name: "testId", primary: true, type: String },
+					{ databaseName: "foo", name: "testFoo", type: Number },
 				],
 				databaseName: "TestEntity",
 				name: "TestEntity",

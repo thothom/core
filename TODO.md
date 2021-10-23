@@ -151,7 +151,7 @@
   - [x] `Max` -> Changes the value of the column ONLY IF it's lower than the value specified
   - [x] `IfNotExists` -> Only sets the column if it NOT already exists
   - [x] `Pop` -> Removes and item from a list
-- [ ] Change the way that prefix and suffix work
+- [x] Change the way that prefix and suffix work
   - EntityToDatabase -> Will be applied BEFORE the naming strategy
   - DatabaseToEntity -> Will be applied AFTER the naming strategy
 - [ ] Make the `@PrimaryColumn*` decorators accept only `string` and `number` as types
