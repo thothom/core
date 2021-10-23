@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { BaseConnection } from "../../lib/connection";
-import { CustomClass } from "../../lib/entity-manager/types/metadata-type";
 import { BaseRepository } from "../../lib/repository";
+import { TestRepository } from "./test-repository";
 
 export class TestConnection extends BaseConnection {
 	public connect(): Promise<void> {
@@ -10,9 +10,9 @@ export class TestConnection extends BaseConnection {
 	}
 
 	public getRepository<Entity>(
-		_entity: CustomClass,
+		entity: any,
 	): BaseRepository<Entity, void, void> {
-		throw new Error("Method not implemented.");
+		return new TestRepository(this.entityManager, this.logger, entity);
 	}
 
 	public override get name() {

@@ -39,7 +39,7 @@ Currently it only works with TypeScript (and transpiled JavaScript), and we plan
 
 - **Easy to use and standardize.** Regardless of the database, the implementation will be the same in all cases (except the most complex ones).
 - **The plugable approach.** With the community support, this OM can work with **all** the databases, be they NoSQL or SQL, as long as it has a plugin for it.
-- **No globals!** All that this package uses is encapsuled inside it's classes, so there is no need to worry about some config defined in a global scope compromising your code.
+- **No globals!** All that this package uses is encapsuled inside it's classes, so there is no need to worry about some config defined in a global scope compromising your code, but if you want, you can use `setGlobalConnection()` to allow globals.
 - **Free and direct support.** If you have any question, you can join [our guilded community](https://guilded.gg/techmmunity), and we and the members of Techmmunity will help you!
 - **Focused on microservices and serverless!** We focus in keep it usable for serverless and microservices projects.
 
