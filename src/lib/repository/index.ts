@@ -47,7 +47,7 @@ export abstract class BaseRepository<
 > {
 	protected readonly entity: Entity;
 
-	protected readonly tableName: string;
+	public readonly tableName: string;
 
 	public constructor(
 		protected readonly entityManager: EntityManager<
