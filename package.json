@@ -38,7 +38,7 @@
 		}
 	},
 	"dependencies": {
-		"@techmmunity/utils": "^1.1.0",
+		"@techmmunity/utils": "^1.4.0",
 		"change-case": "^4.1.2",
 		"dayjs": "^1.10.6"
 	},
@@ -47,10 +47,10 @@
 		"@types/jest": "^27.0.2",
 		"@types/uuid": "^8.3.1",
 		"@vercel/ncc": "^0.31.1",
-		"eslint": "^7.32.0",
+		"eslint": "^8.1.0",
 		"husky": "^7.0.2",
 		"jest": "^27.2.4",
-		"lint-staged": "^11.2.0",
+		"lint-staged": "^11.2.5",
 		"prettier": "^2.4.1",
 		"reflect-metadata": "^0.1.13",
 		"ts-jest": "^27.0.5",
@@ -66,7 +66,7 @@
 		"build": "ncc build src/index.ts -o dist -s -m -e reflect-metadata -e uuid -e change-case -e dayjs",
 		"format": "eslint . --fix --quiet",
 		"lint": "eslint . --quiet",
-		"update-dependencies": "yarn upgrade-interactive --latest",
+		"upgrade-dependencies": "yarn upgrade-interactive --latest",
 		"husky:pre-commit": "tsc && lint-staged",
 		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd .."
 	}
