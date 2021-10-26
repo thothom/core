@@ -158,7 +158,7 @@
 - [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
   - This column will be auto-generated **on save**
 - [ ] Add entities auto-import from string path, like TypeORM
-  - https://preview.npmjs.com/package/glob
+  - https://www.npmjs.com/package/glob
 - [ ] Add the concept of "auto-generated" (Database -> Code) columns
   - [ ] Add `@VirtualColumn` decorator
     - Will be applied to a class method, and will be generated after a query from database

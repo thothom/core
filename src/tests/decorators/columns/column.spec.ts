@@ -433,6 +433,7 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
+					enumName: "foo_enum",
 					enumValues: ["FOO", "BAR"],
 					name: "foo",
 					type: String,
@@ -456,6 +457,7 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
+					enumName: "foo_enum",
 					enumValues: [1, 2],
 					name: "foo",
 					type: Number,
@@ -483,6 +485,7 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
+					enumName: "foo_enum",
 					enumValues: ["FOO"],
 					name: "foo",
 					type: String,
@@ -510,6 +513,7 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
+					enumName: "foo_enum",
 					enumValues: ["FOO", 1],
 					name: "foo",
 					type: Number,
