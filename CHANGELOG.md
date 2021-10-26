@@ -15,12 +15,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## [0.0.1] - 2021-10-09
+## [0.0.21] - 2021-10-26
 
 ### Added
 
-> TODO
+- `enumName` to `ColumnMetadata`
 
 ### Changed
+
+- Update dependencies: `eslint`, `lint-staged`, `@techmmunity/utils`
+- Change properties accessibility of `Connection`:
+  - `protected options` -> `public options`
+  - `protected entityManager` -> `public entityManager`
+  - `protected logger` -> `public logger`
+- Change properties accessibility of `Repository`:
+  - `protected tableName` -> `public tableName`
 
 ### Removed
