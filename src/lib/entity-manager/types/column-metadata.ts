@@ -28,6 +28,8 @@ export interface ColumnMetadata<ExtraData = Record<string, any>> {
 	type: MetadataType;
 	databaseType?: string;
 	isArray?: boolean;
+
+	enumName?: string;
 	enumValues?: Array<number | string>;
 
 	/**
@@ -63,6 +65,8 @@ export const COLUMN_METADATA_KEYS: Array<keyof ColumnMetadata> = [
 	"type",
 	"databaseType",
 	"isArray",
+
+	"enumName",
 	"enumValues",
 
 	"autoGenerate",

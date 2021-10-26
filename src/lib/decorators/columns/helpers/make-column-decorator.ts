@@ -41,13 +41,16 @@ export const makeColumnDecorator =
 			enumValues,
 		});
 
+		const databaseName = rawMetadata.databaseName || propertyName;
+
 		const metadata = cleanObj({
 			...rawMetadata,
 			type,
 			isArray,
 			enumValues,
+			databaseName,
 			name: propertyName,
-			databaseName: rawMetadata.databaseName || propertyName,
+			enumName: enumValues ? `${databaseName}_enum` : undefined,
 			isNameAlreadyFormatted: rawMetadata.databaseName ? true : undefined,
 		});
 

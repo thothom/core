@@ -396,16 +396,35 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestFooEntity: {
 				columns: [
-					{ databaseName: "id", name: "id", primary: true, type: String },
-					{ databaseName: "foo", name: "foo", type: Number },
-					{ databaseName: "testSub", name: "testSub", type: TestSubEntity },
+					{
+						databaseName: "id",
+						name: "id",
+						primary: true,
+						type: String,
+					},
+					{
+						databaseName: "foo",
+						name: "foo",
+						type: Number,
+					},
+					{
+						databaseName: "testSub",
+						name: "testSub",
+						type: TestSubEntity,
+					},
 				],
 				databaseName: "test_foo_entity",
 				name: "TestFooEntity",
 			},
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestSubEntity: {
-				columns: [{ databaseName: "bar", name: "bar", type: Number }],
+				columns: [
+					{
+						databaseName: "bar",
+						name: "bar",
+						type: Number,
+					},
+				],
 				databaseName: "test_sub_entity",
 				isSubEntity: true,
 				name: "TestSubEntity",
@@ -440,16 +459,35 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestEntity: {
 				columns: [
-					{ databaseName: "id", name: "id", primary: true, type: String },
-					{ databaseName: "foo", name: "foo", type: Number },
-					{ databaseName: "testSub", name: "testSub", type: TestSubEntity },
+					{
+						databaseName: "id",
+						name: "id",
+						primary: true,
+						type: String,
+					},
+					{
+						databaseName: "foo",
+						name: "foo",
+						type: Number,
+					},
+					{
+						databaseName: "testSub",
+						name: "testSub",
+						type: TestSubEntity,
+					},
 				],
 				databaseName: "TestEntity",
 				name: "TestEntity",
 			},
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			TestSubEntity: {
-				columns: [{ databaseName: "bar", name: "bar", type: Number }],
+				columns: [
+					{
+						databaseName: "bar",
+						name: "bar",
+						type: Number,
+					},
+				],
 				databaseName: "TestSubEntity",
 				name: "TestSubEntity",
 			},

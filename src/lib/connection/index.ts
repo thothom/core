@@ -35,15 +35,15 @@ export abstract class BaseConnection<
 		return this._name;
 	}
 
-	protected get options() {
+	public get options() {
 		return this._options;
 	}
 
-	protected get entityManager() {
+	public get entityManager() {
 		return this._entityManager;
 	}
 
-	protected get logger() {
+	public get logger() {
 		return this._logger;
 	}
 
