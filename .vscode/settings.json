@@ -126,6 +126,7 @@
 		"plugable",
 		"prebuild",
 		"sonarjs",
+		"symb",
 		"techmmunity",
 		"transpiled",
 		"tsbuildinfo",

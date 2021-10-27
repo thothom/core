@@ -152,4 +152,19 @@ describe("Logger", () => {
 			expect(result).toBeUndefined();
 		});
 	});
+
+	describe("Log CLI", () => {
+		const stderrSpy = jest.spyOn(process.stderr, "write");
+		const stdoutSpy = jest.spyOn(process.stdout, "write");
+
+		it("logs", () => {
+			Logger.cliError("test");
+			Logger.cliInfo("test");
+			Logger.cliLog("test");
+			Logger.cliWarn("test");
+
+			expect(stderrSpy).toBeCalledTimes(1);
+			expect(stdoutSpy).toBeCalledTimes(3);
+		});
+	});
 });

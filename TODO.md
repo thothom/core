@@ -1,5 +1,7 @@
 # To Do
 
+## Alpha
+
 - [x] Decide if the types of the arrays must be passed with or without []
   - As they are the only type who need to be passed, will be passed **without**
 - [x] Add Suffix
@@ -112,21 +114,6 @@
   - [x] count
   - [x] performativeCount
 - [x] Create a template repository "symbiosis-plugin"
-- [ ] Fix verify mandatory files workflow
-- [ ] Improve Documentation
-  - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
-  - [x] Use [Docusaurus](https://docusaurus.io/docs)
-  - [x] Give a bit of love to `CONTRIBUTING.md`
-  - [ ] Add COMPLETE documentation about HOW to create a plugin
-    - Include EVERY validation that need to be done
-    - Include EVERY step IN ORDER that need to be made
-  - [ ] Create a markdown table with ALL the features of the ORM, so the plugins can specify EVERY feature that they have implemented
-  - [ ] Create tutorials
-    - [ ] "how to work with multiple value types for the same field"
-    - [ ] "how to work with the same table for multiple entities" / "how to work with a table that have multiple entities schemas"
-    - [ ] "how to work with array columns that can have multiple types" (Ex: `column: Array<Entity1 | Entity2>`)
-
-## To Do Future
 
 ### General
 
@@ -155,15 +142,38 @@
   - EntityToDatabase -> Will be applied BEFORE the naming strategy
   - DatabaseToEntity -> Will be applied AFTER the naming strategy
 - [x] Make the `@PrimaryColumn*` decorators accept only `string` and `number` as types
-- [ ] Add `@Version` decorator, that receives a param (string) that is the version (Ex: `@VersionColumn("v2")`)
-  - This column will be auto-generated **on save**
-- [ ] Add entities auto-import from string path, like TypeORM
+- [x] Add entities auto-import from string path, like TypeORM
   - https://www.npmjs.com/package/glob
+- [ ] Add colors to the logs, like Nestjs Logger
+- [ ] Add `@Version*` decorators
+  - [] Add `@VersionSaveColumn` that receives the version (Ex: `@VersionColumn("v2")`)
+    - Only accepts "string" type
+    - This column will be auto-generated **on save**
+  - [] Add `@VersionUpdateColumn` that receives **NO PARAMS**
+    - Only accepts "number" type
+    - This column will be auto-generated **on update**
+    - The value of this column will be the SaveOperator `Plus(1)`
 - [ ] Add the concept of "auto-generated" (Database -> Code) columns
   - [ ] Add `@VirtualColumn` decorator
     - Will be applied to a class method, and will be generated after a query from database
     - Remember to check: If the `select` be passed, so verify if the virtual field in the array
   - [x] Edit the auto-generation method of primary columns
+
+### Docs
+
+- [ ] Fix verify mandatory files workflow
+- [ ] Improve Documentation
+  - Like [TypeORM docs](https://github.com/typeorm/typeorm#step-by-step-guide)
+  - [x] Use [Docusaurus](https://docusaurus.io/docs)
+  - [x] Give a bit of love to `CONTRIBUTING.md`
+  - [ ] Add COMPLETE documentation about HOW to create a plugin
+    - Include EVERY validation that need to be done
+    - Include EVERY step IN ORDER that need to be made
+  - [ ] Create a markdown table with ALL the features of the ORM, so the plugins can specify EVERY feature that they have implemented
+  - [ ] Create tutorials
+    - [ ] "how to work with multiple value types for the same field"
+    - [ ] "how to work with the same table for multiple entities" / "how to work with a table that have multiple entities schemas"
+    - [ ] "how to work with array columns that can have multiple types" (Ex: `column: Array<Entity1 | Entity2>`)
 
 ### SQL
 
@@ -178,7 +188,7 @@
 
 ### CLI
 
-- [ ] Add "migrations"
+- [x] Add "migrations"
   - Add a way to generate "tables" (Run a command that uses the plugin config to generate a new migration file based on the entities data)
   - This can be used for SQL and NoSql databases (Ex: PostgreSQL & Dynamo)
 

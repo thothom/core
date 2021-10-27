@@ -73,6 +73,39 @@ export class Logger {
 		});
 	}
 
+	public static cliWarn(message: any) {
+		printMessage({
+			message,
+			logLevel: "WARN",
+			writeStreamType: "stderr",
+			connectionName: "CLI",
+		});
+	}
+
+	public static cliError(message: any) {
+		printMessage({
+			message,
+			logLevel: "ERROR",
+			connectionName: "CLI",
+		});
+	}
+
+	public static cliLog(message: any) {
+		printMessage({
+			message,
+			logLevel: "LOG",
+			connectionName: "CLI",
+		});
+	}
+
+	public static cliInfo(message: any) {
+		printMessage({
+			message,
+			logLevel: "INFO",
+			connectionName: "CLI",
+		});
+	}
+
 	private isLevelEnabled(level: DetailedLogOptions) {
 		return this.logLevels.includes(level);
 	}

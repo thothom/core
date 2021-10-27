@@ -9,9 +9,24 @@ export interface BaseConnectionOptions<DatabaseConfig = any> {
 	name?: string;
 
 	/**
+	 * Name of the plugin package
+	 */
+	plugin?: string;
+
+	/**
+	 * Path to the migrations folder
+	 */
+	migrationsDir?: string;
+
+	/**
 	 * Array of entities of this connection
 	 */
-	entities: Array<CustomClass>;
+	entities?: Array<CustomClass>;
+
+	/**
+	 * Array of paths to the entities of this connection
+	 */
+	entitiesDir?: Array<string>;
 
 	/**
 	 * Logging level, determines which information should be logged

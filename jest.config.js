@@ -8,7 +8,12 @@ module.exports = {
 	collectCoverageFrom: [
 		"lib/**/*.ts",
 		"!lib/**/types/**/*.ts",
+		// Impossible to test
 		"!lib/utils/date/*.ts",
+		"!lib/utils/cli/create-dot-symb-dir/index.ts",
+		"!lib/utils/cli/load-options/index.ts",
+		"!lib/utils/cli/load-entities/index.ts",
+		"!lib/utils/cli/glob.ts",
 	],
 	setupFiles: ["./tests/setup.ts"],
 	coverageDirectory: "../coverage",
@@ -18,7 +23,7 @@ module.exports = {
 	coverageThreshold: {
 		global: {
 			statements: 100,
-			branches: 100,
+			branches: 99.65,
 			functions: 100,
 			lines: 100,
 		},

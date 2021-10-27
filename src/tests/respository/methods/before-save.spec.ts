@@ -19,13 +19,14 @@ describe("Repository > Methods > beforeSave", () => {
 
 	let repository: TestRepository<TestEntity>;
 
-	beforeAll(() => {
+	beforeAll(async () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 			namingStrategy: {
 				column: "UPPER_CASE",
 			},
 		});
+		await connection.load();
 
 		repository = new TestRepository<TestEntity>(
 			connection.entityManager,

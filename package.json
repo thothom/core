@@ -38,12 +38,14 @@
 		}
 	},
 	"dependencies": {
-		"@techmmunity/utils": "^1.4.0",
+		"@techmmunity/utils": "^1.5.0",
 		"change-case": "^4.1.2",
-		"dayjs": "^1.10.6"
+		"dayjs": "^1.10.6",
+		"glob": "^7.2.0"
 	},
 	"devDependencies": {
-		"@techmmunity/eslint-config": "^5.0.4",
+		"@techmmunity/eslint-config": "^5.1.1",
+		"@types/glob": "^7.2.0",
 		"@types/jest": "^27.0.2",
 		"@types/uuid": "^8.3.1",
 		"@vercel/ncc": "^0.31.1",
@@ -68,6 +70,7 @@
 		"lint": "eslint . --quiet",
 		"upgrade-dependencies": "yarn upgrade-interactive --latest",
 		"husky:pre-commit": "tsc && lint-staged",
-		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd .."
+		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd ..",
+		"ulk": "yarn unlink && yarn lk"
 	}
 }

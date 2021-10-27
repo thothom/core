@@ -6,13 +6,17 @@ import { Entity } from "../../../lib/decorators/entity";
 import { SymbiosisError } from "../../../lib/error";
 import { TestConnection } from "../../constants/test-connection";
 
-const createConnection = (entities: Array<any>) =>
-	new TestConnection({
+const createConnection = async (entities: Array<any>) => {
+	const connection = new TestConnection({
 		entities,
 		namingStrategy: {
 			column: "UPPER_CASE",
 		},
 	});
+	await connection.load();
+
+	return connection;
+};
 
 describe("EntityMetadata > formatOrder", () => {
 	describe("With simple entity", () => {
@@ -27,8 +31,8 @@ describe("EntityMetadata > formatOrder", () => {
 			public test: string;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert columns names", () => {
@@ -47,7 +51,7 @@ describe("EntityMetadata > formatOrder", () => {
 	});
 
 	describe("Simple Entity With Custom Column Names", () => {
-		it("should convert columns if it is passed on primary-column param", () => {
+		it("should convert columns if it is passed on primary-column param", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn("CUSTOM_FIELD_NAME")
@@ -57,7 +61,7 @@ describe("EntityMetadata > formatOrder", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.formatOrder({
 				entity: TestEntity,
@@ -72,7 +76,7 @@ describe("EntityMetadata > formatOrder", () => {
 			});
 		});
 
-		it("should convert columns if it is passed on column options", () => {
+		it("should convert columns if it is passed on column options", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -84,7 +88,7 @@ describe("EntityMetadata > formatOrder", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.formatOrder({
 				entity: TestEntity,
@@ -126,8 +130,8 @@ describe("EntityMetadata > formatOrder", () => {
 			public subEntity: SubTestEntity;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert columns with multilevel", () => {
@@ -232,8 +236,8 @@ describe("EntityMetadata > formatOrder", () => {
 			public subEntity: SubTestEntity;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert columns with multilevel", () => {

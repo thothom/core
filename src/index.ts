@@ -158,3 +158,12 @@ export * from "./lib/utils/operators/is-save-operator";
 export * from "./lib/utils/globals/get-global-connection";
 export * from "./lib/utils/globals/get-global-repository";
 export * from "./lib/utils/globals/set-global-connection";
+
+/**
+ * CLI
+ */
+
+export * from "./lib/utils/cli/create-dot-symb-dir";
+export * from "./lib/utils/cli/glob";
+export * from "./lib/utils/cli/load-entities";
+export * from "./lib/utils/cli/load-options";

@@ -11,8 +11,8 @@ import { TestConnection } from "../../constants/test-connection";
 import { MoreThan } from "../../../lib/repository/operators/find/more-than";
 import { Exist } from "../../../lib/repository/operators/find/exist";
 
-const createConnection = (entities: Array<any>) =>
-	new TestConnection({
+const createConnection = async (entities: Array<any>) => {
+	const connection = new TestConnection({
 		entities,
 		prefix: {
 			column: {
@@ -25,6 +25,10 @@ const createConnection = (entities: Array<any>) =>
 			},
 		},
 	});
+	await connection.load();
+
+	return connection;
+};
 
 describe("EntityManager > formatConditions", () => {
 	describe("Simple entity", () => {
@@ -39,8 +43,8 @@ describe("EntityManager > formatConditions", () => {
 			public test?: string;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert partial conditions correctly", () => {
@@ -157,7 +161,7 @@ describe("EntityManager > formatConditions", () => {
 	});
 
 	describe("Simple entity with custom column names", () => {
-		it("should not format name if it is passed on primary-column param", () => {
+		it("should not format name if it is passed on primary-column param", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn("CUSTOM_FIELD_NAME")
@@ -167,7 +171,7 @@ describe("EntityManager > formatConditions", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.formatConditions({
 				entity: TestEntity,
@@ -183,7 +187,7 @@ describe("EntityManager > formatConditions", () => {
 			});
 		});
 
-		it("should not format name if it is passed on primary-column param (with find operators)", () => {
+		it("should not format name if it is passed on primary-column param (with find operators)", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn("CUSTOM_FIELD_NAME")
@@ -193,7 +197,7 @@ describe("EntityManager > formatConditions", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.formatConditions({
 				entity: TestEntity,
@@ -209,7 +213,7 @@ describe("EntityManager > formatConditions", () => {
 			});
 		});
 
-		it("should not format name if it is passed on primary-column options", () => {
+		it("should not format name if it is passed on primary-column options", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn({
@@ -221,7 +225,7 @@ describe("EntityManager > formatConditions", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.formatConditions({
 				entity: TestEntity,
@@ -237,7 +241,7 @@ describe("EntityManager > formatConditions", () => {
 			});
 		});
 
-		it("should not format name if it is passed on primary-column options (with find operators)", () => {
+		it("should not format name if it is passed on primary-column options (with find operators)", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn({
@@ -249,7 +253,7 @@ describe("EntityManager > formatConditions", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.formatConditions({
 				entity: TestEntity,
@@ -265,7 +269,7 @@ describe("EntityManager > formatConditions", () => {
 			});
 		});
 
-		it("should not format the name if it is passed on column options", () => {
+		it("should not format the name if it is passed on column options", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn()
@@ -277,7 +281,7 @@ describe("EntityManager > formatConditions", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.formatConditions({
 				entity: TestEntity,
@@ -293,7 +297,7 @@ describe("EntityManager > formatConditions", () => {
 			});
 		});
 
-		it("should not format the name if it is passed on column options (with find operators)", () => {
+		it("should not format the name if it is passed on column options (with find operators)", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn()
@@ -305,7 +309,7 @@ describe("EntityManager > formatConditions", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.formatConditions({
 				entity: TestEntity,
@@ -334,8 +338,8 @@ describe("EntityManager > formatConditions", () => {
 			public test?: Array<string>;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert complete conditions correctly", () => {
@@ -407,8 +411,8 @@ describe("EntityManager > formatConditions", () => {
 			public subEntity: SubTestEntity;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert partial conditions of sub-entity correctly", () => {
@@ -537,8 +541,8 @@ describe("EntityManager > formatConditions", () => {
 			public subEntities: Array<SubTestEntity>;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert partial conditions of sub-entity correctly", () => {
@@ -655,8 +659,8 @@ describe("EntityManager > formatConditions", () => {
 			public subEntity: SubTestEntity;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert partial conditions of sub-sub-entity correctly", () => {
@@ -771,8 +775,8 @@ describe("EntityManager > formatConditions", () => {
 			public subEntity: SubTestEntity;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert partial conditions of sub-sub-entity correctly", () => {

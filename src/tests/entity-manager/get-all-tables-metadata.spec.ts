@@ -4,7 +4,7 @@ import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getAllTablesMetadata", () => {
-	it("should get basic entity metadata", () => {
+	it("should get basic entity metadata", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -17,6 +17,7 @@ describe("EntityManager > getAllTablesMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllTablesMetadata()).toStrictEqual([
 			{
@@ -30,7 +31,7 @@ describe("EntityManager > getAllTablesMetadata", () => {
 		]);
 	});
 
-	it("should get only entity metadata (entity + sub-entity)", () => {
+	it("should get only entity metadata (entity + sub-entity)", async () => {
 		@Entity({
 			isSubEntity: true,
 		})
@@ -54,6 +55,7 @@ describe("EntityManager > getAllTablesMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllTablesMetadata()).toStrictEqual([
 			{
@@ -68,7 +70,7 @@ describe("EntityManager > getAllTablesMetadata", () => {
 		]);
 	});
 
-	it("should get only entity metadata (entity + sub-entity + sub-sub-entity)", () => {
+	it("should get only entity metadata (entity + sub-entity + sub-sub-entity)", async () => {
 		@Entity({ isSubEntity: true })
 		class TestSubSubEntity {
 			@Column()
@@ -96,6 +98,7 @@ describe("EntityManager > getAllTablesMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllTablesMetadata()).toStrictEqual([
 			{
