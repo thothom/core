@@ -7,8 +7,8 @@ import { Entity } from "../../../lib/decorators/entity";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { TestConnection } from "../../constants/test-connection";
 
-const createConnection = (entities: Array<any>) =>
-	new TestConnection({
+const createConnection = async (entities: Array<any>) => {
+	const connection = new TestConnection({
 		entities,
 		prefix: {
 			column: {
@@ -21,6 +21,10 @@ const createConnection = (entities: Array<any>) =>
 			},
 		},
 	});
+	await connection.load();
+
+	return connection;
+};
 
 describe("EntityManager > convertDatabaseToEntity", () => {
 	describe("Simple Entity", () => {
@@ -35,8 +39,8 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 			public test?: string;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert partial data correctly", () => {
@@ -111,7 +115,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 	});
 
 	describe("Simple Entity With Custom Column Names", () => {
-		it("should not format name if it is passed on primary-column param", () => {
+		it("should not format name if it is passed on primary-column param", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn("CUSTOM_FIELD_NAME")
@@ -121,7 +125,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result =
 				connection.entityManager.convertDatabaseToEntity<TestEntity>({
@@ -138,7 +142,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 			});
 		});
 
-		it("should not format name if it is passed on primary-column options", () => {
+		it("should not format name if it is passed on primary-column options", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn({
@@ -150,7 +154,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result =
 				connection.entityManager.convertDatabaseToEntity<TestEntity>({
@@ -167,7 +171,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 			});
 		});
 
-		it("should not format the name if it is passed on column options", () => {
+		it("should not format the name if it is passed on column options", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn()
@@ -179,7 +183,7 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result =
 				connection.entityManager.convertDatabaseToEntity<TestEntity>({
@@ -209,8 +213,8 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 			public test?: Array<string>;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert complete data correctly", () => {
@@ -253,8 +257,8 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 			public subEntity: SubTestEntity;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert partial data of sub-entity correctly", () => {
@@ -323,8 +327,8 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 			public subEntities: Array<SubTestEntity>;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert partial data of sub-entity correctly", () => {
@@ -420,8 +424,8 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 			public subEntity: SubTestEntity;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert partial data of sub-sub-entity correctly", () => {
@@ -513,8 +517,8 @@ describe("EntityManager > convertDatabaseToEntity", () => {
 			public subEntity: SubTestEntity;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert partial data of sub-sub-entity correctly", () => {

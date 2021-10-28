@@ -4,6 +4,8 @@ import { BaseRepository } from "../repository";
 import { BaseConnectionOptions } from "./types/connection-options";
 import { CustomClass } from "../entity-manager/types/metadata-type";
 import { DEFAULT_CONNECTION_NAME } from "../../config";
+import { loadOptions } from "../utils/cli/load-options";
+import { loadEntities } from "../utils/cli/load-entities";
 
 export abstract class BaseConnection<
 	DatabaseConfig = any,
@@ -15,56 +17,76 @@ export abstract class BaseConnection<
 	 * Properties
 	 */
 
-	private readonly _name: string;
+	/**
+	 * **DO NOT USE THE ENTITIES FROM THIS OPTIONS!!!!!**
+	 *
+	 * They can be undefined, only after the method `.load` be
+	 * called that the entities will be defined at `this.entities`
+	 *
+	 * Use `this.entities` instead.
+	 */
+	public readonly options: BaseConnectionOptions<DatabaseConfig>;
 
-	private readonly _options: BaseConnectionOptions<DatabaseConfig>;
+	public name: string;
 
-	private readonly _entityManager: EntityManager<
+	public entities: Array<any>;
+
+	public entityManager: EntityManager<
 		EntityExtraMetadata,
 		ColumnExtraMetadata,
 		IndexExtraMetadata
 	>;
 
-	private readonly _logger: Logger;
+	public logger: Logger;
 
 	/**
-	 * Getters
+	 * The connection needs to load the entities before do anything,
+	 * so this prop exists to plugins creators verify if the user
+	 * has not called the `.load()` and throw an error.
 	 */
-
-	public get name() {
-		return this._name;
-	}
-
-	public get options() {
-		return this._options;
-	}
-
-	public get entityManager() {
-		return this._entityManager;
-	}
-
-	public get logger() {
-		return this._logger;
-	}
+	protected isLoaded: boolean;
 
 	/**
-	 * Constructor
+	 * "Constructor"
 	 */
 
-	public constructor(options: BaseConnectionOptions<DatabaseConfig>) {
-		this._name = options.name || DEFAULT_CONNECTION_NAME;
+	public constructor(
+		pluginName: string,
+		options?: BaseConnectionOptions<DatabaseConfig>,
+	) {
+		this.options = loadOptions(pluginName, options);
 
-		this._options = options;
+		this.isLoaded = false;
+	}
 
-		this._logger = new Logger(this._name, options.logging);
+	public async load() {
+		this.name = this.options.name || DEFAULT_CONNECTION_NAME;
 
-		this._entityManager = new EntityManager<
+		this.entities =
+			this.options.entities || (await loadEntities(this.options.entitiesDir!));
+
+		/*
+		 * Removes extra data to avoid errors
+		 *
+		 * this.entities must be used instead
+		 */
+		delete this.options.entities;
+		delete this.options.entitiesDir;
+
+		this.logger = new Logger(this.name, this.options.logging);
+
+		this.entityManager = new EntityManager<
 			EntityExtraMetadata,
 			ColumnExtraMetadata
 		>({
-			logger: this._logger,
-			connectionOptions: this._options,
+			logger: this.logger,
+			connectionOptions: this.options,
+			entities: this.entities,
 		});
+
+		this.isLoaded = true;
+
+		return this;
 	}
 
 	/**

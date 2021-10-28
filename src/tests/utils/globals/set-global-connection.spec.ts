@@ -14,9 +14,14 @@ describe("Utils > setGlobalConnection", () => {
 		public foo: number;
 	}
 
-	const connection = new TestConnection({
-		entities: [TestEntity],
-		logging: "MINIMUM",
+	let connection: TestConnection;
+
+	beforeAll(async () => {
+		connection = new TestConnection({
+			entities: [TestEntity],
+			logging: "MINIMUM",
+		});
+		await connection.load();
 	});
 
 	afterEach(() => {
@@ -35,7 +40,7 @@ describe("Utils > setGlobalConnection", () => {
 		expect(result).toBeUndefined();
 	});
 
-	it("should define connection globally if already has a connection", () => {
+	it("should define connection globally if already has a connection", async () => {
 		let result;
 
 		try {
@@ -44,6 +49,7 @@ describe("Utils > setGlobalConnection", () => {
 				entities: [TestEntity],
 				logging: "MINIMUM",
 			});
+			await connection1.load();
 
 			setGlobalConnection(connection);
 			result = setGlobalConnection(connection1);

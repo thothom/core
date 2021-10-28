@@ -17,13 +17,14 @@ describe("Repository > Methods > afterInsert", () => {
 	let repository: TestRepository<TestEntity>;
 	const id = "11cb020e-6dcb-4c51-93ed-a7a6abbfc771";
 
-	beforeAll(() => {
+	beforeAll(async () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 			namingStrategy: {
 				column: "UPPER_CASE",
 			},
 		});
+		await connection.load();
 
 		repository = new TestRepository<TestEntity>(
 			connection.entityManager,

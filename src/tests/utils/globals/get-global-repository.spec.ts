@@ -12,7 +12,7 @@ describe("Utils > getGlobalRepository", () => {
 		delete global.symbiosisConnections;
 	});
 
-	it("should get global repository of default connection", () => {
+	it("should get global repository of default connection", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -26,6 +26,7 @@ describe("Utils > getGlobalRepository", () => {
 			entities: [TestEntity],
 			logging: "MINIMUM",
 		});
+		await connection.load();
 
 		let result;
 
@@ -40,7 +41,7 @@ describe("Utils > getGlobalRepository", () => {
 		expect(result instanceof TestRepository).toBeTruthy();
 	});
 
-	it("should get global repository of connection with custom name", () => {
+	it("should get global repository of connection with custom name", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -55,6 +56,7 @@ describe("Utils > getGlobalRepository", () => {
 			entities: [TestEntity],
 			logging: "MINIMUM",
 		});
+		await connection.load();
 
 		let result;
 
@@ -69,7 +71,7 @@ describe("Utils > getGlobalRepository", () => {
 		expect(result instanceof TestRepository).toBeTruthy();
 	});
 
-	it("should throw error if repository is not defined", () => {
+	it("should throw error if repository is not defined", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -83,6 +85,7 @@ describe("Utils > getGlobalRepository", () => {
 			entities: [],
 			logging: "MINIMUM",
 		});
+		await connection.load();
 
 		let result;
 

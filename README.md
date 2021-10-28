@@ -100,6 +100,7 @@ const foo = async () => {
 		entities: [FooEntity],
 	});
 
+	await connection.load();
 	await connection.connect();
 
 	const fooRepository: FooRepository =

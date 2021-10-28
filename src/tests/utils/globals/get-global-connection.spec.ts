@@ -11,7 +11,7 @@ describe("Utils > getGlobalConnection", () => {
 		delete global.symbiosisConnections;
 	});
 
-	it("should get global connection (default)", () => {
+	it("should get global connection (default)", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -25,6 +25,7 @@ describe("Utils > getGlobalConnection", () => {
 			entities: [TestEntity],
 			logging: "MINIMUM",
 		});
+		await connection.load();
 
 		let result;
 
@@ -39,7 +40,7 @@ describe("Utils > getGlobalConnection", () => {
 		expect(result).toBe(connection);
 	});
 
-	it("should get global connection (custom name)", () => {
+	it("should get global connection (custom name)", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -54,6 +55,7 @@ describe("Utils > getGlobalConnection", () => {
 			entities: [TestEntity],
 			logging: "MINIMUM",
 		});
+		await connection.load();
 
 		let result;
 
@@ -80,7 +82,7 @@ describe("Utils > getGlobalConnection", () => {
 		expect(result instanceof SymbiosisError).toBeTruthy();
 	});
 
-	it("should throw error if the specified connection is not defined globally", () => {
+	it("should throw error if the specified connection is not defined globally", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -94,6 +96,7 @@ describe("Utils > getGlobalConnection", () => {
 			entities: [TestEntity],
 			logging: "MINIMUM",
 		});
+		await connection.load();
 
 		let result;
 

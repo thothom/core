@@ -5,7 +5,7 @@ import { SymbiosisError } from "../../lib/error";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
-	it("should get basic entity metadata", () => {
+	it("should get basic entity metadata", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -18,6 +18,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -32,7 +33,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should not format entity name if it is passed as param", () => {
+	it("should not format entity name if it is passed as param", async () => {
 		@Entity("CUSTOM_ENTITY_NAME")
 		class TestEntity {
 			@PrimaryColumn()
@@ -53,6 +54,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 				},
 			},
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -68,7 +70,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity + sub-entity metadata (without specify sub-entity at connection options)", () => {
+	it("should get entity + sub-entity metadata (without specify sub-entity at connection options)", async () => {
 		@Entity({
 			isSubEntity: true,
 		})
@@ -92,6 +94,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -114,7 +117,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity + sub-entity + sub-sub-entity metadata", () => {
+	it("should get entity + sub-entity + sub-sub-entity metadata", async () => {
 		@Entity({ isSubEntity: true })
 		class TestSubSubEntity {
 			@Column()
@@ -142,6 +145,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -177,7 +181,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity metadata with naming strategy", () => {
+	it("should get entity metadata with naming strategy", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -193,6 +197,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 				column: "UPPER_CASE",
 			},
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -207,7 +212,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity metadata with prefix add", () => {
+	it("should get entity metadata with prefix add", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -225,6 +230,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 				},
 			},
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -239,7 +245,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity metadata with prefix remove", () => {
+	it("should get entity metadata with prefix remove", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -257,6 +263,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 				},
 			},
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -271,7 +278,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity metadata with prefix remove and naming strategy", () => {
+	it("should get entity metadata with prefix remove and naming strategy", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -292,6 +299,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 				},
 			},
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -306,7 +314,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should throw error with duplicated entity", () => {
+	it("should throw error with duplicated entity", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -319,10 +327,10 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		let result: any;
 
 		try {
-			// eslint-disable-next-line no-new
-			new TestConnection({
+			const connection = new TestConnection({
 				entities: [TestEntity, TestEntity],
 			});
+			await connection.load();
 		} catch (err) {
 			result = err;
 		}
@@ -334,7 +342,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		expect(result.details).toStrictEqual(["Entity: TestEntity"]);
 	});
 
-	it("should get basic entity metadata with naming strategy", () => {
+	it("should get basic entity metadata with naming strategy", async () => {
 		@Entity()
 		class TestFooEntity {
 			@PrimaryColumn()
@@ -350,6 +358,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 				entity: "snake_case",
 			},
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -364,7 +373,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity + sub-entity metadata with naming strategy", () => {
+	it("should get entity + sub-entity metadata with naming strategy", async () => {
 		@Entity({
 			isSubEntity: true,
 		})
@@ -391,6 +400,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 				entity: "snake_case",
 			},
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -432,7 +442,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		});
 	});
 
-	it("should get entity + sub-entity metadata (when sub-entity is also a table)", () => {
+	it("should get entity + sub-entity metadata (when sub-entity is also a table)", async () => {
 		@Entity()
 		class TestSubEntity {
 			@Column()
@@ -454,6 +464,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity, TestSubEntity],
 		});
+		await connection.load();
 
 		expect(connection.entityManager.getAllEntitiesMetadata()).toStrictEqual({
 			// eslint-disable-next-line @typescript-eslint/naming-convention

@@ -140,6 +140,7 @@ describe("Decorators > PrimaryColumn", () => {
 				 */
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				//@ts-ignore
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
 					@PrimaryColumn()
 					public foo: any;
@@ -164,6 +165,7 @@ describe("Decorators > PrimaryColumn", () => {
 				 */
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				//@ts-ignore
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
 					@PrimaryColumn()
 					public foo: Date;
@@ -188,6 +190,7 @@ describe("Decorators > PrimaryColumn", () => {
 				 */
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				//@ts-ignore
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
 					@PrimaryColumn()
 					public foo: Array<string>;
@@ -214,6 +217,7 @@ describe("Decorators > PrimaryColumn", () => {
 				 */
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				//@ts-ignore
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
 					@PrimaryColumn()
 					public foo: CustomType;

@@ -3,13 +3,17 @@ import { Entity } from "../../../lib/decorators/entity";
 import { getColumnDatabaseName } from "../../../lib/utils/convert/get-column-database-name";
 import { TestConnection } from "../../constants/test-connection";
 
-const createConnection = (entities: Array<any>) =>
-	new TestConnection({
+const createConnection = async (entities: Array<any>) => {
+	const connection = new TestConnection({
 		entities,
 		namingStrategy: {
 			column: "UPPER_CASE",
 		},
 	});
+	await connection.load();
+
+	return connection;
+};
 
 describe("getColumnDatabaseName", () => {
 	describe("With simple entity", () => {
@@ -27,8 +31,8 @@ describe("getColumnDatabaseName", () => {
 			public arrayColumn: Array<string>;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert column", () => {

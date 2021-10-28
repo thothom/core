@@ -5,7 +5,7 @@ import { SymbiosisError } from "../../lib/error";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getEntityMetadata", () => {
-	it("should get entity metadata", () => {
+	it("should get entity metadata", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -21,6 +21,7 @@ describe("EntityManager > getEntityMetadata", () => {
 			const connection = new TestConnection({
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			result = connection.entityManager.getEntityMetadata(TestEntity);
 		} catch (err: any) {
@@ -37,7 +38,7 @@ describe("EntityManager > getEntityMetadata", () => {
 		});
 	});
 
-	it("should get sub-entity metadata", () => {
+	it("should get sub-entity metadata", async () => {
 		@Entity({
 			isSubEntity: true,
 		})
@@ -61,6 +62,7 @@ describe("EntityManager > getEntityMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(
 			connection.entityManager.getEntityMetadata(TestSubEntity),
@@ -72,7 +74,7 @@ describe("EntityManager > getEntityMetadata", () => {
 		});
 	});
 
-	it("should get sub-sub-entity metadata", () => {
+	it("should get sub-sub-entity metadata", async () => {
 		@Entity({ isSubEntity: true })
 		class TestSubSubEntity {
 			@Column()
@@ -100,6 +102,7 @@ describe("EntityManager > getEntityMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(
 			connection.entityManager.getEntityMetadata(TestSubSubEntity),
@@ -111,7 +114,7 @@ describe("EntityManager > getEntityMetadata", () => {
 		});
 	});
 
-	it("should throw error if entity is not registered", () => {
+	it("should throw error if entity is not registered", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -124,6 +127,7 @@ describe("EntityManager > getEntityMetadata", () => {
 		const connection = new TestConnection({
 			entities: [],
 		});
+		await connection.load();
 
 		let result: any;
 

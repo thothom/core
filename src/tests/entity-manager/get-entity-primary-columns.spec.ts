@@ -5,7 +5,7 @@ import { SymbiosisError } from "../../lib/error";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getEntityPrimaryColumns", () => {
-	it("should get unique primary-column metadata", () => {
+	it("should get unique primary-column metadata", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -18,6 +18,7 @@ describe("EntityManager > getEntityPrimaryColumns", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(
 			connection.entityManager.getEntityPrimaryColumns(TestEntity),
@@ -31,7 +32,7 @@ describe("EntityManager > getEntityPrimaryColumns", () => {
 		]);
 	});
 
-	it("should get composite primary-columns metadata", () => {
+	it("should get composite primary-columns metadata", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -44,6 +45,7 @@ describe("EntityManager > getEntityPrimaryColumns", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(
 			connection.entityManager.getEntityPrimaryColumns(TestEntity),
@@ -63,7 +65,7 @@ describe("EntityManager > getEntityPrimaryColumns", () => {
 		]);
 	});
 
-	it("should throw error if entity is not registered", () => {
+	it("should throw error if entity is not registered", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -76,6 +78,7 @@ describe("EntityManager > getEntityPrimaryColumns", () => {
 		const connection = new TestConnection({
 			entities: [],
 		});
+		await connection.load();
 
 		let result: any;
 

@@ -1,10 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { BaseConnection } from "../../lib/connection";
+import { BaseConnectionOptions } from "../../lib/connection/types/connection-options";
 import { BaseRepository } from "../../lib/repository";
 import { TestRepository } from "./test-repository";
 
 export class TestConnection extends BaseConnection {
+	public constructor(options?: BaseConnectionOptions) {
+		// Example name of a installed package
+		super("@techmmunity/utils", options);
+	}
+
 	public connect(): Promise<void> {
 		throw new Error("Method not implemented.");
 	}
@@ -13,21 +19,5 @@ export class TestConnection extends BaseConnection {
 		entity: any,
 	): BaseRepository<Entity, void, void> {
 		return new TestRepository(this.entityManager, this.logger, entity);
-	}
-
-	public override get name() {
-		return super.name;
-	}
-
-	public override get options() {
-		return super.options;
-	}
-
-	public override get entityManager() {
-		return super.entityManager;
-	}
-
-	public override get logger() {
-		return super.logger;
 	}
 }

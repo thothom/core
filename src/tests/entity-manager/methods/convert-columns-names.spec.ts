@@ -6,13 +6,17 @@ import { Entity } from "../../../lib/decorators/entity";
 import { SymbiosisError } from "../../../lib/error";
 import { TestConnection } from "../../constants/test-connection";
 
-const createConnection = (entities: Array<any>) =>
-	new TestConnection({
+const createConnection = async (entities: Array<any>) => {
+	const connection = new TestConnection({
 		entities,
 		namingStrategy: {
 			column: "UPPER_CASE",
 		},
 	});
+	await connection.load();
+
+	return connection;
+};
 
 describe("EntityMetadata > convertColumnsNames", () => {
 	describe("With simple entity", () => {
@@ -27,8 +31,8 @@ describe("EntityMetadata > convertColumnsNames", () => {
 			public test: string;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert columns", () => {
@@ -42,7 +46,7 @@ describe("EntityMetadata > convertColumnsNames", () => {
 	});
 
 	describe("Simple Entity with custom column names", () => {
-		it("should convert columns if it is passed on primary-column param", () => {
+		it("should convert columns if it is passed on primary-column param", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn("CUSTOM_FIELD_NAME")
@@ -52,7 +56,7 @@ describe("EntityMetadata > convertColumnsNames", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.convertColumnsNames({
 				entity: TestEntity,
@@ -62,7 +66,7 @@ describe("EntityMetadata > convertColumnsNames", () => {
 			expect(result).toStrictEqual(["CUSTOM_FIELD_NAME", "TEST"]);
 		});
 
-		it("should convert columns if it is passed on column options", () => {
+		it("should convert columns if it is passed on column options", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -74,7 +78,7 @@ describe("EntityMetadata > convertColumnsNames", () => {
 				public test: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.convertColumnsNames({
 				entity: TestEntity,
@@ -108,8 +112,8 @@ describe("EntityMetadata > convertColumnsNames", () => {
 			public subEntity: SubTestEntity;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert columns with multilevel", () => {
@@ -177,8 +181,8 @@ describe("EntityMetadata > convertColumnsNames", () => {
 			public subEntity: Array<SubTestEntity>;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert columns with multilevel", () => {

@@ -4,13 +4,17 @@ import { SymbiosisError } from "../../../lib/error";
 import { getMultipleLevelColumnName } from "../../../lib/utils/convert/get-multiple-level-column-name";
 import { TestConnection } from "../../constants/test-connection";
 
-const createConnection = (entities: Array<any>) =>
-	new TestConnection({
+const createConnection = async (entities: Array<any>) => {
+	const connection = new TestConnection({
 		entities,
 		namingStrategy: {
 			column: "UPPER_CASE",
 		},
 	});
+	await connection.load();
+
+	return connection;
+};
 
 describe("getMultipleLevelColumnName", () => {
 	describe("With entity with sub-entity", () => {
@@ -36,8 +40,8 @@ describe("getMultipleLevelColumnName", () => {
 			public subEntity: SubTestEntity;
 		}
 
-		beforeAll(() => {
-			connection = createConnection([TestEntity]);
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
 		});
 
 		it("should convert columns with multilevel", () => {

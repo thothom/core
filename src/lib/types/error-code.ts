@@ -42,6 +42,10 @@ export type SymbiosisErrorCode =
 	 */
 	| "INVALID_EXECUTION_ORDER"
 	/**
+	 * Dependencies
+	 */
+	| "MISSING_DEPENDENCY"
+	/**
 	 * Database
 	 */
 	| "OPERATION_FAILED";

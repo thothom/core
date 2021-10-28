@@ -188,6 +188,7 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 				 */
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				//@ts-ignore
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
 					@PrimaryGeneratedColumn()
 					public foo: any;
@@ -212,6 +213,7 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 				 */
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				//@ts-ignore
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
 					@PrimaryGeneratedColumn()
 					public foo: Date;
@@ -236,6 +238,7 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 				 */
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				//@ts-ignore
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
 					@PrimaryGeneratedColumn()
 					public foo: Array<string>;
@@ -262,6 +265,7 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 				 */
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				//@ts-ignore
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
 					@PrimaryGeneratedColumn()
 					public foo: CustomType;

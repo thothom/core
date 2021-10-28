@@ -13,10 +13,14 @@ import { TestConnection } from "../../constants/test-connection";
 import { Remove } from "../../../lib/repository/operators/save/remove";
 import { IsNull } from "../../../lib/repository/operators/find/is-null";
 
-const createConnection = (entities: Array<any>) =>
-	new TestConnection({
+const createConnection = async (entities: Array<any>) => {
+	const connection = new TestConnection({
 		entities,
 	});
+	await connection.load();
+
+	return connection;
+};
 
 describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 	describe("Auto generate columns of Entity", () => {
@@ -29,7 +33,11 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			public test: string;
 		}
 
-		const connection = createConnection([TestEntity]);
+		let connection: TestConnection;
+
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
+		});
 
 		it("should generate fields", () => {
 			const result =
@@ -131,7 +139,11 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			public testSub: TestSubEntity;
 		}
 
-		const connection = createConnection([TestEntity]);
+		let connection: TestConnection;
+
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
+		});
 
 		it("should generate fields if parent field is specified", () => {
 			const result =
@@ -222,7 +234,11 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			public testSub: Array<TestSubEntity>;
 		}
 
-		const connection = createConnection([TestEntity]);
+		let connection: TestConnection;
+
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
+		});
 
 		it("should NOT generate anything if is empty array", () => {
 			let result: any;
@@ -271,7 +287,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 	});
 
 	describe("NOT auto generate columns of SubEntity", () => {
-		it("should NOT generate empty objects if sub-entity doesn't has any auto-generated field", () => {
+		it("should NOT generate empty objects if sub-entity doesn't has any auto-generated field", async () => {
 			let result: any;
 
 			try {
@@ -292,7 +308,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 					public testSub: TestSubEntity;
 				}
 
-				const connection = createConnection([TestEntity]);
+				const connection = await createConnection([TestEntity]);
 
 				result =
 					connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
@@ -311,7 +327,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			});
 		});
 
-		it("should keep empty objects if sub-entity doesn't has any auto-generated field and an empty object is specified", () => {
+		it("should keep empty objects if sub-entity doesn't has any auto-generated field and an empty object is specified", async () => {
 			@Entity({
 				isSubEntity: true,
 			})
@@ -329,7 +345,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 				public testSub: TestSubEntity;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
@@ -347,7 +363,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			});
 		});
 
-		it("should remove undefined fields", () => {
+		it("should remove undefined fields", async () => {
 			@Entity({
 				isSubEntity: true,
 			})
@@ -365,7 +381,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 				public testSub: TestSubEntity;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
@@ -382,7 +398,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			});
 		});
 
-		it("should remove null fields", () => {
+		it("should remove null fields", async () => {
 			@Entity({
 				isSubEntity: true,
 			})
@@ -400,7 +416,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 				public testSub: TestSubEntity;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
@@ -443,7 +459,11 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			public testSub: TestSubEntity;
 		}
 
-		const connection = createConnection([TestEntity]);
+		let connection: TestConnection;
+
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
+		});
 
 		it("should generate fields of sub-sub-entity if empty object is passed", () => {
 			const result =
@@ -502,7 +522,11 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			public test: string;
 		}
 
-		const connection = createConnection([TestEntity]);
+		let connection: TestConnection;
+
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
+		});
 
 		it("should generate field", () => {
 			const result =
@@ -549,7 +573,11 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			public test: string;
 		}
 
-		const connection = createConnection([TestEntity]);
+		let connection: TestConnection;
+
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
+		});
 
 		it("should generate field", () => {
 			const result =
@@ -596,7 +624,11 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			public test: string;
 		}
 
-		const connection = createConnection([TestEntity]);
+		let connection: TestConnection;
+
+		beforeAll(async () => {
+			connection = await createConnection([TestEntity]);
+		});
 
 		it("should generate field", () => {
 			const result =
@@ -634,7 +666,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 	});
 
 	describe("Auto generate columns with default value", () => {
-		it("should generate default column value (simple value)", () => {
+		it("should generate default column value (simple value)", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn()
@@ -646,7 +678,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 				public test?: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
@@ -662,7 +694,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			});
 		});
 
-		it("should generate default column value (function)", () => {
+		it("should generate default column value (function)", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryColumn()
@@ -674,7 +706,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 				public test?: string;
 			}
 
-			const connection = createConnection([TestEntity]);
+			const connection = await createConnection([TestEntity]);
 
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,

@@ -5,7 +5,7 @@ import { SymbiosisError } from "../../lib/error";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getColumnMetadata", () => {
-	it("should get primary-column metadata", () => {
+	it("should get primary-column metadata", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -18,6 +18,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(
 			connection.entityManager.getColumnMetadata(TestEntity, "id"),
@@ -29,7 +30,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		});
 	});
 
-	it("should get column metadata", () => {
+	it("should get column metadata", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -42,6 +43,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(
 			connection.entityManager.getColumnMetadata(TestEntity, "foo"),
@@ -52,7 +54,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		});
 	});
 
-	it("should get sub-entity column metadata metadata", () => {
+	it("should get sub-entity column metadata metadata", async () => {
 		@Entity({
 			isSubEntity: true,
 		})
@@ -76,6 +78,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(
 			connection.entityManager.getColumnMetadata(TestSubEntity, "bar"),
@@ -86,7 +89,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		});
 	});
 
-	it("should get sub-sub-entity column metadata", () => {
+	it("should get sub-sub-entity column metadata", async () => {
 		@Entity({ isSubEntity: true })
 		class TestSubSubEntity {
 			@Column()
@@ -114,6 +117,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		expect(
 			connection.entityManager.getColumnMetadata(TestSubSubEntity, "bar"),
@@ -124,7 +128,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		});
 	});
 
-	it("should throw error if entity is not registered", () => {
+	it("should throw error if entity is not registered", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -137,6 +141,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		const connection = new TestConnection({
 			entities: [],
 		});
+		await connection.load();
 
 		let result: any;
 
@@ -153,7 +158,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		expect(result.details).toStrictEqual(["Entity: ", TestEntity]);
 	});
 
-	it("should throw error if columns doesn't exist", () => {
+	it("should throw error if columns doesn't exist", async () => {
 		@Entity()
 		class TestEntity {
 			@PrimaryColumn()
@@ -166,6 +171,7 @@ describe("EntityManager > getColumnMetadata", () => {
 		const connection = new TestConnection({
 			entities: [TestEntity],
 		});
+		await connection.load();
 
 		let result: any;
 

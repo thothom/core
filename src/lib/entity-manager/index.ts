@@ -31,6 +31,7 @@ import { EntityManagerEntities } from "./types/manager-metadata";
 interface EntityManagerConstructorParams {
 	connectionOptions: BaseConnectionOptions;
 	logger: Logger;
+	entities: Array<any>;
 }
 
 /**
@@ -84,21 +85,20 @@ export class EntityManager<
 	public constructor({
 		connectionOptions,
 		logger,
+		entities: rawEntities,
 	}: EntityManagerConstructorParams) {
 		this.logger = logger;
 		this.connectionOptions = connectionOptions;
 
-		const entities = loadEntities<
+		this.entities = loadEntities<
 			EntityExtraMetadata,
 			ColumnExtraMetadata,
 			IndexExtraMetadata
 		>({
 			connectionOptions: this.connectionOptions,
 			logger: this.logger,
-			entities: this.connectionOptions.entities,
+			entities: rawEntities,
 		});
-
-		this.entities = entities;
 	}
 
 	/**
