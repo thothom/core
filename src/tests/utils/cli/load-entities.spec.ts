@@ -5,7 +5,7 @@ import { internalLoadEntities } from "../../../lib/utils/cli/load-entities/inter
 
 describe("Utils > CLI > loadEntities", () => {
 	const getRootPath = jest.fn();
-	const globUtil = jest.fn();
+	const glob = jest.fn();
 	const internalRequire = jest.fn();
 	const isPackageInstalled = jest.fn();
 	const createDotSymbiosisDir = jest.fn();
@@ -22,7 +22,7 @@ describe("Utils > CLI > loadEntities", () => {
 		internalLoadEntities({
 			entitiesDir,
 			getRootPath,
-			globUtil,
+			glob,
 			internalRequire,
 			isPackageInstalled,
 			createDotSymbiosisDir,
@@ -41,7 +41,7 @@ describe("Utils > CLI > loadEntities", () => {
 			path => `root/path/${path.replace(/^\//, "")}`,
 		);
 
-		globUtil.mockImplementation(
+		glob.mockImplementation(
 			(path: string) =>
 				new Promise(resolve =>
 					resolve([path.replace(/\*\*/, "bar"), path.replace(/\*\*/, "foo")]),
@@ -59,7 +59,7 @@ describe("Utils > CLI > loadEntities", () => {
 				result = err;
 			}
 
-			expect(globUtil).toBeCalledTimes(0);
+			expect(glob).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
 			expect(isPackageInstalled).toBeCalledTimes(0);
 			expect(createDotSymbiosisDir).toBeCalledTimes(0);
@@ -101,7 +101,7 @@ describe("Utils > CLI > loadEntities", () => {
 				result = err;
 			}
 
-			expect(globUtil).toBeCalledTimes(entitiesDirJs.length);
+			expect(glob).toBeCalledTimes(entitiesDirJs.length);
 			expect(internalRequire).toBeCalledTimes(entitiesDirJs.length * 2); // Because the mock implementation return 2x items
 			expect(isPackageInstalled).toBeCalledTimes(0);
 			expect(createDotSymbiosisDir).toBeCalledTimes(0);
@@ -127,7 +127,7 @@ describe("Utils > CLI > loadEntities", () => {
 				result = err;
 			}
 
-			expect(globUtil).toBeCalledTimes(entitiesDirJs.length);
+			expect(glob).toBeCalledTimes(entitiesDirJs.length);
 			expect(internalRequire).toBeCalledTimes(entitiesDirJs.length * 2); // Because the mock implementation return 2x items
 			expect(isPackageInstalled).toBeCalledTimes(0);
 			expect(createDotSymbiosisDir).toBeCalledTimes(0);
@@ -156,7 +156,7 @@ describe("Utils > CLI > loadEntities", () => {
 				result = err;
 			}
 
-			expect(globUtil).toBeCalledTimes(entitiesDirTs.length);
+			expect(glob).toBeCalledTimes(entitiesDirTs.length);
 			expect(internalRequire).toBeCalledTimes(0);
 			expect(isPackageInstalled).toBeCalledTimes(1);
 			expect(createDotSymbiosisDir).toBeCalledTimes(0);
@@ -208,7 +208,7 @@ describe("Utils > CLI > loadEntities", () => {
 				result = err;
 			}
 
-			expect(globUtil).toBeCalledTimes(entitiesDirTs.length);
+			expect(glob).toBeCalledTimes(entitiesDirTs.length);
 			// eslint-disable-next-line prettier/prettier
 			expect(internalRequire).toBeCalledTimes((entitiesDirTs.length * 2) + 1); // Because the mock implementation return 2x items
 			expect(isPackageInstalled).toBeCalledTimes(1);
@@ -247,7 +247,7 @@ describe("Utils > CLI > loadEntities", () => {
 				result = err;
 			}
 
-			expect(globUtil).toBeCalledTimes(entitiesDirTs.length);
+			expect(glob).toBeCalledTimes(entitiesDirTs.length);
 			// eslint-disable-next-line prettier/prettier
 			expect(internalRequire).toBeCalledTimes((entitiesDirTs.length * 2) + 1); // Because the mock implementation return 2x items
 			expect(isPackageInstalled).toBeCalledTimes(1);

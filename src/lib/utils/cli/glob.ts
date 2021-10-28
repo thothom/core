@@ -1,4 +1,3 @@
-import { promisify } from "util";
-import { glob as Glob } from "glob";
+import Glob from "tiny-glob";
 
-export const globUtil = promisify(Glob);
+export const glob = Glob;
