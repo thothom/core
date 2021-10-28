@@ -1,12 +1,12 @@
 {
 	"name": "@techmmunity/symbiosis",
-	"version": "0.0.21",
+	"version": "0.0.22",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
 	"author": "Techmmunity",
 	"description": "Symbiosis - The Ultimate OM For All Databases",
-	"homepage": "https://github.com/techmmunity/symbiosis#readme",
+	"homepage": "https://symbiosis.techmmunity.com.br/",
 	"bugs": {
 		"url": "https://github.com/techmmunity/symbiosis/issues"
 	},
