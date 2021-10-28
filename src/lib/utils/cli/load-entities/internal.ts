@@ -7,7 +7,7 @@ import { loadTsFiles } from "./helpers/load-ts-files";
 interface InternalLoadEntities {
 	entitiesDir: Array<string>;
 	getRootPath: (path: string) => string;
-	globUtil: (paths: string) => Promise<Array<string>>;
+	glob: (paths: string) => Promise<Array<string>>;
 	internalRequire: (pkg: string) => any;
 	isPackageInstalled: (pkg: string) => boolean;
 	createDotSymbiosisDir: (path: string) => void;
@@ -16,13 +16,13 @@ interface InternalLoadEntities {
 export const internalLoadEntities = async ({
 	entitiesDir,
 	getRootPath,
-	globUtil,
+	glob,
 	internalRequire,
 	isPackageInstalled,
 	createDotSymbiosisDir,
 }: InternalLoadEntities): Promise<Array<any>> => {
 	const entitiesPath = await Promise.all(
-		entitiesDir.map(dir => globUtil(getRootPath(dir))),
+		entitiesDir.map(dir => glob(getRootPath(dir))),
 	).then(result => result.flat());
 
 	if (isEmptyArray(entitiesPath)) {

@@ -15,6 +15,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.0.25] - 2021-10-26
+
+### Added
+
+### Changed
+
+- Change `glob` to `tiny-glob` because of problems with types
+
+### Removed
+
 ## [0.0.21] - 2021-10-26
 
 ### Added
