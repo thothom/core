@@ -31,6 +31,17 @@ describe("Connection > entity", () => {
 		expect(connection.options).not.toHaveProperty("entities");
 		expect(connection.options).not.toHaveProperty("entitiesDir");
 		expect(connection.logger instanceof Logger).toBeTruthy();
+		expect(connection.entityManager.entities).toStrictEqual({
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			TestEntity: {
+				columns: [
+					{ databaseName: "id", name: "id", primary: true, type: String },
+					{ databaseName: "foo", name: "foo", type: Number },
+				],
+				databaseName: "TestEntity",
+				name: "TestEntity",
+			},
+		});
 	});
 
 	it("should get connection custom config", async () => {
@@ -77,6 +88,17 @@ describe("Connection > entity", () => {
 		expect(connection.options).not.toHaveProperty("entities");
 		expect(connection.options).not.toHaveProperty("entitiesDir");
 		expect(connection.logger instanceof Logger).toBeTruthy();
+		expect(connection.entityManager.entities).toStrictEqual({
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			TestEntity: {
+				columns: [
+					{ databaseName: "id", name: "id", primary: true, type: String },
+					{ databaseName: "foo", name: "foo", type: Number },
+				],
+				databaseName: "AddTestEntity",
+				name: "TestEntity",
+			},
+		});
 	});
 
 	it.todo("the entities loading is impossible to test");

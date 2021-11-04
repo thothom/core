@@ -65,11 +65,12 @@
 		"test": "jest",
 		"test:cov": "jest --coverage",
 		"build": "ncc build src/index.ts -o dist -s -m -e reflect-metadata -e uuid -e change-case -e dayjs -e tiny-glob -e @techmmunity/utils",
+		"build:dev": "ncc build src/index.ts -o dist -s -m",
 		"format": "eslint . --fix --quiet",
 		"lint": "eslint . --quiet",
 		"upgrade-dependencies": "yarn upgrade-interactive --latest",
 		"husky:pre-commit": "tsc && lint-staged",
-		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd ..",
+		"lk": "yarn build:dev && cp package.json dist/package.json && cd dist && yarn link && cd ..",
 		"ulk": "yarn unlink && yarn lk"
 	}
 }

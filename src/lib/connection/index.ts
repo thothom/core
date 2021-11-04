@@ -63,7 +63,7 @@ export abstract class BaseConnection<
 		this.name = this.options.name || DEFAULT_CONNECTION_NAME;
 
 		this.entities =
-			this.options.entities || (await loadEntities(this.options.entitiesDir!));
+			this.options.entities || (await loadEntities(this.options.entitiesDir));
 
 		/*
 		 * Removes extra data to avoid errors

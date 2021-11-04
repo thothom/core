@@ -68,7 +68,7 @@ export class EntityManager<
 	 * 	}
 	 * ```
 	 */
-	private readonly entities: EntityManagerEntities<
+	public readonly entities: EntityManagerEntities<
 		EntityExtraMetadata,
 		ColumnExtraMetadata,
 		IndexExtraMetadata
@@ -85,7 +85,7 @@ export class EntityManager<
 	public constructor({
 		connectionOptions,
 		logger,
-		entities: rawEntities,
+		entities,
 	}: EntityManagerConstructorParams) {
 		this.logger = logger;
 		this.connectionOptions = connectionOptions;
@@ -97,7 +97,7 @@ export class EntityManager<
 		>({
 			connectionOptions: this.connectionOptions,
 			logger: this.logger,
-			entities: rawEntities,
+			entities,
 		});
 	}
 

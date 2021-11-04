@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { isEmptyArray } from "@techmmunity/utils";
 import { SymbiosisError } from "../../../error";
 import { MetadataUtil } from "../../metadata-util";
@@ -5,7 +6,7 @@ import { loadJsFiles } from "./helpers/load-js-files";
 import { loadTsFiles } from "./helpers/load-ts-files";
 
 interface InternalLoadEntities {
-	entitiesDir: Array<string>;
+	entitiesDir?: Array<string>;
 	getRootPath: (path: string) => string;
 	glob: (paths: string) => Promise<Array<string>>;
 	internalRequire: (pkg: string) => any;
@@ -21,6 +22,15 @@ export const internalLoadEntities = async ({
 	isPackageInstalled,
 	createDotSymbiosisDir,
 }: InternalLoadEntities): Promise<Array<any>> => {
+	if (!entitiesDir) {
+		throw new SymbiosisError({
+			code: "INVALID_PARAM",
+			origin: "SYMBIOSIS",
+			message: "Missing config",
+			details: ['"entities" or "entitiesDir" must be provided'],
+		});
+	}
+
 	const entitiesPath = await Promise.all(
 		entitiesDir.map(dir => glob(getRootPath(dir))),
 	).then(result => result.flat());

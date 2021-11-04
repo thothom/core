@@ -18,7 +18,7 @@ describe("Utils > CLI > loadEntities", () => {
 	const entitiesDirJs = ["foo/**/foo.js", "foo/**/bar.js"];
 	const entitiesDirTs = ["foo/**/foo.ts", "foo/**/bar.ts"];
 
-	const loadEntities = (entitiesDir: Array<string>) =>
+	const loadEntities = (entitiesDir?: Array<string>) =>
 		internalLoadEntities({
 			entitiesDir,
 			getRootPath,
@@ -49,7 +49,34 @@ describe("Utils > CLI > loadEntities", () => {
 		);
 	});
 
-	describe("with empty array of entitiesPaths", () => {
+	describe("with no entitiesDir", () => {
+		it("should throw error", async () => {
+			let result;
+
+			try {
+				result = await loadEntities();
+			} catch (err) {
+				result = err;
+			}
+
+			expect(glob).toBeCalledTimes(0);
+			expect(internalRequire).toBeCalledTimes(0);
+			expect(isPackageInstalled).toBeCalledTimes(0);
+			expect(createDotSymbiosisDir).toBeCalledTimes(0);
+			expect(emit).toBeCalledTimes(0);
+			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result).toStrictEqual(
+				new SymbiosisError({
+					code: "INVALID_PARAM",
+					origin: "SYMBIOSIS",
+					message: "Missing config",
+					details: ['"entities" or "entitiesDir" must be provided'],
+				}),
+			);
+		});
+	});
+
+	describe("with empty array of entitiesDir", () => {
 		it("should throw error", async () => {
 			let result;
 
