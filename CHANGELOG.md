@@ -11,7 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Fix `getGlobalRepository` Type
+- Fix `getGlobalRepository` type
+- Fix `glob` import type
+- Fix `loadEntities` type (entitiesDir may be undefined)
+- Make `entities` of `EntityManager` public
+- Add tests to check if the entities of `EntityManager` are being loaded
 
 ### Fixed
 
