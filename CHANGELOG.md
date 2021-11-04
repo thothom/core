@@ -11,13 +11,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Fix `getGlobalRepository` type
-- Fix `glob` import type
-- Fix `loadEntities` type (entitiesDir may be undefined)
+### Fixed
+
+### Removed
+
+## [0.0.26] - 2021-11-04
+
+### Added
+
+- Tests to check if the entities of `EntityManager` are being loaded
+
+### Changed
+
 - Make `entities` of `EntityManager` public
-- Add tests to check if the entities of `EntityManager` are being loaded
 
 ### Fixed
+
+- `getGlobalRepository` type
+- `glob` import type
+- `loadEntities` type (entitiesDir may be undefined)
 
 ### Removed
 
