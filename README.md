@@ -32,7 +32,7 @@ Symbiosis is an **Object Mapper**, an [ORM + ODM](https://medium.com/spidernitt/
 
 Currently it only works with TypeScript (and transpiled JavaScript), and we plan to keep this way.
 
-[![Guilded Community](https://img.shields.io/badge/guilded%20community-F5C400?style=for-the-badge&labelColor=F5C400&logo=guilded&logoColor=111820)](https://guilded.gg/techmmunity)
+[![Discord Community](https://img.shields.io/badge/discord%20community-5865F2?style=for-the-badge&labelColor=5865F2&logo=discord&logoColor=ffffff)](https://discord.gg/TakYksUzzZ)
 [![Docs](https://img.shields.io/badge/📄%20documentation-01d2ce?style=for-the-badge)](https://symbiosis.techmmunity.com.br)
 
 ## Why use Techmmunity Symbiosis?
@@ -40,7 +40,7 @@ Currently it only works with TypeScript (and transpiled JavaScript), and we plan
 - **Easy to use and standardize.** Regardless of the database, the implementation will be the same in all cases (except the most complex ones).
 - **The plugable approach.** With the community support, this OM can work with **all** the databases, be they NoSQL or SQL, as long as it has a plugin for it.
 - **No globals!** All that this package uses is encapsuled inside it's classes, so there is no need to worry about some config defined in a global scope compromising your code, but if you want, you can use `setGlobalConnection()` to allow globals.
-- **Free and direct support.** If you have any question, you can join [our guilded community](https://guilded.gg/techmmunity), and we and the members of Techmmunity will help you!
+- **Free and direct support.** If you have any question, you can join [our discord community](https://discord.gg/TakYksUzzZ), and we and the members of Techmmunity will help you!
 - **Focused on microservices and serverless!** We focus in keep it usable for serverless and microservices projects.
 
 ## Install and Config
