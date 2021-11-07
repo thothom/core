@@ -1,4 +1,5 @@
 import { PreDefinedAutoGenerationMethods } from "../../entity-manager/types/column-metadata";
+import { DatabaseEvents } from "../../entity-manager/types/database-events";
 import { MetadataType } from "../../entity-manager/types/metadata-type";
 
 export interface BaseColumnOptions<ColumnExtraMetadata = any> {
@@ -13,6 +14,11 @@ export interface ColumnOptions<ColumnExtraMetadata = any>
 	defaultValue?: any;
 	enum?: any;
 	type?: MetadataType;
+}
+
+export interface CountColumnOptions<ColumnExtraMetadata = any>
+	extends BaseColumnOptions<ColumnExtraMetadata> {
+	events: Array<DatabaseEvents>;
 }
 
 export type PrimaryColumnOptions<ColumnExtraMetadata = any> =

@@ -153,6 +153,8 @@
   - Only accepts "number" type
   - This column will be auto-generated **on update**
   - The value of this column will be the SaveOperator `Plus(1)`
+- [x] Refact `@CountUpdateColumn` to be `@CountColumn`
+  - Will receive a parameter `events`, an array of events to increment the count
 - [ ] Add colors to the logs, like Nestjs Logger
 - [ ] Add `@VersionColumn` that receives the version (Ex: `@VersionColumn("v2")`)
   - Only accepts "string" type
