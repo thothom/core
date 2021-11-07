@@ -147,7 +147,7 @@
 - [x] Edit the auto-generation method of primary columns
 - [x] Add `SubEntity` decorator
   - Will replace `@Entity({ isSubEntity: true })` to make things more explicity
-- [ ] Refact "auto-generation"
+- [x] Refact "auto-generation"
   - Remember to remove the "todo" test
 - [ ] Add colors to the logs, like Nestjs Logger
 - [ ] Add `@VersionColumn` that receives the version (Ex: `@VersionColumn("v2")`)
