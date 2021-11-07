@@ -1,5 +1,5 @@
 import { Plus } from "../../..";
-import { CountUpdateColumn } from "../../../lib/decorators/columns/count-update-column";
+import { CountColumn } from "../../../lib/decorators/columns/count-column";
 import { SymbiosisError } from "../../../lib/error";
 import { MetadataUtil } from "../../../lib/utils/metadata-util";
 
@@ -7,7 +7,7 @@ describe("Decorators > CountUpdateColumn", () => {
 	describe("Implicitly Type", () => {
 		it("should add column metadata correctly (number)", () => {
 			class Test {
-				@CountUpdateColumn()
+				@CountColumn(["update"])
 				public foo: number;
 			}
 
@@ -31,7 +31,8 @@ describe("Decorators > CountUpdateColumn", () => {
 	describe("Specified DatabaseName At Decorator Options", () => {
 		it("should define database name that is passed at the options", () => {
 			class Test {
-				@CountUpdateColumn({
+				@CountColumn({
+					events: ["save"],
 					name: "bar",
 				})
 				public foo: number;
@@ -47,7 +48,7 @@ describe("Decorators > CountUpdateColumn", () => {
 					databaseName: "bar",
 					isNameAlreadyFormatted: true,
 					autoGenerate: Plus(1),
-					autoGenerateOnlyOnEvents: ["update"],
+					autoGenerateOnlyOnEvents: ["save"],
 					name: "foo",
 					type: Number,
 				},
@@ -58,7 +59,8 @@ describe("Decorators > CountUpdateColumn", () => {
 	describe("Specified Extras At Decorator Options", () => {
 		it("should define extras that is passed at the options", () => {
 			class Test {
-				@CountUpdateColumn({
+				@CountColumn({
+					events: ["update"],
 					extras: {
 						foo: "bar",
 					},
@@ -101,7 +103,7 @@ describe("Decorators > CountUpdateColumn", () => {
 				//@ts-ignore
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
-					@CountUpdateColumn()
+					@CountColumn(["delete"])
 					public foo: any;
 				}
 			} catch (err) {
@@ -126,7 +128,7 @@ describe("Decorators > CountUpdateColumn", () => {
 				//@ts-ignore
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
-					@CountUpdateColumn()
+					@CountColumn(["update"])
 					public foo: string;
 				}
 			} catch (err) {
@@ -151,7 +153,7 @@ describe("Decorators > CountUpdateColumn", () => {
 				//@ts-ignore
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
-					@CountUpdateColumn()
+					@CountColumn(["find"])
 					public foo: Date;
 				}
 			} catch (err) {
@@ -176,7 +178,7 @@ describe("Decorators > CountUpdateColumn", () => {
 				//@ts-ignore
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
-					@CountUpdateColumn()
+					@CountColumn(["update"])
 					public foo: Array<string>;
 				}
 			} catch (err) {
@@ -203,7 +205,7 @@ describe("Decorators > CountUpdateColumn", () => {
 				//@ts-ignore
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
-					@CountUpdateColumn()
+					@CountColumn(["save"])
 					public foo: CustomType;
 				}
 			} catch (err) {

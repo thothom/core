@@ -9,7 +9,7 @@ import "reflect-metadata";
  */
 
 export * from "./lib/decorators/columns/column";
-export * from "./lib/decorators/columns/count-update-column";
+export * from "./lib/decorators/columns/count-column";
 export * from "./lib/decorators/columns/primary-column";
 export * from "./lib/decorators/columns/primary-generated-column";
 export * from "./lib/decorators/columns/delete-date-column";
