@@ -32,7 +32,7 @@ export interface ColumnMetadata<ExtraData = Record<string, any>> {
 	enumName?: string;
 	enumValues?: Array<number | string>;
 
-	autoGenerate?: AutoGenerationFunc | PreDefinedAutoGenerationMethods;
+	autoGenerate?: AutoGenerationFunc | PreDefinedAutoGenerationMethods | any;
 	autoGenerateOnlyOnEvents?: Array<DatabaseEvents>;
 
 	primary?: boolean;

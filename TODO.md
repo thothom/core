@@ -149,15 +149,15 @@
   - Will replace `@Entity({ isSubEntity: true })` to make things more explicity
 - [x] Refact "auto-generation"
   - Remember to remove the "todo" test
+- [x] Add `@CountUpdateColumn` that receives **NO PARAMS**
+  - Only accepts "number" type
+  - This column will be auto-generated **on update**
+  - The value of this column will be the SaveOperator `Plus(1)`
 - [ ] Add colors to the logs, like Nestjs Logger
 - [ ] Add `@VersionColumn` that receives the version (Ex: `@VersionColumn("v2")`)
   - Only accepts "string" type
   - This column will be auto-generated **on save**
-- [ ] Add `@CountUpdateColumn` that receives **NO PARAMS**
-  - Only accepts "number" type
-  - This column will be auto-generated **on update**
-  - The value of this column will be the SaveOperator `Plus(1)`
-- Add `@RunBefore`
+- [ ] Add `@RunBefore`
   - Will recieve 1 parameter (save, find, update, delete)
   - Will be aplied to entity methods
   - Will run before an event
@@ -166,7 +166,7 @@
     - data
     - options
   - Try to make a `Entity` type, that ignores `runBefore` methods
-- Add `@RunAfter`
+- [ ] Add `@RunAfter`
   - Will recieve 1 parameter (save, find, update, delete)
   - Will be aplied to entity methods
   - Will run after an event
