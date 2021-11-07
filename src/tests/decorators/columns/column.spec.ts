@@ -362,7 +362,8 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					defaultValue: true,
+					autoGenerate: true,
+					autoGenerateOnlyOnEvents: ["save"],
 					name: "foo",
 					type: String,
 				},
@@ -387,7 +388,8 @@ describe("Decorators > Column", () => {
 			expect(metadata).toStrictEqual([
 				{
 					databaseName: "foo",
-					defaultValue: generateDefaultValue,
+					autoGenerate: generateDefaultValue,
+					autoGenerateOnlyOnEvents: ["save"],
 					name: "foo",
 					type: String,
 				},

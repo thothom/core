@@ -711,11 +711,4 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			});
 		});
 	});
-
-	/**
-	 * Implement this after auto-generate fields FROM DATABASE are implemented
-	 */
-	it.todo(
-		"should	NOT generate fields if auto-generation type is DATABASE_TO_CODE",
-	);
 });
