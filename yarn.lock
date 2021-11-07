@@ -584,7 +584,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@techmmunity/eslint-config@^5.1.1":
+"@techmmunity/eslint-config@^5.1.2":
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/@techmmunity/eslint-config/-/eslint-config-5.1.2.tgz#d055bc2da408f565a16d63a97178f0c817d72942"
   integrity sha512-Ot2qmO8QKTOrYWQDy2ARpwbvikUYGdPEarARL7Icjwql0+33CsRUEEBJaqAeLzVwVq0nfPbsjHHgUfpvUgF+LA==
