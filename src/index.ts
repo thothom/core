@@ -116,6 +116,7 @@ export * from "./lib/logger/types/log-level";
  * ---------------------------------------------------------------------------
  */
 
+export * from "./lib/types/entity";
 export * from "./lib/types/class-type";
 
 /**

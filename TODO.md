@@ -147,6 +147,7 @@
 - [x] Edit the auto-generation method of primary columns
 - [x] Add `SubEntity` decorator
   - Will replace `@Entity({ isSubEntity: true })` to make things more explicity
+  - [SOLVED] What if a entity be an entity and also a subEntity? If the entity is both an entity and sub-entity, you can use the `@Entity` decorator as always. Both types of entities are handled in the same way, with the only differece beign having a table in the database or not.
 - [x] Refact "auto-generation"
   - Remember to remove the "todo" test
 - [x] Add `@CountUpdateColumn` that receives **NO PARAMS**
@@ -213,8 +214,6 @@
 
 ## Discarded Ideas
 
-- Add `@SubEntity` decorator
-  - What if a entity be an entity and also a subEntity? This may cause a lot of bugs, so it's better think another way to handle this, with only one decorator
 - Add `@SecondaryColumn` decorator (This will be used in cases like `DynamoDB - sortKey`)
   - `extras` field will be used
 - Maybe in the future accept more column type and handle the correspondent function automatically? Types like accept "bigint" as param for @Column, convert this automatically to Number, and store the "bigint" at the "extras" field, so relational databases can take more advantage of this package
