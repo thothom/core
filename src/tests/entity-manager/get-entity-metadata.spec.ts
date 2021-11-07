@@ -1,8 +1,9 @@
 import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entity";
+import { Entity } from "../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
 import { SymbiosisError } from "../../lib/error";
 import { TestConnection } from "../constants/test-connection";
+import { SubEntity } from "../../lib/decorators/entities/sub-entity";
 
 describe("EntityManager > getEntityMetadata", () => {
 	it("should get entity metadata", async () => {
@@ -39,9 +40,7 @@ describe("EntityManager > getEntityMetadata", () => {
 	});
 
 	it("should get sub-entity metadata", async () => {
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class TestSubEntity {
 			@Column()
 			public bar: number;
@@ -70,18 +69,19 @@ describe("EntityManager > getEntityMetadata", () => {
 			columns: [{ databaseName: "bar", name: "bar", type: Number }],
 			databaseName: "TestSubEntity",
 			isSubEntity: true,
+			isNameAlreadyFormatted: true,
 			name: "TestSubEntity",
 		});
 	});
 
 	it("should get sub-sub-entity metadata", async () => {
-		@Entity({ isSubEntity: true })
+		@SubEntity()
 		class TestSubSubEntity {
 			@Column()
 			public bar: number;
 		}
 
-		@Entity({ isSubEntity: true })
+		@SubEntity()
 		class TestSubEntity {
 			@Column()
 			public subSubEntity: TestSubSubEntity;
@@ -110,6 +110,7 @@ describe("EntityManager > getEntityMetadata", () => {
 			columns: [{ databaseName: "bar", name: "bar", type: Number }],
 			databaseName: "TestSubSubEntity",
 			isSubEntity: true,
+			isNameAlreadyFormatted: true,
 			name: "TestSubSubEntity",
 		});
 	});

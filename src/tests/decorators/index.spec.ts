@@ -1,5 +1,5 @@
 import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entity";
+import { Entity } from "../../lib/decorators/entities/entity";
 import { Index } from "../../lib/decorators/index";
 import { MetadataUtil } from "../../lib/utils/metadata-util";
 

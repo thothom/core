@@ -1,8 +1,9 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
+import { SubEntity } from "../../../lib/decorators/entities/sub-entity";
 import { Column } from "../../../lib/decorators/columns/column";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
-import { Entity } from "../../../lib/decorators/entity";
+import { Entity } from "../../../lib/decorators/entities/entity";
 import { SymbiosisError } from "../../../lib/error";
 import { TestConnection } from "../../constants/test-connection";
 
@@ -92,9 +93,7 @@ describe("EntityMetadata > convertColumnsNames", () => {
 	describe("Entity with SubEntity", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;
@@ -161,9 +160,7 @@ describe("EntityMetadata > convertColumnsNames", () => {
 	describe("Entity with array of SubEntities", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;

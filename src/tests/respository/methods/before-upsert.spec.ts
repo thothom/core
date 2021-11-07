@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { validate } from "uuid";
 import { Column } from "../../../lib/decorators/columns/column";
-import { Entity } from "../../../lib/decorators/entity";
+import { Entity } from "../../../lib/decorators/entities/entity";
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/columns/primary-generated-column";
 import { TestConnection } from "../../constants/test-connection";
 import { TestRepository } from "../../constants/test-repository";

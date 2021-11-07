@@ -1,5 +1,5 @@
 import { Column } from "../../../lib/decorators/columns/column";
-import { Entity } from "../../../lib/decorators/entity";
+import { Entity } from "../../../lib/decorators/entities/entity";
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/columns/primary-generated-column";
 import { MoreThan } from "../../../lib/repository/operators/find/more-than";
 import { TestConnection } from "../../constants/test-connection";

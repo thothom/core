@@ -1,7 +1,7 @@
-import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entity";
-import { SymbiosisError } from "../../lib/error";
-import { MetadataUtil } from "../../lib/utils/metadata-util";
+import { Column } from "../../../lib/decorators/columns/column";
+import { Entity } from "../../../lib/decorators/entities/entity";
+import { SymbiosisError } from "../../../lib/error";
+import { MetadataUtil } from "../../../lib/utils/metadata-util";
 
 describe("Decorators > Entity", () => {
 	describe("No Parameters", () => {
@@ -75,33 +75,6 @@ describe("Decorators > Entity", () => {
 				name: "Test",
 				databaseName: "SuperTest",
 				isNameAlreadyFormatted: true,
-				columns: [
-					{
-						databaseName: "foo",
-						name: "foo",
-						type: String,
-					},
-				],
-			});
-		});
-
-		it("should define database isSubEntity based on options", () => {
-			@Entity({
-				isSubEntity: true,
-			})
-			class Test {
-				@Column()
-				public foo: string;
-			}
-
-			const metadata = MetadataUtil.getAllEntityMetadata({
-				entity: Test,
-			});
-
-			expect(metadata).toStrictEqual({
-				name: "Test",
-				databaseName: "Test",
-				isSubEntity: true,
 				columns: [
 					{
 						databaseName: "foo",

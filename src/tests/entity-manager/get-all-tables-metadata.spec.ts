@@ -1,7 +1,8 @@
 import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entity";
+import { Entity } from "../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
 import { TestConnection } from "../constants/test-connection";
+import { SubEntity } from "../../lib/decorators/entities/sub-entity";
 
 describe("EntityManager > getAllTablesMetadata", () => {
 	it("should get basic entity metadata", async () => {
@@ -32,9 +33,7 @@ describe("EntityManager > getAllTablesMetadata", () => {
 	});
 
 	it("should get only entity metadata (entity + sub-entity)", async () => {
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class TestSubEntity {
 			@Column()
 			public bar: number;
@@ -71,13 +70,13 @@ describe("EntityManager > getAllTablesMetadata", () => {
 	});
 
 	it("should get only entity metadata (entity + sub-entity + sub-sub-entity)", async () => {
-		@Entity({ isSubEntity: true })
+		@SubEntity()
 		class TestSubSubEntity {
 			@Column()
 			public bar: number;
 		}
 
-		@Entity({ isSubEntity: true })
+		@SubEntity()
 		class TestSubEntity {
 			@Column()
 			public subSubEntity: TestSubSubEntity;

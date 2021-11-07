@@ -5,11 +5,12 @@
 import { Like } from "../../../lib/repository/operators/find/like";
 import { In } from "../../../lib/repository/operators/find/in";
 import { Column } from "../../../lib/decorators/columns/column";
-import { Entity } from "../../../lib/decorators/entity";
+import { Entity } from "../../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { TestConnection } from "../../constants/test-connection";
 import { MoreThan } from "../../../lib/repository/operators/find/more-than";
 import { Exist } from "../../../lib/repository/operators/find/exist";
+import { SubEntity } from "../../../lib/decorators/entities/sub-entity";
 
 const createConnection = async (entities: Array<any>) => {
 	const connection = new TestConnection({
@@ -391,9 +392,7 @@ describe("EntityManager > formatConditions", () => {
 	describe("Entity with subEntity", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;
@@ -521,9 +520,7 @@ describe("EntityManager > formatConditions", () => {
 	describe("Entity with array of sub-entities", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;
@@ -628,9 +625,7 @@ describe("EntityManager > formatConditions", () => {
 	describe("Entity With SubEntity + SubSubEntity", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubSubTestEntity {
 			@Column()
 			public subField: string;
@@ -639,9 +634,7 @@ describe("EntityManager > formatConditions", () => {
 			public subFieldTwo: number;
 		}
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;
@@ -744,9 +737,7 @@ describe("EntityManager > formatConditions", () => {
 	describe("Entity With SubEntity + Array of SubSubEntities", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubSubTestEntity {
 			@Column()
 			public subField: string;
@@ -755,9 +746,7 @@ describe("EntityManager > formatConditions", () => {
 			public subFieldTwo: number;
 		}
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;

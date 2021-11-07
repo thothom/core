@@ -1,8 +1,9 @@
 import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entity";
+import { Entity } from "../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
 import { SymbiosisError } from "../../lib/error";
 import { TestConnection } from "../constants/test-connection";
+import { SubEntity } from "../../lib/decorators/entities/sub-entity";
 
 describe("EntityManager > getColumnMetadata", () => {
 	it("should get primary-column metadata", async () => {
@@ -55,9 +56,7 @@ describe("EntityManager > getColumnMetadata", () => {
 	});
 
 	it("should get sub-entity column metadata metadata", async () => {
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class TestSubEntity {
 			@Column()
 			public bar: number;
@@ -90,13 +89,13 @@ describe("EntityManager > getColumnMetadata", () => {
 	});
 
 	it("should get sub-sub-entity column metadata", async () => {
-		@Entity({ isSubEntity: true })
+		@SubEntity()
 		class TestSubSubEntity {
 			@Column()
 			public bar: number;
 		}
 
-		@Entity({ isSubEntity: true })
+		@SubEntity()
 		class TestSubEntity {
 			@Column()
 			public subSubEntity: TestSubSubEntity;

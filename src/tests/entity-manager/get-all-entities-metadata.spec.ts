@@ -1,8 +1,9 @@
 import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entity";
+import { Entity } from "../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
 import { SymbiosisError } from "../../lib/error";
 import { TestConnection } from "../constants/test-connection";
+import { SubEntity } from "../../lib/decorators/entities/sub-entity";
 
 describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 	it("should get basic entity metadata", async () => {
@@ -71,9 +72,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 	});
 
 	it("should get entity + sub-entity metadata (without specify sub-entity at connection options)", async () => {
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class TestSubEntity {
 			@Column()
 			public bar: number;
@@ -112,19 +111,20 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 				columns: [{ databaseName: "bar", name: "bar", type: Number }],
 				databaseName: "TestSubEntity",
 				isSubEntity: true,
+				isNameAlreadyFormatted: true,
 				name: "TestSubEntity",
 			},
 		});
 	});
 
 	it("should get entity + sub-entity + sub-sub-entity metadata", async () => {
-		@Entity({ isSubEntity: true })
+		@SubEntity()
 		class TestSubSubEntity {
 			@Column()
 			public bar: number;
 		}
 
-		@Entity({ isSubEntity: true })
+		@SubEntity()
 		class TestSubEntity {
 			@Column()
 			public subSubEntity: TestSubSubEntity;
@@ -169,6 +169,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 				],
 				databaseName: "TestSubEntity",
 				isSubEntity: true,
+				isNameAlreadyFormatted: true,
 				name: "TestSubEntity",
 			},
 			// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -176,6 +177,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 				columns: [{ databaseName: "bar", name: "bar", type: Number }],
 				databaseName: "TestSubSubEntity",
 				isSubEntity: true,
+				isNameAlreadyFormatted: true,
 				name: "TestSubSubEntity",
 			},
 		});
@@ -374,9 +376,7 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 	});
 
 	it("should get entity + sub-entity metadata with naming strategy", async () => {
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class TestSubEntity {
 			@Column()
 			public bar: number;
@@ -435,8 +435,9 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 						type: Number,
 					},
 				],
-				databaseName: "test_sub_entity",
+				databaseName: "TestSubEntity",
 				isSubEntity: true,
+				isNameAlreadyFormatted: true,
 				name: "TestSubEntity",
 			},
 		});
