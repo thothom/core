@@ -1,5 +1,5 @@
 import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entity";
+import { Entity } from "../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
 import { SymbiosisError } from "../../lib/error";
 import { TestConnection } from "../constants/test-connection";

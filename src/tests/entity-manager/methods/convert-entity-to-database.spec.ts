@@ -3,10 +3,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import { Column } from "../../../lib/decorators/columns/column";
-import { Entity } from "../../../lib/decorators/entity";
+import { Entity } from "../../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { TestConnection } from "../../constants/test-connection";
 import { Remove } from "../../../lib/repository/operators/save/remove";
+import { SubEntity } from "../../../lib/decorators/entities/sub-entity";
 
 const createConnection = async (entities: Array<any>) => {
 	const connection = new TestConnection({
@@ -247,9 +248,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 	describe("Entity With SubEntity", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;
@@ -357,9 +356,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 	describe("Entity With Array of SubEntities", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;
@@ -441,9 +438,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 	describe("Entity With SubEntity + SubSubEntity", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubSubTestEntity {
 			@Column()
 			public subField: string;
@@ -452,9 +447,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			public subFieldTwo: number;
 		}
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;
@@ -532,9 +525,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 	describe("Entity With SubEntity + Array of SubSubEntities", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubSubTestEntity {
 			@Column()
 			public subField: string;
@@ -543,9 +534,7 @@ describe("EntityManager > convertEntityToDatabase", () => {
 			public subFieldTwo: number;
 		}
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;

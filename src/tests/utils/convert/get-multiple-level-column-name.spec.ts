@@ -1,5 +1,6 @@
+import { SubEntity } from "../../../lib/decorators/entities/sub-entity";
 import { Column } from "../../../lib/decorators/columns/column";
-import { Entity } from "../../../lib/decorators/entity";
+import { Entity } from "../../../lib/decorators/entities/entity";
 import { SymbiosisError } from "../../../lib/error";
 import { getMultipleLevelColumnName } from "../../../lib/utils/convert/get-multiple-level-column-name";
 import { TestConnection } from "../../constants/test-connection";
@@ -20,9 +21,7 @@ describe("getMultipleLevelColumnName", () => {
 	describe("With entity with sub-entity", () => {
 		let connection: TestConnection;
 
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public field?: string;

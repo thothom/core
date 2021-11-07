@@ -14,7 +14,8 @@ export * from "./lib/decorators/columns/primary-generated-column";
 export * from "./lib/decorators/columns/delete-date-column";
 export * from "./lib/decorators/columns/save-date-column";
 export * from "./lib/decorators/columns/update-date-column";
-export * from "./lib/decorators/entity";
+export * from "./lib/decorators/entities/entity";
+export * from "./lib/decorators/entities/sub-entity";
 export * from "./lib/decorators/index";
 
 /**

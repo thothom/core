@@ -144,20 +144,37 @@
 - [x] Make the `@PrimaryColumn*` decorators accept only `string` and `number` as types
 - [x] Add entities auto-import from string path, like TypeORM
   - https://www.npmjs.com/package/glob
+- [x] Edit the auto-generation method of primary columns
+- [x] Add `SubEntity` decorator
+  - Will replace `@Entity({ isSubEntity: true })` to make things more explicity
+- [ ] Refact "auto-generation"
+  - Remember to remove the "todo" test
 - [ ] Add colors to the logs, like Nestjs Logger
-- [ ] Add `@Version*` decorators
-  - [] Add `@VersionSaveColumn` that receives the version (Ex: `@VersionColumn("v2")`)
-    - Only accepts "string" type
-    - This column will be auto-generated **on save**
-  - [] Add `@VersionUpdateColumn` that receives **NO PARAMS**
-    - Only accepts "number" type
-    - This column will be auto-generated **on update**
-    - The value of this column will be the SaveOperator `Plus(1)`
-- [ ] Add the concept of "auto-generated" (Database -> Code) columns
-  - [ ] Add `@VirtualColumn` decorator
-    - Will be applied to a class method, and will be generated after a query from database
-    - Remember to check: If the `select` be passed, so verify if the virtual field in the array
-  - [x] Edit the auto-generation method of primary columns
+- [ ] Add `@VersionColumn` that receives the version (Ex: `@VersionColumn("v2")`)
+  - Only accepts "string" type
+  - This column will be auto-generated **on save**
+- [ ] Add `@CountUpdateColumn` that receives **NO PARAMS**
+  - Only accepts "number" type
+  - This column will be auto-generated **on update**
+  - The value of this column will be the SaveOperator `Plus(1)`
+- Add `@RunBefore`
+  - Will recieve 1 parameter (save, find, update, delete)
+  - Will be aplied to entity methods
+  - Will run before an event
+  - The method will recieve 3 parameters
+    - conditions
+    - data
+    - options
+  - Try to make a `Entity` type, that ignores `runBefore` methods
+- Add `@RunAfter`
+  - Will recieve 1 parameter (save, find, update, delete)
+  - Will be aplied to entity methods
+  - Will run after an event
+  - The method will recieve 3 parameters
+    - conditions
+    - data
+    - options
+  - Try to make a `Entity` type, that ignores `runAfter` methods
 
 ### Docs
 

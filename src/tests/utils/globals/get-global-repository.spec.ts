@@ -1,6 +1,6 @@
 import { Column } from "../../../lib/decorators/columns/column";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
-import { Entity } from "../../../lib/decorators/entity";
+import { Entity } from "../../../lib/decorators/entities/entity";
 import { SymbiosisError } from "../../../lib/error";
 import { getGlobalRepository } from "../../../lib/utils/globals/get-global-repository";
 import { setGlobalConnection } from "../../../lib/utils/globals/set-global-connection";

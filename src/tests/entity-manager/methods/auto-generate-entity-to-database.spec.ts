@@ -6,12 +6,13 @@ import { Column } from "../../../lib/decorators/columns/column";
 import { DeleteDateColumn } from "../../../lib/decorators/columns/delete-date-column";
 import { SaveDateColumn } from "../../../lib/decorators/columns/save-date-column";
 import { UpdateDateColumn } from "../../../lib/decorators/columns/update-date-column";
-import { Entity } from "../../../lib/decorators/entity";
+import { Entity } from "../../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/columns/primary-generated-column";
 import { TestConnection } from "../../constants/test-connection";
 import { Remove } from "../../../lib/repository/operators/save/remove";
 import { IsNull } from "../../../lib/repository/operators/find/is-null";
+import { SubEntity } from "../../../lib/decorators/entities/sub-entity";
 
 const createConnection = async (entities: Array<any>) => {
 	const connection = new TestConnection({
@@ -122,9 +123,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 	});
 
 	describe("Auto generate columns of SubEntity (simple)", () => {
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class TestSubEntity {
 			@PrimaryGeneratedColumn()
 			public id: string;
@@ -217,9 +216,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 	});
 
 	describe("Auto generate columns of SubEntity (array of sub-entities)", () => {
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class TestSubEntity {
 			@PrimaryGeneratedColumn()
 			public id: string;
@@ -291,9 +288,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			let result: any;
 
 			try {
-				@Entity({
-					isSubEntity: true,
-				})
+				@SubEntity()
 				class TestSubEntity {
 					@PrimaryColumn()
 					public id: string;
@@ -328,9 +323,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 
 		it("should keep empty objects if sub-entity doesn't has any auto-generated field and an empty object is specified", async () => {
-			@Entity({
-				isSubEntity: true,
-			})
+			@SubEntity()
 			class TestSubEntity {
 				@Column()
 				public id: string;
@@ -364,9 +357,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 
 		it("should remove undefined fields", async () => {
-			@Entity({
-				isSubEntity: true,
-			})
+			@SubEntity()
 			class TestSubEntity {
 				@Column()
 				public id: string;
@@ -399,9 +390,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 		});
 
 		it("should remove null fields", async () => {
-			@Entity({
-				isSubEntity: true,
-			})
+			@SubEntity()
 			class TestSubEntity {
 				@Column()
 				public id: string;
@@ -435,13 +424,13 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 	});
 
 	describe("Auto generate columns of SubSubEntity", () => {
-		@Entity({ isSubEntity: true })
+		@SubEntity()
 		class TestSubSubEntity {
 			@PrimaryGeneratedColumn()
 			public id: string;
 		}
 
-		@Entity({ isSubEntity: true })
+		@SubEntity()
 		class TestSubEntity {
 			@Column()
 			public foo: string;

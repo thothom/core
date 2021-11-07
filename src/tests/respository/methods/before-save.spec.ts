@@ -1,6 +1,6 @@
 import { validate } from "uuid";
 import { Column } from "../../../lib/decorators/columns/column";
-import { Entity } from "../../../lib/decorators/entity";
+import { Entity } from "../../../lib/decorators/entities/entity";
 import { PrimaryGeneratedColumn } from "../../../lib/decorators/columns/primary-generated-column";
 import { BaseQueryOptions } from "../../../lib/repository/types/query-options";
 import { DatabaseEntity } from "../../../lib/types/database-entity";
