@@ -1,6 +1,8 @@
 import { BaseConnection } from "../../connection";
 
-export const setGlobalConnection = (connection: BaseConnection) => {
+export const setGlobalConnection = <Connection extends BaseConnection>(
+	connection: Connection,
+) => {
 	if (global.symbiosisConnections) {
 		global.symbiosisConnections[connection.name] = connection;
 
