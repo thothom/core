@@ -1,13 +1,16 @@
 import { DEFAULT_CONNECTION_NAME } from "../../../config";
+import { BaseConnection } from "../../connection";
 import { SymbiosisError } from "../../error";
 
-export const getGlobalConnection = (connectionName?: string) => {
+export const getGlobalConnection = <Connection extends BaseConnection>(
+	connectionName?: string,
+) => {
 	const conName = connectionName || DEFAULT_CONNECTION_NAME;
 
 	if (global.symbiosisConnections) {
 		const connection = global.symbiosisConnections[conName];
 
-		if (connection) return connection;
+		if (connection) return connection as Connection;
 
 		throw new SymbiosisError({
 			code: "INVALID_PARAM",

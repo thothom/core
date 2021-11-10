@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `getGlobalConnection` return type (add dynamic return type)
+- `setGlobalConnection` param type (add dynamic param type)
+
 ### Removed
 
 - [BC] `isSubEntity` option from `@Entity`
