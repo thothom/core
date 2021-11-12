@@ -1,5 +1,6 @@
-export type EntityType<T> = Omit<
+export type EntityType<T, F extends keyof T | "" = ""> = Omit<
 	T,
+	| F
 	| "runAfterDelete"
 	| "runAfterFind"
 	| "runAfterInsert"
