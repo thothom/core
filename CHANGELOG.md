@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SubEntity` decorator
 - `CountColumn` decorator
 - `EntityType` type
+- [BC] `close` method to `Connection`
 
 ### Changed
 
