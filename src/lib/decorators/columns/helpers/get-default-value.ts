@@ -6,7 +6,7 @@ export const getDefaultValue = (
 ): Pick<ColumnMetadata, "autoGenerate" | "autoGenerateOnlyOnEvents"> => {
 	if (getTypeof(defaultValue) !== "undefined") {
 		return {
-			autoGenerateOnlyOnEvents: ["save"],
+			autoGenerateOnlyOnEvents: ["insert"],
 			autoGenerate: defaultValue,
 		};
 	}

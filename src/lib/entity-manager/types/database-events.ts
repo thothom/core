@@ -1,1 +1,1 @@
-export type DatabaseEvents = "delete" | "find" | "save" | "update";
+export type DatabaseEvents = "delete" | "find" | "insert" | "update";

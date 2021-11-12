@@ -13,7 +13,7 @@ export const UpdateDateColumn = <ColumnExtraMetadata = any>(
 		metadata: {
 			...metadata,
 			databaseName: name,
-			autoGenerateOnlyOnEvents: ["save", "update"],
+			autoGenerateOnlyOnEvents: ["insert", "update"],
 			autoGenerate: "date",
 		},
 		acceptedTypes: ["string", "number", "date"],

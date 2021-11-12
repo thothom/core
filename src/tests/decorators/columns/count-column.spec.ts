@@ -32,7 +32,7 @@ describe("Decorators > CountUpdateColumn", () => {
 		it("should define database name that is passed at the options", () => {
 			class Test {
 				@CountColumn({
-					events: ["save"],
+					events: ["insert"],
 					name: "bar",
 				})
 				public foo: number;
@@ -48,7 +48,7 @@ describe("Decorators > CountUpdateColumn", () => {
 					databaseName: "bar",
 					isNameAlreadyFormatted: true,
 					autoGenerate: Plus(1),
-					autoGenerateOnlyOnEvents: ["save"],
+					autoGenerateOnlyOnEvents: ["insert"],
 					name: "foo",
 					type: Number,
 				},
@@ -205,7 +205,7 @@ describe("Decorators > CountUpdateColumn", () => {
 				//@ts-ignore
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				class Test {
-					@CountColumn(["save"])
+					@CountColumn(["insert"])
 					public foo: CustomType;
 				}
 			} catch (err) {

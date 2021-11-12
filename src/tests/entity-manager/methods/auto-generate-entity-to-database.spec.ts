@@ -4,7 +4,7 @@ import { validate } from "uuid";
 import { getTypeof } from "@techmmunity/utils";
 import { Column } from "../../../lib/decorators/columns/column";
 import { DeleteDateColumn } from "../../../lib/decorators/columns/delete-date-column";
-import { SaveDateColumn } from "../../../lib/decorators/columns/save-date-column";
+import { InsertDateColumn } from "../../../lib/decorators/columns/insert-date-column";
 import { UpdateDateColumn } from "../../../lib/decorators/columns/update-date-column";
 import { Entity } from "../../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
@@ -44,7 +44,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						test: "foo",
 					},
@@ -64,7 +64,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "NOT_AUTO_GENERATED",
 						test: "foo",
@@ -81,7 +81,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "NOT_AUTO_GENERATED",
 						test: Remove(),
@@ -98,7 +98,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "NOT_AUTO_GENERATED",
 						test: IsNull() as any,
@@ -114,7 +114,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: undefined as any,
 				});
 
@@ -148,7 +148,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "abc",
 						testSub: {},
@@ -171,7 +171,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "abc",
 					},
@@ -186,7 +186,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "abc",
 						testSub: undefined,
@@ -202,7 +202,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "abc",
 						testSub: null as any,
@@ -244,7 +244,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 				result =
 					connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 						entity: TestEntity,
-						events: ["save"],
+						events: ["insert"],
 						data: {
 							testSub: [],
 						},
@@ -265,7 +265,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 				result =
 					connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 						entity: TestEntity,
-						events: ["save"],
+						events: ["insert"],
 						data: {
 							testSub: [{}],
 						},
@@ -308,7 +308,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 				result =
 					connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 						entity: TestEntity,
-						events: ["save"],
+						events: ["insert"],
 						data: {
 							id: "abc",
 						},
@@ -343,7 +343,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "abc",
 						testSub: {},
@@ -377,7 +377,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "abc",
 						testSub: undefined,
@@ -410,7 +410,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "abc",
 						testSub: null as any,
@@ -458,7 +458,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "abc",
 						testSub: {
@@ -486,7 +486,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "abc",
 					},
@@ -507,7 +507,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			@Column()
 			public id: string;
 
-			@SaveDateColumn()
+			@InsertDateColumn()
 			public test: string;
 		}
 
@@ -521,7 +521,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "foo",
 					},
@@ -642,7 +642,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 			const result =
 				connection.entityManager.autoGenerateEntityToDatabase<TestEntity>({
 					entity: TestEntity,
-					events: ["save"],
+					events: ["insert"],
 					data: {
 						id: "foo",
 					},
@@ -671,7 +671,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
-				events: ["save"],
+				events: ["insert"],
 				data: {
 					id: "Test",
 				},
@@ -699,7 +699,7 @@ describe("EntityMetadata > autoGenerateEntityToDatabase", () => {
 
 			const result = connection.entityManager.autoGenerateEntityToDatabase({
 				entity: TestEntity,
-				events: ["save"],
+				events: ["insert"],
 				data: {
 					id: "Test",
 				},

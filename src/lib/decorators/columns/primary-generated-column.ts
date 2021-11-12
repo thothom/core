@@ -27,7 +27,7 @@ export const PrimaryGeneratedColumn = <ColumnExtraMetadata = any>(
 			autoGenerate,
 			databaseName: name,
 			primary: true,
-			autoGenerateOnlyOnEvents: ["save"],
+			autoGenerateOnlyOnEvents: ["insert"],
 		},
 		acceptedTypes: ["string", "number"],
 	});

@@ -363,7 +363,7 @@ describe("Decorators > Column", () => {
 				{
 					databaseName: "foo",
 					autoGenerate: true,
-					autoGenerateOnlyOnEvents: ["save"],
+					autoGenerateOnlyOnEvents: ["insert"],
 					name: "foo",
 					type: String,
 				},
@@ -389,7 +389,7 @@ describe("Decorators > Column", () => {
 				{
 					databaseName: "foo",
 					autoGenerate: generateDefaultValue,
-					autoGenerateOnlyOnEvents: ["save"],
+					autoGenerateOnlyOnEvents: ["insert"],
 					name: "foo",
 					type: String,
 				},
