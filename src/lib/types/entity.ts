@@ -2,10 +2,12 @@ export type EntityType<T> = Omit<
 	T,
 	| "runAfterDelete"
 	| "runAfterFind"
-	| "runAfterSave"
+	| "runAfterInsert"
 	| "runAfterUpdate"
+	| "runAfterUpsert"
 	| "runBeforeDelete"
 	| "runBeforeFind"
-	| "runBeforeSave"
+	| "runBeforeInsert"
 	| "runBeforeUpdate"
+	| "runBeforeUpsert"
 >;

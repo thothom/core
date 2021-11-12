@@ -12,9 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SubEntity` decorator
 - `CountColumn` decorator
 - `EntityType` type
+- `runBeforeUpsert` and `runAfterUpsert` types
 - [BC] `close` method to `Connection`
 
 ### Changed
+
+- `save` database event is now `insert`
+- `runBeforeSave` -> `runBeforeInsert`
+- `runAfterSave` -> `runAfterInsert`
+- [BC] `SaveDateColumn` -> `InsertDateColumn`
 
 ### Fixed
 
@@ -23,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- [BC] `isSubEntity` option from `@Entity`
+- [BC] `isSubEntity` option from `@Entity` (replaced by `@SubEntity()`)
 
 ## [0.0.26] - 2021-11-04
 

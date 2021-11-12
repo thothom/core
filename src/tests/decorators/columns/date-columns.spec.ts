@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
 import { DeleteDateColumn } from "../../../lib/decorators/columns/delete-date-column";
-import { SaveDateColumn } from "../../../lib/decorators/columns/save-date-column";
+import { InsertDateColumn } from "../../../lib/decorators/columns/insert-date-column";
 import { UpdateDateColumn } from "../../../lib/decorators/columns/update-date-column";
 import { SymbiosisError } from "../../../lib/error";
 import { MetadataUtil } from "../../../lib/utils/metadata-util";
@@ -71,10 +71,10 @@ describe("Decorators > DateColumns", () => {
 		});
 	});
 
-	describe("Implicitly Type (SaveDateColumn)", () => {
+	describe("Implicitly Type (InsertDateColumn)", () => {
 		it("should add column metadata correctly (string)", () => {
 			class Test {
-				@SaveDateColumn()
+				@InsertDateColumn()
 				public createdAt: string;
 			}
 
@@ -86,7 +86,7 @@ describe("Decorators > DateColumns", () => {
 			expect(columnMetadata).toStrictEqual({
 				name: "createdAt",
 				databaseName: "createdAt",
-				autoGenerateOnlyOnEvents: ["save"],
+				autoGenerateOnlyOnEvents: ["insert"],
 				autoGenerate: "date",
 				type: String,
 			});
@@ -94,7 +94,7 @@ describe("Decorators > DateColumns", () => {
 
 		it("should add column metadata correctly (number)", () => {
 			class Test {
-				@SaveDateColumn()
+				@InsertDateColumn()
 				public createdAt: number;
 			}
 
@@ -106,7 +106,7 @@ describe("Decorators > DateColumns", () => {
 			expect(columnMetadata).toStrictEqual({
 				name: "createdAt",
 				databaseName: "createdAt",
-				autoGenerateOnlyOnEvents: ["save"],
+				autoGenerateOnlyOnEvents: ["insert"],
 				autoGenerate: "date",
 				type: Number,
 			});
@@ -114,7 +114,7 @@ describe("Decorators > DateColumns", () => {
 
 		it("should add column metadata correctly (date)", () => {
 			class Test {
-				@SaveDateColumn()
+				@InsertDateColumn()
 				public createdAt: Date;
 			}
 
@@ -126,7 +126,7 @@ describe("Decorators > DateColumns", () => {
 			expect(columnMetadata).toStrictEqual({
 				name: "createdAt",
 				databaseName: "createdAt",
-				autoGenerateOnlyOnEvents: ["save"],
+				autoGenerateOnlyOnEvents: ["insert"],
 				autoGenerate: "date",
 				type: Date,
 			});
@@ -148,7 +148,7 @@ describe("Decorators > DateColumns", () => {
 			expect(columnMetadata).toStrictEqual({
 				name: "createdAt",
 				databaseName: "createdAt",
-				autoGenerateOnlyOnEvents: ["save", "update"],
+				autoGenerateOnlyOnEvents: ["insert", "update"],
 				autoGenerate: "date",
 				type: String,
 			});
@@ -168,7 +168,7 @@ describe("Decorators > DateColumns", () => {
 			expect(columnMetadata).toStrictEqual({
 				name: "createdAt",
 				databaseName: "createdAt",
-				autoGenerateOnlyOnEvents: ["save", "update"],
+				autoGenerateOnlyOnEvents: ["insert", "update"],
 				autoGenerate: "date",
 				type: Number,
 			});
@@ -188,7 +188,7 @@ describe("Decorators > DateColumns", () => {
 			expect(columnMetadata).toStrictEqual({
 				name: "createdAt",
 				databaseName: "createdAt",
-				autoGenerateOnlyOnEvents: ["save", "update"],
+				autoGenerateOnlyOnEvents: ["insert", "update"],
 				autoGenerate: "date",
 				type: Date,
 			});
@@ -225,9 +225,9 @@ describe("Decorators > DateColumns", () => {
 			});
 		});
 
-		it("should define database name and extras based on options (SaveDateColumn)", () => {
+		it("should define database name and extras based on options (InsertDateColumn)", () => {
 			class Test {
-				@SaveDateColumn({
+				@InsertDateColumn({
 					name: "created_at",
 					extras: {
 						foo: "bar",
@@ -245,7 +245,7 @@ describe("Decorators > DateColumns", () => {
 				name: "createdAt",
 				databaseName: "created_at",
 				isNameAlreadyFormatted: true,
-				autoGenerateOnlyOnEvents: ["save"],
+				autoGenerateOnlyOnEvents: ["insert"],
 				autoGenerate: "date",
 				type: String,
 				extras: {
@@ -274,7 +274,7 @@ describe("Decorators > DateColumns", () => {
 				name: "createdAt",
 				databaseName: "created_at",
 				isNameAlreadyFormatted: true,
-				autoGenerateOnlyOnEvents: ["save", "update"],
+				autoGenerateOnlyOnEvents: ["insert", "update"],
 				autoGenerate: "date",
 				type: String,
 				extras: {
@@ -290,7 +290,7 @@ describe("Decorators > DateColumns", () => {
 
 			try {
 				class Test {
-					@SaveDateColumn({
+					@InsertDateColumn({
 						name: "created_at",
 					})
 					public createdAt: Array<string>;

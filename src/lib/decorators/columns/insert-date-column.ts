@@ -3,7 +3,7 @@ import { getOptions } from "../helpers/get-options";
 import { makeColumnDecorator } from "./helpers/make-column-decorator";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const SaveDateColumn = <ColumnExtraMetadata = any>(
+export const InsertDateColumn = <ColumnExtraMetadata = any>(
 	options?: DateColumnOptions<ColumnExtraMetadata>,
 ) => {
 	const { name, ...metadata } =
@@ -13,7 +13,7 @@ export const SaveDateColumn = <ColumnExtraMetadata = any>(
 		metadata: {
 			...metadata,
 			databaseName: name,
-			autoGenerateOnlyOnEvents: ["save"],
+			autoGenerateOnlyOnEvents: ["insert"],
 			autoGenerate: "date",
 		},
 		acceptedTypes: ["string", "number", "date"],
