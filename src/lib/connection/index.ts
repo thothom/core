@@ -95,6 +95,8 @@ export abstract class BaseConnection<
 
 	public abstract connect(): Promise<void>;
 
+	public abstract close(): Promise<void>;
+
 	public abstract getRepository<Entity>(
 		entity: CustomClass,
 	): BaseRepository<Entity, EntityExtraMetadata, ColumnExtraMetadata>;
