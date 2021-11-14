@@ -63,7 +63,8 @@ Configure `tsconfig.json`:
 {
 	"compilerOptions": {
 		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true
+		"emitDecoratorMetadata": true,
+		"skipLibCheck": true
 	}
 }
 ```
@@ -94,7 +95,7 @@ class FooEntity {
 
 type FooRepository = Repository<FooEntity>;
 
-const foo = async () => {
+const bootstrap = async () => {
 	const connection = new Connection({
 		// Connection config here
 		entities: [FooEntity],
@@ -109,9 +110,11 @@ const foo = async () => {
 	await fooRepository.save({
 		bar: "foo",
 	});
+
+	await connection.close();
 };
 
-foo();
+bootstrap();
 ```
 
 ## Documentation
