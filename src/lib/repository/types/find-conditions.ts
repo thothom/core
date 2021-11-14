@@ -1,7 +1,7 @@
 import { FindOperator } from "../operators/find/base";
 
 type InternalFindConditions<T> = {
-	[P in keyof T]?: FindOperator | T[P];
+	[P in keyof T]?: FindOperator | InternalFindConditions<T[P]> | T[P];
 };
 
 export type ArrayFindConditions<Entity> = Array<InternalFindConditions<Entity>>;
