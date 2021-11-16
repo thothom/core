@@ -18,6 +18,8 @@ export * from "./lib/decorators/columns/update-date-column";
 export * from "./lib/decorators/entities/entity";
 export * from "./lib/decorators/entities/sub-entity";
 export * from "./lib/decorators/relations/one-to-one";
+export * from "./lib/decorators/relations/many-to-one";
+export * from "./lib/decorators/relations/one-to-many";
 export * from "./lib/decorators/index";
 
 /**
