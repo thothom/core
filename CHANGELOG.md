@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `.save<Entity>(data)` -> `.save(data)`
   - `.insert<Array<Entity>>([data])` -> `.insert([data])`
   - `.insert<Entity>(data)` -> `.insert(data)`
+- [BC] Standardize `upsert` and `update` returns
+  - Will now only return **arrays**
 
 ### Fixed
 

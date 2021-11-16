@@ -108,7 +108,7 @@ export abstract class BaseRepository<
 		conditions: FindConditions<Entity>,
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Entity>;
+	): Promise<Array<Entity>>;
 
 	/**
 	 * Make an "upsert" operation based on a query.
@@ -117,7 +117,7 @@ export abstract class BaseRepository<
 		conditions: FindConditions<Entity>,
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Entity>;
+	): Promise<Array<Entity>>;
 
 	/**
 	 * --------------------------------------------------
