@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [BC] Update `connect` method to return `this` instead `void`
   - This way users can chain the methods
   - Ex: `const connection = await new Connection().load().connect()`
+- [Internal] Update `options` to completely remove `entities` and `entitiesDir`
+- Now loads both `entities` and `entitiesDir` options, so both can be used at the same time
 
 ### Fixed
 
