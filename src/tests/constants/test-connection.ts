@@ -11,7 +11,7 @@ export class TestConnection extends BaseConnection {
 		super("@techmmunity/utils", options);
 	}
 
-	public connect(): Promise<void> {
+	public connect(): Promise<this> {
 		throw new Error("Method not implemented.");
 	}
 

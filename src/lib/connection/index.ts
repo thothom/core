@@ -93,7 +93,7 @@ export abstract class BaseConnection<
 	 * Abstract Methods
 	 */
 
-	public abstract connect(): Promise<void>;
+	public abstract connect(): Promise<this>;
 
 	public abstract close(): Promise<void>;
 
