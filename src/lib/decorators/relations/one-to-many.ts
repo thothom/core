@@ -3,7 +3,7 @@ import { addRelationToEntityMetadata } from "./helpers/merge-entity-metadata";
 import { validateForeignKey } from "./helpers/validate-foreign-key";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const OneToOne = ({
+export const OneToMany = ({
 	foreignKey,
 	targetEntity,
 	relationMap,
@@ -19,7 +19,7 @@ export const OneToOne = ({
 		addRelationToEntityMetadata({
 			entityConstructor,
 			relation: {
-				type: "ONE_TO_ONE",
+				type: "ONE_TO_MANY",
 				foreignKey,
 				targetEntity,
 				relationMap,

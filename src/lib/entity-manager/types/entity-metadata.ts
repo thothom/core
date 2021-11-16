@@ -3,6 +3,7 @@ import { ColumnMetadata } from "./column-metadata";
 export interface Relation {
 	type: "MANY_TO_MANY" | "MANY_TO_ONE" | "ONE_TO_MANY" | "ONE_TO_ONE";
 	targetEntity: any;
+	foreignKey: string;
 	relationMap: Record<string, string>;
 	extras: any;
 }
