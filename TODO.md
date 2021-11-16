@@ -197,14 +197,30 @@
 
 ### SQL
 
-- [ ] Add `@JoinColumn` decorator
-- [ ] Add `@JoinTable` decorator
-- [ ] Add `@OneToOne` decorator
-- [ ] Add `@OneToMany` decorator
-- [ ] Add `@ManyToMany` decorator
+#### Requirements
+
+- [SOLVED] Primary columns can be foreign keys
+  - It will be handled by `OneToOne`, etc
+- On insert, also insert relations
+
+#### Tasks
+
 - [x] Add support to Enums (currently, it already works with enums, but it doesn't saves the enums values. The `Column` decorator need to be modified to accept an enum too, and use `Object.values` to get the **VALUES** of the array)
   - [x] Add "enum" option to "@Column" decorator
     - Will receive an enum to get it's values
+- [ ] Add `@RelationColumn` decorator
+  - Column decorator
+  - Used to specify a RELATED ENTITY to be retrieved / inserted
+    - (Ex: User has many contacts, the `contacts` column will be decorated with `@RelationColumn`)
+- [ ] Add `@OneToOne` decorator
+  - Entity Decorator
+  - Used to specify that a table has a relation with another table
+  - Metadata
+    type: "ONE_TO_ONE" | "ONE_TO_MANY" | "MANY_TO_ONE"
+    targetEntity: [Entity class]
+    relationMap: { [current entity column]: [target entity column] }
+- [ ] Add `@OneToMany` decorator
+- [ ] Add `@ManyToMany` decorator
 
 ### CLI
 

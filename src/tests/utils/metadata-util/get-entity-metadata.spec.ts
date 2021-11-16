@@ -48,7 +48,7 @@ describe("Utils > MetadataUtil > getEntityMetadata", () => {
 		it("should return undefined if inexistent metadata", () => {
 			const result = MetadataUtil.getEntityMetadata({
 				entity,
-				metadataKey: "foo",
+				metadataKey: "foo" as any,
 			});
 
 			expect(result).toBeUndefined();
