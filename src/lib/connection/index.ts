@@ -47,7 +47,7 @@ export abstract class BaseConnection<
 	protected isLoaded: boolean;
 
 	/**
-	 * "Constructor"
+	 * Constructor
 	 */
 
 	public constructor(
@@ -90,7 +90,7 @@ export abstract class BaseConnection<
 	}
 
 	/**
-	 * Methods
+	 * Abstract Methods
 	 */
 
 	public abstract connect(): Promise<void>;
