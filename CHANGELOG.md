@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [BC] `save` and `insert` doesn't need the extra type info anymore
+  - `.save<Array<Entity>>([data])` -> `.save([data])`
+  - `.save<Entity>(data)` -> `.save(data)`
+  - `.insert<Array<Entity>>([data])` -> `.insert([data])`
+  - `.insert<Entity>(data)` -> `.insert(data)`
+
 ### Fixed
 
 ### Removed
