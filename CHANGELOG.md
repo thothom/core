@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Type `FindConditions`, now sub-entities also accept FindOperators.
+- [BC] `getGlobalRepository` return type
+  - Now receives a `Repository` as type, instead an `Entity`
+  - Ex: `getGlobalRepository<Entity>(Entity)` -> `getGlobalRepository<EntityRepository>(Entity)`
 
 ### Removed
 
