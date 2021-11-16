@@ -36,7 +36,7 @@ import {
 	BeforePerformativeCountParams,
 	beforePerformativeCount,
 } from "./methods/before-performative-count";
-import { SaveData, SingleSaveData } from "./types/save-conditions";
+import type { SingleSaveData, ArraySaveData } from "./types/save-conditions";
 import { Logger } from "../logger";
 
 export abstract class BaseRepository<
@@ -80,36 +80,44 @@ export abstract class BaseRepository<
 	 * This is an more performative way to make an "upsert",
 	 * and most of the databases supports this method.
 	 */
-	public abstract save<Result = Array<Entity> | Entity>(
-		data: SaveData<Entity>,
+	public abstract save(
+		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Result>;
+	): Promise<Entity>;
+	public abstract save(
+		data: ArraySaveData<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<Array<Entity>>;
 
 	/**
 	 * Inserts a record on the database and fail if it's already exist.
 	 */
-	public abstract insert<Result = Array<Entity> | Entity>(
-		data: SaveData<Entity>,
+	public abstract insert(
+		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Result>;
+	): Promise<Entity>;
+	public abstract insert(
+		data: ArraySaveData<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<Array<Entity>>;
 
 	/**
 	 * Updates a record based on a query and fail if it's not exist.
 	 */
-	public abstract update<Result = Array<Entity> | Entity>(
+	public abstract update(
 		conditions: FindConditions<Entity>,
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Result>;
+	): Promise<Entity>;
 
 	/**
 	 * Make an "upsert" operation based on a query.
 	 */
-	public abstract upsert<Result = Array<Entity> | Entity>(
+	public abstract upsert(
 		conditions: FindConditions<Entity>,
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Result>;
+	): Promise<Entity>;
 
 	/**
 	 * --------------------------------------------------
