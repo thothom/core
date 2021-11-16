@@ -22,7 +22,7 @@ describe("Utils > MetadataUtil > defineEntityMetadata", () => {
 
 			MetadataUtil.defineEntityMetadata({
 				entity,
-				metadataKey: "random",
+				metadataKey: "random" as any,
 				metadataValue: "bar",
 			});
 
@@ -36,7 +36,7 @@ describe("Utils > MetadataUtil > defineEntityMetadata", () => {
 
 			MetadataUtil.defineEntityMetadata({
 				entity,
-				metadataKey: "UPPERCASE",
+				metadataKey: "UPPERCASE" as any,
 				metadataValue: "foobar",
 			});
 

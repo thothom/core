@@ -7,7 +7,7 @@ export interface DefineAllEntityMetadataParams {
 }
 
 export interface DefineEntityMetadataParams {
-	metadataKey: string;
+	metadataKey: keyof EntityMetadata;
 	metadataValue: any;
 	entity: any;
 }
@@ -17,7 +17,7 @@ export interface GetAllEntityMetadataParams {
 }
 
 export interface GetEntityMetadataParams {
-	metadataKey: string;
+	metadataKey: keyof EntityMetadata;
 	entity: any;
 }
 

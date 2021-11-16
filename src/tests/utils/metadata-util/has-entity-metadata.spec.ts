@@ -56,7 +56,7 @@ describe("Utils > MetadataUtil > hasEntityMetadata", () => {
 		it("should return true with 'random' metadata", () => {
 			const result = MetadataUtil.hasEntityMetadata({
 				entity,
-				metadataKey: "random",
+				metadataKey: "random" as any,
 			});
 
 			expect(result).toBe(false);
@@ -65,7 +65,7 @@ describe("Utils > MetadataUtil > hasEntityMetadata", () => {
 		it("should return true with 'xyz' metadata", () => {
 			const result = MetadataUtil.hasEntityMetadata({
 				entity,
-				metadataKey: "xyz",
+				metadataKey: "xyz" as any,
 			});
 
 			expect(result).toBe(false);
