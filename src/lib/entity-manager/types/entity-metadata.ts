@@ -1,5 +1,12 @@
 import { ColumnMetadata } from "./column-metadata";
 
+export interface Relation {
+	type: "MANY_TO_MANY" | "MANY_TO_ONE" | "ONE_TO_MANY" | "ONE_TO_ONE";
+	targetEntity: any;
+	relationMap: Record<string, string>;
+	extras: any;
+}
+
 export interface EntityMetadata<
 	EntityExtraMetadata = any,
 	ColumnExtraMetadata = any,
@@ -18,6 +25,8 @@ export interface EntityMetadata<
 	isSubEntity?: boolean;
 
 	columns: Array<ColumnMetadata<ColumnExtraMetadata>>;
+
+	relations?: Array<Relation>;
 
 	indexes?: Array<{
 		databaseName: string;
@@ -39,9 +48,14 @@ export interface EntityMetadata<
 export const ENTITY_METADATA_KEYS: Array<keyof EntityMetadata> = [
 	"name",
 	"databaseName",
-	"isSubEntity",
 	"isNameAlreadyFormatted",
+
+	"isSubEntity",
+
 	"columns",
+
+	"relations",
+
 	"indexes",
 	"extras",
 ];
