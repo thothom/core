@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [BC] `validate` method to `BaseConnection`
   - Will be used to validate connection data
   - Ex: If mongodb plugin, validate if all entities have only one primary column, and it's name is `_id`
+- `@OneToOne` decorator
 
 ### Changed
 
