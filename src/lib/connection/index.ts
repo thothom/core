@@ -17,15 +17,12 @@ export abstract class BaseConnection<
 	 * Properties
 	 */
 
-	/**
-	 * **DO NOT USE THE ENTITIES FROM THIS OPTIONS!!!!!**
-	 *
-	 * They can be undefined, only after the method `.load` be
-	 * called that the entities will be defined at `this.entities`
-	 *
-	 * Use `this.entities` instead.
-	 */
-	public readonly options: BaseConnectionOptions<DatabaseConfig>;
+	public options: Omit<
+		BaseConnectionOptions<DatabaseConfig>,
+		"entities" | "entitiesDir"
+	>;
+
+	private readonly internalOptions: BaseConnectionOptions<DatabaseConfig>;
 
 	public name: string;
 
@@ -54,24 +51,19 @@ export abstract class BaseConnection<
 		pluginName: string,
 		options?: BaseConnectionOptions<DatabaseConfig>,
 	) {
-		this.options = loadOptions(pluginName, options);
+		this.internalOptions = loadOptions(pluginName, options);
 
 		this.isLoaded = false;
 	}
 
 	public async load() {
+		const { entities, entitiesDir, ...options } = this.internalOptions;
+
+		this.options = options;
+
 		this.name = this.options.name || DEFAULT_CONNECTION_NAME;
 
-		this.entities =
-			this.options.entities || (await loadEntities(this.options.entitiesDir));
-
-		/*
-		 * Removes extra data to avoid errors
-		 *
-		 * this.entities must be used instead
-		 */
-		delete this.options.entities;
-		delete this.options.entitiesDir;
+		this.entities = [...(entities || []), ...(await loadEntities(entitiesDir))];
 
 		this.logger = new Logger(this.name, this.options.logging);
 

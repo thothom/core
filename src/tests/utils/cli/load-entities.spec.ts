@@ -50,7 +50,7 @@ describe("Utils > CLI > loadEntities", () => {
 	});
 
 	describe("with no entitiesDir", () => {
-		it("should throw error", async () => {
+		it("should return empty array", async () => {
 			let result;
 
 			try {
@@ -64,15 +64,7 @@ describe("Utils > CLI > loadEntities", () => {
 			expect(isPackageInstalled).toBeCalledTimes(0);
 			expect(createDotSymbiosisDir).toBeCalledTimes(0);
 			expect(emit).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
-			expect(result).toStrictEqual(
-				new SymbiosisError({
-					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
-					message: "Missing config",
-					details: ['"entities" or "entitiesDir" must be provided'],
-				}),
-			);
+			expect(result).toStrictEqual([]);
 		});
 	});
 
@@ -91,15 +83,7 @@ describe("Utils > CLI > loadEntities", () => {
 			expect(isPackageInstalled).toBeCalledTimes(0);
 			expect(createDotSymbiosisDir).toBeCalledTimes(0);
 			expect(emit).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
-			expect(result).toStrictEqual(
-				new SymbiosisError({
-					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
-					message: "Missing config",
-					details: ["No entities found at: "],
-				}),
-			);
+			expect(result).toStrictEqual([]);
 		});
 	});
 
@@ -159,15 +143,7 @@ describe("Utils > CLI > loadEntities", () => {
 			expect(isPackageInstalled).toBeCalledTimes(0);
 			expect(createDotSymbiosisDir).toBeCalledTimes(0);
 			expect(emit).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
-			expect(result).toStrictEqual(
-				new SymbiosisError({
-					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
-					message: "Missing config",
-					details: [`No entities found at: ${entitiesDirJs.join(", ")}`],
-				}),
-			);
+			expect(result).toStrictEqual([]);
 		});
 	});
 
@@ -280,15 +256,7 @@ describe("Utils > CLI > loadEntities", () => {
 			expect(isPackageInstalled).toBeCalledTimes(1);
 			expect(createDotSymbiosisDir).toBeCalledTimes(1);
 			expect(emit).toBeCalledTimes(1);
-			expect(result instanceof SymbiosisError).toBeTruthy();
-			expect(result).toStrictEqual(
-				new SymbiosisError({
-					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
-					message: "Missing config",
-					details: [`No entities found at: ${entitiesDirTs.join(", ")}`],
-				}),
-			);
+			expect(result).toStrictEqual([]);
 		});
 	});
 });
