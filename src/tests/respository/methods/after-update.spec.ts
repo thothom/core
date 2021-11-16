@@ -47,13 +47,15 @@ describe("Repository > Methods > afterUpdate", () => {
 			},
 		});
 
-		expect(result).toStrictEqual({
-			id,
-			foo: 1,
-		});
+		expect(result).toStrictEqual([
+			{
+				id,
+				foo: 1,
+			},
+		]);
 	});
 
-	it("should convert fields to the entity format (array)", () => {
+	it("should convert fields to the entity format (conditions array)", () => {
 		const result = repository.afterUpdate({
 			conditions: [
 				{
@@ -71,9 +73,34 @@ describe("Repository > Methods > afterUpdate", () => {
 			},
 		});
 
-		expect(result).toStrictEqual({
-			id,
-			foo: 1,
+		expect(result).toStrictEqual([
+			{
+				id,
+				foo: 1,
+			},
+		]);
+	});
+
+	it("should convert fields to the entity format (data array)", () => {
+		const result = repository.afterUpdate({
+			conditions: {
+				id,
+			},
+			data: [
+				{
+					// eslint-disable-next-line @typescript-eslint/naming-convention
+					ID: id,
+					// eslint-disable-next-line @typescript-eslint/naming-convention
+					FOO: 1,
+				},
+			],
 		});
+
+		expect(result).toStrictEqual([
+			{
+				id,
+				foo: 1,
+			},
+		]);
 	});
 });

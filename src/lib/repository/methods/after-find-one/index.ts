@@ -2,7 +2,7 @@ import { EntityManager } from "../../../entity-manager";
 import { DatabaseEntity } from "../../../types/database-entity";
 import { FindOneOptions } from "../../types/find-options";
 import { BaseQueryOptions } from "../../types/query-options";
-import { formatData } from "./helpers/format-data";
+import { basicFormatDataArray } from "../@helpers/basic-format-data-array";
 
 interface Injectables {
 	entityManager: EntityManager;
@@ -19,11 +19,13 @@ export const afterFindOne = <Entity>(
 	{ entity, entityManager }: Injectables,
 	{ dataToReturn }: AfterFindOneParams<Entity>,
 ) => {
-	const dataHandled = formatData<Entity>({
-		data: dataToReturn,
+	if (!dataToReturn) return;
+
+	const dataHandled = basicFormatDataArray<Entity>({
+		data: [dataToReturn],
 		entity,
 		entityManager,
 	});
 
-	return dataHandled;
+	return dataHandled.shift()!;
 };

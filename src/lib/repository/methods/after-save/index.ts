@@ -1,7 +1,7 @@
 import { EntityManager } from "../../../entity-manager";
 import { DatabaseEntity } from "../../../types/database-entity";
 import { BaseQueryOptions } from "../../types/query-options";
-import { formatDataArray } from "./helpers/format-data-array";
+import { basicFormatDataArray } from "../@helpers/basic-format-data-array";
 
 interface Injectables {
 	entityManager: EntityManager;
@@ -19,7 +19,7 @@ export const afterSave = <Entity>(
 ) => {
 	const dataArray = Array.isArray(data) ? data : [data];
 
-	const dataHandled = formatDataArray<Entity>({
+	const dataHandled = basicFormatDataArray<Entity>({
 		data: dataArray,
 		entity,
 		entityManager,
