@@ -2,7 +2,7 @@ import { EntityManager } from "../../../entity-manager";
 import { DatabaseEntity } from "../../../types/database-entity";
 import { FindConditions } from "../../types/find-conditions";
 import { BaseQueryOptions } from "../../types/query-options";
-import { formatData } from "./helpers/format-data";
+import { basicFormatDataArray } from "../@helpers/basic-format-data-array";
 
 interface Injectables {
 	entityManager: EntityManager;
@@ -19,11 +19,13 @@ export const afterUpsert = <Entity>(
 	{ entity, entityManager }: Injectables,
 	{ data }: AfterUpsertParams<Entity>,
 ) => {
-	const dataHandled = formatData<Entity>({
-		data,
+	const dataArray = Array.isArray(data) ? data : [data];
+
+	const dataHandled = basicFormatDataArray<Entity>({
+		data: dataArray,
 		entity,
 		entityManager,
 	});
 
-	return dataHandled as Entity;
+	return dataHandled as Array<Entity>;
 };

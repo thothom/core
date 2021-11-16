@@ -239,7 +239,7 @@ export abstract class BaseRepository<
 	 *
 	 * Does things like format the data to the entity format
 	 */
-	protected afterSave(params: AfterSaveParams) {
+	protected afterSave(params: AfterSaveParams): Array<Entity> | Entity {
 		const result: Array<Entity> | Entity = afterSave<Entity>(
 			{
 				entity: this.entity,
@@ -280,7 +280,7 @@ export abstract class BaseRepository<
 	 *
 	 * Does things like format the data to the entity format
 	 */
-	protected afterInsert(params: AfterInsertParams) {
+	protected afterInsert(params: AfterInsertParams): Array<Entity> | Entity {
 		const result: Array<Entity> | Entity = afterInsert<Entity>(
 			{
 				entity: this.entity,
@@ -321,7 +321,7 @@ export abstract class BaseRepository<
 	 *
 	 * Does things like format the data to the entity format
 	 */
-	protected afterUpdate(params: AfterUpdateParams<Entity>) {
+	protected afterUpdate(params: AfterUpdateParams<Entity>): Array<Entity> {
 		const result: Array<Entity> | Entity = afterUpdate<Entity>(
 			{
 				entity: this.entity,
@@ -362,7 +362,7 @@ export abstract class BaseRepository<
 	 *
 	 * Does things like format the data to the entity format
 	 */
-	protected afterUpsert(params: AfterUpsertParams<Entity>) {
+	protected afterUpsert(params: AfterUpsertParams<Entity>): Array<Entity> {
 		const result: Array<Entity> | Entity = afterUpsert<Entity>(
 			{
 				entity: this.entity,
