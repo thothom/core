@@ -584,10 +584,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@techmmunity/eslint-config@^5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@techmmunity/eslint-config/-/eslint-config-5.1.2.tgz#d055bc2da408f565a16d63a97178f0c817d72942"
-  integrity sha512-Ot2qmO8QKTOrYWQDy2ARpwbvikUYGdPEarARL7Icjwql0+33CsRUEEBJaqAeLzVwVq0nfPbsjHHgUfpvUgF+LA==
+"@techmmunity/eslint-config@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/@techmmunity/eslint-config/-/eslint-config-5.1.3.tgz#dc8b0ccfd2322d7414d927da2c84a3dab6c3c3b3"
+  integrity sha512-Pfwpsb444XVe4iDNbPPF2/+RAM5DCoBbx4WH9Bg3TE+4J3RzCJCZVrXbSbvrMW4gHbWoaC9lQNJzqQVAoztkRw==
   dependencies:
     "@babel/core" "^7.15.5"
     "@babel/eslint-parser" "^7.15.4"

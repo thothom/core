@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `.insert<Entity>(data)` -> `.insert(data)`
 - [BC] Standardize `upsert` and `update` returns
   - Will now only return **arrays**
+- [BC] Update `connect` method to return `this` instead `void`
+  - This way users can chain the methods
+  - Ex: `const connection = await new Connection().load().connect()`
 
 ### Fixed
 
