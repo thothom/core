@@ -1,3 +1,4 @@
+import { isEmptyArray } from "@techmmunity/utils";
 import { Logger } from "../logger";
 import { EntityManager } from "../entity-manager";
 import { BaseRepository } from "../repository";
@@ -6,6 +7,7 @@ import { CustomClass } from "../entity-manager/types/metadata-type";
 import { DEFAULT_CONNECTION_NAME } from "../../config";
 import { loadOptions } from "../utils/cli/load-options";
 import { loadEntities } from "../utils/cli/load-entities";
+import { SymbiosisError } from "../error";
 
 export abstract class BaseConnection<
 	DatabaseConfig = any,
@@ -56,14 +58,19 @@ export abstract class BaseConnection<
 		this.isLoaded = false;
 	}
 
+	/**
+	 * Load the entities and connection config
+	 */
 	public async load() {
-		const { entities, entitiesDir, ...options } = this.internalOptions;
+		const { entities = [], entitiesDir, ...options } = this.internalOptions;
 
 		this.options = options;
 
 		this.name = this.options.name || DEFAULT_CONNECTION_NAME;
 
-		this.entities = [...(entities || []), ...(await loadEntities(entitiesDir))];
+		const loadedEntities = await loadEntities(entitiesDir);
+
+		this.entities = [...entities, ...loadedEntities];
 
 		this.logger = new Logger(this.name, this.options.logging);
 
@@ -82,13 +89,57 @@ export abstract class BaseConnection<
 	}
 
 	/**
+	 * Makes some basic validation in the connection data
+	 */
+	protected basicValidate() {
+		if (isEmptyArray(this.entities)) {
+			throw new SymbiosisError({
+				code: "MISSING_PARAM",
+				origin: "SYMBIOSIS",
+				message: "Missing entities",
+				details: [
+					"No entities found",
+					"`entities` option:",
+					this.internalOptions.entities,
+					"`entitiesDir` option:",
+					this.internalOptions.entitiesDir,
+				],
+			});
+		}
+	}
+
+	/**
 	 * Abstract Methods
 	 */
 
+	/**
+	 * Validate the connection data. Throw an error
+	 * if something is wrong.
+	 *
+	 * Very useful to check if your schemas match with
+	 * the database requirements.
+	 *
+	 * We recommend that you only call this method in
+	 * development, so your system starts faster in
+	 * production
+	 */
+	public abstract validate(): Promise<void>;
+
+	/**
+	 * Connect with the database
+	 */
 	public abstract connect(): Promise<this>;
 
+	/**
+	 * Close the connection with the database
+	 */
 	public abstract close(): Promise<void>;
 
+	/**
+	 * Makes a repository
+	 *
+	 * @param entity Entity of the repository
+	 */
 	public abstract getRepository<Entity>(
 		entity: CustomClass,
 	): BaseRepository<Entity, EntityExtraMetadata, ColumnExtraMetadata>;
