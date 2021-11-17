@@ -28,9 +28,7 @@ export class TestConnection extends BaseConnection {
 		throw new Error("Method not implemented.");
 	}
 
-	public getRepository<Entity>(
-		entity: any,
-	): BaseRepository<Entity, void, void> {
+	public getRepository<Entity>(entity: any): BaseRepository<Entity> {
 		return new TestRepository(this.entityManager, this.logger, entity);
 	}
 }

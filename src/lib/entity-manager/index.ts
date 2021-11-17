@@ -4,6 +4,7 @@ import { BaseConnectionOptions } from "../connection/types/connection-options";
 import { SymbiosisError } from "../error";
 import { Logger } from "../logger";
 import { DatabaseEntity } from "../types/database-entity";
+import { BaseExtraMetadata } from "../types/extra-metadata";
 import {
 	autoGenerateEntityToDatabase,
 	AutoGenerateEntityToDatabaseParams,
@@ -38,11 +39,7 @@ interface EntityManagerConstructorParams {
  * Responsible of store and manage all entities metadata
  * for a specific connection.
  */
-export class EntityManager<
-	EntityExtraMetadata = any,
-	ColumnExtraMetadata = any,
-	IndexExtraMetadata = any,
-> {
+export class EntityManager<ExtraMetadata extends BaseExtraMetadata = any> {
 	/**
 	 * Logger
 	 */
@@ -68,11 +65,7 @@ export class EntityManager<
 	 * 	}
 	 * ```
 	 */
-	public readonly entities: EntityManagerEntities<
-		EntityExtraMetadata,
-		ColumnExtraMetadata,
-		IndexExtraMetadata
-	> = {};
+	public readonly entities: EntityManagerEntities<ExtraMetadata> = {};
 
 	/**
 	 * ---------------------------------------------------
@@ -90,11 +83,7 @@ export class EntityManager<
 		this.logger = logger;
 		this.connectionOptions = connectionOptions;
 
-		this.entities = loadEntities<
-			EntityExtraMetadata,
-			ColumnExtraMetadata,
-			IndexExtraMetadata
-		>({
+		this.entities = loadEntities<ExtraMetadata>({
 			connectionOptions: this.connectionOptions,
 			logger: this.logger,
 			entities,

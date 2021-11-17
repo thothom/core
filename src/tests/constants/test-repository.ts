@@ -33,7 +33,7 @@ import { ClassType } from "../../lib/types/class-type";
 
 const ERROR_MESSAGE = "Method not implemented.";
 
-export class TestRepository<Entity> extends BaseRepository<Entity, void, void> {
+export class TestRepository<Entity> extends BaseRepository<Entity> {
 	public save<Result = Array<Entity> | Entity>(
 		_data: Array<ClassType<Entity>> | ClassType<Entity>,
 		_options?: BaseQueryOptions,

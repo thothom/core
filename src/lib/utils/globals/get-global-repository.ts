@@ -1,7 +1,7 @@
 import { BaseRepository } from "../../repository";
 import { getGlobalConnection } from "./get-global-connection";
 
-export const getGlobalRepository = <Repository extends BaseRepository<any>>(
+export const getGlobalRepository = <Repository extends BaseRepository>(
 	entity: any,
 	connectionName?: string,
 ) => {

@@ -3,12 +3,12 @@ import { addRelationToEntityMetadata } from "./helpers/merge-entity-metadata";
 import { validateForeignKey } from "./helpers/validate-foreign-key";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const OneToMany = ({
+export const OneToMany = <RelationExtraMetadata>({
 	foreignKey,
 	targetEntity,
 	relationMap,
 	extras,
-}: RelationOptions) => {
+}: RelationOptions<RelationExtraMetadata>) => {
 	return (entityConstructor: any) => {
 		validateForeignKey({
 			foreignKey,
