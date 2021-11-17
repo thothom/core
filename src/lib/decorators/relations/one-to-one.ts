@@ -1,17 +1,24 @@
-import { RelationOptions } from "../types/relation-options";
+import { getType } from "../columns/helpers/get-type";
+import { OneToOneOptions } from "../types/relation-options";
 import { addRelationToEntityMetadata } from "./helpers/merge-entity-metadata";
 import { validateForeignKey } from "./helpers/validate-foreign-key";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const OneToOne = <RelationExtraMetadata>({
-	foreignKey,
-	targetEntity,
-	relationMap,
-	extras,
-}: RelationOptions<RelationExtraMetadata>) => {
-	return (entityConstructor: any) => {
-		validateForeignKey({
-			foreignKey,
+	relationMap: rawRelationMap,
+	...metadata
+}: OneToOneOptions<RelationExtraMetadata>) => {
+	return (entityPrototype: any, propertyName: string) => {
+		const entityConstructor = entityPrototype.constructor;
+
+		const { type: targetEntity } = getType({
+			entityPrototype,
+			propertyName,
+			acceptedTypes: ["custom-class"],
+		});
+
+		const relationMap = validateForeignKey({
+			relationMap: rawRelationMap,
 			targetEntity,
 			currentEntity: entityConstructor,
 		});
@@ -20,10 +27,10 @@ export const OneToOne = <RelationExtraMetadata>({
 			entityConstructor,
 			relation: {
 				type: "ONE_TO_ONE",
-				foreignKey,
 				targetEntity,
 				relationMap,
-				extras,
+				relationColumn: propertyName,
+				...metadata,
 			},
 		});
 	};

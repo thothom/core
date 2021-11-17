@@ -57,10 +57,10 @@ export class MetadataUtil {
 		return Reflect.hasMetadata(formattedMetadataKey, entity);
 	}
 
-	public static getEntityMetadata({
+	public static getEntityMetadata<Key extends keyof EntityMetadata = any>({
 		metadataKey,
 		entity,
-	}: GetEntityMetadataParams) {
+	}: GetEntityMetadataParams): EntityMetadata[Key] {
 		const formattedMetadataKey = formatMetadataKey(metadataKey);
 
 		return Reflect.getMetadata(formattedMetadataKey, entity);

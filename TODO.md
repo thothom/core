@@ -202,6 +202,20 @@
 - [SOLVED] Primary columns can be foreign keys
   - It will be handled by `OneToOne`, etc
 - On insert, also insert relations
+- Postgres Composite PK-FK
+  - https://stackoverflow.com/questions/9984022/postgres-fk-referencing-composite-pk
+
+```sql
+CREATE TABLE bar (
+    id SERIAL,
+    bar_created_on ABSTIME,
+    bar_deactivated_on ABSTIME,
+    foo_id INTEGER NOT NULL,
+    foo_created_on ABSTIME NOT NULL,
+    FOREIGN KEY (foo_id, foo_created_on) REFERENCES foo (id, foo_created_on),
+    PRIMARY KEY (id, bar_created_on)
+);
+```
 
 **Entity that can hold the foreign key**
 
@@ -227,10 +241,6 @@
     relationMap: { [current entity column]: [target entity column] }
 - [x] Add `@OneToMany` decorator
 - [x] Add `@ManyToOne` decorator
-- [ ] Add `@RelationColumn` decorator
-  - Column decorator
-  - Used to specify a RELATED ENTITY to be retrieved / inserted
-    - (Ex: User has many contacts, the `contacts` column will be decorated with `@RelationColumn`)
 - [ ] Add `@ManyToMany` decorator
 
 ### CLI

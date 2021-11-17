@@ -9,7 +9,7 @@ import { BaseQueryOptions } from "./types/query-options";
 import { beforeUpdate, BeforeUpdateParams } from "./methods/update/before";
 import { afterUpdate, AfterUpdateParams } from "./methods/update/after";
 import { AfterUpsertParams, afterUpsert } from "./methods/upsert/after";
-import { BeforeUpsertParams, beforeUpsert } from "./methods/upsert/before";
+import { BeforeUpsertInput, beforeUpsert } from "./methods/upsert/before";
 import { AfterFindParams, afterFind } from "./methods/find/after";
 import { BeforeFindParams, beforeFind } from "./methods/find/before";
 import { beforeFindOne, BeforeFindOneParams } from "./methods/find-one/before";
@@ -342,7 +342,7 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeUpsert(params: BeforeUpsertParams<Entity>) {
+	protected beforeUpsert(params: BeforeUpsertInput<Entity>) {
 		return beforeUpsert<Entity>(
 			{
 				entity: this.entity,

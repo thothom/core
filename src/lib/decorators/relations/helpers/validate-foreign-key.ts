@@ -1,49 +1,76 @@
 import { MetadataUtil } from "../../../..";
-import { ColumnMetadata } from "../../../entity-manager/types/column-metadata";
+import {
+	Relation,
+	RelationMap,
+} from "../../../entity-manager/types/entity-metadata";
 import { SymbiosisError } from "../../../error";
 
 interface ValidateForeignKeyParams {
-	foreignKey: string;
 	currentEntity: any;
 	targetEntity: any;
+	relationMap:
+		| Array<Optional<RelationMap, "foreignKeyEntity">>
+		| Optional<RelationMap, "foreignKeyEntity">;
+	foreignKeyEntity?: RelationMap["foreignKeyEntity"];
 }
 
-const ERROR_MESSAGE = "Invalid Foreign Key";
+const validateColumnExists = (entity: any, columnName: string) => {
+	const currentEntityColumns = MetadataUtil.getEntityMetadata<"columns">({
+		metadataKey: "columns",
+		entity,
+	});
+
+	const currentEntityColumn = currentEntityColumns.find(
+		c => c.name === columnName,
+	);
+
+	if (!currentEntityColumn) {
+		throw new SymbiosisError({
+			code: "INVALID_PARAM",
+			origin: "SYMBIOSIS",
+			message: "Invalid Foreign Key",
+			details: [
+				`Column "${columnName}" does not exist in entity "${entity.name}"`,
+			],
+		});
+	}
+};
 
 export const validateForeignKey = ({
-	foreignKey,
 	currentEntity,
 	targetEntity,
-}: ValidateForeignKeyParams) => {
-	const [entityName, columnName] = foreignKey.split(".");
+	foreignKeyEntity,
+	relationMap: rawRelationMap,
+}: ValidateForeignKeyParams): Relation["relationMap"] => {
+	const formattedRelationMap: Relation["relationMap"] = [];
 
-	if (!entityName || !columnName) {
-		throw new SymbiosisError({
-			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
-			message: ERROR_MESSAGE,
-			details: [
-				`Foreign keys must follow the pattern "entityName.columnName", received "${foreignKey}"`,
-			],
+	const relationMap = Array.isArray(rawRelationMap)
+		? rawRelationMap
+		: [rawRelationMap];
+
+	for (const relation of relationMap) {
+		validateColumnExists(currentEntity, relation.columnName);
+
+		validateColumnExists(targetEntity, relation.targetColumnName);
+
+		const validatedForeignKey = relation.foreignKeyEntity || foreignKeyEntity;
+
+		if (!validatedForeignKey) {
+			throw new SymbiosisError({
+				code: "INVALID_PARAM",
+				origin: "SYMBIOSIS",
+				message: "Invalid Foreign Key Entity",
+				details: [
+					'"foreignKeyEntity" must be "current" or "target", but received "undefined"',
+				],
+			});
+		}
+
+		formattedRelationMap.push({
+			...relation,
+			foreignKeyEntity: validatedForeignKey,
 		});
 	}
 
-	const columns: Array<ColumnMetadata> =
-		MetadataUtil.getEntityMetadata({
-			metadataKey: "columns",
-			entity: currentEntity.name === entityName ? currentEntity : targetEntity,
-		}) || [];
-
-	const column = columns.find(c => c.name === columnName);
-
-	if (!column) {
-		throw new SymbiosisError({
-			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
-			message: ERROR_MESSAGE,
-			details: [
-				`Column "${columnName}" does not exist in entity "${entityName}"`,
-			],
-		});
-	}
+	return formattedRelationMap;
 };
