@@ -8,11 +8,11 @@
 	"description": "Symbiosis - The Ultimate OM For All Databases",
 	"homepage": "https://symbiosis.techmmunity.com.br/",
 	"bugs": {
-		"url": "https://github.com/techmmunity/symbiosis/issues"
+		"url": "https://github.com/techmmunity-symbiosis/symbiosis/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/techmmunity/symbiosis.git"
+		"url": "git+https://github.com/techmmunity-symbiosis/symbiosis.git"
 	},
 	"keywords": [
 		"orm",
