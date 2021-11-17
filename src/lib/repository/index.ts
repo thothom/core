@@ -1,41 +1,41 @@
 import { EntityManager } from "../entity-manager";
-import { afterSave, AfterSaveParams } from "./methods/after-save";
-import { afterInsert, AfterInsertParams } from "./methods/after-insert";
-import { beforeSave, BeforeSaveParams } from "./methods/before-save";
-import { beforeInsert, BeforeInsertParams } from "./methods/before-insert";
+import { afterSave, AfterSaveParams } from "./methods/save/after";
+import { afterInsert, AfterInsertParams } from "./methods/insert/after";
+import { beforeSave, BeforeSaveParams } from "./methods/save/before";
+import { beforeInsert, BeforeInsertParams } from "./methods/insert/before";
 import { FindConditions } from "./types/find-conditions";
 import { FindOneOptions, FindOptions } from "./types/find-options";
 import { BaseQueryOptions } from "./types/query-options";
-import { beforeUpdate, BeforeUpdateParams } from "./methods/before-update";
-import { afterUpdate, AfterUpdateParams } from "./methods/after-update";
-import { AfterUpsertParams, afterUpsert } from "./methods/after-upsert";
-import { BeforeUpsertParams, beforeUpsert } from "./methods/before-upsert";
-import { AfterFindParams, afterFind } from "./methods/after-find";
-import { BeforeFindParams, beforeFind } from "./methods/before-find";
-import { beforeFindOne, BeforeFindOneParams } from "./methods/before-find-one";
-import { afterFindOne, AfterFindOneParams } from "./methods/after-find-one";
-import { beforeDelete, BeforeDeleteParams } from "./methods/before-delete";
-import { afterDelete, AfterDeleteParams } from "./methods/after-delete";
+import { beforeUpdate, BeforeUpdateParams } from "./methods/update/before";
+import { afterUpdate, AfterUpdateParams } from "./methods/update/after";
+import { AfterUpsertParams, afterUpsert } from "./methods/upsert/after";
+import { BeforeUpsertParams, beforeUpsert } from "./methods/upsert/before";
+import { AfterFindParams, afterFind } from "./methods/find/after";
+import { BeforeFindParams, beforeFind } from "./methods/find/before";
+import { beforeFindOne, BeforeFindOneParams } from "./methods/find-one/before";
+import { afterFindOne, AfterFindOneParams } from "./methods/find-one/after";
+import { beforeDelete, BeforeDeleteParams } from "./methods/delete/before";
+import { afterDelete, AfterDeleteParams } from "./methods/delete/after";
 import {
 	beforeSoftDelete,
 	BeforeSoftDeleteParams,
-} from "./methods/before-soft-delete";
+} from "./methods/soft-delete/before";
 import {
 	afterSoftDelete,
 	AfterSoftDeleteParams,
-} from "./methods/after-soft-delete";
-import { beforeRecover, BeforeRecoverParams } from "./methods/before-recover";
-import { AfterRecoverParams, afterRecover } from "./methods/after-recover";
-import { AfterCountParams, afterCount } from "./methods/after-count";
-import { BeforeCountParams, beforeCount } from "./methods/before-count";
+} from "./methods/soft-delete/after";
+import { beforeRecover, BeforeRecoverParams } from "./methods/recover/before";
+import { AfterRecoverParams, afterRecover } from "./methods/recover/after";
+import { AfterCountParams, afterCount } from "./methods/count/after";
+import { BeforeCountParams, beforeCount } from "./methods/count/before";
 import {
 	AfterPerformativeCountParams,
 	afterPerformativeCount,
-} from "./methods/after-performative-count";
+} from "./methods/performative-count/after";
 import {
 	BeforePerformativeCountParams,
 	beforePerformativeCount,
-} from "./methods/before-performative-count";
+} from "./methods/performative-count/before";
 import type { SingleSaveData, ArraySaveData } from "./types/save-conditions";
 import { Logger } from "../logger";
 import { BaseExtraMetadata } from "../types/extra-metadata";
