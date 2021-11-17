@@ -10,7 +10,7 @@ import { CustomClass } from "../../../types/metadata-type";
 
 interface GetConditionsFormattedParams {
 	conditionsArray: ArrayFindConditions<Record<string, any>>; // Normal Entity, NOT Database Entity
-	entityMetadata: IncrementedEntitiesMetadata<any, any, any>;
+	entityMetadata: IncrementedEntitiesMetadata;
 	entityManager: EntityManager;
 }
 

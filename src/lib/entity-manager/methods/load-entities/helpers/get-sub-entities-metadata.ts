@@ -9,7 +9,7 @@ import { getDatabaseName } from "./get-database-name";
 interface GetSubEntitiesMetadataParams {
 	logger: Logger;
 	allEntitiesColumns: Array<ColumnMetadata>;
-	entities: EntityManagerEntities<any, any, any>;
+	entities: EntityManagerEntities;
 	connectionOptions: BaseConnectionOptions;
 }
 

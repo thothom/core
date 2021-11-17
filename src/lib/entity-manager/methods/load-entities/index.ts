@@ -1,5 +1,6 @@
 import { BaseConnectionOptions } from "../../../connection/types/connection-options";
 import { Logger } from "../../../logger";
+import { BaseExtraMetadata } from "../../../types/extra-metadata";
 import { EntityManagerEntities } from "../../types/manager-metadata";
 import { CustomClass } from "../../types/metadata-type";
 import { getEntitiesMetadata } from "./helpers/get-entities-metadata";
@@ -11,11 +12,7 @@ export interface LoadEntitiesParams {
 	entities: Array<CustomClass>;
 }
 
-export const loadEntities = <
-	EntityExtraMetadata,
-	ColumnExtraMetadata,
-	IndexExtraMetadata,
->({
+export const loadEntities = <ExtraMetadata extends BaseExtraMetadata>({
 	connectionOptions,
 	logger,
 	entities: rawEntities,
@@ -33,9 +30,5 @@ export const loadEntities = <
 		allEntitiesColumns: columns,
 	});
 
-	return entities as EntityManagerEntities<
-		EntityExtraMetadata,
-		ColumnExtraMetadata,
-		IndexExtraMetadata
-	>;
+	return entities as EntityManagerEntities<ExtraMetadata>;
 };

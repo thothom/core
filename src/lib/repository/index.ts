@@ -38,23 +38,18 @@ import {
 } from "./methods/before-performative-count";
 import type { SingleSaveData, ArraySaveData } from "./types/save-conditions";
 import { Logger } from "../logger";
+import { BaseExtraMetadata } from "../types/extra-metadata";
 
 export abstract class BaseRepository<
-	Entity,
-	EntityExtraMetadata = any,
-	ColumnExtraMetadata = any,
-	IndexExtraMetadata = any,
+	Entity = any,
+	ExtraMetadata extends BaseExtraMetadata = any,
 > {
 	protected readonly entity: Entity;
 
 	public readonly tableName: string;
 
 	public constructor(
-		protected readonly entityManager: EntityManager<
-			EntityExtraMetadata,
-			ColumnExtraMetadata,
-			IndexExtraMetadata
-		>,
+		protected readonly entityManager: EntityManager<ExtraMetadata>,
 		protected readonly logger: Logger,
 		entity: any,
 	) {

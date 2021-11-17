@@ -1,27 +1,16 @@
+import { BaseExtraMetadata } from "../../types/extra-metadata";
 import { ColumnMetadata } from "./column-metadata";
 import { EntityMetadata } from "./entity-metadata";
 
 export interface IncrementedEntitiesMetadata<
-	EntityExtraMetadata,
-	ColumnExtraMetadata,
-	IndexExtraMetadata,
-> extends EntityMetadata<
-		EntityExtraMetadata,
-		ColumnExtraMetadata,
-		IndexExtraMetadata
-	> {
-	columns: Array<ColumnMetadata<ColumnExtraMetadata>>;
+	ExtraMetadata extends BaseExtraMetadata = any,
+> extends EntityMetadata<ExtraMetadata> {
+	columns: Array<ColumnMetadata<ExtraMetadata["column"]>>;
 }
 
 export type EntityManagerEntities<
-	EntityExtraMetadata,
-	ColumnExtraMetadata,
-	IndexExtraMetadata,
+	ExtraMetadata extends BaseExtraMetadata = any,
 > = Record<
 	string, // Entity Class Name
-	IncrementedEntitiesMetadata<
-		EntityExtraMetadata,
-		ColumnExtraMetadata,
-		IndexExtraMetadata
-	>
+	IncrementedEntitiesMetadata<ExtraMetadata>
 >;

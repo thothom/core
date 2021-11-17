@@ -19,7 +19,7 @@ export const getEntitiesMetadata = ({
 	rawEntities,
 	connectionOptions,
 }: GetEntitiesMetadataParams) => {
-	const entities: EntityManagerEntities<any, any, any> = {};
+	const entities: EntityManagerEntities = {};
 	const columns: Array<ColumnMetadata> = [];
 
 	rawEntities.forEach(rawEntity => {

@@ -8,12 +8,11 @@ import { DEFAULT_CONNECTION_NAME } from "../../config";
 import { loadOptions } from "../utils/cli/load-options";
 import { loadEntities } from "../utils/cli/load-entities";
 import { SymbiosisError } from "../error";
+import { BaseExtraMetadata } from "../types/extra-metadata";
 
 export abstract class BaseConnection<
 	DatabaseConfig = any,
-	EntityExtraMetadata = any,
-	ColumnExtraMetadata = any,
-	IndexExtraMetadata = any,
+	ExtraMetadata extends BaseExtraMetadata = any,
 > {
 	/**
 	 * Properties
@@ -30,11 +29,7 @@ export abstract class BaseConnection<
 
 	public entities: Array<any>;
 
-	public entityManager: EntityManager<
-		EntityExtraMetadata,
-		ColumnExtraMetadata,
-		IndexExtraMetadata
-	>;
+	public entityManager: EntityManager<ExtraMetadata>;
 
 	public logger: Logger;
 
@@ -74,10 +69,7 @@ export abstract class BaseConnection<
 
 		this.logger = new Logger(this.name, this.options.logging);
 
-		this.entityManager = new EntityManager<
-			EntityExtraMetadata,
-			ColumnExtraMetadata
-		>({
+		this.entityManager = new EntityManager<ExtraMetadata>({
 			logger: this.logger,
 			connectionOptions: this.options,
 			entities: this.entities,
@@ -142,5 +134,5 @@ export abstract class BaseConnection<
 	 */
 	public abstract getRepository<Entity>(
 		entity: CustomClass,
-	): BaseRepository<Entity, EntityExtraMetadata, ColumnExtraMetadata>;
+	): BaseRepository<Entity, ExtraMetadata>;
 }
