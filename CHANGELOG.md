@@ -32,6 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Now loads both `entities` and `entitiesDir` options, so both can be used at the same time
 - [BC] Update extra metadata to allow infinite extra metadata
   - Now the extra metadata is one unique object, and it's properties are used to get the types
+- [Internal] after* And before* Methods Location
+  - Will make it easier to use a unique function to convert data, and handle relations
 
 ### Fixed
 

@@ -1,28 +1,28 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { BaseRepository } from "../../lib/repository";
-import { AfterCountParams } from "../../lib/repository/methods/after-count";
-import { AfterDeleteParams } from "../../lib/repository/methods/after-delete";
-import { AfterFindParams } from "../../lib/repository/methods/after-find";
-import { AfterFindOneParams } from "../../lib/repository/methods/after-find-one";
-import { AfterInsertParams } from "../../lib/repository/methods/after-insert";
-import { AfterPerformativeCountParams } from "../../lib/repository/methods/after-performative-count";
-import { AfterRecoverParams } from "../../lib/repository/methods/after-recover";
-import { AfterSaveParams } from "../../lib/repository/methods/after-save";
-import { AfterSoftDeleteParams } from "../../lib/repository/methods/after-soft-delete";
-import { AfterUpdateParams } from "../../lib/repository/methods/after-update";
-import { AfterUpsertParams } from "../../lib/repository/methods/after-upsert";
-import { BeforeCountParams } from "../../lib/repository/methods/before-count";
-import { BeforeDeleteParams } from "../../lib/repository/methods/before-delete";
-import { BeforeFindParams } from "../../lib/repository/methods/before-find";
-import { BeforeFindOneParams } from "../../lib/repository/methods/before-find-one";
-import { BeforeInsertParams } from "../../lib/repository/methods/before-insert";
-import { BeforePerformativeCountParams } from "../../lib/repository/methods/before-performative-count";
-import { BeforeRecoverParams } from "../../lib/repository/methods/before-recover";
-import { BeforeSaveParams } from "../../lib/repository/methods/before-save";
-import { BeforeSoftDeleteParams } from "../../lib/repository/methods/before-soft-delete";
-import { BeforeUpdateParams } from "../../lib/repository/methods/before-update";
-import { BeforeUpsertParams } from "../../lib/repository/methods/before-upsert";
+import { AfterCountParams } from "../../lib/repository/methods/count/after";
+import { AfterDeleteParams } from "../../lib/repository/methods/delete/after";
+import { AfterFindParams } from "../../lib/repository/methods/find/after";
+import { AfterFindOneParams } from "../../lib/repository/methods/find-one/after";
+import { AfterInsertParams } from "../../lib/repository/methods/insert/after";
+import { AfterPerformativeCountParams } from "../../lib/repository/methods/performative-count/after";
+import { AfterRecoverParams } from "../../lib/repository/methods/recover/after";
+import { AfterSaveParams } from "../../lib/repository/methods/save/after";
+import { AfterSoftDeleteParams } from "../../lib/repository/methods/soft-delete/after";
+import { AfterUpdateParams } from "../../lib/repository/methods/update/after";
+import { AfterUpsertParams } from "../../lib/repository/methods/upsert/after";
+import { BeforeCountParams } from "../../lib/repository/methods/count/before";
+import { BeforeDeleteParams } from "../../lib/repository/methods/delete/before";
+import { BeforeFindParams } from "../../lib/repository/methods/find/before";
+import { BeforeFindOneParams } from "../../lib/repository/methods/find-one/before";
+import { BeforeInsertParams } from "../../lib/repository/methods/insert/before";
+import { BeforePerformativeCountParams } from "../../lib/repository/methods/performative-count/before";
+import { BeforeRecoverParams } from "../../lib/repository/methods/recover/before";
+import { BeforeSaveParams } from "../../lib/repository/methods/save/before";
+import { BeforeSoftDeleteParams } from "../../lib/repository/methods/soft-delete/before";
+import { BeforeUpdateParams } from "../../lib/repository/methods/update/before";
+import { BeforeUpsertParams } from "../../lib/repository/methods/upsert/before";
 import { FindConditions } from "../../lib/repository/types/find-conditions";
 import {
 	FindOptions,
