@@ -1,4 +1,4 @@
-import { getOptions } from "../../helpers/get-options";
+import { getOptions } from "../../@helpers/get-options";
 import { SubEntityOptions } from "../../types/entity-options";
 import { addEntityMetadata } from "../helpers/add-entity-metadata";
 

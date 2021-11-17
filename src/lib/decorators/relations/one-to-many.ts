@@ -1,15 +1,24 @@
+import { getType } from "../@helpers/get-type";
 import { OneToManyOptions } from "../types/relation-options";
 import { addRelationToEntityMetadata } from "./helpers/merge-entity-metadata";
 import { validateForeignKey } from "./helpers/validate-foreign-key";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const OneToMany = <RelationExtraMetadata>({
-	targetEntity,
+	targetEntity: suggestedTargetEntity,
 	relationMap: rawRelationMap,
 	...metadata
 }: OneToManyOptions<RelationExtraMetadata>) => {
 	return (entityPrototype: any, propertyName: string) => {
 		const entityConstructor = entityPrototype.constructor;
+
+		const { type: targetEntity } = getType({
+			entityPrototype,
+			propertyName,
+			suggestedType: suggestedTargetEntity,
+			acceptedTypes: ["custom-class"],
+			mustBeArray: true,
+		});
 
 		const relationMap = validateForeignKey({
 			relationMap: rawRelationMap,

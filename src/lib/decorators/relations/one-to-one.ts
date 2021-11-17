@@ -1,4 +1,4 @@
-import { getType } from "../columns/helpers/get-type";
+import { getType } from "../@helpers/get-type";
 import { OneToOneOptions } from "../types/relation-options";
 import { addRelationToEntityMetadata } from "./helpers/merge-entity-metadata";
 import { validateForeignKey } from "./helpers/validate-foreign-key";
@@ -15,6 +15,7 @@ export const OneToOne = <RelationExtraMetadata>({
 			entityPrototype,
 			propertyName,
 			acceptedTypes: ["custom-class"],
+			cannotBeArray: true,
 		});
 
 		const relationMap = validateForeignKey({

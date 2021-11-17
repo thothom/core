@@ -1,4 +1,4 @@
-import { getOptions } from "../helpers/get-options";
+import { getOptions } from "../@helpers/get-options";
 import { IndexOptions } from "../types/index-options";
 import { addIndexMetadata } from "./helpers/add-index-metadata";
 import { getIndexName } from "./helpers/get-index-name";
