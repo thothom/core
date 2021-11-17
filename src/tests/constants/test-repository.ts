@@ -22,7 +22,7 @@ import { BeforeRecoverParams } from "../../lib/repository/methods/recover/before
 import { BeforeSaveParams } from "../../lib/repository/methods/save/before";
 import { BeforeSoftDeleteParams } from "../../lib/repository/methods/soft-delete/before";
 import { BeforeUpdateParams } from "../../lib/repository/methods/update/before";
-import { BeforeUpsertParams } from "../../lib/repository/methods/upsert/before";
+import { BeforeUpsertInput } from "../../lib/repository/methods/upsert/before";
 import { FindConditions } from "../../lib/repository/types/find-conditions";
 import {
 	FindOptions,
@@ -137,7 +137,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		return super.afterUpdate(params);
 	}
 
-	public override beforeUpsert(params: BeforeUpsertParams<Entity>) {
+	public override beforeUpsert(params: BeforeUpsertInput<Entity>) {
 		return super.beforeUpsert(params);
 	}
 

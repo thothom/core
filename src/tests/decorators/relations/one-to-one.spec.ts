@@ -11,19 +11,18 @@ describe("Decorators > OneToOne", () => {
 			public id: string;
 		}
 
-		@OneToOne({
-			targetEntity: Bar,
-			foreignKey: "Foo.barId",
-			relationMap: {
-				barId: "id",
-			},
-		})
 		@Entity()
 		class Foo {
 			@Column()
 			public barId: string;
 
-			@Column()
+			@OneToOne({
+				relationMap: {
+					columnName: "barId",
+					targetColumnName: "id",
+					foreignKeyEntity: "current",
+				},
+			})
 			public bar: Bar;
 		}
 
@@ -32,28 +31,27 @@ describe("Decorators > OneToOne", () => {
 		});
 
 		expect(metadata).toStrictEqual({
-			name: "Foo",
-			databaseName: "Foo",
 			columns: [
 				{
 					databaseName: "barId",
 					name: "barId",
 					type: String,
 				},
-				{
-					databaseName: "bar",
-					name: "bar",
-					type: Bar,
-				},
 			],
+			databaseName: "Foo",
+			name: "Foo",
 			relations: [
 				{
-					type: "ONE_TO_ONE",
-					foreignKey: "Foo.barId",
+					relationColumn: "bar",
+					relationMap: [
+						{
+							columnName: "barId",
+							foreignKeyEntity: "current",
+							targetColumnName: "id",
+						},
+					],
 					targetEntity: Bar,
-					relationMap: {
-						barId: "id",
-					},
+					type: "ONE_TO_ONE",
 				},
 			],
 		});
@@ -66,19 +64,18 @@ describe("Decorators > OneToOne", () => {
 			public fooId: string;
 		}
 
-		@OneToOne({
-			targetEntity: Bar,
-			foreignKey: "Bar.fooId",
-			relationMap: {
-				id: "fooId",
-			},
-		})
 		@Entity()
 		class Foo {
 			@Column()
 			public id: string;
 
-			@Column()
+			@OneToOne({
+				relationMap: {
+					columnName: "id",
+					targetColumnName: "fooId",
+					foreignKeyEntity: "target",
+				},
+			})
 			public bar: Bar;
 		}
 
@@ -87,28 +84,27 @@ describe("Decorators > OneToOne", () => {
 		});
 
 		expect(metadata).toStrictEqual({
-			name: "Foo",
-			databaseName: "Foo",
 			columns: [
 				{
 					databaseName: "id",
 					name: "id",
 					type: String,
 				},
-				{
-					databaseName: "bar",
-					name: "bar",
-					type: Bar,
-				},
 			],
+			databaseName: "Foo",
+			name: "Foo",
 			relations: [
 				{
-					type: "ONE_TO_ONE",
-					foreignKey: "Bar.fooId",
+					relationColumn: "bar",
+					relationMap: [
+						{
+							columnName: "id",
+							foreignKeyEntity: "target",
+							targetColumnName: "fooId",
+						},
+					],
 					targetEntity: Bar,
-					relationMap: {
-						id: "fooId",
-					},
+					type: "ONE_TO_ONE",
 				},
 			],
 		});
