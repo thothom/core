@@ -1,8 +1,8 @@
 import { getTypeof } from "@techmmunity/utils";
-import { SymbiosisError } from "../../../error";
-import { MetadataType } from "../../../entity-manager/types/metadata-type";
-import { MetadataUtil } from "../../../utils/metadata-util";
-import { MetadataName } from "../../../types/metadata-name";
+import { SymbiosisError } from "../../error";
+import { MetadataType } from "../../entity-manager/types/metadata-type";
+import { MetadataUtil } from "../../utils/metadata-util";
+import { MetadataName } from "../../types/metadata-name";
 
 const ERROR_MESSAGE = "Column type isn't supported";
 
@@ -15,6 +15,8 @@ export interface GetTypeParams {
 	acceptedTypes?: Array<AcceptedTypes>;
 	suggestedType?: MetadataType;
 	enumValues?: Array<number | string>;
+	mustBeArray?: boolean;
+	cannotBeArray?: boolean;
 }
 
 interface GetTypeResult {
@@ -48,6 +50,8 @@ export const getType = ({
 	propertyName,
 	suggestedType,
 	enumValues,
+	mustBeArray,
+	cannotBeArray,
 	acceptedTypes = ["all"],
 }: GetTypeParams): GetTypeResult => {
 	const reflectType = Reflect.getMetadata(
@@ -61,6 +65,18 @@ export const getType = ({
 	 * so they have to be defined manually
 	 */
 	if (reflectType === Array) {
+		if (cannotBeArray) {
+			throw new SymbiosisError({
+				code: "INVALID_PARAM_TYPE",
+				origin: "SYMBIOSIS",
+				message: `${ERROR_MESSAGE}: "Column cannot be an array"`,
+				details: [
+					`Entity: ${entityPrototype.constructor.name}`,
+					`Column: ${propertyName}`,
+				],
+			});
+		}
+
 		handleUnacceptedType(acceptedTypes, "array", entityPrototype, propertyName);
 
 		/**
@@ -81,6 +97,18 @@ export const getType = ({
 			code: "INVALID_PARAM_TYPE",
 			origin: "SYMBIOSIS",
 			message: "You must explicitly declare array types",
+			details: [
+				`Entity: ${entityPrototype.constructor.name}`,
+				`Column: ${propertyName}`,
+			],
+		});
+	}
+
+	if (mustBeArray) {
+		throw new SymbiosisError({
+			code: "INVALID_PARAM_TYPE",
+			origin: "SYMBIOSIS",
+			message: `${ERROR_MESSAGE}: "Column must be an array"`,
 			details: [
 				`Entity: ${entityPrototype.constructor.name}`,
 				`Column: ${propertyName}`,

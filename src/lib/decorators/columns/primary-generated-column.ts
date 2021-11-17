@@ -1,7 +1,7 @@
 import { getTypeof } from "@techmmunity/utils";
 import { PrimaryGeneratedColumnOptions } from "../types/column-options";
 import { makeColumnDecorator } from "./helpers/make-column-decorator";
-import { getOptions } from "../helpers/get-options";
+import { getOptions } from "../@helpers/get-options";
 
 type PrimaryColumnPreDefinedAutoGenerationMethods = "uuid";
 

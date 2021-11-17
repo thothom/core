@@ -1,5 +1,5 @@
 import { CountColumnOptions } from "../types/column-options";
-import { getOptions } from "../helpers/get-options";
+import { getOptions } from "../@helpers/get-options";
 import { makeColumnDecorator } from "./helpers/make-column-decorator";
 import { Plus } from "../../repository/operators/save/plus";
 import { DatabaseEvents } from "../../entity-manager/types/database-events";
