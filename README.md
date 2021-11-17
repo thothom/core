@@ -127,7 +127,7 @@ bootstrap();
 
 All the details about contributing are in [our website](https://symbiosis.techmmunity.com.br).
 
-See [here](https://github.com/techmmunity/symbiosis/blob/master/TODO.md) our to-dos.
+See [here](https://github.com/techmmunity-symbiosis/symbiosis/blob/master/TODO.md) our to-dos.
 
 ## Special Thanks
 
