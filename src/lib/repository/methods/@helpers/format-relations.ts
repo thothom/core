@@ -1,4 +1,4 @@
-import { cleanObj, getTypeof } from "@techmmunity/utils";
+import { cleanObj, getTypeof, isNotEmptyArray } from "@techmmunity/utils";
 import { EntityManager } from "../../../entity-manager";
 import { DatabaseEvents } from "../../../entity-manager/types/database-events";
 import { Relation } from "../../../entity-manager/types/entity-metadata";
@@ -7,7 +7,7 @@ import { MetadataUtil } from "../../../utils/metadata-util";
 import { DataWithRelations } from "../../types/data-with-relations";
 import { beforeFormatDataArray } from "./before-format-data-array";
 
-interface FormatRelationsParams<Entity = any> {
+interface InternalFormatRelationsParams<Entity = any> {
 	entity: any;
 	entityManager: EntityManager;
 	/**
@@ -23,8 +23,24 @@ interface FormatRelationsParams<Entity = any> {
 	autoGenerateEvents: Array<DatabaseEvents>;
 }
 
+interface FormatRelationsParams<Entity = any> {
+	entity: any;
+	entityManager: EntityManager;
+	/**
+	 * Data already formatted, with
+	 * columns already auto-generated
+	 */
+	data: Array<DatabaseEntity>;
+	/**
+	 * Data without any formatting,
+	 * as the user defined
+	 */
+	rawData: Array<Entity>;
+	autoGenerateEvents: Array<DatabaseEvents>;
+}
+
 interface GetRelationDataParams {
-	r: Relation;
+	relation: Relation;
 	entityManager: EntityManager;
 	data: DatabaseEntity;
 	autoGenerateEvents: Array<DatabaseEvents>;
@@ -36,18 +52,18 @@ const getRelationData = ({
 	value,
 	entityManager,
 	autoGenerateEvents,
-	r,
+	relation,
 	data,
 	entity,
 }: GetRelationDataParams) => {
 	const relationData = beforeFormatDataArray({
 		data: [value],
-		entity: r.targetEntity,
+		entity: relation.targetEntity,
 		entityManager,
 		autoGenerateEvents,
 	}).shift()!;
 
-	r.relationMap.forEach(rm => {
+	relation.relationMap.forEach(rm => {
 		if (rm.foreignKeyEntity === "target") {
 			const columnMetadata = entityManager.getColumnMetadata(
 				entity,
@@ -57,7 +73,7 @@ const getRelationData = ({
 			const relationColumnValue = data[columnMetadata.databaseName];
 
 			const relationColumnMetadata = entityManager.getColumnMetadata(
-				r.targetEntity,
+				relation.targetEntity,
 				rm.targetColumnName,
 			);
 
@@ -68,28 +84,29 @@ const getRelationData = ({
 	return relationData;
 };
 
-export const formatRelations = ({
+const internalFormatRelations = ({
 	entity,
 	entityManager,
 	data,
 	rawData,
 	autoGenerateEvents,
-}: FormatRelationsParams): Array<DataWithRelations> => {
+}: InternalFormatRelationsParams): Array<DataWithRelations> => {
 	const relations = MetadataUtil.getEntityMetadata<"relations">({
 		metadataKey: "relations",
 		entity,
 	});
 
 	return relations
-		?.map(r => {
+		?.map(relation => {
 			/**
-			 * Use "name" instead
+			 * Use "name" instead "databaseName",
+			 * because the rawData ins't formatted yet
 			 */
-			const value = rawData[r.relationColumn];
+			const value = rawData[relation.relationColumn];
 
 			if (getTypeof(value) === "undefined") return null;
 
-			const arrayData = ["MANY_TO_MANY", "ONE_TO_MANY"].includes(r.type)
+			const arrayData = ["MANY_TO_MANY", "ONE_TO_MANY"].includes(relation.type)
 				? value
 				: [value];
 
@@ -98,16 +115,16 @@ export const formatRelations = ({
 					value: val,
 					entityManager,
 					autoGenerateEvents,
-					r,
 					data,
+					relation,
 					entity,
 				});
 
 				return cleanObj({
-					entity: r.targetEntity,
+					entity: relation.targetEntity,
 					data: formattedRelationData,
-					relations: formatRelations({
-						entity: r.targetEntity,
+					relations: internalFormatRelations({
+						entity: relation.targetEntity,
 						entityManager,
 						data: formattedRelationData,
 						rawData: val,
@@ -119,3 +136,22 @@ export const formatRelations = ({
 		.filter(Boolean)
 		.flat() as Array<DataWithRelations>;
 };
+
+export const formatRelations = ({
+	entity,
+	entityManager,
+	data,
+	rawData,
+	autoGenerateEvents,
+}: FormatRelationsParams): Array<Array<DataWithRelations>> =>
+	rawData
+		.map((rd, idx) =>
+			internalFormatRelations({
+				entity,
+				entityManager,
+				data: data[idx],
+				rawData: rd,
+				autoGenerateEvents,
+			}),
+		)
+		.filter(isNotEmptyArray);

@@ -35,12 +35,15 @@ describe("Repository > Methods > afterSave", () => {
 
 	it("should convert fields to the entity format", () => {
 		const result = repository.afterSave({
-			data: {
-				// eslint-disable-next-line @typescript-eslint/naming-convention
-				ID: id,
-				// eslint-disable-next-line @typescript-eslint/naming-convention
-				FOO: 1,
-			},
+			data: [
+				{
+					// eslint-disable-next-line @typescript-eslint/naming-convention
+					ID: id,
+					// eslint-disable-next-line @typescript-eslint/naming-convention
+					FOO: 1,
+				},
+			],
+			returnArray: false,
 		});
 
 		expect(result).toStrictEqual({
@@ -59,6 +62,7 @@ describe("Repository > Methods > afterSave", () => {
 					FOO: 1,
 				},
 			],
+			returnArray: true,
 		});
 
 		expect(result).toStrictEqual([

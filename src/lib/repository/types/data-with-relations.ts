@@ -1,7 +1,8 @@
+import { DatabaseEntity } from "../../types/database-entity";
 import { SingleSaveData } from "./save-conditions";
 
-export interface DataWithRelations<Entity = any> {
+export interface DataWithRelations {
 	entity: any;
-	data: SingleSaveData<Entity>;
-	relations: Array<DataWithRelations<Entity>>;
+	data: SingleSaveData<DatabaseEntity>;
+	relations: Array<DataWithRelations>;
 }

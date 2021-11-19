@@ -5,6 +5,8 @@ import { DatabaseEntity } from "../../../types/database-entity";
 import { SingleSaveData } from "../../types/save-conditions";
 import { beforeFormatDataArray } from "../@helpers/before-format-data-array";
 import { DataWithRelations } from "../../types/data-with-relations";
+import { formatRelations } from "../@helpers/format-relations";
+import { DatabaseEvents } from "../../../entity-manager/types/database-events";
 
 interface Injectables {
 	entityManager: EntityManager;
@@ -17,8 +19,11 @@ export interface BeforeUpsertInput<Entity> {
 	options?: BaseQueryOptions;
 }
 
-export interface BeforeUpsertOutput extends BeforeUpsertInput<DatabaseEntity> {
-	relations: Array<DataWithRelations<DatabaseEntity>>;
+export interface BeforeUpsertOutput {
+	conditions: FindConditions<DatabaseEntity>;
+	data: SingleSaveData<DatabaseEntity>;
+	options?: BaseQueryOptions;
+	relations: Array<DataWithRelations>;
 }
 
 export const beforeUpsert = <Entity>(
@@ -29,19 +34,35 @@ export const beforeUpsert = <Entity>(
 		options: rawOptions,
 	}: BeforeUpsertInput<Entity>,
 ): BeforeUpsertOutput => {
-	const result: BeforeUpsertOutput = {
-		data: beforeFormatDataArray<Entity>({
-			data: [rawData],
-			entity,
-			entityManager,
-			autoGenerateEvents: ["insert", "update"],
-		}).shift(),
-		conditions: entityManager.formatConditions({
-			entity,
-			conditions: rawConditions,
-		}),
-		relations: [],
-	};
+	const result = {} as BeforeUpsertOutput;
+
+	const dataArray = [rawData];
+
+	const autoGenerateEvents: Array<DatabaseEvents> = ["insert", "update"];
+
+	result.data = beforeFormatDataArray<Entity>({
+		data: dataArray,
+		entity,
+		entityManager,
+		autoGenerateEvents,
+	}).shift()!;
+
+	result.conditions = entityManager.formatConditions({
+		entity,
+		conditions: rawConditions,
+	});
+
+	const relations = formatRelations({
+		entity,
+		entityManager,
+		data: [result.data],
+		rawData: dataArray,
+		autoGenerateEvents,
+	}).shift()!;
+
+	if (relations) {
+		result.relations = relations;
+	}
 
 	if (rawOptions) {
 		result.options = rawOptions;

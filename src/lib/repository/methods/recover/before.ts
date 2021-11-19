@@ -9,16 +9,21 @@ interface Injectables {
 	entity: CustomClass;
 }
 
-export interface BeforeRecoverParams<Entity> {
+export interface BeforeRecoverInput<Entity> {
 	where: FindConditions<Entity>;
+	options?: BaseQueryOptions;
+}
+
+export interface BeforeRecoverOutput {
+	where: FindConditions<DatabaseEntity>;
 	options?: BaseQueryOptions;
 }
 
 export const beforeRecover = <Entity>(
 	{ entityManager, entity }: Injectables,
-	{ where: rawWhere, options: rawOptions }: BeforeRecoverParams<Entity>,
+	{ where: rawWhere, options: rawOptions }: BeforeRecoverInput<Entity>,
 ) => {
-	const result = {} as BeforeRecoverParams<DatabaseEntity>;
+	const result = {} as BeforeRecoverOutput;
 
 	result.where = entityManager.formatConditions({
 		entity,

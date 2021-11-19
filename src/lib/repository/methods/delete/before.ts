@@ -9,16 +9,21 @@ interface Injectables {
 	entity: CustomClass;
 }
 
-export interface BeforeDeleteParams<Entity> {
+export interface BeforeDeleteInput<Entity> {
 	where: FindConditions<Entity>;
+	options?: BaseQueryOptions;
+}
+
+export interface BeforeDeleteOutput {
+	where: FindConditions<DatabaseEntity>;
 	options?: BaseQueryOptions;
 }
 
 export const beforeDelete = <Entity>(
 	{ entityManager, entity }: Injectables,
-	{ where: rawWhere, options: rawOptions }: BeforeDeleteParams<Entity>,
+	{ where: rawWhere, options: rawOptions }: BeforeDeleteInput<Entity>,
 ) => {
-	const result = {} as BeforeDeleteParams<DatabaseEntity>;
+	const result = {} as BeforeDeleteOutput;
 
 	result.where = entityManager.formatConditions({
 		entity,

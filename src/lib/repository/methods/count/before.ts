@@ -9,16 +9,21 @@ interface Injectables {
 	entity: CustomClass;
 }
 
-export interface BeforeCountParams<Entity> {
+export interface BeforeCountInput<Entity> {
 	where: FindConditions<Entity>;
+	options?: BaseQueryOptions;
+}
+
+export interface BeforeCountOutput {
+	where: FindConditions<DatabaseEntity>;
 	options?: BaseQueryOptions;
 }
 
 export const beforeCount = <Entity>(
 	{ entityManager, entity }: Injectables,
-	{ where: rawWhere, options: rawOptions }: BeforeCountParams<Entity>,
+	{ where: rawWhere, options: rawOptions }: BeforeCountInput<Entity>,
 ) => {
-	const result = {} as BeforeCountParams<DatabaseEntity>;
+	const result = {} as BeforeCountOutput;
 
 	result.where = entityManager.formatConditions({
 		entity,

@@ -9,23 +9,22 @@ interface Injectables {
 }
 
 export interface AfterSaveParams {
-	data: Array<DatabaseEntity> | Partial<DatabaseEntity>;
+	data: Array<DatabaseEntity>;
+	returnArray: boolean;
 	options?: BaseQueryOptions;
 }
 
 export const afterSave = <Entity>(
 	{ entity, entityManager }: Injectables,
-	{ data }: AfterSaveParams,
+	{ data, returnArray }: AfterSaveParams,
 ) => {
-	const dataArray = Array.isArray(data) ? data : [data];
-
 	const dataHandled = afterFormatDataArray<Entity>({
-		data: dataArray,
+		data,
 		entity,
 		entityManager,
 	});
 
-	return Array.isArray(data)
+	return returnArray
 		? (dataHandled as Array<Entity>)
 		: (dataHandled.shift() as Entity);
 };
