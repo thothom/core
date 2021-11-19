@@ -611,9 +611,9 @@
     eslint-plugin-sonarjs "^0.10.0"
 
 "@techmmunity/utils@^1.5.0":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@techmmunity/utils/-/utils-1.8.1.tgz#8152d55bf8b24c7923323e183b11750f96363c8d"
-  integrity sha512-dTShIyKOaKfu3qAx+7ATzIwfMsLNlCsgKhsrCeMEOAfUKsH7oOXLayvjqBl2R5JCocNyHejAj2irJrKaQaQ38w==
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@techmmunity/utils/-/utils-1.9.0.tgz#53575ba16bf487b599e313c1bb0dc784eb5743b9"
+  integrity sha512-9aW9t6b06uOrEkM8rVS92YufqPoqizgbXM8Izx/FStpFlnj49usO4k/c0Q2TWddtacfriuwudIGfwEsFL51H9A==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -700,9 +700,9 @@
     "@types/istanbul-lib-report" "*"
 
 "@types/jest@^27.0.2":
-  version "27.0.2"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-27.0.2.tgz#ac383c4d4aaddd29bbf2b916d8d105c304a5fcd7"
-  integrity sha512-4dRxkS/AFX0c5XW6IPMNOydLn2tEhNhJV7DnYK+0bjoJZ+QTmfucBlihX7aoEsh/ocYtkLC73UbnBXBXIxsULA==
+  version "27.0.3"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-27.0.3.tgz#0cf9dfe9009e467f70a342f0f94ead19842a783a"
+  integrity sha512-cmmwv9t7gBYt7hNKH5Spu7Kuu/DotGa+Ff+JGRKZ4db5eh8PnKS4LuebJ3YLUoyOyIHraTGyULn23YtEAm0VSg==
   dependencies:
     jest-diff "^27.0.0"
     pretty-format "^27.0.0"
