@@ -9,8 +9,13 @@ interface Injectables {
 	entity: CustomClass;
 }
 
-export interface BeforePerformativeCountParams<Entity> {
+export interface BeforePerformativeCountInput<Entity> {
 	where: FindConditions<Entity>;
+	options?: BaseQueryOptions;
+}
+
+export interface BeforePerformativeCountOutput {
+	where: FindConditions<DatabaseEntity>;
 	options?: BaseQueryOptions;
 }
 
@@ -19,9 +24,9 @@ export const beforePerformativeCount = <Entity>(
 	{
 		where: rawWhere,
 		options: rawOptions,
-	}: BeforePerformativeCountParams<Entity>,
+	}: BeforePerformativeCountInput<Entity>,
 ) => {
-	const result = {} as BeforePerformativeCountParams<DatabaseEntity>;
+	const result = {} as BeforePerformativeCountOutput;
 
 	result.where = entityManager.formatConditions({
 		entity,

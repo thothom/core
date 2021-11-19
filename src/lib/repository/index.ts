@@ -1,44 +1,85 @@
 import { EntityManager } from "../entity-manager";
+import { Logger } from "../logger";
+
+import type { BaseExtraMetadata } from "../types/extra-metadata";
+import type { FindConditions } from "./types/find-conditions";
+import type { FindOneOptions, FindOptions } from "./types/find-options";
+import type { BaseQueryOptions } from "./types/query-options";
+import type { SingleSaveData, ArraySaveData } from "./types/save-conditions";
+
 import { afterSave, AfterSaveParams } from "./methods/save/after";
 import { afterInsert, AfterInsertParams } from "./methods/insert/after";
-import { beforeSave, BeforeSaveParams } from "./methods/save/before";
-import { beforeInsert, BeforeInsertParams } from "./methods/insert/before";
-import { FindConditions } from "./types/find-conditions";
-import { FindOneOptions, FindOptions } from "./types/find-options";
-import { BaseQueryOptions } from "./types/query-options";
-import { beforeUpdate, BeforeUpdateParams } from "./methods/update/before";
 import { afterUpdate, AfterUpdateParams } from "./methods/update/after";
-import { AfterUpsertParams, afterUpsert } from "./methods/upsert/after";
-import { BeforeUpsertInput, beforeUpsert } from "./methods/upsert/before";
-import { AfterFindParams, afterFind } from "./methods/find/after";
-import { BeforeFindParams, beforeFind } from "./methods/find/before";
-import { beforeFindOne, BeforeFindOneParams } from "./methods/find-one/before";
+import { afterUpsert, AfterUpsertParams } from "./methods/upsert/after";
 import { afterFindOne, AfterFindOneParams } from "./methods/find-one/after";
-import { beforeDelete, BeforeDeleteParams } from "./methods/delete/before";
 import { afterDelete, AfterDeleteParams } from "./methods/delete/after";
+import { afterFind, AfterFindParams } from "./methods/find/after";
+import { afterRecover, AfterRecoverParams } from "./methods/recover/after";
+import { afterCount, AfterCountParams } from "./methods/count/after";
+
+import {
+	beforeSave,
+	BeforeSaveInput,
+	BeforeSaveOutput,
+} from "./methods/save/before";
+import {
+	beforeInsert,
+	BeforeInsertInput,
+	BeforeInsertOutput,
+} from "./methods/insert/before";
+import {
+	beforeUpdate,
+	BeforeUpdateInput,
+	BeforeUpdateOutput,
+} from "./methods/update/before";
+import {
+	BeforeUpsertInput,
+	beforeUpsert,
+	BeforeUpsertOutput,
+} from "./methods/upsert/before";
+import {
+	BeforeFindInput,
+	beforeFind,
+	BeforeFindOutput,
+} from "./methods/find/before";
+import {
+	beforeFindOne,
+	BeforeFindOneInput,
+	BeforeFindOneOutput,
+} from "./methods/find-one/before";
+import {
+	beforeDelete,
+	BeforeDeleteInput,
+	BeforeDeleteOutput,
+} from "./methods/delete/before";
 import {
 	beforeSoftDelete,
-	BeforeSoftDeleteParams,
+	BeforeSoftDeleteInput,
+	BeforeSoftDeleteOutput,
 } from "./methods/soft-delete/before";
 import {
 	afterSoftDelete,
 	AfterSoftDeleteParams,
 } from "./methods/soft-delete/after";
-import { beforeRecover, BeforeRecoverParams } from "./methods/recover/before";
-import { AfterRecoverParams, afterRecover } from "./methods/recover/after";
-import { AfterCountParams, afterCount } from "./methods/count/after";
-import { BeforeCountParams, beforeCount } from "./methods/count/before";
+import {
+	beforeRecover,
+	BeforeRecoverInput,
+	BeforeRecoverOutput,
+} from "./methods/recover/before";
+import {
+	BeforeCountInput,
+	beforeCount,
+	BeforeCountOutput,
+} from "./methods/count/before";
 import {
 	AfterPerformativeCountParams,
 	afterPerformativeCount,
 } from "./methods/performative-count/after";
 import {
-	BeforePerformativeCountParams,
+	BeforePerformativeCountInput,
 	beforePerformativeCount,
+	BeforePerformativeCountOutput,
 } from "./methods/performative-count/before";
-import type { SingleSaveData, ArraySaveData } from "./types/save-conditions";
-import { Logger } from "../logger";
-import { BaseExtraMetadata } from "../types/extra-metadata";
 
 export abstract class BaseRepository<
 	Entity = any,
@@ -219,7 +260,7 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeSave(params: BeforeSaveParams<Entity>) {
+	protected beforeSave(params: BeforeSaveInput<Entity>): BeforeSaveOutput {
 		return beforeSave<Entity>(
 			{
 				entity: this.entity,
@@ -260,7 +301,9 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeInsert(params: BeforeInsertParams<Entity>) {
+	protected beforeInsert(
+		params: BeforeInsertInput<Entity>,
+	): BeforeInsertOutput {
 		return beforeInsert<Entity>(
 			{
 				entity: this.entity,
@@ -301,7 +344,9 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeUpdate(params: BeforeUpdateParams<Entity>) {
+	protected beforeUpdate(
+		params: BeforeUpdateInput<Entity>,
+	): BeforeUpdateOutput {
 		return beforeUpdate<Entity>(
 			{
 				entity: this.entity,
@@ -342,7 +387,9 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeUpsert(params: BeforeUpsertInput<Entity>) {
+	protected beforeUpsert(
+		params: BeforeUpsertInput<Entity>,
+	): BeforeUpsertOutput {
 		return beforeUpsert<Entity>(
 			{
 				entity: this.entity,
@@ -383,7 +430,7 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeFind(params: BeforeFindParams<Entity>) {
+	protected beforeFind(params: BeforeFindInput<Entity>): BeforeFindOutput {
 		return beforeFind<Entity>(
 			{
 				entity: this.entity,
@@ -422,7 +469,9 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeFindOne(params: BeforeFindOneParams<Entity>) {
+	protected beforeFindOne(
+		params: BeforeFindOneInput<Entity>,
+	): BeforeFindOneOutput {
 		return beforeFindOne<Entity>(
 			{
 				entity: this.entity,
@@ -463,7 +512,9 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeDelete(params: BeforeDeleteParams<Entity>) {
+	protected beforeDelete(
+		params: BeforeDeleteInput<Entity>,
+	): BeforeDeleteOutput {
 		return beforeDelete<Entity>(
 			{
 				entity: this.entity,
@@ -502,7 +553,9 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeSoftDelete(params: BeforeSoftDeleteParams<Entity>) {
+	protected beforeSoftDelete(
+		params: BeforeSoftDeleteInput<Entity>,
+	): BeforeSoftDeleteOutput {
 		return beforeSoftDelete<Entity>(
 			{
 				entity: this.entity,
@@ -541,7 +594,9 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeRecover(params: BeforeRecoverParams<Entity>) {
+	protected beforeRecover(
+		params: BeforeRecoverInput<Entity>,
+	): BeforeRecoverOutput {
 		return beforeRecover<Entity>(
 			{
 				entity: this.entity,
@@ -580,7 +635,7 @@ export abstract class BaseRepository<
 	 * Does things like auto-generate values and format the
 	 * data to the database format
 	 */
-	protected beforeCount(params: BeforeCountParams<Entity>) {
+	protected beforeCount(params: BeforeCountInput<Entity>): BeforeCountOutput {
 		return beforeCount<Entity>(
 			{
 				entity: this.entity,
@@ -620,8 +675,8 @@ export abstract class BaseRepository<
 	 * data to the database format
 	 */
 	protected beforePerformativeCount(
-		params: BeforePerformativeCountParams<Entity>,
-	) {
+		params: BeforePerformativeCountInput<Entity>,
+	): BeforePerformativeCountOutput {
 		return beforePerformativeCount<Entity>(
 			{
 				entity: this.entity,

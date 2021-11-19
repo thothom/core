@@ -9,15 +9,21 @@ interface Injectables {
 	entity: CustomClass;
 }
 
-export interface BeforeFindParams<Entity> {
+export interface BeforeFindInput<Entity> {
 	conditions: FindOptions<Entity>;
 	options?: BaseQueryOptions;
 }
+
+export interface BeforeFindOutput {
+	conditions: FindOptions<DatabaseEntity>;
+	options?: BaseQueryOptions;
+}
+
 export const beforeFind = <Entity>(
 	{ entityManager, entity }: Injectables,
-	{ conditions: rawConditions, options: rawOptions }: BeforeFindParams<Entity>,
+	{ conditions: rawConditions, options: rawOptions }: BeforeFindInput<Entity>,
 ) => {
-	const result = {} as BeforeFindParams<DatabaseEntity>;
+	const result = {} as BeforeFindOutput;
 
 	result.conditions = {
 		...(rawConditions as FindOptions<DatabaseEntity>),

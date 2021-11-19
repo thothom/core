@@ -12,16 +12,16 @@ import { AfterSaveParams } from "../../lib/repository/methods/save/after";
 import { AfterSoftDeleteParams } from "../../lib/repository/methods/soft-delete/after";
 import { AfterUpdateParams } from "../../lib/repository/methods/update/after";
 import { AfterUpsertParams } from "../../lib/repository/methods/upsert/after";
-import { BeforeCountParams } from "../../lib/repository/methods/count/before";
-import { BeforeDeleteParams } from "../../lib/repository/methods/delete/before";
-import { BeforeFindParams } from "../../lib/repository/methods/find/before";
-import { BeforeFindOneParams } from "../../lib/repository/methods/find-one/before";
-import { BeforeInsertParams } from "../../lib/repository/methods/insert/before";
-import { BeforePerformativeCountParams } from "../../lib/repository/methods/performative-count/before";
-import { BeforeRecoverParams } from "../../lib/repository/methods/recover/before";
-import { BeforeSaveParams } from "../../lib/repository/methods/save/before";
-import { BeforeSoftDeleteParams } from "../../lib/repository/methods/soft-delete/before";
-import { BeforeUpdateParams } from "../../lib/repository/methods/update/before";
+import { BeforeCountInput } from "../../lib/repository/methods/count/before";
+import { BeforeDeleteInput } from "../../lib/repository/methods/delete/before";
+import { BeforeFindInput } from "../../lib/repository/methods/find/before";
+import { BeforeFindOneInput } from "../../lib/repository/methods/find-one/before";
+import { BeforeInsertInput } from "../../lib/repository/methods/insert/before";
+import { BeforePerformativeCountInput } from "../../lib/repository/methods/performative-count/before";
+import { BeforeRecoverInput } from "../../lib/repository/methods/recover/before";
+import { BeforeSaveInput } from "../../lib/repository/methods/save/before";
+import { BeforeSoftDeleteInput } from "../../lib/repository/methods/soft-delete/before";
+import { BeforeUpdateInput } from "../../lib/repository/methods/update/before";
 import { BeforeUpsertInput } from "../../lib/repository/methods/upsert/before";
 import { FindConditions } from "../../lib/repository/types/find-conditions";
 import {
@@ -113,7 +113,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
-	public override beforeSave(params: BeforeSaveParams<Entity>) {
+	public override beforeSave(params: BeforeSaveInput<Entity>) {
 		return super.beforeSave(params);
 	}
 
@@ -121,7 +121,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		return super.afterSave(params);
 	}
 
-	public override beforeInsert(params: BeforeInsertParams<Entity>) {
+	public override beforeInsert(params: BeforeInsertInput<Entity>) {
 		return super.beforeInsert(params);
 	}
 
@@ -129,7 +129,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		return super.afterInsert(params);
 	}
 
-	public override beforeUpdate(params: BeforeUpdateParams<Entity>) {
+	public override beforeUpdate(params: BeforeUpdateInput<Entity>) {
 		return super.beforeUpdate(params);
 	}
 
@@ -145,7 +145,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		return super.afterUpsert(params);
 	}
 
-	public override beforeFind(params: BeforeFindParams<Entity>) {
+	public override beforeFind(params: BeforeFindInput<Entity>) {
 		return super.beforeFind(params);
 	}
 
@@ -153,7 +153,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		return super.afterFind(params);
 	}
 
-	public override beforeFindOne(params: BeforeFindOneParams<Entity>) {
+	public override beforeFindOne(params: BeforeFindOneInput<Entity>) {
 		return super.beforeFindOne(params);
 	}
 
@@ -161,7 +161,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		return super.afterFindOne(params);
 	}
 
-	public override beforeDelete(params: BeforeDeleteParams<Entity>) {
+	public override beforeDelete(params: BeforeDeleteInput<Entity>) {
 		return super.beforeDelete(params);
 	}
 
@@ -169,7 +169,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		return super.afterDelete(params);
 	}
 
-	public override beforeSoftDelete(params: BeforeSoftDeleteParams<Entity>) {
+	public override beforeSoftDelete(params: BeforeSoftDeleteInput<Entity>) {
 		return super.beforeSoftDelete(params);
 	}
 
@@ -177,7 +177,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		return super.afterSoftDelete(params);
 	}
 
-	public override beforeRecover(params: BeforeRecoverParams<Entity>) {
+	public override beforeRecover(params: BeforeRecoverInput<Entity>) {
 		return super.beforeRecover(params);
 	}
 
@@ -185,7 +185,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		return super.afterRecover(params);
 	}
 
-	public override beforeCount(params: BeforeCountParams<Entity>) {
+	public override beforeCount(params: BeforeCountInput<Entity>) {
 		return super.beforeCount(params);
 	}
 
@@ -194,7 +194,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 	}
 
 	public override beforePerformativeCount(
-		params: BeforePerformativeCountParams<Entity>,
+		params: BeforePerformativeCountInput<Entity>,
 	) {
 		return super.beforePerformativeCount(params);
 	}

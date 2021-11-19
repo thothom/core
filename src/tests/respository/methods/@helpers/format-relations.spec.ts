@@ -77,11 +77,11 @@ describe("Repository > Methods > helpers > formatRelations", () => {
 					entity: TestEntity,
 					entityManager,
 					autoGenerateEvents,
-				}).shift()!;
+				});
 
 				result = formatRelations({
 					entity: TestEntity,
-					rawData,
+					rawData: [rawData],
 					data,
 					autoGenerateEvents,
 					entityManager,
@@ -91,14 +91,16 @@ describe("Repository > Methods > helpers > formatRelations", () => {
 			}
 
 			expect(result).toStrictEqual([
-				{
-					entity: SubTestEntity,
-					data: {
-						CREATED_AT: "FAKE-DATE",
-						ID: subId,
-						TEST_ID: id,
+				[
+					{
+						entity: SubTestEntity,
+						data: {
+							CREATED_AT: "FAKE-DATE",
+							ID: subId,
+							TEST_ID: id,
+						},
 					},
-				},
+				],
 			]);
 		});
 
@@ -118,11 +120,11 @@ describe("Repository > Methods > helpers > formatRelations", () => {
 					entity: TestEntity,
 					entityManager,
 					autoGenerateEvents,
-				}).shift()!;
+				});
 
 				result = formatRelations({
 					entity: TestEntity,
-					rawData,
+					rawData: [rawData],
 					data,
 					autoGenerateEvents,
 					entityManager,
@@ -240,11 +242,11 @@ describe("Repository > Methods > helpers > formatRelations", () => {
 					entity: TestEntity,
 					entityManager,
 					autoGenerateEvents,
-				}).shift()!;
+				});
 
 				result = formatRelations({
 					entity: TestEntity,
-					rawData,
+					rawData: [rawData],
 					data,
 					autoGenerateEvents,
 					entityManager,
@@ -254,44 +256,46 @@ describe("Repository > Methods > helpers > formatRelations", () => {
 			}
 
 			expect(result).toStrictEqual([
-				{
-					entity: SubTestEntity,
-					data: {
-						CREATED_AT: "FAKE-DATE",
-						ID: subId1,
-						TEST_ID: id,
-					},
-					relations: [
-						{
-							entity: SubSubTestEntity,
-							data: {
-								BAR: 1,
-								CREATED_AT: "FAKE-DATE",
-								ID: subSubId1,
-								SUB_TEST_ID: subId1,
-							},
+				[
+					{
+						entity: SubTestEntity,
+						data: {
+							CREATED_AT: "FAKE-DATE",
+							ID: subId1,
+							TEST_ID: id,
 						},
-					],
-				},
-				{
-					entity: SubTestEntity,
-					data: {
-						CREATED_AT: "FAKE-DATE",
-						ID: subId2,
-						TEST_ID: id,
-					},
-					relations: [
-						{
-							entity: SubSubTestEntity,
-							data: {
-								BAR: 2,
-								CREATED_AT: "FAKE-DATE",
-								ID: subSubId2,
-								SUB_TEST_ID: subId2,
+						relations: [
+							{
+								entity: SubSubTestEntity,
+								data: {
+									BAR: 1,
+									CREATED_AT: "FAKE-DATE",
+									ID: subSubId1,
+									SUB_TEST_ID: subId1,
+								},
 							},
+						],
+					},
+					{
+						entity: SubTestEntity,
+						data: {
+							CREATED_AT: "FAKE-DATE",
+							ID: subId2,
+							TEST_ID: id,
 						},
-					],
-				},
+						relations: [
+							{
+								entity: SubSubTestEntity,
+								data: {
+									BAR: 2,
+									CREATED_AT: "FAKE-DATE",
+									ID: subSubId2,
+									SUB_TEST_ID: subId2,
+								},
+							},
+						],
+					},
+				],
 			]);
 		});
 	});

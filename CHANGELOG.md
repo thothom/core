@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `@OneToOne` decorator
 - `@OneToMany` decorator
 - `@ManyToOne` decorator
+- [BC] Support for relations at `save` and `insert` methods
+  - `save` and `insert` will now **always** return an `data` array, and a new prop `returnArray` to tell the devs of plugins / core if they should return an array to the final user or not
+- `beforeInsert`, `beforeSave`, `beforeUpdate` and `beforeUpsert` return formatted relations data
 
 ### Changed
 
@@ -38,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `metadataKey` type of `DefineEntityMetadataParams` and `GetEntityMetadataParams`
+- [BC] `before*` and `after*` methods returns type of `Repository` class
 
 ### Removed
 
