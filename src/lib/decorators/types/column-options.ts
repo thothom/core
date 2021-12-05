@@ -1,4 +1,7 @@
-import { PreDefinedAutoGenerationMethods } from "../../entity-manager/types/column-metadata";
+import {
+	AutoGenerationFunc,
+	PreDefinedAutoGenerationMethods,
+} from "../../entity-manager/types/column-metadata";
 import { DatabaseEvents } from "../../entity-manager/types/database-events";
 import { MetadataType } from "../../entity-manager/types/metadata-type";
 
@@ -26,7 +29,7 @@ export type PrimaryColumnOptions<ColumnExtraMetadata = any> =
 
 export interface PrimaryGeneratedColumnOptions<ColumnExtraMetadata = any>
 	extends BaseColumnOptions<ColumnExtraMetadata> {
-	strategy?: PreDefinedAutoGenerationMethods;
+	strategy?: AutoGenerationFunc | PreDefinedAutoGenerationMethods;
 }
 
 export type DateColumnOptions<ColumnExtraMetadata = any> =

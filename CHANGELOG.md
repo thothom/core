@@ -37,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Now the extra metadata is one unique object, and it's properties are used to get the types
 - [Internal] after* And before* Methods Location
   - Will make it easier to use a unique function to convert data, and handle relations
+- Allow functions to be passed as strategy on `PrimaryGeneratedColumn` decorator
 
 ### Fixed
 

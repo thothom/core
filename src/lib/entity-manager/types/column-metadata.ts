@@ -3,7 +3,7 @@ import { DatabaseEvents } from "./database-events";
 import { MetadataType } from "./metadata-type";
 import { EntityMetadata } from "./entity-metadata";
 
-type AutoGenerationFunc = (p: {
+export type AutoGenerationFunc = (p: {
 	connectionOptions?: BaseConnectionOptions;
 	columnMetadata?: ColumnMetadata;
 	entityMetadata?: EntityMetadata;

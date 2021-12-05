@@ -3,28 +3,33 @@ import { PrimaryGeneratedColumnOptions } from "../types/column-options";
 import { makeColumnDecorator } from "./helpers/make-column-decorator";
 import { getOptions } from "../@helpers/get-options";
 
-type PrimaryColumnPreDefinedAutoGenerationMethods = "uuid";
+type StrategyOrOptions<ColumnExtraMetadata> =
+	| PrimaryGeneratedColumnOptions["strategy"]
+	| PrimaryGeneratedColumnOptions<ColumnExtraMetadata>;
+
+const getAutoGenerate = (strategyOrOptions?: StrategyOrOptions<any>) => {
+	if (!strategyOrOptions || getTypeof(strategyOrOptions) === "object") {
+		return (
+			(strategyOrOptions as PrimaryGeneratedColumnOptions)?.strategy || "uuid"
+		);
+	}
+
+	return strategyOrOptions as PrimaryGeneratedColumnOptions["strategy"];
+};
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const PrimaryGeneratedColumn = <ColumnExtraMetadata = any>(
-	strategyOrOptions?:
-		| PrimaryColumnPreDefinedAutoGenerationMethods
-		| PrimaryGeneratedColumnOptions<ColumnExtraMetadata>,
+	strategyOrOptions?: StrategyOrOptions<ColumnExtraMetadata>,
 ) => {
 	const { name, ...metadata } =
 		getOptions<PrimaryGeneratedColumnOptions<ColumnExtraMetadata>>(
 			strategyOrOptions,
 		);
 
-	const autoGenerate =
-		getTypeof(strategyOrOptions) === "string"
-			? (strategyOrOptions as PrimaryColumnPreDefinedAutoGenerationMethods)
-			: "uuid";
-
 	return makeColumnDecorator({
 		metadata: {
 			...metadata,
-			autoGenerate,
+			autoGenerate: getAutoGenerate(strategyOrOptions),
 			databaseName: name,
 			primary: true,
 			autoGenerateOnlyOnEvents: ["insert"],

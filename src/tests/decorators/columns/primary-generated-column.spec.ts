@@ -74,6 +74,31 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 				},
 			]);
 		});
+
+		it("should define function to auto-generate if it's passed as param", () => {
+			const foo = () => "foo";
+
+			class Test {
+				@PrimaryGeneratedColumn(foo)
+				public foo: string;
+			}
+
+			const metadata = MetadataUtil.getEntityMetadata({
+				metadataKey: "columns",
+				entity: Test,
+			});
+
+			expect(metadata).toStrictEqual([
+				{
+					databaseName: "foo",
+					autoGenerate: foo,
+					autoGenerateOnlyOnEvents: ["insert"],
+					primary: true,
+					name: "foo",
+					type: String,
+				},
+			]);
+		});
 	});
 
 	describe("Specified Strategy At Decorator Options", () => {
@@ -94,6 +119,33 @@ describe("Decorators > PrimaryGeneratedColumn", () => {
 				{
 					databaseName: "foo",
 					autoGenerate: "uuid",
+					autoGenerateOnlyOnEvents: ["insert"],
+					primary: true,
+					name: "foo",
+					type: String,
+				},
+			]);
+		});
+
+		it("should define function to auto-generate if it's passed as option", () => {
+			const foo = () => "foo";
+
+			class Test {
+				@PrimaryGeneratedColumn({
+					strategy: foo,
+				})
+				public foo: string;
+			}
+
+			const metadata = MetadataUtil.getEntityMetadata({
+				metadataKey: "columns",
+				entity: Test,
+			});
+
+			expect(metadata).toStrictEqual([
+				{
+					databaseName: "foo",
+					autoGenerate: foo,
 					autoGenerateOnlyOnEvents: ["insert"],
 					primary: true,
 					name: "foo",
