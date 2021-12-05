@@ -17,6 +17,7 @@
 		"noUnusedParameters": true,
 		"sourceMap": true,
 		"incremental": true,
+		"skipLibCheck": true,
 		"types": ["node", "jest", "reflect-metadata", "uuid"]
 	},
 	"include": ["src/**/*.ts", "jest.config.js"]

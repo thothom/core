@@ -42,6 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `metadataKey` type of `DefineEntityMetadataParams` and `GetEntityMetadataParams`
 - [BC] `before*` and `after*` methods returns type of `Repository` class
+- Only validates if the plugin is installed on cli calls
+  - The validation cold stay there, but in minified apps, it's impossible to validate if the plugin is installed, so it's better to only validate on CLI calls.
 
 ### Removed
 
