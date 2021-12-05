@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+### Dependencies
+
+## [0.0.29] - 2021-12-05
+
+### Added
+
 - [BC] `validate` method to `BaseConnection`
   - Will be used to validate connection data
   - Ex: If mongodb plugin, validate if all entities have only one primary column, and it's name is `_id`
@@ -16,8 +28,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `@OneToMany` decorator
 - `@ManyToOne` decorator
 - [BC] Support for relations at `save` and `insert` methods
-  - `save` and `insert` will now **always** return an `data` array, and a new prop `returnArray` to tell the devs of plugins / core if they should return an array to the final user or not
-- `beforeInsert`, `beforeSave`, `beforeUpdate` and `beforeUpsert` return formatted relations data
+  - `beforeSave` and `beforeInsert` will now **always** return an `data` array, and a new prop `returnArray` to tell the devs of plugins / core if they should return an array to the final user or not
+- `beforeInsert`, `beforeSave`, `beforeUpdate` and `beforeUpsert` return formatted relations data in a new prop `relations`
 
 ### Changed
 
@@ -49,6 +61,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Dependencies
+
+- Bump @vercel/ncc from 0.31.1 to 0.33.0
+- Bump jest from 27.3.1 to 27.4.3
+- Bump lint-staged from 12.0.2 to 12.1.2
+- Bump @techmmunity/utils from 1.8.1 to 1.9.1
+- Bump prettier from 2.4.1 to 2.5.1
+- Bump eslint from 8.2.0 to 8.4.0
+- Bump @types/uuid from 8.3.1 to 8.3.3
+- Bump @types/jest from 27.0.2 to 27.0.3
 
 ## [0.0.28] - 2021-11-16
 
