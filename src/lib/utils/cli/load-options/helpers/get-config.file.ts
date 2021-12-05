@@ -14,7 +14,7 @@ export const getConfigFile = ({
 	possiblyConfig,
 	existsSync,
 	internalRequire,
-}: GetConfigFileParams) => {
+}: GetConfigFileParams): BaseConnectionOptions => {
 	let rawConfig: BaseConnectionOptions;
 
 	if (possiblyConfig) {

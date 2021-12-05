@@ -23,10 +23,12 @@ describe("Utils > CLI > loadOptions", () => {
 	const loadOptions = (
 		plugin: string,
 		possiblyConfig?: BaseConnectionOptions,
+		isCliCall?: boolean,
 	) =>
 		internalLoadOptions({
 			pluginName: plugin,
 			possiblyConfig,
+			isCliCall,
 			existsSync,
 			internalRequire,
 		});
@@ -173,7 +175,7 @@ describe("Utils > CLI > loadOptions", () => {
 		});
 	});
 
-	describe("with invalid plugin (no param)", () => {
+	describe("with invalid plugin and is cli call (no param)", () => {
 		it("should throw error", () => {
 			let result;
 
@@ -183,7 +185,7 @@ describe("Utils > CLI > loadOptions", () => {
 			};
 
 			try {
-				result = loadOptions(undefined as any, testOptions);
+				result = loadOptions(undefined as any, testOptions, true);
 			} catch (err) {
 				result = err;
 			}
@@ -202,7 +204,7 @@ describe("Utils > CLI > loadOptions", () => {
 		});
 	});
 
-	describe("with invalid plugin (not installed)", () => {
+	describe("with invalid plugin and is cli call (not installed)", () => {
 		it("should throw error", () => {
 			let result;
 
@@ -212,7 +214,7 @@ describe("Utils > CLI > loadOptions", () => {
 			};
 
 			try {
-				result = loadOptions("not-installed-plugin", testOptions);
+				result = loadOptions("not-installed-plugin", testOptions, true);
 			} catch (err) {
 				result = err;
 			}

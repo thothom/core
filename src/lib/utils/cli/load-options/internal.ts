@@ -6,6 +6,7 @@ import { validateEntities } from "./helpers/validate-entities";
 interface InternalLoadOptionsParams {
 	pluginName: string;
 	possiblyConfig?: BaseConnectionOptions;
+	isCliCall?: boolean;
 	existsSync: (path: string) => boolean;
 	internalRequire: (pkg: string) => any;
 }
@@ -13,6 +14,7 @@ interface InternalLoadOptionsParams {
 export const internalLoadOptions = ({
 	pluginName,
 	possiblyConfig,
+	isCliCall,
 	existsSync,
 	internalRequire,
 }: InternalLoadOptionsParams) => {
@@ -23,9 +25,20 @@ export const internalLoadOptions = ({
 		internalRequire,
 	});
 
-	validatePlugin({
-		plugin: config.plugin,
-	});
+	/**
+	 * Only validates that the package is installed if the call
+	 * comes from the cli, because if it's the lib that is calling this function,
+	 * so for sure the plugin is installed.
+	 *
+	 * The validation cold stay here, but in minified apps, it's impossible to validate
+	 * if the plugin is installed, so it's better to only validate on CLI calls.
+	 */
+	if (isCliCall) {
+		validatePlugin({
+			plugin: config.plugin,
+		});
+	}
+
 	validateEntities(config);
 
 	return config;
