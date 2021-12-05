@@ -1,6 +1,6 @@
 {
 	"name": "@techmmunity/symbiosis",
-	"version": "0.0.28",
+	"version": "0.0.29",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
