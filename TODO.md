@@ -156,6 +156,7 @@
   - The value of this column will be the SaveOperator `Plus(1)`
 - [x] Refact `@CountUpdateColumn` to be `@CountColumn`
   - Will receive a parameter `events`, an array of events to increment the count
+- [ ] Add validation "cannot be array" and "must be array" to the getType helper
 - [ ] Add colors to the logs, like Nestjs Logger
 - [ ] Add `@VersionColumn` that receives the version (Ex: `@VersionColumn("v2")`)
   - Only accepts "string" type
@@ -232,15 +233,15 @@ CREATE TABLE bar (
 - [x] Add support to Enums (currently, it already works with enums, but it doesn't saves the enums values. The `Column` decorator need to be modified to accept an enum too, and use `Object.values` to get the **VALUES** of the array)
   - [x] Add "enum" option to "@Column" decorator
     - Will receive an enum to get it's values
-- [x] Add `@OneToOne` decorator
+- [ ] Add `@OneToOne` decorator
   - Entity Decorator
   - Used to specify that a table has a relation with another table
   - Metadata
     type: "ONE_TO_ONE" | "ONE_TO_MANY" | "MANY_TO_ONE"
     targetEntity: [Entity class]
     relationMap: { [current entity column]: [target entity column] }
-- [x] Add `@OneToMany` decorator
-- [x] Add `@ManyToOne` decorator
+- [ ] Add `@OneToMany` decorator
+- [ ] Add `@ManyToOne` decorator
 - [ ] Add `@ManyToMany` decorator
 
 ### CLI
