@@ -4,26 +4,25 @@ import { EntityManager } from "../../../../entity-manager";
 import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
 import { ColumnMetadata } from "../../../types/column-metadata";
 import { DatabaseEvents } from "../../../types/database-events";
-import { ClassType } from "../../../../types/class-type";
 
-interface HandleCustomMetadataParams<Entity> {
+interface HandleCustomMetadataParams {
 	columnMetadata: ColumnMetadata;
-	data: ClassType<Entity>;
+	data: Record<string, any>;
 	entityManager: EntityManager;
-	acc: ClassType<Entity>;
+	acc: Record<string, any>;
 	connectionOptions: BaseConnectionOptions;
 	events: Array<DatabaseEvents>;
 }
 
-export const handleCustomMetadata = <Entity>({
+export const handleCustomMetadata = ({
 	columnMetadata,
 	data,
 	entityManager,
 	acc,
 	connectionOptions,
 	events,
-}: HandleCustomMetadataParams<Entity>) => {
-	const key = columnMetadata.name as keyof Entity;
+}: HandleCustomMetadataParams) => {
+	const key = columnMetadata.name;
 
 	const value = data[key];
 
@@ -52,7 +51,7 @@ export const handleCustomMetadata = <Entity>({
 		acc[key] = generatedValue as any;
 	} else {
 		// ALERT: Recursive call!!!
-		const generatedValue = recursiveAutoGenerateEntityToDatabase<Entity>(
+		const generatedValue = recursiveAutoGenerateEntityToDatabase(
 			{
 				entityManager,
 				connectionOptions,
@@ -69,7 +68,7 @@ export const handleCustomMetadata = <Entity>({
 		 * aren't just an empty object
 		 */
 		if (isNotEmptyObject(generatedValue)) {
-			acc[key] = generatedValue!;
+			acc[key] = generatedValue as any;
 		}
 	}
 };

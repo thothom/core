@@ -58,11 +58,11 @@ export const recursiveAutoGenerateEntityToDatabase = <Entity>(
 			 * ALERT: Mutability!
 			 * ALERT: Recursive call!
 			 */
-			handleCustomMetadata<Entity>({
+			handleCustomMetadata({
+				data: data as any,
+				acc: acc as any,
 				columnMetadata,
-				data,
 				entityManager,
-				acc,
 				connectionOptions,
 				events,
 			});
