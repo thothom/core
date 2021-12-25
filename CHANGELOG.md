@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Dependencies
 
+- Update TypeScript to 4.5.4
+
 ## [0.0.29] - 2021-12-05
 
 ### Added

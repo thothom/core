@@ -30,37 +30,58 @@ import {
 } from "../../lib/repository/types/find-options";
 import { BaseQueryOptions } from "../../lib/repository/types/query-options";
 import { ClassType } from "../../lib/types/class-type";
+import {
+	SaveData,
+	ArraySaveData,
+	SingleSaveData,
+} from "../../lib/repository/types/save-conditions";
 
 const ERROR_MESSAGE = "Method not implemented.";
 
 export class TestRepository<Entity> extends BaseRepository<Entity> {
-	public save<Result = Array<Entity> | Entity>(
-		_data: Array<ClassType<Entity>> | ClassType<Entity>,
+	public save(
+		_data: SingleSaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Result> {
+	): Promise<Entity>;
+	public save(
+		_data: ArraySaveData<ClassType<Entity>>,
+		_options?: BaseQueryOptions,
+	): Promise<Array<Entity>>;
+	public save(
+		_data: SaveData<ClassType<Entity>>,
+		_options?: BaseQueryOptions,
+	): Promise<Array<Entity> | Entity> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
-	public insert<Result = Array<Entity> | Entity>(
-		_data: Array<ClassType<Entity>> | ClassType<Entity>,
+	public insert(
+		_data: SingleSaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Result> {
+	): Promise<Entity>;
+	public insert(
+		_data: ArraySaveData<ClassType<Entity>>,
+		_options?: BaseQueryOptions,
+	): Promise<Array<Entity>>;
+	public insert(
+		_data: SaveData<ClassType<Entity>>,
+		_options?: BaseQueryOptions,
+	): Promise<Array<Entity> | Entity> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
-	public update<Result = Array<Entity> | Entity>(
-		_conditions: FindOneOptions<Entity>["where"],
-		_data: ClassType<Entity>,
+	public update(
+		_conditions: FindOneOptions<ClassType<Entity>>["where"],
+		_data: SingleSaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Result> {
+	): Promise<Array<Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
-	public upsert<Result = Array<Entity> | Entity>(
-		_conditions: FindOneOptions<Entity>["where"],
-		_data: ClassType<Entity>,
+	public upsert(
+		_conditions: FindOneOptions<ClassType<Entity>>["where"],
+		_data: SingleSaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Result> {
+	): Promise<Array<Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
