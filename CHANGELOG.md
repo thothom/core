@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- All relational support
+
 ### Dependencies
 
 - Update TypeScript to 4.5.4
