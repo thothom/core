@@ -15,6 +15,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+### Dependencies
+
+## [0.0.30] - 2021-12-25
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
 - All relational support
 
 ### Dependencies
