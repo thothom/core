@@ -585,9 +585,9 @@
     "@sinonjs/commons" "^1.7.0"
 
 "@techmmunity/eslint-config@^5.1.3":
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/@techmmunity/eslint-config/-/eslint-config-5.1.3.tgz#dc8b0ccfd2322d7414d927da2c84a3dab6c3c3b3"
-  integrity sha512-Pfwpsb444XVe4iDNbPPF2/+RAM5DCoBbx4WH9Bg3TE+4J3RzCJCZVrXbSbvrMW4gHbWoaC9lQNJzqQVAoztkRw==
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@techmmunity/eslint-config/-/eslint-config-5.2.0.tgz#04d49e914c4582c6343069798bf3392142909e23"
+  integrity sha512-ZN4LsZnfE88zLEOAjws3muWbx8mphWBY3kg/mesh/7TDkT9HSEtOFMSaLRsyj+NZH4pbFVVLApJJkV+NsiCt7g==
   dependencies:
     "@babel/core" "^7.15.5"
     "@babel/eslint-parser" "^7.15.4"
@@ -608,7 +608,7 @@
     eslint-plugin-prettier "^4.0.0"
     eslint-plugin-react "^7.26.1"
     eslint-plugin-react-hooks "^4.2.1-alpha-4298ddbc5-20211023"
-    eslint-plugin-sonarjs "^0.10.0"
+    eslint-plugin-sonarjs "^0.11.0"
 
 "@techmmunity/utils@^1.9.1":
   version "1.10.0"
@@ -1691,10 +1691,10 @@ eslint-plugin-react@^7.26.1:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.6"
 
-eslint-plugin-sonarjs@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-sonarjs/-/eslint-plugin-sonarjs-0.10.0.tgz#2b520c6d0dbdecbea98cd82f5cb84fc5c3d2b954"
-  integrity sha512-FBRIBmWQh2UAfuLSnuYEfmle33jIup9hfkR0X8pkfjeCKNpHUG8qyZI63ahs3aw8CJrv47QJ9ccdK3ZxKH016A==
+eslint-plugin-sonarjs@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-sonarjs/-/eslint-plugin-sonarjs-0.11.0.tgz#46d18bc4066c66e490de057253b9cc97bde9f176"
+  integrity sha512-ei/WuZiL0wP+qx2KrxKyZs3+eDbxiGAhFSm3GKCOOAUkg+G2ny6TSXDB2j67tvyqHefi+eoQsAgGQvz+nEtIBw==
 
 eslint-scope@^5.1.1:
   version "5.1.1"
