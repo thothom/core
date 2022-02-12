@@ -1,7 +1,8 @@
-import { BaseConnectionOptions } from "../../../connection/types/connection-options";
 import { getConfigFile } from "./helpers/get-config.file";
-import { validatePlugin } from "./helpers/validate-plugin";
 import { validateEntities } from "./helpers/validate-entities";
+import { validatePlugin } from "./helpers/validate-plugin";
+
+import type { BaseConnectionOptions } from "../../../connection/types/connection-options";
 
 interface InternalLoadOptionsParams {
 	pluginName: string;

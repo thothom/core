@@ -1,4 +1,4 @@
-import { EntityOptions } from "../../types/entity-options";
+import type { EntityOptions } from "../../types/entity-options";
 
 interface GetNameParams {
 	entityConstructor: any;

@@ -1,6 +1,7 @@
 import { SymbiosisError } from "../../../error";
+
 import { FindOperator } from "./base";
-import { FindOperatorType } from "./base/find-operators-type";
+import type { FindOperatorType } from "./base/find-operators-type";
 
 type AcceptedTypes = Date | number | string;
 

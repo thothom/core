@@ -1,6 +1,7 @@
-import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
-import { ColumnMetadata } from "../../../types/column-metadata";
 import { getDatabaseName } from "./get-database-name";
+
+import type { BaseConnectionOptions } from "../../../../connection/types/connection-options";
+import type { ColumnMetadata } from "../../../types/column-metadata";
 
 interface FormatColumnsParams {
 	columns: Array<ColumnMetadata>;

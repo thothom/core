@@ -1,5 +1,6 @@
 import { getTypeof } from "@techmmunity/utils";
-import { ColumnMetadata } from "../../../entity-manager/types/column-metadata";
+
+import type { ColumnMetadata } from "../../../entity-manager/types/column-metadata";
 
 export const getDefaultValue = (
 	defaultValue?: any,

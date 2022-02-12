@@ -1,10 +1,13 @@
 import { getTypeof } from "@techmmunity/utils";
-import { EntityManager } from "../..";
-import { FindConditions } from "../../../repository/types/find-conditions";
-import { DatabaseEntity } from "../../../types/database-entity";
-import { CustomClass } from "../../types/metadata-type";
+
+import type { EntityManager } from "../..";
+
 import { getConditionsArray } from "./helpers/get-conditions-array";
 import { getConditionsFormatted } from "./helpers/get-conditions-formatted";
+
+import type { FindConditions } from "../../../repository/types/find-conditions";
+import type { DatabaseEntity } from "../../../types/database-entity";
+import type { CustomClass } from "../../types/metadata-type";
 
 interface Injectables {
 	entityManager: EntityManager;

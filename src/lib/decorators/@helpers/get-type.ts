@@ -1,8 +1,11 @@
 import { getTypeof } from "@techmmunity/utils";
+
 import { SymbiosisError } from "../../error";
-import { MetadataType } from "../../entity-manager/types/metadata-type";
+
 import { MetadataUtil } from "../../utils/metadata-util";
-import { MetadataName } from "../../types/metadata-name";
+
+import type { MetadataType } from "../../entity-manager/types/metadata-type";
+import type { MetadataName } from "../../types/metadata-name";
 
 const ERROR_MESSAGE = "Column type isn't supported";
 

@@ -1,8 +1,9 @@
-import { EntityManager } from "../../../entity-manager";
-import { DatabaseEvents } from "../../../entity-manager/types/database-events";
-import { CustomClass } from "../../../entity-manager/types/metadata-type";
-import { DatabaseEntity } from "../../../types/database-entity";
-import { ArraySaveData } from "../../types/save-conditions";
+import type { EntityManager } from "../../../entity-manager";
+
+import type { DatabaseEvents } from "../../../entity-manager/types/database-events";
+import type { CustomClass } from "../../../entity-manager/types/metadata-type";
+import type { DatabaseEntity } from "../../../types/database-entity";
+import type { ArraySaveData } from "../../types/save-conditions";
 
 interface HandleDataParams {
 	data: Array<any>;

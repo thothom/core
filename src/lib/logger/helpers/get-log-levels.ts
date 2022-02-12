@@ -1,4 +1,4 @@
-import { LogLevel, DetailedLogOptions } from "../../..";
+import type { LogLevel, DetailedLogOptions } from "../../..";
 
 export const getLogLevels = (
 	bruteLogLevel?: LogLevel,

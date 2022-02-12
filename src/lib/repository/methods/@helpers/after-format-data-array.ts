@@ -1,5 +1,6 @@
-import { EntityManager } from "../../../entity-manager";
-import { CustomClass } from "../../../entity-manager/types/metadata-type";
+import type { EntityManager } from "../../../entity-manager";
+
+import type { CustomClass } from "../../../entity-manager/types/metadata-type";
 
 interface HandleDataParams {
 	data: Array<any>;

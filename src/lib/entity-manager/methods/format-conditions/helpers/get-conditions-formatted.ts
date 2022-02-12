@@ -1,12 +1,16 @@
 import { getTypeof } from "@techmmunity/utils";
+
 import { formatConditions } from "..";
-import { EntityManager } from "../../..";
-import { ArrayFindConditions } from "../../../../repository/types/find-conditions";
-import { DatabaseEntity } from "../../../../types/database-entity";
+
+import type { EntityManager } from "../../..";
+
 import { MetadataUtil } from "../../../../utils/metadata-util";
 import { isFindOperator } from "../../../../utils/operators/is-find-operator";
-import { IncrementedEntitiesMetadata } from "../../../types/manager-metadata";
-import { CustomClass } from "../../../types/metadata-type";
+
+import type { ArrayFindConditions } from "../../../../repository/types/find-conditions";
+import type { DatabaseEntity } from "../../../../types/database-entity";
+import type { IncrementedEntitiesMetadata } from "../../../types/manager-metadata";
+import type { CustomClass } from "../../../types/metadata-type";
 
 interface GetConditionsFormattedParams {
 	conditionsArray: ArrayFindConditions<Record<string, any>>; // Normal Entity, NOT Database Entity

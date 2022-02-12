@@ -1,6 +1,7 @@
 import { getLogLevels } from "./helpers/get-log-levels";
 import { printMessage } from "./helpers/print-message";
-import { DetailedLogOptions, LogLevel } from "./types/log-level";
+
+import type { DetailedLogOptions, LogLevel } from "./types/log-level";
 
 export class Logger {
 	public readonly connectionName: string;

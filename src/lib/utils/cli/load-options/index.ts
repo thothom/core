@@ -1,6 +1,8 @@
 import { existsSync } from "fs";
-import { BaseConnectionOptions } from "../../../connection/types/connection-options";
+
 import { internalLoadOptions } from "./internal";
+
+import type { BaseConnectionOptions } from "../../../connection/types/connection-options";
 
 export const loadOptions = (
 	pluginName: string,

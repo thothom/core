@@ -1,7 +1,8 @@
-import { EntityManager } from "../../entity-manager";
+import type { EntityManager } from "../../entity-manager";
 import { SymbiosisError } from "../../error";
-import { CustomClass } from "../../entity-manager/types/metadata-type";
 import { MetadataUtil } from "../metadata-util";
+
+import type { CustomClass } from "../../entity-manager/types/metadata-type";
 
 interface GetMultipleLevelColumnNameParams {
 	entity: CustomClass;

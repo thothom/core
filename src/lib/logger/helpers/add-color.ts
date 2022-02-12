@@ -1,4 +1,4 @@
-import { DetailedLogOptions } from "../types/log-level";
+import type { DetailedLogOptions } from "../types/log-level";
 
 interface AddColorParams {
 	message: string;

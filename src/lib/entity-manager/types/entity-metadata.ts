@@ -1,4 +1,4 @@
-import { ColumnMetadata } from "./column-metadata";
+import type { ColumnMetadata } from "./column-metadata";
 
 export interface EntityMetadata<
 	EntityExtraMetadata = any,

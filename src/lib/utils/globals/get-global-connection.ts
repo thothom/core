@@ -1,5 +1,5 @@
 import { DEFAULT_CONNECTION_NAME } from "../../../config";
-import { BaseConnection } from "../../connection";
+import type { BaseConnection } from "../../connection";
 import { SymbiosisError } from "../../error";
 
 export const getGlobalConnection = <Connection extends BaseConnection>(

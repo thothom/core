@@ -1,10 +1,12 @@
-import { BaseConnectionOptions } from "../../../connection/types/connection-options";
-import { Logger } from "../../../logger";
-import { BaseExtraMetadata } from "../../../types/extra-metadata";
-import { EntityManagerEntities } from "../../types/manager-metadata";
-import { CustomClass } from "../../types/metadata-type";
+import type { Logger } from "../../../logger";
+
 import { getEntitiesMetadata } from "./helpers/get-entities-metadata";
 import { getSubEntitiesMetadata } from "./helpers/get-sub-entities-metadata";
+
+import type { BaseConnectionOptions } from "../../../connection/types/connection-options";
+import type { BaseExtraMetadata } from "../../../types/extra-metadata";
+import type { EntityManagerEntities } from "../../types/manager-metadata";
+import type { CustomClass } from "../../types/metadata-type";
 
 export interface LoadEntitiesParams {
 	connectionOptions: BaseConnectionOptions;

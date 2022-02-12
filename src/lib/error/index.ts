@@ -1,4 +1,4 @@
-import { SymbiosisErrorCode } from "../types/error-code";
+import type { SymbiosisErrorCode } from "../types/error-code";
 
 interface CustomErrorParams {
 	code: SymbiosisErrorCode;

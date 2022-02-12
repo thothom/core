@@ -1,6 +1,8 @@
 import { SymbiosisError } from "../../../error";
-import { EntityMetadata } from "../../../entity-manager/types/entity-metadata";
+
 import { MetadataUtil } from "../../../utils/metadata-util";
+
+import type { EntityMetadata } from "../../../entity-manager/types/entity-metadata";
 
 interface AddEntityMetadataParams {
 	entityConstructor: any;

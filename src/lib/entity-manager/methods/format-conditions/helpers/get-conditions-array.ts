@@ -1,4 +1,4 @@
-import { FormatConditionsParams } from "..";
+import type { FormatConditionsParams } from "..";
 
 export const getConditionsArray = (
 	conditions: FormatConditionsParams["conditions"],

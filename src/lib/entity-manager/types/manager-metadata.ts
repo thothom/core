@@ -1,6 +1,7 @@
-import { BaseExtraMetadata } from "../../types/extra-metadata";
-import { ColumnMetadata } from "./column-metadata";
-import { EntityMetadata } from "./entity-metadata";
+import type { ColumnMetadata } from "./column-metadata";
+import type { EntityMetadata } from "./entity-metadata";
+
+import type { BaseExtraMetadata } from "../../types/extra-metadata";
 
 export interface IncrementedEntitiesMetadata<
 	ExtraMetadata extends BaseExtraMetadata = any,

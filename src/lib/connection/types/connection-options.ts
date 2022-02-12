@@ -1,6 +1,7 @@
-import { LogLevel } from "../../logger/types/log-level";
-import { CustomClass } from "../../entity-manager/types/metadata-type";
-import { NamingStrategy } from "../../utils/format-naming-strategy/types/naming-strategy";
+import type { NamingStrategy } from "../../utils/format-naming-strategy/types/naming-strategy";
+
+import type { CustomClass } from "../../entity-manager/types/metadata-type";
+import type { LogLevel } from "../../logger/types/log-level";
 
 export interface BaseConnectionOptions<DatabaseConfig = any> {
 	/**

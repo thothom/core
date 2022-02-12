@@ -1,6 +1,8 @@
 import { getRootPath, getTypeof } from "@techmmunity/utils";
-import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
+
 import { SymbiosisError } from "../../../../error";
+
+import type { BaseConnectionOptions } from "../../../../connection/types/connection-options";
 
 interface GetConfigFileParams {
 	pluginName: string;

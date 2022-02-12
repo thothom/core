@@ -1,5 +1,6 @@
-import { Order } from "../../types/order";
-import { FindConditions } from "./find-conditions";
+import type { FindConditions } from "./find-conditions";
+
+import type { Order } from "../../types/order";
 
 export interface FindOneOptions<Entity> {
 	/**

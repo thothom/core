@@ -1,7 +1,8 @@
 import { getOptions } from "../../@helpers/get-options";
-import { EntityOptions } from "../../types/entity-options";
 import { addEntityMetadata } from "../helpers/add-entity-metadata";
 import { getDatabaseName } from "../helpers/get-name";
+
+import type { EntityOptions } from "../../types/entity-options";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const Entity = (nameOrOptions?: EntityOptions | string) => {
