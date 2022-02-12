@@ -1,9 +1,9 @@
-import {
+import type {
 	AutoGenerationFunc,
 	PreDefinedAutoGenerationMethods,
 } from "../../entity-manager/types/column-metadata";
-import { DatabaseEvents } from "../../entity-manager/types/database-events";
-import { MetadataType } from "../../entity-manager/types/metadata-type";
+import type { DatabaseEvents } from "../../entity-manager/types/database-events";
+import type { MetadataType } from "../../entity-manager/types/metadata-type";
 
 export interface BaseColumnOptions<ColumnExtraMetadata = any> {
 	name?: string;

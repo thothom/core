@@ -1,5 +1,5 @@
 import { formatNamingStrategy } from "../../../../utils/format-naming-strategy";
-import { NamingStrategy } from "../../../../utils/format-naming-strategy/types/naming-strategy";
+import type { NamingStrategy } from "../../../../utils/format-naming-strategy/types/naming-strategy";
 import { formatPrefix } from "../../../../utils/prefix-suffix/format-prefix";
 import { formatSuffix } from "../../../../utils/prefix-suffix/format-suffix";
 

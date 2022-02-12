@@ -1,10 +1,11 @@
-import { BaseConnectionOptions } from "../../lib/connection/types/connection-options";
+import { SymbiosisError } from "../..";
 import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
+import { Entity } from "../../lib/decorators/entities/entity";
 import { Logger } from "../../lib/logger";
 import { TestConnection } from "../constants/test-connection";
-import { SymbiosisError } from "../..";
+
+import type { BaseConnectionOptions } from "../../lib/connection/types/connection-options";
 
 describe("Connection", () => {
 	const plugin = "@techmmunity/utils";

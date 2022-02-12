@@ -1,9 +1,12 @@
 import { isNotEmptyObject } from "@techmmunity/utils";
+
 import { recursiveAutoGenerateEntityToDatabase } from "..";
-import { EntityManager } from "../../../../entity-manager";
-import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
-import { ColumnMetadata } from "../../../types/column-metadata";
-import { DatabaseEvents } from "../../../types/database-events";
+
+import type { EntityManager } from "../../../../entity-manager";
+
+import type { BaseConnectionOptions } from "../../../../connection/types/connection-options";
+import type { ColumnMetadata } from "../../../types/column-metadata";
+import type { DatabaseEvents } from "../../../types/database-events";
 
 interface HandleCustomMetadataParams {
 	columnMetadata: ColumnMetadata;

@@ -1,7 +1,8 @@
-import { EntityManager } from "../../../entity-manager";
-import { DatabaseEntity } from "../../../types/database-entity";
-import { BaseQueryOptions } from "../../types/query-options";
+import type { EntityManager } from "../../../entity-manager";
 import { afterFormatDataArray } from "../@helpers/after-format-data-array";
+
+import type { DatabaseEntity } from "../../../types/database-entity";
+import type { BaseQueryOptions } from "../../types/query-options";
 
 interface Injectables {
 	entityManager: EntityManager;

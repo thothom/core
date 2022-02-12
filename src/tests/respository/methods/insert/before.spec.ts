@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { validate } from "uuid";
+
 import { Column } from "../../../../lib/decorators/columns/column";
-import { Entity } from "../../../../lib/decorators/entities/entity";
 import { PrimaryGeneratedColumn } from "../../../../lib/decorators/columns/primary-generated-column";
-import { BaseQueryOptions } from "../../../../lib/repository/types/query-options";
-import { DatabaseEntity } from "../../../../lib/types/database-entity";
+import { Entity } from "../../../../lib/decorators/entities/entity";
 import { TestConnection } from "../../../constants/test-connection";
 import { TestRepository } from "../../../constants/test-repository";
+
+import type { BaseQueryOptions } from "../../../../lib/repository/types/query-options";
+import type { DatabaseEntity } from "../../../../lib/types/database-entity";
 
 describe("Repository > Methods > beforeInsert", () => {
 	describe("Simple entity", () => {

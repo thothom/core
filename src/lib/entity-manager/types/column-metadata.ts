@@ -1,7 +1,8 @@
-import { BaseConnectionOptions } from "../../connection/types/connection-options";
-import { DatabaseEvents } from "./database-events";
-import { MetadataType } from "./metadata-type";
-import { EntityMetadata } from "./entity-metadata";
+import type { DatabaseEvents } from "./database-events";
+import type { EntityMetadata } from "./entity-metadata";
+import type { MetadataType } from "./metadata-type";
+
+import type { BaseConnectionOptions } from "../../connection/types/connection-options";
 
 export type AutoGenerationFunc = (p: {
 	connectionOptions?: BaseConnectionOptions;

@@ -1,4 +1,4 @@
-import { FormatPrefixSuffixParams } from "./types";
+import type { FormatPrefixSuffixParams } from "./types";
 
 export const formatSuffix = ({
 	value,

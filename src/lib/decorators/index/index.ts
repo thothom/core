@@ -1,7 +1,9 @@
 import { getOptions } from "../@helpers/get-options";
-import { IndexOptions } from "../types/index-options";
+
 import { addIndexMetadata } from "./helpers/add-index-metadata";
 import { getIndexName } from "./helpers/get-index-name";
+
+import type { IndexOptions } from "../types/index-options";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const Index = <IndexExtraMetadata = any>(

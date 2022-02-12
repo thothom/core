@@ -1,9 +1,12 @@
-import { ColumnOptions } from "../types/column-options";
-import { MetadataType } from "../../entity-manager/types/metadata-type";
-import { makeColumnDecorator } from "./helpers/make-column-decorator";
 import { getOptions } from "../@helpers/get-options";
-import { MetadataUtil } from "../../utils/metadata-util";
+
 import { getDefaultValue } from "./helpers/get-default-value";
+import { makeColumnDecorator } from "./helpers/make-column-decorator";
+
+import { MetadataUtil } from "../../utils/metadata-util";
+
+import type { MetadataType } from "../../entity-manager/types/metadata-type";
+import type { ColumnOptions } from "../types/column-options";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const Column = <ColumnExtraMetadata = any>(

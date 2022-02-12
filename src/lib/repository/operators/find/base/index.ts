@@ -1,4 +1,4 @@
-import { FindOperatorType } from "./find-operators-type";
+import type { FindOperatorType } from "./find-operators-type";
 
 interface ConstructorParams<T> {
 	type: FindOperatorType;

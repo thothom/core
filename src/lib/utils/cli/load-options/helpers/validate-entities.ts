@@ -1,6 +1,8 @@
 import { getTypeof } from "@techmmunity/utils";
-import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
+
 import { SymbiosisError } from "../../../../error";
+
+import type { BaseConnectionOptions } from "../../../../connection/types/connection-options";
 
 export const validateEntities = (config: BaseConnectionOptions) => {
 	if (!config.entities && !config.entitiesDir) {

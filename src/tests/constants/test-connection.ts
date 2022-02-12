@@ -2,9 +2,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { BaseConnection } from "../../lib/connection";
-import { BaseConnectionOptions } from "../../lib/connection/types/connection-options";
-import { BaseRepository } from "../../lib/repository";
+import type { BaseRepository } from "../../lib/repository";
+
 import { TestRepository } from "./test-repository";
+
+import type { BaseConnectionOptions } from "../../lib/connection/types/connection-options";
 
 export class TestConnection extends BaseConnection {
 	public constructor(options?: BaseConnectionOptions) {

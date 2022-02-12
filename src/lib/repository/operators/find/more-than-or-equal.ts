@@ -1,5 +1,6 @@
-import { DefaultTypes } from "../../../types/types";
 import { FindOperator } from "./base";
+
+import type { DefaultTypes } from "../../../types/types";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const MoreThanOrEqual = (value: DefaultTypes) =>

@@ -5,7 +5,8 @@ import {
 	camelCase,
 	paramCase,
 } from "change-case";
-import { NamingStrategy } from "./types/naming-strategy";
+
+import type { NamingStrategy } from "./types/naming-strategy";
 
 interface FormatNamingStrategyParams {
 	value: string;

@@ -1,14 +1,17 @@
 import { isEmptyArray } from "@techmmunity/utils";
-import { Logger } from "../logger";
-import { EntityManager } from "../entity-manager";
-import { BaseRepository } from "../repository";
-import { BaseConnectionOptions } from "./types/connection-options";
-import { CustomClass } from "../entity-manager/types/metadata-type";
+
 import { DEFAULT_CONNECTION_NAME } from "../../config";
-import { loadOptions } from "../utils/cli/load-options";
-import { loadEntities } from "../utils/cli/load-entities";
+import { EntityManager } from "../entity-manager";
 import { SymbiosisError } from "../error";
-import { BaseExtraMetadata } from "../types/extra-metadata";
+import { Logger } from "../logger";
+import type { BaseRepository } from "../repository";
+
+import { loadEntities } from "../utils/cli/load-entities";
+import { loadOptions } from "../utils/cli/load-options";
+
+import type { CustomClass } from "../entity-manager/types/metadata-type";
+import type { BaseExtraMetadata } from "../types/extra-metadata";
+import type { BaseConnectionOptions } from "./types/connection-options";
 
 export abstract class BaseConnection<
 	DatabaseConfig = any,

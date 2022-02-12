@@ -1,10 +1,13 @@
-import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
-import { Logger } from "../../../../logger";
-import { MetadataUtil } from "../../../../utils/metadata-util";
-import { EntityManagerEntities } from "../../../types/manager-metadata";
-import { ColumnMetadata } from "../../../types/column-metadata";
+import type { Logger } from "../../../../logger";
+
 import { formatColumns } from "./format-columns";
 import { getDatabaseName } from "./get-database-name";
+
+import { MetadataUtil } from "../../../../utils/metadata-util";
+
+import type { BaseConnectionOptions } from "../../../../connection/types/connection-options";
+import type { ColumnMetadata } from "../../../types/column-metadata";
+import type { EntityManagerEntities } from "../../../types/manager-metadata";
 
 interface GetSubEntitiesMetadataParams {
 	logger: Logger;

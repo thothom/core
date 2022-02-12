@@ -1,6 +1,7 @@
 import { getOptions } from "../../@helpers/get-options";
-import { SubEntityOptions } from "../../types/entity-options";
 import { addEntityMetadata } from "../helpers/add-entity-metadata";
+
+import type { SubEntityOptions } from "../../types/entity-options";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const SubEntity = (options?: SubEntityOptions) => {

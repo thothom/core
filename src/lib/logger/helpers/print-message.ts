@@ -1,6 +1,7 @@
-import { DetailedLogOptions } from "../types/log-level";
 import { addColor } from "./add-color";
 import { getTimestamp } from "./get-timestamp";
+
+import type { DetailedLogOptions } from "../types/log-level";
 
 interface PrintMessageParams {
 	writeStreamType?: "stderr" | "stdout";

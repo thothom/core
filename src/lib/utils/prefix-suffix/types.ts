@@ -1,4 +1,4 @@
-import { NamingStrategy } from "../format-naming-strategy/types/naming-strategy";
+import type { NamingStrategy } from "../format-naming-strategy/types/naming-strategy";
 
 export interface FormatPrefixSuffixParams {
 	value: string;

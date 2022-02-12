@@ -1,9 +1,12 @@
 import { getTypeof, isNotEmptyObject } from "@techmmunity/utils";
-import { EntityManager } from "../..";
+
+import type { EntityManager } from "../..";
+
 import { MetadataUtil } from "../../../utils/metadata-util";
-import { CustomClass } from "../../types/metadata-type";
-import { DatabaseEntity } from "../../../types/database-entity";
 import { isSaveOperator } from "../../../utils/operators/is-save-operator";
+
+import type { DatabaseEntity } from "../../../types/database-entity";
+import type { CustomClass } from "../../types/metadata-type";
 
 interface Injectables {
 	entityManager: EntityManager;

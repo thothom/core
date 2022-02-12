@@ -1,9 +1,11 @@
 import { getTypeof } from "@techmmunity/utils";
-import { BaseConnectionOptions } from "../../../../connection/types/connection-options";
-import { ColumnMetadata } from "../../../types/column-metadata";
-import { EntityMetadata } from "../../../types/entity-metadata";
+
 import { generateDate } from "./generate-date";
 import { generateUuid } from "./generate-uuid";
+
+import type { BaseConnectionOptions } from "../../../../connection/types/connection-options";
+import type { ColumnMetadata } from "../../../types/column-metadata";
+import type { EntityMetadata } from "../../../types/entity-metadata";
 
 interface AutoGenerateParams {
 	connectionOptions: BaseConnectionOptions;

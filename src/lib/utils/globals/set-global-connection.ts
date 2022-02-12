@@ -1,4 +1,4 @@
-import { BaseConnection } from "../../connection";
+import type { BaseConnection } from "../../connection";
 
 export const setGlobalConnection = <Connection extends BaseConnection>(
 	connection: Connection,

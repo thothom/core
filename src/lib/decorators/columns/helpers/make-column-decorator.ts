@@ -1,8 +1,12 @@
 import { cleanObj, getEnumValues } from "@techmmunity/utils";
-import { ColumnMetadata } from "../../../entity-manager/types/column-metadata";
-import { MetadataType } from "../../../entity-manager/types/metadata-type";
+
+import type { GetTypeParams } from "../../@helpers/get-type";
+import { getType } from "../../@helpers/get-type";
+
 import { MetadataUtil } from "../../../utils/metadata-util";
-import { getType, GetTypeParams } from "../../@helpers/get-type";
+
+import type { ColumnMetadata } from "../../../entity-manager/types/column-metadata";
+import type { MetadataType } from "../../../entity-manager/types/metadata-type";
 
 type GetTypeOutput = "isArray" | "type";
 type MetadataToOmit = GetTypeOutput | "enumValues" | "name";

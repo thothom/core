@@ -1,17 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { getTypeof } from "@techmmunity/utils";
+
 import { METADATA_PREFIX } from "../../../config";
-import {
-	ColumnMetadata,
-	COLUMN_METADATA_KEYS,
-} from "../../entity-manager/types/column-metadata";
-import {
-	EntityMetadata,
-	ENTITY_METADATA_KEYS,
-} from "../../entity-manager/types/entity-metadata";
-import { MetadataName } from "../../types/metadata-name";
-import {
+
+import type { ColumnMetadata } from "../../entity-manager/types/column-metadata";
+import { COLUMN_METADATA_KEYS } from "../../entity-manager/types/column-metadata";
+import type { EntityMetadata } from "../../entity-manager/types/entity-metadata";
+import { ENTITY_METADATA_KEYS } from "../../entity-manager/types/entity-metadata";
+import type { MetadataName } from "../../types/metadata-name";
+import type {
 	AddColumnMetadataToEntityParams,
 	DefineAllEntityMetadataParams,
 	DefineEntityMetadataParams,

@@ -1,7 +1,10 @@
 import { getTypeof } from "@techmmunity/utils";
-import { PrimaryGeneratedColumnOptions } from "../types/column-options";
-import { makeColumnDecorator } from "./helpers/make-column-decorator";
+
 import { getOptions } from "../@helpers/get-options";
+
+import { makeColumnDecorator } from "./helpers/make-column-decorator";
+
+import type { PrimaryGeneratedColumnOptions } from "../types/column-options";
 
 type StrategyOrOptions<ColumnExtraMetadata> =
 	| PrimaryGeneratedColumnOptions["strategy"]

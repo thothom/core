@@ -1,4 +1,4 @@
-import { SaveOperatorType } from "./save-operators-type";
+import type { SaveOperatorType } from "./save-operators-type";
 
 interface ConstructorParams<T> {
 	type: SaveOperatorType;

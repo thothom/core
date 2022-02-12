@@ -1,10 +1,11 @@
-import { EntityManager } from "../../../entity-manager";
-import { FindConditions } from "../../types/find-conditions";
-import { BaseQueryOptions } from "../../types/query-options";
-import { DatabaseEntity } from "../../../types/database-entity";
-import { SingleSaveData } from "../../types/save-conditions";
+import type { EntityManager } from "../../../entity-manager";
 import { beforeFormatDataArray } from "../@helpers/before-format-data-array";
-import { DatabaseEvents } from "../../../entity-manager/types/database-events";
+
+import type { DatabaseEvents } from "../../../entity-manager/types/database-events";
+import type { DatabaseEntity } from "../../../types/database-entity";
+import type { FindConditions } from "../../types/find-conditions";
+import type { BaseQueryOptions } from "../../types/query-options";
+import type { SingleSaveData } from "../../types/save-conditions";
 
 interface Injectables {
 	entityManager: EntityManager;

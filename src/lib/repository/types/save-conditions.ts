@@ -1,4 +1,4 @@
-import { SaveOperator } from "../operators/save/base";
+import type { SaveOperator } from "../operators/save/base";
 
 type InternalSaveData<T> = {
 	[P in keyof T]?: InternalSaveData<T[P]> | SaveOperator;

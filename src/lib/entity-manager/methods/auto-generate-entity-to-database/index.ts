@@ -1,17 +1,21 @@
 /* eslint-disable sonarjs/cognitive-complexity */
 
 import { cleanObj, getTypeof } from "@techmmunity/utils";
-import { EntityManager } from "../../../entity-manager";
-import { MetadataUtil } from "../../../utils/metadata-util";
-import { shouldAutoGenerate } from "./helpers/should-auto-generate";
-import { DatabaseEvents } from "../../types/database-events";
-import { BaseConnectionOptions } from "../../../connection/types/connection-options";
-import { CustomClass } from "../../types/metadata-type";
+
+import type { EntityManager } from "../../../entity-manager";
 import { autoGenerate } from "../helpers/auto-generate";
+
 import { handleCustomMetadata } from "./helpers/handle-custom-metadata";
-import { SingleSaveData } from "../../../repository/types/save-conditions";
-import { isSaveOperator } from "../../../utils/operators/is-save-operator";
+import { shouldAutoGenerate } from "./helpers/should-auto-generate";
+
+import { MetadataUtil } from "../../../utils/metadata-util";
 import { isFindOperator } from "../../../utils/operators/is-find-operator";
+import { isSaveOperator } from "../../../utils/operators/is-save-operator";
+
+import type { BaseConnectionOptions } from "../../../connection/types/connection-options";
+import type { SingleSaveData } from "../../../repository/types/save-conditions";
+import type { DatabaseEvents } from "../../types/database-events";
+import type { CustomClass } from "../../types/metadata-type";
 
 interface Injectables {
 	entityManager: EntityManager;

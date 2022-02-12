@@ -1,6 +1,7 @@
 import { getTypeof } from "@techmmunity/utils";
 import { snakeCase } from "snake-case";
-import { IndexOptions } from "../../types/index-options";
+
+import type { IndexOptions } from "../../types/index-options";
 
 interface GetIndexNameParams {
 	name?: string;

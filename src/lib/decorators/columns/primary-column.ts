@@ -1,7 +1,10 @@
 import { getTypeof } from "@techmmunity/utils";
-import { PrimaryColumnOptions } from "../types/column-options";
-import { makeColumnDecorator } from "./helpers/make-column-decorator";
+
 import { getOptions } from "../@helpers/get-options";
+
+import { makeColumnDecorator } from "./helpers/make-column-decorator";
+
+import type { PrimaryColumnOptions } from "../types/column-options";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const PrimaryColumn = <ColumnExtraMetadata = any>(

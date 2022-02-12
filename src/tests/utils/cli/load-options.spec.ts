@@ -1,7 +1,9 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { BaseConnectionOptions } from "../../../lib/connection/types/connection-options";
 import { SymbiosisError } from "../../../lib/error";
+
 import { internalLoadOptions } from "../../../lib/utils/cli/load-options/internal";
+
+import type { BaseConnectionOptions } from "../../../lib/connection/types/connection-options";
 
 describe("Utils > CLI > loadOptions", () => {
 	/*

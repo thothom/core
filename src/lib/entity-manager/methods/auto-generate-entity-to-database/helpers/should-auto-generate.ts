@@ -1,6 +1,7 @@
 import { getTypeof } from "@techmmunity/utils";
-import { ColumnMetadata } from "../../../types/column-metadata";
-import { DatabaseEvents } from "../../../types/database-events";
+
+import type { ColumnMetadata } from "../../../types/column-metadata";
+import type { DatabaseEvents } from "../../../types/database-events";
 
 interface ShouldAutoGenerateParams {
 	columnMetadata: ColumnMetadata;

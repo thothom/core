@@ -1,8 +1,9 @@
-import { EntityManager } from "../../../entity-manager";
-import { CustomClass } from "../../../entity-manager/types/metadata-type";
-import { DatabaseEntity } from "../../../types/database-entity";
-import { FindConditions } from "../../types/find-conditions";
-import { BaseQueryOptions } from "../../types/query-options";
+import type { EntityManager } from "../../../entity-manager";
+
+import type { CustomClass } from "../../../entity-manager/types/metadata-type";
+import type { DatabaseEntity } from "../../../types/database-entity";
+import type { FindConditions } from "../../types/find-conditions";
+import type { BaseQueryOptions } from "../../types/query-options";
 
 interface Injectables {
 	entityManager: EntityManager;

@@ -1,40 +1,41 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { BaseRepository } from "../../lib/repository";
-import { AfterCountParams } from "../../lib/repository/methods/count/after";
-import { AfterDeleteParams } from "../../lib/repository/methods/delete/after";
-import { AfterFindParams } from "../../lib/repository/methods/find/after";
-import { AfterFindOneParams } from "../../lib/repository/methods/find-one/after";
-import { AfterInsertParams } from "../../lib/repository/methods/insert/after";
-import { AfterPerformativeCountParams } from "../../lib/repository/methods/performative-count/after";
-import { AfterRecoverParams } from "../../lib/repository/methods/recover/after";
-import { AfterSaveParams } from "../../lib/repository/methods/save/after";
-import { AfterSoftDeleteParams } from "../../lib/repository/methods/soft-delete/after";
-import { AfterUpdateParams } from "../../lib/repository/methods/update/after";
-import { AfterUpsertParams } from "../../lib/repository/methods/upsert/after";
-import { BeforeCountInput } from "../../lib/repository/methods/count/before";
-import { BeforeDeleteInput } from "../../lib/repository/methods/delete/before";
-import { BeforeFindInput } from "../../lib/repository/methods/find/before";
-import { BeforeFindOneInput } from "../../lib/repository/methods/find-one/before";
-import { BeforeInsertInput } from "../../lib/repository/methods/insert/before";
-import { BeforePerformativeCountInput } from "../../lib/repository/methods/performative-count/before";
-import { BeforeRecoverInput } from "../../lib/repository/methods/recover/before";
-import { BeforeSaveInput } from "../../lib/repository/methods/save/before";
-import { BeforeSoftDeleteInput } from "../../lib/repository/methods/soft-delete/before";
-import { BeforeUpdateInput } from "../../lib/repository/methods/update/before";
-import { BeforeUpsertInput } from "../../lib/repository/methods/upsert/before";
-import { FindConditions } from "../../lib/repository/types/find-conditions";
-import {
+import type { AfterCountParams } from "../../lib/repository/methods/count/after";
+import type { BeforeCountInput } from "../../lib/repository/methods/count/before";
+import type { AfterDeleteParams } from "../../lib/repository/methods/delete/after";
+import type { BeforeDeleteInput } from "../../lib/repository/methods/delete/before";
+import type { AfterFindOneParams } from "../../lib/repository/methods/find-one/after";
+import type { BeforeFindOneInput } from "../../lib/repository/methods/find-one/before";
+import type { AfterFindParams } from "../../lib/repository/methods/find/after";
+import type { BeforeFindInput } from "../../lib/repository/methods/find/before";
+import type { AfterInsertParams } from "../../lib/repository/methods/insert/after";
+import type { BeforeInsertInput } from "../../lib/repository/methods/insert/before";
+import type { AfterPerformativeCountParams } from "../../lib/repository/methods/performative-count/after";
+import type { BeforePerformativeCountInput } from "../../lib/repository/methods/performative-count/before";
+import type { AfterRecoverParams } from "../../lib/repository/methods/recover/after";
+import type { BeforeRecoverInput } from "../../lib/repository/methods/recover/before";
+import type { AfterSaveParams } from "../../lib/repository/methods/save/after";
+import type { BeforeSaveInput } from "../../lib/repository/methods/save/before";
+import type { AfterSoftDeleteParams } from "../../lib/repository/methods/soft-delete/after";
+import type { BeforeSoftDeleteInput } from "../../lib/repository/methods/soft-delete/before";
+import type { AfterUpdateParams } from "../../lib/repository/methods/update/after";
+import type { BeforeUpdateInput } from "../../lib/repository/methods/update/before";
+import type { AfterUpsertParams } from "../../lib/repository/methods/upsert/after";
+import type { BeforeUpsertInput } from "../../lib/repository/methods/upsert/before";
+
+import type { FindConditions } from "../../lib/repository/types/find-conditions";
+import type {
 	FindOptions,
 	FindOneOptions,
 } from "../../lib/repository/types/find-options";
-import { BaseQueryOptions } from "../../lib/repository/types/query-options";
-import { ClassType } from "../../lib/types/class-type";
-import {
+import type { BaseQueryOptions } from "../../lib/repository/types/query-options";
+import type {
 	SaveData,
 	ArraySaveData,
 	SingleSaveData,
 } from "../../lib/repository/types/save-conditions";
+import type { ClassType } from "../../lib/types/class-type";
 
 const ERROR_MESSAGE = "Method not implemented.";
 
