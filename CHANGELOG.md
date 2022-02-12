@@ -17,6 +17,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Dependencies
 
+## [0.0.31] - 2022-02-12
+
+### Added
+
+### Changed
+
+- [BC] Return of all repository methods.
+  - Instead of returning directly the data, will return a object with a `data` property, so it can return more data
+
+### Fixed
+
+### Removed
+
+### Dependencies
+
 ## [0.0.30] - 2021-12-25
 
 ### Added
