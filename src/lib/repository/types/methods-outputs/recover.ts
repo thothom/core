@@ -1,3 +1,3 @@
-export interface RecoverOutput {
+export interface BaseRecoverOutput {
 	data: number;
 }

@@ -1,3 +1,3 @@
-export interface CountOutput {
+export interface BaseCountOutput {
 	data: number;
 }

@@ -1,3 +1,3 @@
-export interface UpdateOutput<T> {
+export interface BaseUpdateOutput<T> {
 	data: Array<T>;
 }

@@ -1,4 +1,4 @@
-export interface FindOutput<T> {
+export interface BaseFindOutput<T> {
 	data: Array<T>;
-	cursor?: string;
+	cursor?: any;
 }

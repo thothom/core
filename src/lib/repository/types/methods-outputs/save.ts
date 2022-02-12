@@ -1,4 +1,4 @@
-export interface SaveOutput<T> {
+export interface BaseSaveOutput<T> {
 	data: T;
-	cursor?: string;
+	cursor?: any;
 }

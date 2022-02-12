@@ -1,3 +1,3 @@
-export interface DeleteOutput {
+export interface BaseDeleteOutput {
 	data: number;
 }

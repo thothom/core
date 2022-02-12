@@ -1,3 +1,3 @@
-export interface InsertOutput<T> {
+export interface BaseInsertOutput<T> {
 	data: T;
 }

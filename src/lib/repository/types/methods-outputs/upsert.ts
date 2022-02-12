@@ -1,4 +1,4 @@
-export interface UpsertOutput<T> {
+export interface BaseUpsertOutput<T> {
 	data: Array<T>;
-	cursor?: string;
+	cursor?: any;
 }

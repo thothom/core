@@ -1,3 +1,3 @@
-export interface PerformativeCountOutput {
+export interface BasePerformativeCountOutput {
 	data: number;
 }

@@ -1,3 +1,3 @@
-export interface FindOneOutput<T> {
+export interface BaseFindOneOutput<T> {
 	data: T;
 }

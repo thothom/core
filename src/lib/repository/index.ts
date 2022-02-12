@@ -76,17 +76,17 @@ import { beforeUpsert } from "./methods/upsert/before";
 import type { BaseExtraMetadata } from "../types/extra-metadata";
 import type { FindConditions } from "./types/find-conditions";
 import type { FindOneOptions, FindOptions } from "./types/find-options";
-import type { CountOutput } from "./types/methods-outputs/count";
-import type { DeleteOutput } from "./types/methods-outputs/delete";
-import type { FindOutput } from "./types/methods-outputs/find";
-import type { FindOneOutput } from "./types/methods-outputs/find-one";
-import type { InsertOutput } from "./types/methods-outputs/insert";
-import type { PerformativeCountOutput } from "./types/methods-outputs/performative-count";
-import type { RecoverOutput } from "./types/methods-outputs/recover";
-import type { SaveOutput } from "./types/methods-outputs/save";
-import type { SoftDeleteOutput } from "./types/methods-outputs/soft-delete";
-import type { UpdateOutput } from "./types/methods-outputs/update";
-import type { UpsertOutput } from "./types/methods-outputs/upsert";
+import type { BaseCountOutput } from "./types/methods-outputs/count";
+import type { BaseDeleteOutput } from "./types/methods-outputs/delete";
+import type { BaseFindOutput } from "./types/methods-outputs/find";
+import type { BaseFindOneOutput } from "./types/methods-outputs/find-one";
+import type { BaseInsertOutput } from "./types/methods-outputs/insert";
+import type { BasePerformativeCountOutput } from "./types/methods-outputs/performative-count";
+import type { BaseRecoverOutput } from "./types/methods-outputs/recover";
+import type { BaseSaveOutput } from "./types/methods-outputs/save";
+import type { BaseSoftDeleteOutput } from "./types/methods-outputs/soft-delete";
+import type { BaseUpdateOutput } from "./types/methods-outputs/update";
+import type { BaseUpsertOutput } from "./types/methods-outputs/upsert";
 import type { BaseQueryOptions } from "./types/query-options";
 import type { SingleSaveData, ArraySaveData } from "./types/save-conditions";
 
@@ -128,11 +128,11 @@ export abstract class BaseRepository<
 	public abstract save(
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<SaveOutput<Entity>>;
+	): Promise<BaseSaveOutput<Entity>>;
 	public abstract save(
 		data: ArraySaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<SaveOutput<Array<Entity>>>;
+	): Promise<BaseSaveOutput<Array<Entity>>>;
 
 	/**
 	 * Inserts a record on the database and fail if it's already exist.
@@ -140,11 +140,11 @@ export abstract class BaseRepository<
 	public abstract insert(
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<InsertOutput<Entity>>;
+	): Promise<BaseInsertOutput<Entity>>;
 	public abstract insert(
 		data: ArraySaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<InsertOutput<Array<Entity>>>;
+	): Promise<BaseInsertOutput<Array<Entity>>>;
 
 	/**
 	 * Updates a record based on a query and fail if it's not exist.
@@ -153,7 +153,7 @@ export abstract class BaseRepository<
 		conditions: FindConditions<Entity>,
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<UpdateOutput<Array<Entity>>>;
+	): Promise<BaseUpdateOutput<Array<Entity>>>;
 
 	/**
 	 * Make an "upsert" operation based on a query.
@@ -162,7 +162,7 @@ export abstract class BaseRepository<
 		conditions: FindConditions<Entity>,
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<UpsertOutput<Array<Entity>>>;
+	): Promise<BaseUpsertOutput<Array<Entity>>>;
 
 	/**
 	 * --------------------------------------------------
@@ -178,7 +178,7 @@ export abstract class BaseRepository<
 	public abstract find(
 		conditions: FindOptions<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<FindOutput<Array<Entity>>>;
+	): Promise<BaseFindOutput<Array<Entity>>>;
 
 	/**
 	 * Find one record based on a query.
@@ -186,7 +186,7 @@ export abstract class BaseRepository<
 	public abstract findOne(
 		conditions: FindOneOptions<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<FindOneOutput<Entity>>;
+	): Promise<BaseFindOneOutput<Entity>>;
 
 	/**
 	 * --------------------------------------------------
@@ -202,7 +202,7 @@ export abstract class BaseRepository<
 	public abstract delete(
 		where: FindConditions<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<DeleteOutput>;
+	): Promise<BaseDeleteOutput>;
 
 	/**
 	 * Soft delete a record based on a query condition.
@@ -213,7 +213,7 @@ export abstract class BaseRepository<
 	public abstract softDelete(
 		where: FindConditions<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<SoftDeleteOutput>;
+	): Promise<BaseSoftDeleteOutput>;
 
 	/**
 	 * Recovers a record that was sof-deleted.
@@ -224,7 +224,7 @@ export abstract class BaseRepository<
 	public abstract recover(
 		where: FindConditions<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<RecoverOutput>;
+	): Promise<BaseRecoverOutput>;
 
 	/**
 	 * --------------------------------------------------
@@ -240,7 +240,7 @@ export abstract class BaseRepository<
 	public abstract count(
 		where: FindConditions<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<CountOutput>;
+	): Promise<BaseCountOutput>;
 
 	/**
 	 * Some databases, like PostgreSQL, have methods that allow
@@ -253,7 +253,7 @@ export abstract class BaseRepository<
 	public abstract performativeCount(
 		where: FindConditions<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<PerformativeCountOutput>;
+	): Promise<BasePerformativeCountOutput>;
 
 	/**
 	 * --------------------------------------------------
