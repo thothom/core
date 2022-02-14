@@ -153,7 +153,7 @@ export abstract class BaseRepository<
 		conditions: FindConditions<Entity>,
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<BaseUpdateOutput<Array<Entity>>>;
+	): Promise<BaseUpdateOutput<Entity>>;
 
 	/**
 	 * Make an "upsert" operation based on a query.
@@ -162,7 +162,7 @@ export abstract class BaseRepository<
 		conditions: FindConditions<Entity>,
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<BaseUpsertOutput<Array<Entity>>>;
+	): Promise<BaseUpsertOutput<Entity>>;
 
 	/**
 	 * --------------------------------------------------
@@ -178,7 +178,7 @@ export abstract class BaseRepository<
 	public abstract find(
 		conditions: FindOptions<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<BaseFindOutput<Array<Entity>>>;
+	): Promise<BaseFindOutput<Entity>>;
 
 	/**
 	 * Find one record based on a query.

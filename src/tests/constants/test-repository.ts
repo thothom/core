@@ -87,7 +87,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		_conditions: FindOneOptions<ClassType<Entity>>["where"],
 		_data: SingleSaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<BaseUpdateOutput<Array<Entity>>> {
+	): Promise<BaseUpdateOutput<Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
@@ -95,14 +95,14 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		_conditions: FindOneOptions<ClassType<Entity>>["where"],
 		_data: SingleSaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<BaseUpsertOutput<Array<Entity>>> {
+	): Promise<BaseUpsertOutput<Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
 	public find(
 		_conditions: FindOptions<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<BaseFindOutput<Array<Entity>>> {
+	): Promise<BaseFindOutput<Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
