@@ -1,5 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
+import type {
+	BaseCountOutput,
+	BaseDeleteOutput,
+	BaseFindOneOutput,
+	BaseFindOutput,
+	BaseInsertOutput,
+	BasePerformativeCountOutput,
+	BaseRecoverOutput,
+	BaseSaveOutput,
+	BaseSoftDeleteOutput,
+	BaseUpdateOutput,
+	BaseUpsertOutput,
+} from "../..";
 import { BaseRepository } from "../../lib/repository";
 import type { AfterCountParams } from "../../lib/repository/methods/count/after";
 import type { BeforeCountInput } from "../../lib/repository/methods/count/before";
@@ -43,30 +56,30 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 	public save(
 		_data: SingleSaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Entity>;
+	): Promise<BaseSaveOutput<Entity>>;
 	public save(
 		_data: ArraySaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity>>;
+	): Promise<BaseSaveOutput<Array<Entity>>>;
 	public save(
 		_data: SaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity> {
+	): Promise<BaseSaveOutput<Array<Entity> | Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
 	public insert(
 		_data: SingleSaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Entity>;
+	): Promise<BaseInsertOutput<Entity>>;
 	public insert(
 		_data: ArraySaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity>>;
+	): Promise<BaseInsertOutput<Array<Entity>>>;
 	public insert(
 		_data: SaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity> {
+	): Promise<BaseInsertOutput<Array<Entity> | Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
@@ -74,7 +87,7 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		_conditions: FindOneOptions<ClassType<Entity>>["where"],
 		_data: SingleSaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity>> {
+	): Promise<BaseUpdateOutput<Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
@@ -82,56 +95,56 @@ export class TestRepository<Entity> extends BaseRepository<Entity> {
 		_conditions: FindOneOptions<ClassType<Entity>>["where"],
 		_data: SingleSaveData<ClassType<Entity>>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity>> {
+	): Promise<BaseUpsertOutput<Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
 	public find(
 		_conditions: FindOptions<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity>> {
+	): Promise<BaseFindOutput<Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
 	public findOne(
 		_conditions: FindOneOptions<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<Entity> {
+	): Promise<BaseFindOneOutput<Entity>> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
 	public delete(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<number> {
+	): Promise<BaseDeleteOutput> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
 	public softDelete(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<number> {
+	): Promise<BaseSoftDeleteOutput> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
 	public recover(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<number> {
+	): Promise<BaseRecoverOutput> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
 	public count(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<number> {
+	): Promise<BaseCountOutput> {
 		throw new Error(ERROR_MESSAGE);
 	}
 
 	public performativeCount(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<number> {
+	): Promise<BasePerformativeCountOutput> {
 		throw new Error(ERROR_MESSAGE);
 	}
 

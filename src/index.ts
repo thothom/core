@@ -87,6 +87,22 @@ export * from "./lib/repository/operators/save/pop";
 export * from "./lib/repository/operators/save/remove";
 
 /**
+ * Outputs
+ */
+
+export * from "./lib/repository/types/methods-outputs/count";
+export * from "./lib/repository/types/methods-outputs/delete";
+export * from "./lib/repository/types/methods-outputs/find";
+export * from "./lib/repository/types/methods-outputs/find-one";
+export * from "./lib/repository/types/methods-outputs/insert";
+export * from "./lib/repository/types/methods-outputs/performative-count";
+export * from "./lib/repository/types/methods-outputs/recover";
+export * from "./lib/repository/types/methods-outputs/save";
+export * from "./lib/repository/types/methods-outputs/soft-delete";
+export * from "./lib/repository/types/methods-outputs/update";
+export * from "./lib/repository/types/methods-outputs/upsert";
+
+/**
  * ---------------------------------------------------------------------------
  *
  * Error
