@@ -54,7 +54,7 @@ export interface BaseConnectionOptions<DatabaseConfig = any> {
 	 *
 	 * **DEBUG:** Logs EVERYTHING done by the lib
 	 *
-	 * **INFO:** Symbiosis, connection, and general things status. Rarely used.
+	 * **INFO:** ThothOM, connection, and general things status. Rarely used.
 	 *
 	 * **WARN:** Alerts that the system cannot determine if it's wrong use of
 	 * the lib or just the expected functioning.

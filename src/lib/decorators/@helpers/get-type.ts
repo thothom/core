@@ -1,6 +1,6 @@
 import { getTypeof } from "@techmmunity/utils";
 
-import { SymbiosisError } from "../../error";
+import { ThothError } from "../../error";
 
 import { MetadataUtil } from "../../utils/metadata-util";
 
@@ -34,9 +34,9 @@ const handleUnacceptedType = (
 	const typeName = MetadataUtil.getMetadataName(type);
 
 	if (!acceptedTypes.includes("all") && !acceptedTypes.includes(typeName)) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM_TYPE",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: ERROR_MESSAGE,
 			details: [
 				`Entity: ${entityPrototype.constructor.name}`,
@@ -80,9 +80,9 @@ export const getType = ({
 		/**
 		 * When array, the type must be explicitly declared
 		 */
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM_TYPE",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "You must explicitly declare array types",
 			details: [
 				`Entity: ${entityPrototype.constructor.name}`,
@@ -120,9 +120,9 @@ export const getType = ({
 					type: Number,
 				};
 			default:
-				throw new SymbiosisError({
+				throw new ThothError({
 					code: "INVALID_PARAM_TYPE",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: ERROR_MESSAGE,
 					details: [
 						`Entity: ${entityPrototype.constructor.name}`,
@@ -135,9 +135,9 @@ export const getType = ({
 	/**
 	 * If the type cannot be guessed or isn't supported
 	 */
-	throw new SymbiosisError({
+	throw new ThothError({
 		code: "INVALID_PARAM_TYPE",
-		origin: "SYMBIOSIS",
+		origin: "THOTHOM",
 		message: ERROR_MESSAGE,
 		details: [
 			`Entity: ${entityPrototype.constructor.name}`,

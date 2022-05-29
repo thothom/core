@@ -1,18 +1,18 @@
 {
-	"name": "@techmmunity/symbiosis",
-	"version": "0.0.31",
+	"name": "@thothom/core",
+	"version": "0.0.1",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
 	"author": "Techmmunity",
-	"description": "Symbiosis - The Ultimate OM For All Databases",
-	"homepage": "https://symbiosis.techmmunity.com.br/",
+	"description": "ThothOM - The Ultimate OM For All Databases",
+	"homepage": "https://thothom.com/",
 	"bugs": {
-		"url": "https://github.com/techmmunity-symbiosis/symbiosis/issues"
+		"url": "https://github.com/thothom/core/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/techmmunity-symbiosis/symbiosis.git"
+		"url": "git+https://github.com/thothom/core.git"
 	},
 	"keywords": [
 		"orm",
@@ -26,7 +26,7 @@
 		"database",
 		"data-mapper",
 		"object-mapper",
-		"techmmunity-symbiosis"
+		"thothom"
 	],
 	"peerDependencies": {
 		"reflect-metadata": "^0.1.13",

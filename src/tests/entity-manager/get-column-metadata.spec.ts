@@ -1,9 +1,9 @@
 import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
-import { SymbiosisError } from "../../lib/error";
-import { TestConnection } from "../constants/test-connection";
+import { Entity } from "../../lib/decorators/entities/entity";
 import { SubEntity } from "../../lib/decorators/entities/sub-entity";
+import { ThothError } from "../../lib/error";
+import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getColumnMetadata", () => {
 	it("should get primary-column metadata", async () => {
@@ -150,10 +150,10 @@ describe("EntityManager > getColumnMetadata", () => {
 			result = err;
 		}
 
-		expect(result instanceof SymbiosisError).toBe(true);
+		expect(result instanceof ThothError).toBe(true);
 		expect(result.message).toBe("Entity not Registered");
 		expect(result.code).toBe("ENTITY_ERROR");
-		expect(result.origin).toBe("SYMBIOSIS");
+		expect(result.origin).toBe("THOTHOM");
 		expect(result.details).toStrictEqual(["Entity: ", TestEntity]);
 	});
 
@@ -180,10 +180,10 @@ describe("EntityManager > getColumnMetadata", () => {
 			result = err;
 		}
 
-		expect(result instanceof SymbiosisError).toBe(true);
+		expect(result instanceof ThothError).toBe(true);
 		expect(result.message).toBe("Column not found");
 		expect(result.code).toBe("COLUMN_ERROR");
-		expect(result.origin).toBe("SYMBIOSIS");
+		expect(result.origin).toBe("THOTHOM");
 		expect(result.details).toStrictEqual([
 			"Entity: ",
 			TestEntity,

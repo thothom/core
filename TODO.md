@@ -113,7 +113,7 @@
   - [x] recover
   - [x] count
   - [x] performativeCount
-- [x] Create a template repository "symbiosis-plugin"
+- [x] Create a template repository "thoth-plugin"
 
 ### General
 

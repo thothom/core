@@ -9,7 +9,7 @@ declare global {
 	/**
 	 * THE USE OF `var` IS REQUIRED!!!!
 	 */
-	var symbiosisConnections: Record<string, BaseConnection> | undefined;
+	var thothConnections: Record<string, BaseConnection> | undefined;
 
 	type TS = typeof ts;
 

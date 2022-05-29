@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { SymbiosisError } from "../error";
+import { ThothError } from "../error";
 import type { Logger } from "../logger";
 
 import type { AutoGenerateEntityToDatabaseParams } from "./methods/auto-generate-entity-to-database";
@@ -108,10 +108,10 @@ export class EntityManager<ExtraMetadata extends BaseExtraMetadata = any> {
 		const entityMetadata = this.entities[entity.name];
 
 		if (!entityMetadata) {
-			throw new SymbiosisError({
+			throw new ThothError({
 				message: "Entity not Registered",
 				code: "ENTITY_ERROR",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				details: ["Entity: ", entity],
 			});
 		}
@@ -127,10 +127,10 @@ export class EntityManager<ExtraMetadata extends BaseExtraMetadata = any> {
 		);
 
 		if (!columnMetadata) {
-			throw new SymbiosisError({
+			throw new ThothError({
 				message: "Column not found",
 				code: "COLUMN_ERROR",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				details: ["Entity: ", entity, "Column: ", columnName],
 			});
 		}

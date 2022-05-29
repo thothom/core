@@ -2,7 +2,7 @@ import { isEmptyArray } from "@techmmunity/utils";
 
 import { DEFAULT_CONNECTION_NAME } from "../../config";
 import { EntityManager } from "../entity-manager";
-import { SymbiosisError } from "../error";
+import { ThothError } from "../error";
 import { Logger } from "../logger";
 import type { BaseRepository } from "../repository";
 
@@ -88,9 +88,9 @@ export abstract class BaseConnection<
 	 */
 	protected basicValidate() {
 		if (isEmptyArray(this.entities)) {
-			throw new SymbiosisError({
+			throw new ThothError({
 				code: "MISSING_PARAM",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				message: "Missing entities",
 				details: [
 					"No entities found",

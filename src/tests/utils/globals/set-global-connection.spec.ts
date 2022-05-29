@@ -25,7 +25,7 @@ describe("Utils > setGlobalConnection", () => {
 	});
 
 	afterEach(() => {
-		delete global.symbiosisConnections;
+		delete global.thothConnections;
 	});
 
 	it("should define connection globally", () => {

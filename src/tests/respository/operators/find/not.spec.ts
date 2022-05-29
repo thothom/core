@@ -1,4 +1,4 @@
-import { SymbiosisError } from "../../../../lib/error";
+import { ThothError } from "../../../../lib/error";
 import { Between } from "../../../../lib/repository/operators/find/between";
 import { Exist } from "../../../../lib/repository/operators/find/exist";
 import { In } from "../../../../lib/repository/operators/find/in";
@@ -93,10 +93,10 @@ describe("Repository > FindOperators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBe(true);
+			expect(result instanceof ThothError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe("INVALID_PARAM");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with LessThanOrEqual operator, use MoreThan operator instead",
 			]);
@@ -111,10 +111,10 @@ describe("Repository > FindOperators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBe(true);
+			expect(result instanceof ThothError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe("INVALID_PARAM");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with LessThan operator, use MoreThanOrEqual operator instead",
 			]);
@@ -129,10 +129,10 @@ describe("Repository > FindOperators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBe(true);
+			expect(result instanceof ThothError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe("INVALID_PARAM");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with LessThanOrEqual operator, use LessThan operator instead",
 			]);
@@ -147,10 +147,10 @@ describe("Repository > FindOperators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBe(true);
+			expect(result instanceof ThothError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe("INVALID_PARAM");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with MoreThan operator, use LessThanOrEqual operator instead",
 			]);
@@ -165,10 +165,10 @@ describe("Repository > FindOperators > Not", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBe(true);
+			expect(result instanceof ThothError).toBe(true);
 			expect(result.message).toBe(ERROR_MESSAGE);
 			expect(result.code).toBe("INVALID_PARAM");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual([
 				"Not operator should not be used with Not operator",
 			]);

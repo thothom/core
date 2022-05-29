@@ -1,4 +1,4 @@
-import { SymbiosisError } from "../../../error";
+import { ThothError } from "../../../error";
 
 import { FindOperator } from "./base";
 import type { FindOperatorType } from "./base/find-operators-type";
@@ -10,46 +10,46 @@ const handleTypeError = (type: FindOperatorType) => {
 
 	switch (type) {
 		case "lessThan":
-			throw new SymbiosisError({
+			throw new ThothError({
 				message: ERROR_MESSAGE,
 				code: "INVALID_PARAM",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				details: [
 					"Not operator should not be used with LessThan operator, use MoreThanOrEqual operator instead",
 				],
 			});
 		case "lessThanOrEqual":
-			throw new SymbiosisError({
+			throw new ThothError({
 				message: ERROR_MESSAGE,
 				code: "INVALID_PARAM",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				details: [
 					"Not operator should not be used with LessThanOrEqual operator, use MoreThan operator instead",
 				],
 			});
 		case "moreThan":
-			throw new SymbiosisError({
+			throw new ThothError({
 				message: ERROR_MESSAGE,
 				code: "INVALID_PARAM",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				details: [
 					"Not operator should not be used with MoreThan operator, use LessThanOrEqual operator instead",
 				],
 			});
 		case "moreThanOrEqual":
-			throw new SymbiosisError({
+			throw new ThothError({
 				message: ERROR_MESSAGE,
 				code: "INVALID_PARAM",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				details: [
 					"Not operator should not be used with LessThanOrEqual operator, use LessThan operator instead",
 				],
 			});
 		case "not":
-			throw new SymbiosisError({
+			throw new ThothError({
 				message: ERROR_MESSAGE,
 				code: "INVALID_PARAM",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				details: ["Not operator should not be used with Not operator"],
 			});
 		default:

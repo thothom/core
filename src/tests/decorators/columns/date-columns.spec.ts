@@ -3,7 +3,8 @@
 import { DeleteDateColumn } from "../../../lib/decorators/columns/delete-date-column";
 import { InsertDateColumn } from "../../../lib/decorators/columns/insert-date-column";
 import { UpdateDateColumn } from "../../../lib/decorators/columns/update-date-column";
-import { SymbiosisError } from "../../../lib/error";
+import { ThothError } from "../../../lib/error";
+
 import { MetadataUtil } from "../../../lib/utils/metadata-util";
 
 describe("Decorators > DateColumns", () => {
@@ -302,10 +303,10 @@ describe("Decorators > DateColumns", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBe(true);
+			expect(result instanceof ThothError).toBe(true);
 			expect(result.message).toBe("Column type isn't supported");
 			expect(result.code).toBe("INVALID_PARAM_TYPE");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual([
 				"Entity: Test",
 				"Column: createdAt",

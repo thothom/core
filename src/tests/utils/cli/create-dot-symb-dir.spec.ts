@@ -1,18 +1,18 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import {
-	internalCreateDotSymbiosisDir,
+	internalCreateDotThothDir,
 	gitIgnoreMessage,
-} from "../../../lib/utils/cli/create-dot-symb-dir/internal";
+} from "../../../lib/utils/cli/create-dot-thoth-dir/internal";
 
-describe("Utils > CLI > createDotSymbDir", () => {
+describe("Utils > CLI > createDotThothDir", () => {
 	const getRootPath = jest.fn();
 	const mkdirSync = jest.fn();
 	const existsSync = jest.fn();
 	const readFileSync = jest.fn();
 	const writeFileSync = jest.fn();
 
-	const createDotSymbDir = (path: string) =>
-		internalCreateDotSymbiosisDir({
+	const createDotThothDir = (path: string) =>
+		internalCreateDotThothDir({
 			getRootPath,
 			mkdirSync,
 			existsSync,
@@ -27,18 +27,18 @@ describe("Utils > CLI > createDotSymbDir", () => {
 		);
 	});
 
-	describe(".symbiosis folder exists", () => {
+	describe(".thothom folder exists", () => {
 		it("should create dir (path without /)", () => {
 			existsSync.mockReturnValueOnce(true);
 
-			createDotSymbDir("foo/bar");
+			createDotThothDir("foo/bar");
 
 			expect(getRootPath).toBeCalledTimes(1);
 			expect(existsSync).toBeCalledTimes(1);
 			expect(mkdirSync).toBeCalledTimes(1);
 			expect(readFileSync).toBeCalledTimes(0);
 			expect(writeFileSync).toBeCalledTimes(0);
-			expect(mkdirSync).toBeCalledWith("root/path/.symbiosis/foo/bar", {
+			expect(mkdirSync).toBeCalledWith("root/path/.thothom/foo/bar", {
 				recursive: true,
 			});
 		});
@@ -46,14 +46,14 @@ describe("Utils > CLI > createDotSymbDir", () => {
 		it("should create dir (path with /)", () => {
 			existsSync.mockReturnValueOnce(true);
 
-			createDotSymbDir("/foo/bar");
+			createDotThothDir("/foo/bar");
 
 			expect(getRootPath).toBeCalledTimes(1);
 			expect(existsSync).toBeCalledTimes(1);
 			expect(mkdirSync).toBeCalledTimes(1);
 			expect(readFileSync).toBeCalledTimes(0);
 			expect(writeFileSync).toBeCalledTimes(0);
-			expect(mkdirSync).toBeCalledWith("root/path/.symbiosis/foo/bar", {
+			expect(mkdirSync).toBeCalledWith("root/path/.thothom/foo/bar", {
 				recursive: true,
 			});
 		});
@@ -63,16 +63,16 @@ describe("Utils > CLI > createDotSymbDir", () => {
 		it("should create dir", () => {
 			existsSync.mockReturnValueOnce(false);
 			existsSync.mockReturnValueOnce(true);
-			readFileSync.mockReturnValueOnce("\n/.symbiosis\n");
+			readFileSync.mockReturnValueOnce("\n/.thothom\n");
 
-			createDotSymbDir("foo/bar");
+			createDotThothDir("foo/bar");
 
 			expect(getRootPath).toBeCalledTimes(2);
 			expect(existsSync).toBeCalledTimes(2);
 			expect(mkdirSync).toBeCalledTimes(1);
 			expect(readFileSync).toBeCalledTimes(1);
 			expect(writeFileSync).toBeCalledTimes(0);
-			expect(mkdirSync).toBeCalledWith("root/path/.symbiosis/foo/bar", {
+			expect(mkdirSync).toBeCalledWith("root/path/.thothom/foo/bar", {
 				recursive: true,
 			});
 		});
@@ -86,7 +86,7 @@ describe("Utils > CLI > createDotSymbDir", () => {
 			existsSync.mockReturnValueOnce(true);
 			readFileSync.mockReturnValueOnce(gitIgnoreContent);
 
-			createDotSymbDir("foo/bar");
+			createDotThothDir("foo/bar");
 
 			expect(getRootPath).toBeCalledTimes(2);
 			expect(existsSync).toBeCalledTimes(2);
@@ -97,7 +97,7 @@ describe("Utils > CLI > createDotSymbDir", () => {
 				"root/path/.gitignore",
 				`${gitIgnoreContent}${"\n\n"}${gitIgnoreMessage}`,
 			);
-			expect(mkdirSync).toBeCalledWith("root/path/.symbiosis/foo/bar", {
+			expect(mkdirSync).toBeCalledWith("root/path/.thothom/foo/bar", {
 				recursive: true,
 			});
 		});
@@ -109,7 +109,7 @@ describe("Utils > CLI > createDotSymbDir", () => {
 			existsSync.mockReturnValueOnce(true);
 			readFileSync.mockReturnValueOnce(gitIgnoreContent);
 
-			createDotSymbDir("foo/bar");
+			createDotThothDir("foo/bar");
 
 			expect(getRootPath).toBeCalledTimes(2);
 			expect(existsSync).toBeCalledTimes(2);
@@ -120,7 +120,7 @@ describe("Utils > CLI > createDotSymbDir", () => {
 				"root/path/.gitignore",
 				`${gitIgnoreContent}${gitIgnoreMessage}`,
 			);
-			expect(mkdirSync).toBeCalledWith("root/path/.symbiosis/foo/bar", {
+			expect(mkdirSync).toBeCalledWith("root/path/.thothom/foo/bar", {
 				recursive: true,
 			});
 		});
@@ -131,7 +131,7 @@ describe("Utils > CLI > createDotSymbDir", () => {
 			existsSync.mockReturnValueOnce(false);
 			existsSync.mockReturnValueOnce(false);
 
-			createDotSymbDir("foo/bar");
+			createDotThothDir("foo/bar");
 
 			expect(getRootPath).toBeCalledTimes(2);
 			expect(existsSync).toBeCalledTimes(2);
@@ -142,7 +142,7 @@ describe("Utils > CLI > createDotSymbDir", () => {
 				"root/path/.gitignore",
 				`${gitIgnoreMessage}${"\n"}`,
 			);
-			expect(mkdirSync).toBeCalledWith("root/path/.symbiosis/foo/bar", {
+			expect(mkdirSync).toBeCalledWith("root/path/.thothom/foo/bar", {
 				recursive: true,
 			});
 		});

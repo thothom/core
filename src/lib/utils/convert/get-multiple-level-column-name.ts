@@ -1,5 +1,5 @@
 import type { EntityManager } from "../../entity-manager";
-import { SymbiosisError } from "../../error";
+import { ThothError } from "../../error";
 import { MetadataUtil } from "../metadata-util";
 
 import type { CustomClass } from "../../entity-manager/types/metadata-type";
@@ -45,10 +45,10 @@ const getColumnMetadata = (
 	try {
 		return entityManager.getColumnMetadata(entity, currentColumnName);
 	} catch (err) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			message: "Invalid column",
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: [
 				`Invalid column: ${currentColumnName}`,
 				`Value received: ${originalColumnsNames.join(".")}`,
@@ -105,10 +105,10 @@ export const getMultipleLevelColumnName = ({
 			});
 		}
 
-		throw new SymbiosisError({
+		throw new ThothError({
 			message: "Invalid column",
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: [
 				`Invalid column: ${currentColumnName}`,
 				/**

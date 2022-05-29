@@ -1,14 +1,14 @@
 import { Column } from "../../../lib/decorators/columns/column";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { Entity } from "../../../lib/decorators/entities/entity";
-import { SymbiosisError } from "../../../lib/error";
+import { ThothError } from "../../../lib/error";
 import { getGlobalConnection } from "../../../lib/utils/globals/get-global-connection";
 import { setGlobalConnection } from "../../../lib/utils/globals/set-global-connection";
 import { TestConnection } from "../../constants/test-connection";
 
 describe("Utils > getGlobalConnection", () => {
 	afterEach(() => {
-		delete global.symbiosisConnections;
+		delete global.thothConnections;
 	});
 
 	it("should get global connection (default)", async () => {
@@ -79,7 +79,7 @@ describe("Utils > getGlobalConnection", () => {
 			result = err;
 		}
 
-		expect(result instanceof SymbiosisError).toBeTruthy();
+		expect(result instanceof ThothError).toBeTruthy();
 	});
 
 	it("should throw error if the specified connection is not defined globally", async () => {
@@ -108,6 +108,6 @@ describe("Utils > getGlobalConnection", () => {
 			result = err;
 		}
 
-		expect(result instanceof SymbiosisError).toBeTruthy();
+		expect(result instanceof ThothError).toBeTruthy();
 	});
 });

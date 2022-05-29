@@ -1,14 +1,14 @@
 import { getTypeof } from "@techmmunity/utils";
 
-import { SymbiosisError } from "../../../../error";
+import { ThothError } from "../../../../error";
 
 import type { BaseConnectionOptions } from "../../../../connection/types/connection-options";
 
 export const validateEntities = (config: BaseConnectionOptions) => {
 	if (!config.entities && !config.entitiesDir) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "Missing config",
 			details: ["Missing config: entities OR entitiesDir"],
 		});
@@ -19,9 +19,9 @@ export const validateEntities = (config: BaseConnectionOptions) => {
 		(getTypeof(config.entities) !== "array" ||
 			!config.entities.every(entity => getTypeof(entity) === "class"))
 	) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "Invalid entities",
 			details: ["`entities` option must be an array of entities"],
 		});
@@ -32,9 +32,9 @@ export const validateEntities = (config: BaseConnectionOptions) => {
 		(getTypeof(config.entitiesDir) !== "array" ||
 			!config.entitiesDir.every(entity => getTypeof(entity) === "string"))
 	) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "Invalid entities",
 			details: [
 				"`entitiesDir` options must be an array of strings (entities paths)",

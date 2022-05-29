@@ -1,11 +1,12 @@
 import { Column } from "../../../lib/decorators/columns/column";
-import { SymbiosisError } from "../../../lib/error";
-import { MetadataUtil } from "../../../lib/utils/metadata-util";
+import { ThothError } from "../../../lib/error";
 import {
 	TestNumberEnum,
 	TestStringEnum,
 	TestUnknownEnum,
 } from "../../constants/test-enum";
+
+import { MetadataUtil } from "../../../lib/utils/metadata-util";
 
 describe("Decorators > Column", () => {
 	describe("Implicitly Type", () => {
@@ -546,10 +547,10 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.message).toBe("You must explicitly declare array types");
 			expect(result.code).toBe("INVALID_PARAM_TYPE");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 
@@ -568,10 +569,10 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.message).toBe(ERROR_MESSAGE_INVALID_TYPE);
 			expect(result.code).toBe("INVALID_PARAM_TYPE");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 
@@ -592,10 +593,10 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.message).toBe(ERROR_MESSAGE_INVALID_TYPE);
 			expect(result.code).toBe("INVALID_PARAM_TYPE");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 
@@ -614,10 +615,10 @@ describe("Decorators > Column", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.message).toBe("Column type isn't supported");
 			expect(result.code).toBe("INVALID_PARAM_TYPE");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual(DEFAULT_DETAILS);
 		});
 	});

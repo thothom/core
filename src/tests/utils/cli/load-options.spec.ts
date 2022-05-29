@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { SymbiosisError } from "../../../lib/error";
+import { ThothError } from "../../../lib/error";
 
 import { internalLoadOptions } from "../../../lib/utils/cli/load-options/internal";
 
@@ -135,15 +135,15 @@ describe("Utils > CLI > loadOptions", () => {
 
 			expect(existsSync).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Missing config file",
 					details: [
-						"Missing config file: symbiosis.config.js",
-						"You can install the cli `@techmmunity/symbiosis-cli` and use `npx symb gen:config` to automatic generate a config file",
+						"Missing config file: thothom.config.js",
+						"You can install the cli `@thothom/cli` and use `npx thothom gen:config` to automatic generate a config file",
 					],
 				}),
 			);
@@ -162,15 +162,15 @@ describe("Utils > CLI > loadOptions", () => {
 
 			expect(existsSync).toBeCalledTimes(1);
 			expect(internalRequire).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Missing config",
 					details: [
 						"Missing config options and config file",
-						"You can install the cli `@techmmunity/symbiosis-cli` and use `npx symb gen:config` to automatic generate a config file, or specify the options at the Connection class constructor",
+						"You can install the cli `@thothom/cli` and use `npx thothom gen:config` to automatic generate a config file, or specify the options at the Connection class constructor",
 					],
 				}),
 			);
@@ -194,11 +194,11 @@ describe("Utils > CLI > loadOptions", () => {
 
 			expect(existsSync).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Missing config",
 					details: ["Missing config: plugin"],
 				}),
@@ -223,11 +223,11 @@ describe("Utils > CLI > loadOptions", () => {
 
 			expect(existsSync).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "MISSING_DEPENDENCY",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Missing dependency",
 					details: ["Plugin not found: not-installed-plugin"],
 				}),
@@ -251,11 +251,11 @@ describe("Utils > CLI > loadOptions", () => {
 
 			expect(existsSync).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Missing config",
 					details: ["Missing config: entities OR entitiesDir"],
 				}),
@@ -278,11 +278,11 @@ describe("Utils > CLI > loadOptions", () => {
 
 			expect(existsSync).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Invalid entities",
 					details: ["`entities` option must be an array of entities"],
 				}),
@@ -305,11 +305,11 @@ describe("Utils > CLI > loadOptions", () => {
 
 			expect(existsSync).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Invalid entities",
 					details: ["`entities` option must be an array of entities"],
 				}),
@@ -332,11 +332,11 @@ describe("Utils > CLI > loadOptions", () => {
 
 			expect(existsSync).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Invalid entities",
 					details: [
 						"`entitiesDir` option must be an array of strings (entities paths)",
@@ -361,11 +361,11 @@ describe("Utils > CLI > loadOptions", () => {
 
 			expect(existsSync).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "INVALID_PARAM",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Invalid entities",
 					details: [
 						"`entitiesDir` option must be an array of strings (entities paths)",

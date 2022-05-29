@@ -1,4 +1,4 @@
-import { SymbiosisError } from "../../../../error";
+import { ThothError } from "../../../../error";
 import type { Logger } from "../../../../logger";
 
 import { formatColumns } from "./format-columns";
@@ -31,10 +31,10 @@ export const getEntitiesMetadata = ({
 		});
 
 		if (entities[metadata.name]) {
-			throw new SymbiosisError({
+			throw new ThothError({
 				message: "Duplicated Entity",
 				code: "DUPLICATED_ENTITY",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				details: [`Entity: ${metadata.name}`],
 			});
 		}

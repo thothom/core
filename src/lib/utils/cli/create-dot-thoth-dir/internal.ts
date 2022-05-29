@@ -1,4 +1,4 @@
-interface InternalCreateDotSymbiosisDirParams {
+interface InternalCreateDotThothDirParams {
 	getRootPath: (path: string) => string;
 	mkdirSync: (path: string, options: { recursive: true }) => void;
 	existsSync: (path: string) => boolean;
@@ -8,33 +8,33 @@ interface InternalCreateDotSymbiosisDirParams {
 }
 
 export const gitIgnoreMessage =
-	"# Do not touch it! Symb needs this exact exclude, or will generate it again.\n/.symbiosis\n";
+	"# Do not touch it! Thoth needs this exact exclude, or will generate it again.\n/.thothom\n";
 
 /**
  * **DO NOT USE IT!!!!**
  *
  * Created so we can test the function with Jest
  */
-export const internalCreateDotSymbiosisDir = ({
+export const internalCreateDotThothDir = ({
 	getRootPath,
 	mkdirSync,
 	existsSync,
 	readFileSync,
 	writeFileSync,
 	path,
-}: InternalCreateDotSymbiosisDirParams) => {
-	const dotSymbFolderPath = getRootPath(".symbiosis");
+}: InternalCreateDotThothDirParams) => {
+	const dotThothFolderPath = getRootPath(".thothom");
 
-	// .symbiosis folder DONT exists
-	if (!existsSync(dotSymbFolderPath)) {
+	// .thothom folder DONT exists
+	if (!existsSync(dotThothFolderPath)) {
 		const gitIgnorePath = getRootPath(".gitignore");
 
 		// .gitignore exists
 		if (existsSync(gitIgnorePath)) {
 			const gitIgnore = readFileSync(gitIgnorePath, "utf8");
 
-			// .gitignore NOT ignores .symbiosis folder
-			if (!gitIgnore.includes("\n/.symbiosis\n")) {
+			// .gitignore NOT ignores .thothom folder
+			if (!gitIgnore.includes("\n/.thothom\n")) {
 				// Insert final new line
 				const ignore = gitIgnore.endsWith("\n\n")
 					? gitIgnoreMessage
@@ -43,12 +43,12 @@ export const internalCreateDotSymbiosisDir = ({
 				writeFileSync(gitIgnorePath, `${gitIgnore}${ignore}`);
 			}
 		} else {
-			// .gitignore DONT exists and DONT ignores .symbiosis folder
+			// .gitignore DONT exists and DONT ignores .thothom folder
 			writeFileSync(gitIgnorePath, `${gitIgnoreMessage}${"\n"}`);
 		}
 	}
 
-	mkdirSync(`${dotSymbFolderPath}/${path.replace(/^\//, "")}`, {
+	mkdirSync(`${dotThothFolderPath}/${path.replace(/^\//, "")}`, {
 		recursive: true,
 	});
 };

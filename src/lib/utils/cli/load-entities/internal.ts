@@ -1,6 +1,8 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { isEmptyArray } from "@techmmunity/utils";
+
 import { MetadataUtil } from "../../metadata-util";
+
 import { loadJsFiles } from "./helpers/load-js-files";
 import { loadTsFiles } from "./helpers/load-ts-files";
 
@@ -10,7 +12,7 @@ interface InternalLoadEntities {
 	glob: (paths: string) => Promise<Array<string>>;
 	internalRequire: (pkg: string) => any;
 	isPackageInstalled: (pkg: string) => boolean;
-	createDotSymbiosisDir: (path: string) => void;
+	createDotThothDir: (path: string) => void;
 }
 
 export const internalLoadEntities = async ({
@@ -19,7 +21,7 @@ export const internalLoadEntities = async ({
 	glob,
 	internalRequire,
 	isPackageInstalled,
-	createDotSymbiosisDir,
+	createDotThothDir,
 }: InternalLoadEntities): Promise<Array<any>> => {
 	if (!entitiesDir) {
 		return [];
@@ -43,7 +45,7 @@ export const internalLoadEntities = async ({
 			getRootPath,
 			internalRequire,
 			isPackageInstalled,
-			createDotSymbiosisDir,
+			createDotThothDir,
 		}),
 	];
 

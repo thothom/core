@@ -28,7 +28,7 @@ export const printMessage = ({
 
 	const pidMessage = addColor({
 		logLevel,
-		message: `[Symbiosis] ${process.pid}  - `,
+		message: `[ThothOM] ${process.pid}  - `,
 	});
 	const timestamp = getTimestamp();
 	const formattedLogLevel = addColor({

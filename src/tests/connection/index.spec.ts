@@ -1,4 +1,4 @@
-import { SymbiosisError } from "../..";
+import { ThothError } from "../..";
 import { Column } from "../../lib/decorators/columns/column";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
 import { Entity } from "../../lib/decorators/entities/entity";
@@ -143,11 +143,11 @@ describe("Connection", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "MISSING_PARAM",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Missing entities",
 					details: [
 						"No entities found",

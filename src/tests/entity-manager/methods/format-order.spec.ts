@@ -1,10 +1,10 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import { SubEntity } from "../../../lib/decorators/entities/sub-entity";
 import { Column } from "../../../lib/decorators/columns/column";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { Entity } from "../../../lib/decorators/entities/entity";
-import { SymbiosisError } from "../../../lib/error";
+import { SubEntity } from "../../../lib/decorators/entities/sub-entity";
+import { ThothError } from "../../../lib/error";
 import { TestConnection } from "../../constants/test-connection";
 
 const createConnection = async (entities: Array<any>) => {
@@ -171,10 +171,10 @@ describe("EntityMetadata > formatOrder", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.message).toBe("Invalid order");
 			expect(result.code).toBe("INVALID_PARAM");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual([
 				'Column "subEntity" is a subEntity, and cannot be used to ordering. Use a column of this subEntity',
 			]);
@@ -195,10 +195,10 @@ describe("EntityMetadata > formatOrder", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.message).toBe("Invalid column");
 			expect(result.code).toBe("INVALID_PARAM");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual([
 				"Invalid column: id",
 				'This column has the "String" type, and it cannot be used as an multiple level column',
