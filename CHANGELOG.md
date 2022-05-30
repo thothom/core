@@ -17,7 +17,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Dependencies
 
-## [0.0.31] - 2022-02-12
+## [0.0.1] - 2022-06-30
+
+### Added
+
+### Changed
+
+- Package name to `ThothOM`, `@thothom/core`
+
+### Fixed
+
+### Removed
+
+### Dependencies
+
+## [@techmmunity/symbiosis@0.0.31] - 2022-02-12
 
 ### Added
 
@@ -32,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Dependencies
 
-## [0.0.30] - 2021-12-25
+## [@techmmunity/symbiosis@0.0.30] - 2021-12-25
 
 ### Added
 
@@ -48,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update TypeScript to 4.5.4
 
-## [0.0.29] - 2021-12-05
+## [@techmmunity/symbiosis@0.0.29] - 2021-12-05
 
 ### Added
 
@@ -102,7 +116,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump @types/uuid from 8.3.1 to 8.3.3
 - Bump @types/jest from 27.0.2 to 27.0.3
 
-## [0.0.28] - 2021-11-16
+## [@techmmunity/symbiosis@0.0.28] - 2021-11-16
 
 ### Added
 
@@ -117,7 +131,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## [0.0.27] - 2021-11-12
+## [@techmmunity/symbiosis@0.0.27] - 2021-11-12
 
 ### Added
 
@@ -143,7 +157,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [BC] `isSubEntity` option from `@Entity` (replaced by `@SubEntity()`)
 
-## [0.0.26] - 2021-11-04
+## [@techmmunity/symbiosis@0.0.26] - 2021-11-04
 
 ### Added
 
@@ -161,7 +175,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## [0.0.25] - 2021-10-26
+## [@techmmunity/symbiosis@0.0.25] - 2021-10-26
 
 ### Added
 
@@ -171,7 +185,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## [0.0.21] - 2021-10-26
+## [@techmmunity/symbiosis@0.0.21] - 2021-10-26
 
 ### Added
 

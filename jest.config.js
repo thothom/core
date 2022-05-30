@@ -10,7 +10,7 @@ module.exports = {
 		"!lib/**/types/**/*.ts",
 		// Impossible to test
 		"!lib/utils/date/*.ts",
-		"!lib/utils/cli/create-dot-symb-dir/index.ts",
+		"!lib/utils/cli/create-dot-thoth-dir/index.ts",
 		"!lib/utils/cli/load-options/index.ts",
 		"!lib/utils/cli/load-entities/index.ts",
 		"!lib/utils/cli/glob.ts",

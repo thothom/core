@@ -1,7 +1,8 @@
 import { getRootPath, isPackageInstalled } from "@techmmunity/utils";
 
-import { createDotSymbiosisDir } from "../create-dot-symb-dir";
+import { createDotThothDir } from "../create-dot-thoth-dir";
 import { glob } from "../glob";
+
 import { internalLoadEntities } from "./internal";
 
 export const loadEntities = (entitiesDir?: Array<string>) =>
@@ -10,6 +11,6 @@ export const loadEntities = (entitiesDir?: Array<string>) =>
 		getRootPath,
 		glob,
 		isPackageInstalled,
-		createDotSymbiosisDir,
+		createDotThothDir,
 		internalRequire: require,
 	});

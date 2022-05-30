@@ -1,14 +1,14 @@
-import { SymbiosisError } from "../../lib/error";
+import { ThothError } from "../../lib/error";
 
-describe("SymbiosisError", () => {
+describe("ThothError", () => {
 	it("should throw error correctly (simple details)", () => {
 		let result: any;
 
 		try {
-			throw new SymbiosisError({
+			throw new ThothError({
 				message: "Message",
 				code: "UNKNOWN",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				details: ["Details"],
 			});
 		} catch (err) {
@@ -16,11 +16,11 @@ describe("SymbiosisError", () => {
 		}
 
 		expect(result instanceof Error).toBe(true);
-		expect(result instanceof SymbiosisError).toBe(true);
+		expect(result instanceof ThothError).toBe(true);
 		expect(result).toHaveProperty("stack");
 		expect(result.code).toBe("UNKNOWN");
 		expect(result.message).toBe("Message");
-		expect(result.origin).toBe("SYMBIOSIS");
+		expect(result.origin).toBe("THOTHOM");
 		expect(result.details).toStrictEqual(["Details"]);
 	});
 
@@ -28,10 +28,10 @@ describe("SymbiosisError", () => {
 		let result: any;
 
 		try {
-			throw new SymbiosisError({
+			throw new ThothError({
 				message: "Message",
 				code: "UNKNOWN",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				details: [
 					{
 						foo: "bar",
@@ -43,11 +43,11 @@ describe("SymbiosisError", () => {
 		}
 
 		expect(result instanceof Error).toBe(true);
-		expect(result instanceof SymbiosisError).toBe(true);
+		expect(result instanceof ThothError).toBe(true);
 		expect(result).toHaveProperty("stack");
 		expect(result.code).toBe("UNKNOWN");
 		expect(result.message).toBe("Message");
-		expect(result.origin).toBe("SYMBIOSIS");
+		expect(result.origin).toBe("THOTHOM");
 		expect(result.details).toStrictEqual([
 			{
 				foo: "bar",

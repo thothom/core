@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-import { SymbiosisError } from "../../../../error";
+import { ThothError } from "../../../../error";
 
 export const generateUuid = (
 	/*
@@ -17,10 +17,10 @@ export const generateUuid = (
 
 		return v4();
 	} catch (_) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM",
 			message: "Invalid param",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: [
 				'To use the "uuid" option, you need to install the "uuid" lib.',
 				"Example: `yarn add uuid` OR `npm i --save uuid`",

@@ -1,13 +1,13 @@
-import type { SymbiosisErrorCode } from "../types/error-code";
+import type { ThothErrorCode } from "../types/error-code";
 
 interface CustomErrorParams {
-	code: SymbiosisErrorCode;
-	origin: "DATABASE" | "SYMBIOSIS";
+	code: ThothErrorCode;
+	origin: "DATABASE" | "THOTHOM";
 	message: string;
 	details: Array<any>;
 }
 
-export class SymbiosisError extends Error {
+export class ThothError extends Error {
 	public code: CustomErrorParams["code"];
 
 	public origin: CustomErrorParams["origin"];

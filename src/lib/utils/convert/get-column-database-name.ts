@@ -1,5 +1,5 @@
 import type { EntityManager } from "../../entity-manager";
-import { SymbiosisError } from "../../error";
+import { ThothError } from "../../error";
 import { MetadataUtil } from "../metadata-util";
 
 import type { CustomClass } from "../../entity-manager/types/metadata-type";
@@ -34,10 +34,10 @@ export const getColumnDatabaseName = ({
 		ifLastFieldIsSubEntity &&
 		MetadataUtil.isCustomMetadataType(columnMetadata.type)
 	) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			message: ifLastFieldIsSubEntity.message,
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: ifLastFieldIsSubEntity.getDetails(columnName),
 		});
 	}

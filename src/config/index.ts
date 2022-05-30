@@ -1,3 +1,3 @@
-export const METADATA_PREFIX = "symbiosis:";
+export const METADATA_PREFIX = "thothom:";
 
 export const DEFAULT_CONNECTION_NAME = "Default";

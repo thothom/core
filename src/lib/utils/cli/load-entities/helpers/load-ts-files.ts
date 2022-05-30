@@ -2,14 +2,15 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
 import { isNotEmptyArray, getTypeof } from "@techmmunity/utils";
-import { SymbiosisError } from "../../../../error";
+
+import { ThothError } from "../../../../error";
 
 interface LoadTsFilesParams {
 	entitiesPath: Array<string>;
 	getRootPath: (path: string) => string;
 	internalRequire: (pkg: string) => any;
 	isPackageInstalled: (pkg: string) => boolean;
-	createDotSymbiosisDir: (path: string) => void;
+	createDotThothDir: (path: string) => void;
 }
 
 export const loadTsFiles = ({
@@ -17,15 +18,15 @@ export const loadTsFiles = ({
 	getRootPath,
 	internalRequire,
 	isPackageInstalled,
-	createDotSymbiosisDir,
+	createDotThothDir,
 }: LoadTsFilesParams) => {
 	const tsFiles = entitiesPath.filter(path => path.endsWith(".ts"));
 
 	if (isNotEmptyArray(tsFiles)) {
 		if (!isPackageInstalled("typescript")) {
-			throw new SymbiosisError({
+			throw new ThothError({
 				code: "MISSING_DEPENDENCY",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				message: "Missing dependency",
 				details: ["Missing package: typescript"],
 			});
@@ -33,9 +34,9 @@ export const loadTsFiles = ({
 
 		const ts = internalRequire(getRootPath("node_modules/typescript")) as TS;
 
-		const entitiesFolderPath = getRootPath(".symbiosis/entities");
+		const entitiesFolderPath = getRootPath(".thothom/entities");
 
-		createDotSymbiosisDir(entitiesFolderPath);
+		createDotThothDir(entitiesFolderPath);
 
 		ts.createProgram(tsFiles, {
 			module: ts.ModuleKind.CommonJS,

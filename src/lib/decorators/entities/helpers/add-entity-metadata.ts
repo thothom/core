@@ -1,4 +1,4 @@
-import { SymbiosisError } from "../../../error";
+import { ThothError } from "../../../error";
 
 import { MetadataUtil } from "../../../utils/metadata-util";
 
@@ -19,10 +19,10 @@ export const addEntityMetadata = ({
 	});
 
 	if (!columns) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "MISSING_DECORATOR",
 			message: "Entity must have at least one column",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: [`Entity: ${entityConstructor.name}`],
 		});
 	}

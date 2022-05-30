@@ -55,5 +55,5 @@ tsconfig*
 !tsconfig.json
 !tsconfig.build.json
 
-# Do not touch it! Symb needs this exact exclude, or will generate it again.
-/.symbiosis
+# Do not touch it! Thoth needs this exact exclude, or will generate it again.
+/.thothom

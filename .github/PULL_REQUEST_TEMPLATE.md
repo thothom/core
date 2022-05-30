@@ -9,7 +9,7 @@ PR Of Documentation Update: N/A
 
 Please check if your PR fulfills the following requirements:
 
-- [ ] My contribution follows [the guidelines](https://github.com/techmmunity/symbiosis/blob/master/CONTRIBUTING.md)
+- [ ] My contribution follows [the guidelines](https://github.com/thothom/core/blob/master/CONTRIBUTING.md)
 - [ ] I followed [GitFlow](https://github.com/techmmunity/git-magic/blob/master/docs/en/gitflow.md) pattern to create the branch
 - [ ] Tests for the changes have been added
 - [ ] I created a PR to add / update the documentation (or aren't necessary)

@@ -1,6 +1,6 @@
 import { getRootPath, getTypeof } from "@techmmunity/utils";
 
-import { SymbiosisError } from "../../../../error";
+import { ThothError } from "../../../../error";
 
 import type { BaseConnectionOptions } from "../../../../connection/types/connection-options";
 
@@ -22,16 +22,16 @@ export const getConfigFile = ({
 	if (possiblyConfig) {
 		rawConfig = possiblyConfig;
 	} else {
-		const path = getRootPath("symbiosis.config.js");
+		const path = getRootPath("thothom.config.js");
 
 		if (!existsSync(path)) {
-			throw new SymbiosisError({
+			throw new ThothError({
 				code: "INVALID_PARAM",
-				origin: "SYMBIOSIS",
+				origin: "THOTHOM",
 				message: "Missing config",
 				details: [
 					"Missing config options and config file",
-					"You can install the cli `@techmmunity/symbiosis-cli` and use `npx symb gen:config` to automatic generate a config file, or specify the options at the Connection class constructor",
+					"You can install the cli `@thothom/cli` and use `npx thothom gen:config` to automatic generate a config file, or specify the options at the Connection class constructor",
 				],
 			});
 		}
@@ -40,13 +40,13 @@ export const getConfigFile = ({
 	}
 
 	if (getTypeof(rawConfig) !== "object") {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "Missing config file",
 			details: [
-				"Missing config file: symbiosis.config.js",
-				"You can install the cli `@techmmunity/symbiosis-cli` and use `npx symb gen:config` to automatic generate a config file",
+				"Missing config file: thothom.config.js",
+				"You can install the cli `@thothom/cli` and use `npx thothom gen:config` to automatic generate a config file",
 			],
 		});
 	}

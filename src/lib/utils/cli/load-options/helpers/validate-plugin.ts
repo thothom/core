@@ -1,6 +1,6 @@
 import { isPackageInstalled } from "@techmmunity/utils";
 
-import { SymbiosisError } from "../../../../error";
+import { ThothError } from "../../../../error";
 
 interface ValidatePluginParams {
 	plugin?: string;
@@ -8,18 +8,18 @@ interface ValidatePluginParams {
 
 export const validatePlugin = ({ plugin }: ValidatePluginParams) => {
 	if (!plugin) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "Missing config",
 			details: ["Missing config: plugin"],
 		});
 	}
 
 	if (!isPackageInstalled(plugin)) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "MISSING_DEPENDENCY",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "Missing dependency",
 			details: [`Plugin not found: ${plugin}`],
 		});

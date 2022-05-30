@@ -1,9 +1,9 @@
 import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
-import { SymbiosisError } from "../../lib/error";
-import { TestConnection } from "../constants/test-connection";
+import { Entity } from "../../lib/decorators/entities/entity";
 import { SubEntity } from "../../lib/decorators/entities/sub-entity";
+import { ThothError } from "../../lib/error";
+import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 	it("should get basic entity metadata", async () => {
@@ -337,10 +337,10 @@ describe("EntityManager > constructor + getAllEntitiesMetadata", () => {
 			result = err;
 		}
 
-		expect(result instanceof SymbiosisError).toBe(true);
+		expect(result instanceof ThothError).toBe(true);
 		expect(result.message).toBe("Duplicated Entity");
 		expect(result.code).toBe("DUPLICATED_ENTITY");
-		expect(result.origin).toBe("SYMBIOSIS");
+		expect(result.origin).toBe("THOTHOM");
 		expect(result.details).toStrictEqual(["Entity: TestEntity"]);
 	});
 

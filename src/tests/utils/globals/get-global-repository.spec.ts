@@ -1,7 +1,7 @@
 import { Column } from "../../../lib/decorators/columns/column";
 import { PrimaryColumn } from "../../../lib/decorators/columns/primary-column";
 import { Entity } from "../../../lib/decorators/entities/entity";
-import { SymbiosisError } from "../../../lib/error";
+import { ThothError } from "../../../lib/error";
 import { getGlobalRepository } from "../../../lib/utils/globals/get-global-repository";
 import { setGlobalConnection } from "../../../lib/utils/globals/set-global-connection";
 import { TestConnection } from "../../constants/test-connection";
@@ -9,7 +9,7 @@ import { TestRepository } from "../../constants/test-repository";
 
 describe("Utils > getGlobalRepository", () => {
 	afterEach(() => {
-		delete global.symbiosisConnections;
+		delete global.thothConnections;
 	});
 
 	it("should get global repository of default connection", async () => {
@@ -97,6 +97,6 @@ describe("Utils > getGlobalRepository", () => {
 			result = err;
 		}
 
-		expect(result instanceof SymbiosisError).toBeTruthy();
+		expect(result instanceof ThothError).toBeTruthy();
 	});
 });

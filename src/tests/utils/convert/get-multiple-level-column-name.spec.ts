@@ -1,9 +1,10 @@
-import { SubEntity } from "../../../lib/decorators/entities/sub-entity";
 import { Column } from "../../../lib/decorators/columns/column";
 import { Entity } from "../../../lib/decorators/entities/entity";
-import { SymbiosisError } from "../../../lib/error";
-import { getMultipleLevelColumnName } from "../../../lib/utils/convert/get-multiple-level-column-name";
+import { SubEntity } from "../../../lib/decorators/entities/sub-entity";
+import { ThothError } from "../../../lib/error";
 import { TestConnection } from "../../constants/test-connection";
+
+import { getMultipleLevelColumnName } from "../../../lib/utils/convert/get-multiple-level-column-name";
 
 const createConnection = async (entities: Array<any>) => {
 	const connection = new TestConnection({
@@ -88,10 +89,10 @@ describe("getMultipleLevelColumnName", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.message).toBe("Invalid column");
 			expect(result.code).toBe("INVALID_PARAM");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.details).toStrictEqual([
 				"Invalid column: subEntities",
 				"Value received: subEntities.field",

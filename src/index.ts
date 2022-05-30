@@ -183,7 +183,7 @@ export * from "./lib/utils/globals/set-global-connection";
  * CLI
  */
 
-export * from "./lib/utils/cli/create-dot-symb-dir";
+export * from "./lib/utils/cli/create-dot-thoth-dir";
 export * from "./lib/utils/cli/glob";
 export * from "./lib/utils/cli/load-entities";
 export * from "./lib/utils/cli/load-options";

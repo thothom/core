@@ -8,4 +8,4 @@ assignees: ""
 
 <!-- We primarily use GitHub as an issue tracker; for usage and support questions, please check out these resources below. Thanks! 😁. -->
 
-- Discord Community Chat: https://discord.gg/TakYksUzzZ
+- Discord Community Chat: https://discord.gg/NMtAJ6whG7

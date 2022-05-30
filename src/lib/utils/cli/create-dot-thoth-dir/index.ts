@@ -1,13 +1,13 @@
 import { getRootPath } from "@techmmunity/utils";
 import { mkdirSync, existsSync, readFileSync, writeFileSync } from "fs";
 
-import { internalCreateDotSymbiosisDir } from "./internal";
+import { internalCreateDotThothDir } from "./internal";
 
 /**
- * Recursively create the folders of .symbiosis folder
+ * Recursively create the folders of .thothom folder
  */
-export const createDotSymbiosisDir = (path: string) =>
-	internalCreateDotSymbiosisDir({
+export const createDotThothDir = (path: string) =>
+	internalCreateDotThothDir({
 		mkdirSync,
 		existsSync,
 		readFileSync,

@@ -1,6 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { MetadataUtil } from "../../..";
-import { SymbiosisError } from "../../../lib/error";
+import { ThothError } from "../../../lib/error";
+
 import { internalLoadEntities } from "../../../lib/utils/cli/load-entities/internal";
 
 describe("Utils > CLI > loadEntities", () => {
@@ -8,7 +9,7 @@ describe("Utils > CLI > loadEntities", () => {
 	const glob = jest.fn();
 	const internalRequire = jest.fn();
 	const isPackageInstalled = jest.fn();
-	const createDotSymbiosisDir = jest.fn();
+	const createDotThothDir = jest.fn();
 	const emit = jest.fn();
 
 	class FooEntity {}
@@ -25,7 +26,7 @@ describe("Utils > CLI > loadEntities", () => {
 			glob,
 			internalRequire,
 			isPackageInstalled,
-			createDotSymbiosisDir,
+			createDotThothDir,
 		});
 
 	beforeAll(() => {
@@ -62,7 +63,7 @@ describe("Utils > CLI > loadEntities", () => {
 			expect(glob).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
 			expect(isPackageInstalled).toBeCalledTimes(0);
-			expect(createDotSymbiosisDir).toBeCalledTimes(0);
+			expect(createDotThothDir).toBeCalledTimes(0);
 			expect(emit).toBeCalledTimes(0);
 			expect(result).toStrictEqual([]);
 		});
@@ -81,7 +82,7 @@ describe("Utils > CLI > loadEntities", () => {
 			expect(glob).toBeCalledTimes(0);
 			expect(internalRequire).toBeCalledTimes(0);
 			expect(isPackageInstalled).toBeCalledTimes(0);
-			expect(createDotSymbiosisDir).toBeCalledTimes(0);
+			expect(createDotThothDir).toBeCalledTimes(0);
 			expect(emit).toBeCalledTimes(0);
 			expect(result).toStrictEqual([]);
 		});
@@ -115,7 +116,7 @@ describe("Utils > CLI > loadEntities", () => {
 			expect(glob).toBeCalledTimes(entitiesDirJs.length);
 			expect(internalRequire).toBeCalledTimes(entitiesDirJs.length * 2); // Because the mock implementation return 2x items
 			expect(isPackageInstalled).toBeCalledTimes(0);
-			expect(createDotSymbiosisDir).toBeCalledTimes(0);
+			expect(createDotThothDir).toBeCalledTimes(0);
 			expect(emit).toBeCalledTimes(0);
 			expect(result).toStrictEqual([FooEntity, BarEntity]);
 		});
@@ -141,7 +142,7 @@ describe("Utils > CLI > loadEntities", () => {
 			expect(glob).toBeCalledTimes(entitiesDirJs.length);
 			expect(internalRequire).toBeCalledTimes(entitiesDirJs.length * 2); // Because the mock implementation return 2x items
 			expect(isPackageInstalled).toBeCalledTimes(0);
-			expect(createDotSymbiosisDir).toBeCalledTimes(0);
+			expect(createDotThothDir).toBeCalledTimes(0);
 			expect(emit).toBeCalledTimes(0);
 			expect(result).toStrictEqual([]);
 		});
@@ -162,13 +163,13 @@ describe("Utils > CLI > loadEntities", () => {
 			expect(glob).toBeCalledTimes(entitiesDirTs.length);
 			expect(internalRequire).toBeCalledTimes(0);
 			expect(isPackageInstalled).toBeCalledTimes(1);
-			expect(createDotSymbiosisDir).toBeCalledTimes(0);
+			expect(createDotThothDir).toBeCalledTimes(0);
 			expect(emit).toBeCalledTimes(0);
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "MISSING_DEPENDENCY",
-					origin: "SYMBIOSIS",
+					origin: "THOTHOM",
 					message: "Missing dependency",
 					details: ["Missing package: typescript"],
 				}),
@@ -215,7 +216,7 @@ describe("Utils > CLI > loadEntities", () => {
 			// eslint-disable-next-line prettier/prettier
 			expect(internalRequire).toBeCalledTimes((entitiesDirTs.length * 2) + 1); // Because the mock implementation return 2x items
 			expect(isPackageInstalled).toBeCalledTimes(1);
-			expect(createDotSymbiosisDir).toBeCalledTimes(1);
+			expect(createDotThothDir).toBeCalledTimes(1);
 			expect(emit).toBeCalledTimes(1);
 			expect(result).toStrictEqual([FooEntity, BarEntity]);
 		});
@@ -254,7 +255,7 @@ describe("Utils > CLI > loadEntities", () => {
 			// eslint-disable-next-line prettier/prettier
 			expect(internalRequire).toBeCalledTimes((entitiesDirTs.length * 2) + 1); // Because the mock implementation return 2x items
 			expect(isPackageInstalled).toBeCalledTimes(1);
-			expect(createDotSymbiosisDir).toBeCalledTimes(1);
+			expect(createDotThothDir).toBeCalledTimes(1);
 			expect(emit).toBeCalledTimes(1);
 			expect(result).toStrictEqual([]);
 		});

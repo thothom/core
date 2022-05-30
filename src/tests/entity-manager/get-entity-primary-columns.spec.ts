@@ -1,7 +1,7 @@
 import { Column } from "../../lib/decorators/columns/column";
-import { Entity } from "../../lib/decorators/entities/entity";
 import { PrimaryColumn } from "../../lib/decorators/columns/primary-column";
-import { SymbiosisError } from "../../lib/error";
+import { Entity } from "../../lib/decorators/entities/entity";
+import { ThothError } from "../../lib/error";
 import { TestConnection } from "../constants/test-connection";
 
 describe("EntityManager > getEntityPrimaryColumns", () => {
@@ -88,10 +88,10 @@ describe("EntityManager > getEntityPrimaryColumns", () => {
 			result = err;
 		}
 
-		expect(result instanceof SymbiosisError).toBe(true);
+		expect(result instanceof ThothError).toBe(true);
 		expect(result.message).toBe("Entity not Registered");
 		expect(result.code).toBe("ENTITY_ERROR");
-		expect(result.origin).toBe("SYMBIOSIS");
+		expect(result.origin).toBe("THOTHOM");
 		expect(result.details).toStrictEqual(["Entity: ", TestEntity]);
 	});
 });
