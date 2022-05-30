@@ -31,6 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Dependencies
 
+- [dayjs] 1.10.6 -> 1.11.2
+
 ## [@techmmunity/symbiosis@0.0.31] - 2022-02-12
 
 ### Added
