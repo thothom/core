@@ -47,7 +47,7 @@
 		"@techmmunity/eslint-config": "^5.2.3",
 		"@types/jest": "^27.5.1",
 		"@types/uuid": "^8.3.4",
-		"@vercel/ncc": "^0.34.0",
+		"@vercel/ncc": "^0.36.1",
 		"eslint": "^8.16.0",
 		"husky": "^8.0.1",
 		"jest": "^28.1.0",
